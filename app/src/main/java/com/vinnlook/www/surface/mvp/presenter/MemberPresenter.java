@@ -1,0 +1,63 @@
+package com.vinnlook.www.surface.mvp.presenter;
+
+import android.util.Log;
+
+import com.dm.lib.core.mvp.MvpPresenter;
+import com.vinnlook.www.http.RequestBackListener;
+import com.vinnlook.www.http.model.NotCouponListBean;
+import com.vinnlook.www.surface.bean.MemberBean;
+import com.vinnlook.www.surface.mvp.model.MainRequest;
+import com.vinnlook.www.surface.mvp.view.MemberView;
+
+import java.util.List;
+
+/**
+ * @Description:
+ * @Time:2020/8/18$
+ * @Author:pk$
+ */
+public class MemberPresenter extends MvpPresenter<MemberView> {
+    /**
+     * @Description:会员详情
+     * @Time:2020/8/19 15:27
+     * @Author:pk
+     */
+    public void getMemberDetailData() {
+        addToRxLife(MainRequest.getMemberDetailData(new RequestBackListener<MemberBean>() {
+            @Override
+            public void onStart() {
+                showLoading();
+            }
+
+            @Override
+            public void onSuccess(int code, MemberBean data) {
+                if (isAttachView())
+                    getBaseView().getMemberDetailSuccess(code, data);
+            }
+
+            @Override
+            public void onFailed(int code, String msg) {
+                Log.e("code", "code===" + code);
+                Log.e("msg", "msg===" + msg);
+                if (isAttachView())
+                    getBaseView().getMemberDetailFail(code, msg);
+            }
+
+            @Override
+            public void onNoNet() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                dismissLoading();
+            }
+        }));
+
+}
+}

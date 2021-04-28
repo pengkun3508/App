@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/them"
+    android:orientation="vertical">
+
+
+    <com.vinnlook.www.widgat.actionbar.ActionBarSimple
+        android:id="@+id/action_bar"
+        style="@style/ActionBarStyle.Simple"
+        android:background="@color/white"
+        app:ab_bottom_line_color="@color/line"
+        app:ab_bottom_line_height="1dp"
+        app:abs_back_icon="@mipmap/back"
+        app:abs_title="积分商城"
+        app:abs_title_text_color="@color/text_black" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/spacing_20dp"
+        android:fadingEdge="none"
+        android:scrollbars="none">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/points_mall_bg_2">
+
+                <LinearLayout
+                    android:id="@+id/points_jifen_guize_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="@dimen/spacing_15dp"
+                    android:layout_marginRight="@dimen/spacing_15dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/spacing_5dp"
+                    android:paddingBottom="@dimen/spacing_5dp">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="@mipmap/jifen_shop_wenhao" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="积分规则"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_14" />
+
+
+                </LinearLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/bg_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_margin="@dimen/spacing_30dp"
+                        android:background="@mipmap/points_mall_bg_1" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="可用积分"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_16" />
+
+
+                        <TextView
+                            android:id="@+id/points_jifen_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/spacing_10dp"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_35"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:id="@+id/points_jifen_text_yi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/spacing_10dp"
+                            android:text="已使用积分：10"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_10" />
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_15dp"
+                android:text="积分兑换优惠券"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_16" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/points_mall_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:scrollbars="none" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_5dp">
+
+
+        <ImageView
+            android:id="@+id/wen_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/wenyiwen_img" />
+
+        <TextView
+            android:id="@+id/wen_conten_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_5dp"
+            android:layout_toRightOf="@+id/wen_img"
+            android:text="各位姐妹，这一款适度怎样啊？"
+            android:textColor="#221815"
+            android:textSize="@dimen/text_12" />
+
+        <TextView
+            android:id="@+id/wen_number_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="4个回答"
+            android:textColor="#898989"
+            android:textSize="@dimen/text_12" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>

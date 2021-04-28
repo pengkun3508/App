@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.flyco.roundview.RoundLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_10dp"
+        android:layout_marginTop="@dimen/spacing_10dp"
+        android:layout_marginRight="@dimen/spacing_10dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_10dp"
+        app:rv_backgroundColor="@color/white"
+        app:rv_cornerRadius="@dimen/spacing_10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/batch_item_img"
+                android:layout_width="@dimen/spacing_100dp"
+                android:layout_height="@dimen/spacing_100dp" />
+
+
+            <LinearLayout
+                android:id="@+id/item_layout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_6dp"
+                android:layout_marginRight="@dimen/spacing_25dp"
+                android:layout_toRightOf="@+id/batch_item_img"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/batch_item_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lines="2"
+                    android:text="日本美瞳Limoon月抛日本美瞳Limoon月抛日本美瞳Limoon月抛"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_14" />
+
+                <TextView
+                    android:id="@+id/batch_item_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_5dp"
+                    android:text="light peach,10枚,-575"
+                    android:textColor="#727171"
+                    android:textSize="@dimen/text_12" />
+
+                <TextView
+                    android:id="@+id/batch_item_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_5dp"
+                    android:text="￥10.00"
+                    android:textColor="#727171"
+                    android:textSize="@dimen/text_12" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/batch_item_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/spacing_5dp"
+                android:layout_marginRight="@dimen/spacing_5dp"
+                android:text="x1"
+                android:textColor="#727171"
+                android:textSize="@dimen/text_12" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="退款金额："
+                android:textColor="#727171"
+                android:textSize="@dimen/text_14" />
+
+            <EditText
+                android:id="@+id/batch_item_jine_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:text="11.0"
+                android:textColor="#FF0000"
+                android:textSize="@dimen/text_15"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/batch_item_xiugai_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="可修改，最多可退¥14.0"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_12" />
+
+
+    </com.flyco.roundview.RoundLinearLayout>
+
+</LinearLayout>

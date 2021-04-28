@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_80">
+
+
+    <com.flyco.roundview.RoundRelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/spacing_20dp"
+        app:rv_backgroundColor="@color/touming">
+
+
+        <ImageView
+            android:id="@+id/confirm_tips_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/spacing_50dp"
+            android:layout_marginRight="@dimen/spacing_50dp" />
+
+        <View
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_1dp"
+            android:layout_below="@+id/confirm_tips_img"
+            android:background="@color/line"
+            android:visibility="gone" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/confirm_tips_img"
+            android:padding="@dimen/spacing_15dp">
+
+            <ImageView
+                android:id="@+id/confirm_tips_clear_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/confirm_tips_img"
+                android:background="@mipmap/confirm_closs" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/confirm_tips_img"
+            android:layout_marginTop="@dimen/spacing_6dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <com.flyco.roundview.RoundTextView
+                android:id="@+id/confirm_tips_add_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_60dp"
+                android:layout_marginRight="@dimen/spacing_5dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingTop="@dimen/spacing_5dp"
+                android:paddingBottom="@dimen/spacing_5dp"
+                android:text="返回添加"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16"
+                app:rv_backgroundColor="@color/white"
+                app:rv_cornerRadius="@dimen/spacing_5dp" />
+
+            <View
+                android:layout_width="@dimen/spacing_1dp"
+                android:layout_height="match_parent"
+                android:background="@color/line"
+                android:visibility="gone" />
+
+            <com.flyco.roundview.RoundTextView
+                android:id="@+id/confirm_tips_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_5dp"
+                android:layout_marginRight="@dimen/spacing_60dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingTop="@dimen/spacing_5dp"
+                android:paddingBottom="@dimen/spacing_5dp"
+                android:text="狠心拒绝"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16"
+                app:rv_backgroundColor="@color/white"
+                app:rv_cornerRadius="@dimen/spacing_5dp" />
+
+
+        </LinearLayout>
+
+
+    </com.flyco.roundview.RoundRelativeLayout>
+
+
+</RelativeLayout>

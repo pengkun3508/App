@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/all_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+            android:id="@+id/shopping_bg_relayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <com.flyco.roundview.RoundLinearLayout
+                android:id="@+id/item_shopping_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/spacing_10dp"
+                android:paddingBottom="15dp"
+                app:rv_backgroundColor="@color/white"
+                app:rv_cornerRadius="6dp">
+
+
+                <RelativeLayout
+                    android:id="@+id/rl_check_circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/iv_check_circle"
+                        android:layout_width="@dimen/spacing_20dp"
+                        android:layout_height="@dimen/spacing_20dp" />
+
+                </RelativeLayout>
+
+                <com.flyco.roundview.RoundTextView
+                    android:id="@+id/shixiao_flag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/spacing_5dp"
+                    android:paddingLeft="@dimen/spacing_5dp"
+                    android:paddingTop="@dimen/spacing_1dp"
+                    android:paddingRight="@dimen/spacing_5dp"
+                    android:paddingBottom="@dimen/spacing_1dp"
+                    android:text="失效"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_13"
+                    android:visibility="gone"
+                    app:rv_backgroundColor="#A3A3A3"
+                    app:rv_cornerRadius="@dimen/spacing_10dp" />
+
+                <com.flyco.roundview.RoundLinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:rv_cornerRadius="2dp"
+                    app:rv_strokeColor="@color/line"
+                    app:rv_strokePressColor="@color/line"
+                    app:rv_strokeWidth="1dp">
+
+                    <ImageView
+                        android:id="@+id/shop_cart_img"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp" />
+                </com.flyco.roundview.RoundLinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:id="@+id/layout_11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/shopping_item_label_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="#F4FE80"
+                            android:paddingLeft="@dimen/spacing_2dp"
+                            android:paddingTop="1dp"
+                            android:paddingRight="@dimen/spacing_2dp"
+                            android:paddingBottom="1dp"
+                            android:text="满减活动"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_9" />
+
+                        <TextView
+                            android:id="@+id/shop_cart_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/spacing_2dp"
+                            android:layout_marginEnd="5dp"
+                            android:ellipsize="end"
+                            android:lines="1"
+                            android:text="日本美瞳Topards日抛型"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/shop_cart_type_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/layout_11"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/shop_cat_type_bg"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/spacing_3dp"
+                        android:paddingTop="@dimen/spacing_3dp"
+                        android:paddingRight="@dimen/spacing_10dp"
+                        android:paddingBottom="@dimen/spacing_3dp">
+
+                        <TextView
+                            android:id="@+id/shop_cart_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="红 0度"
+                            android:textColor="@color/shop_text"
+                            android:textSize="12sp" />
+
+                        <ImageView
+                            android:layout_width="@dimen/spacing_10dp"
+                            android:layout_height="@dimen/spacing_5dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/spacing_8dp"
+                            android:layout_toRightOf="@+id/shop_cart_type"
+                            android:background="@mipmap/shop_cat_icon_3" />
+
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/shop_cart_type_layout"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:id="@+id/shixiao_tips_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="该宝贝已失效"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_13"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/see_details_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/shopping_see_details_text"
+                            android:paddingLeft="5.5dp"
+                            android:paddingTop="@dimen/spacing_4dp"
+                            android:paddingRight="@dimen/spacing_6dp"
+                            android:paddingBottom="@dimen/spacing_4dp"
+                            android:text="查看详情"
+                            android:textColor="#ff2626"
+                            android:textSize="10.21dp"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+
+
+                    <TextView
+                        android:id="@+id/shop_cart_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/shop_cart_type_layout"
+                        android:layout_marginTop="10dp"
+                        android:text="￥320"
+                        android:textColor="@color/button_press"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/shop_cart_price_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/shop_cart_type_layout"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/spacing_5dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_toRightOf="@+id/shop_cart_price"
+                        android:text="￥320"
+                        android:textColor="@color/iron"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+
+
+                    <com.flyco.roundview.RoundLinearLayout
+                        android:id="@+id/jia_jian_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:layout_alignBottom="@+id/shop_cart_price"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:orientation="horizontal"
+                        app:rv_strokeColor="@color/them"
+                        app:rv_strokeWidth="0.5dp">
+
+                        <TextView
+                            android:id="@+id/tv_reduce"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:background="@color/them"
+                            android:gravity="center"
+                            android:text="-"
+                            android:textColor="@color/white"
+                            android:textSize="13sp" />
+
+                        <com.flyco.roundview.RoundTextView
+                            android:id="@+id/tv_num"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textColor="@color/text_black"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_plus"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:background="@color/them"
+                            android:gravity="center"
+                            android:text="+"
+                            android:textColor="@color/white"
+                            android:textSize="13sp" />
+                    </com.flyco.roundview.RoundLinearLayout>
+                </RelativeLayout>
+
+
+            </com.flyco.roundview.RoundLinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/shopping_bg_color"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <com.flyco.roundview.RoundTextView
+                    android:id="@+id/shopping_detele_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/spacing_20dp"
+                    android:text="删除"
+                    android:textColor="@color/white"
+                    android:visibility="gone"
+                    app:rv_backgroundColor="#FB3A3D"
+                    app:rv_cornerRadius="999dp" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/meal_item_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shopping_bg_relayout"
+            android:overScrollMode="never"
+            android:scrollbars="none" />
+
+        <RelativeLayout
+            android:id="@+id/meal_item_num_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/meal_item_recycler"
+            android:paddingTop="@dimen/spacing_5dp"
+            android:paddingBottom="@dimen/spacing_10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_40dp"
+                android:layout_marginBottom="@dimen/spacing_5dp"
+                android:text="数量*" />
+
+            <com.flyco.roundview.RoundLinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal"
+                app:rv_strokeColor="@color/them"
+                app:rv_strokeWidth="0.5dp">
+
+                <TextView
+                    android:id="@+id/tv_reduce11"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@color/them"
+                    android:gravity="center"
+                    android:text="-"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+
+                <com.flyco.roundview.RoundTextView
+                    android:id="@+id/tv_num11"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="@color/text_black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_plus11"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@color/them"
+                    android:gravity="center"
+                    android:text="+"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+            </com.flyco.roundview.RoundLinearLayout>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/shopping_flag_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/meal_item_num_layout"
+            android:layout_marginLeft="@dimen/spacing_40dp">
+
+            <TextView
+                android:id="@+id/shopping_item_label_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#F4FE80"
+                android:paddingLeft="@dimen/spacing_2dp"
+                android:paddingTop="1dp"
+                android:paddingRight="@dimen/spacing_2dp"
+                android:paddingBottom="1dp"
+                android:text="满减活动"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_9" />
+
+            <TextView
+                android:id="@+id/shopping_item_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/spacing_5dp"
+                android:layout_marginRight="@dimen/spacing_50dp"
+                android:layout_toRightOf="@+id/shopping_item_label_2"
+                android:lines="2"
+                android:text="该商品参加某某某活动了....该商品参加某某某活动了....该商品参加某某某活动了...."
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_10" />
+
+            <LinearLayout
+                android:id="@+id/shopping_item_coudan_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/spacing_5dp"
+                android:gravity="center"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/go_coudan_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="去凑单"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_10" />
+
+                <ImageView
+                    android:layout_width="@dimen/spacing_5dp"
+                    android:layout_height="@dimen/spacing_10dp"
+                    android:layout_marginLeft="@dimen/spacing_5dp"
+                    android:background="@mipmap/apply_jiantou" />
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_1dp"
+        android:layout_below="@+id/all_layout"
+        android:layout_marginTop="@dimen/spacing_10dp"
+        android:background="@color/line" />
+
+</RelativeLayout>

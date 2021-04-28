@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/spacing_20dp"
+    android:paddingRight="@dimen/spacing_20dp"
+    android:background="@color/black_50">
+
+
+    <!--    <RelativeLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_centerInParent="true">-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/dialog_update_img"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="@dimen/spacing_5dp"
+                android:layout_marginRight="@dimen/spacing_5dp" />
+
+            <ImageView
+                android:id="@+id/dialog_update_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dialog_update_img"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/spacing_55dp"
+                android:padding="@dimen/spacing_10dp"
+                android:src="@mipmap/cha_cha_cha" />
+
+
+        </RelativeLayout>
+    </ScrollView>
+    <!--    </RelativeLayout>-->
+
+</RelativeLayout>

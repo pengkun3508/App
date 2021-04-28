@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/them_2"
+    android:orientation="vertical">
+
+    <com.vinnlook.www.widgat.actionbar.ActionBarSimple
+        android:id="@+id/action_bar"
+        style="@style/ActionBarStyle.Simple"
+        android:background="@color/white"
+        app:ab_bottom_line_color="@color/line"
+        app:ab_bottom_line_height="1dp"
+        app:abs_back_icon="@mipmap/back"
+        app:abs_title="会员权益说明"
+        app:abs_title_text_color="@color/text_black" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/memeber_quanyi_title_recyclerv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:padding="5dp" />
+
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/tl_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_10dp"
+        android:visibility="gone"
+        app:tl_iconHeight="@dimen/spacing_40dp"
+        app:tl_iconMargin="@dimen/spacing_5dp"
+        app:tl_iconWidth="@dimen/spacing_40dp"
+        app:tl_indicator_color="@color/touming"
+        app:tl_indicator_height="1.5dp"
+        app:tl_indicator_width_equal_title="true"
+        app:tl_tab_padding="18dp"
+        app:tl_tab_space_equal="false"
+        app:tl_textSelectColor="@color/white"
+        app:tl_textUnselectColor="#403652"
+        app:tl_textsize="@dimen/text_14" />
+
+    <!--    app:tl_underline_color="@color/touming"-->
+    <!--        app:tl_indicator_color="@color/text_black"-->
+    <!--    app:tl_textSelectColor="@color/text_black"-->
+    <!--    <View-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="1dp"-->
+    <!--        android:background="@color/line" />-->
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never" />
+
+
+</LinearLayout>

@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/me_them"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="个人中心"
+        android:visibility="gone" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_90dp"
+        android:layout_marginTop="@dimen/spacing_60dp"
+        android:orientation="horizontal">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/cat_avatar"
+            android:layout_width="@dimen/spacing_55dp"
+            android:layout_height="@dimen/spacing_55dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/spacing_15dp"
+            android:src="@mipmap/icon_heart"
+            app:riv_corner_radius="999dp" />
+
+        <TextView
+            android:id="@+id/sign_register_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/spacing_10dp"
+            android:paddingTop="@dimen/spacing_5dp"
+            android:paddingRight="@dimen/spacing_20dp"
+            android:paddingBottom="@dimen/spacing_5dp"
+            android:text="登录/注册"
+            android:textColor="@color/my_text2"
+            android:textSize="@dimen/text_16"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/youhuiquan_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_45dp"
+        android:layout_marginLeft="@dimen/spacing_15dp"
+        android:layout_marginRight="@dimen/spacing_15dp"
+        android:background="@mipmap/me_bg_1">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/spacing_20dp"
+            android:text="优惠券"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/spacing_30dp"
+            android:text="免费领取更多优惠券"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_12" />
+
+        <ImageView
+            android:layout_width="@dimen/spacing_10dp"
+            android:layout_height="@dimen/spacing_10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/spacing_10dp"
+            android:src="@mipmap/me_icon_2" />
+
+
+    </RelativeLayout>
+
+    <com.flyco.roundview.RoundLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_20dp"
+        android:layout_marginTop="@dimen/spacing_10dp"
+        android:layout_marginRight="@dimen/spacing_20dp"
+        android:orientation="vertical"
+        app:rv_backgroundColor="@color/white"
+        app:rv_cornerRadius="6dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_15dp"
+            android:layout_marginTop="@dimen/spacing_15dp"
+            android:layout_marginRight="@dimen/spacing_15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="我的订单"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/all_order_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/spacing_20dp"
+                android:paddingTop="@dimen/spacing_5dp"
+                android:paddingBottom="@dimen/spacing_5dp"
+                android:text="查看全部订单"
+                android:textColor="@color/me_text_1"
+                android:textSize="@dimen/text_12" />
+
+            <ImageView
+                android:layout_width="@dimen/spacing_10dp"
+                android:layout_height="@dimen/spacing_10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/me_icon_5" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_20dp"
+            android:layout_marginBottom="@dimen/spacing_15dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/daifukuan_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/daifukuan_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/them"
+                    android:textSize="@dimen/text_16" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="待付款"
+                    android:textColor="@color/my_text1"
+                    android:textSize="@dimen/text_12" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/daishouhuo_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/daishouhuo_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/them"
+                    android:textSize="@dimen/text_16" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="待收货"
+                    android:textColor="@color/my_text1"
+                    android:textSize="@dimen/text_12" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/daipingjia_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/daipingjia_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/them"
+                    android:textSize="@dimen/text_16" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="待评价"
+                    android:textColor="@color/my_text1"
+                    android:textSize="@dimen/text_12" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tuihuanhuo_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tuihuanhuo_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/them"
+                    android:textSize="@dimen/text_16" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="退换货"
+                    android:textColor="@color/my_text1"
+                    android:textSize="@dimen/text_12" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </com.flyco.roundview.RoundLinearLayout>
+
+
+    <com.flyco.roundview.RoundLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_20dp"
+        android:layout_marginTop="@dimen/spacing_10dp"
+        android:layout_marginRight="@dimen/spacing_20dp"
+        android:orientation="vertical"
+        app:rv_backgroundColor="@color/white"
+        app:rv_cornerRadius="6dp">
+
+        <LinearLayout
+            android:id="@+id/me_shoucang"
+            style="@style/top_layout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="我的收藏"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16" />
+
+            <ImageView
+                android:layout_width="@dimen/spacing_15dp"
+                android:layout_height="@dimen/spacing_15dp"
+                android:src="@mipmap/me_icon_6" />
+        </LinearLayout>
+
+
+        <!-- 分割线 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_1dp"
+            android:layout_marginStart="13dp"
+            android:background="@color/me_line" />
+
+        <LinearLayout
+            android:id="@+id/me_address"
+            style="@style/top_layout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="收货地址"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16" />
+
+            <ImageView
+                android:layout_width="@dimen/spacing_15dp"
+                android:layout_height="@dimen/spacing_15dp"
+                android:src="@mipmap/me_icon_6" />
+        </LinearLayout>
+        <!-- 分割线 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_1dp"
+            android:layout_marginStart="13dp"
+            android:background="@color/me_line" />
+
+        <LinearLayout
+            android:id="@+id/me_realname"
+            style="@style/top_layout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="实名认证"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16" />
+
+            <ImageView
+                android:layout_width="@dimen/spacing_15dp"
+                android:layout_height="@dimen/spacing_15dp"
+                android:src="@mipmap/me_icon_6" />
+        </LinearLayout>
+
+        <!-- 分割线 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_1dp"
+            android:layout_marginStart="13dp"
+            android:background="@color/me_line" />
+
+        <LinearLayout
+            android:id="@+id/me_wenti"
+            style="@style/top_layout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="问题反馈"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16" />
+
+            <ImageView
+                android:layout_width="@dimen/spacing_15dp"
+                android:layout_height="@dimen/spacing_15dp"
+                android:src="@mipmap/me_icon_6" />
+        </LinearLayout>
+
+        <!-- 分割线 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_1dp"
+            android:layout_marginStart="13dp"
+            android:background="@color/me_line" />
+
+        <LinearLayout
+            android:id="@+id/me_guanyu"
+            style="@style/top_layout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="关于我们"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16" />
+
+            <ImageView
+                android:layout_width="@dimen/spacing_15dp"
+                android:layout_height="@dimen/spacing_15dp"
+                android:src="@mipmap/me_icon_6" />
+        </LinearLayout>
+
+        <!-- 分割线 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_1dp"
+            android:layout_marginStart="13dp"
+            android:background="@color/me_line" />
+
+        <LinearLayout
+            android:id="@+id/me_share"
+            style="@style/top_layout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="分享给朋友"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16" />
+
+            <ImageView
+                android:layout_width="@dimen/spacing_15dp"
+                android:layout_height="@dimen/spacing_15dp"
+                android:src="@mipmap/me_icon_6" />
+        </LinearLayout>
+
+
+    </com.flyco.roundview.RoundLinearLayout>
+
+
+</LinearLayout>

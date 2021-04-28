@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/line"
+    android:orientation="vertical">
+
+    <com.vinnlook.www.widgat.actionbar.ActionBarSimple
+        android:id="@+id/action_bar"
+        style="@style/ActionBarStyle.Simple"
+        android:background="@color/white"
+        app:ab_bottom_line_height="0dp"
+        app:abs_back_icon="@mipmap/back"
+        app:abs_title="设置" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_05dp" />
+
+    <com.flyco.roundview.RoundLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_10dp"
+        android:layout_marginTop="@dimen/spacing_10dp"
+        android:layout_marginRight="@dimen/spacing_10dp"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_10dp"
+        app:rv_backgroundColor="@color/white"
+        app:rv_cornerRadius="@dimen/spacing_10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="安全"
+            android:textSize="@dimen/text_13" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_05dp"
+            android:layout_marginTop="@dimen/spacing_5dp"
+            android:layout_marginBottom="@dimen/spacing_5dp" />
+
+        <RelativeLayout
+            android:id="@+id/setting_phone_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="手机（账号）"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_13" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/setting_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/spacing_5dp"
+                    android:text="136****0216"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_12" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@mipmap/apply_jiantou" />
+            </LinearLayout>
+        </RelativeLayout>
+    </com.flyco.roundview.RoundLinearLayout>
+
+    <com.flyco.roundview.RoundLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_10dp"
+        android:layout_marginTop="@dimen/spacing_10dp"
+        android:layout_marginRight="@dimen/spacing_10dp"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_10dp"
+        app:rv_backgroundColor="@color/white"
+        app:rv_cornerRadius="@dimen/spacing_10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="绑定账号"
+            android:textSize="@dimen/text_13" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_05dp"
+            android:layout_marginTop="@dimen/spacing_5dp"
+            android:layout_marginBottom="@dimen/spacing_5dp" />
+
+        <RelativeLayout
+            android:id="@+id/setting_wechat_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/spacing_20dp"
+                    android:layout_height="@dimen/spacing_20dp"
+                    android:background="@mipmap/login_img_3" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_5dp"
+                    android:text="微信账号"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_13" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/setting_wechat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/spacing_5dp"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_12" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@mipmap/apply_jiantou" />
+            </LinearLayout>
+        </RelativeLayout>
+    </com.flyco.roundview.RoundLinearLayout>
+
+    <com.flyco.roundview.RoundLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_10dp"
+        android:layout_marginTop="@dimen/spacing_10dp"
+        android:layout_marginRight="@dimen/spacing_10dp"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_10dp"
+        app:rv_backgroundColor="@color/white"
+        app:rv_cornerRadius="@dimen/spacing_10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="其他"
+            android:textSize="@dimen/text_13" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_05dp"
+            android:layout_marginTop="@dimen/spacing_5dp"
+            android:layout_marginBottom="@dimen/spacing_5dp" />
+
+        <RelativeLayout
+            android:id="@+id/setting_version_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/spacing_10dp"
+            android:paddingBottom="@dimen/spacing_10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="版本更新"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_13" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/setting_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/spacing_5dp"
+                    android:text="V3.3.1"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_12" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@mipmap/apply_jiantou" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/settingd_clear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/spacing_10dp"
+            android:paddingBottom="@dimen/spacing_10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="清除本地缓存"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_13" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/settingd_clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/spacing_5dp"
+                    android:text="已清空"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_12" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@mipmap/apply_jiantou" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/setting_pingfen_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/spacing_10dp"
+            android:paddingBottom="@dimen/spacing_10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="给我们评分"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_13" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/spacing_5dp"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_12" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@mipmap/apply_jiantou" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/setting_above_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/spacing_10dp"
+            android:paddingBottom="@dimen/spacing_10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="关于我们"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_13" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/spacing_5dp"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_12" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@mipmap/apply_jiantou" />
+            </LinearLayout>
+        </RelativeLayout>
+
+
+    </com.flyco.roundview.RoundLinearLayout>
+
+    <TextView
+        android:id="@+id/personal_out_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_15dp"
+        android:layout_marginTop="@dimen/spacing_15dp"
+        android:layout_marginRight="@dimen/spacing_15dp"
+        android:background="@drawable/me_bg2"
+        android:gravity="center"
+        android:padding="@dimen/spacing_15dp"
+        android:text="退出登录"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_16" />
+
+
+</LinearLayout>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_80">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/spacing_20dp">
+
+
+        <ImageView
+            android:id="@+id/select_cha_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/select_cha" />
+
+        <com.flyco.roundview.RoundLinearLayout
+            android:id="@+id/data_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_50dp"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_20dp"
+            app:rv_backgroundColor="@color/white"
+            app:rv_cornerRadius="@dimen/spacing_10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选择申请商品"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/select_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:scrollbars="none" />
+
+            <LinearLayout
+                android:id="@+id/select_all_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/select_img"
+                    android:layout_width="@dimen/spacing_20dp"
+                    android:layout_height="@dimen/spacing_20dp"
+                    android:background="@mipmap/apply_quan_no" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_10dp"
+                    android:text="全选"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_16" />
+
+
+            </LinearLayout>
+
+
+        </com.flyco.roundview.RoundLinearLayout>
+
+
+        <com.flyco.roundview.RoundTextView
+            android:id="@+id/select_que_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/data_layout"
+            android:layout_marginTop="@dimen/spacing_20dp"
+            android:gravity="center"
+            android:paddingTop="@dimen/spacing_8dp"
+            android:paddingBottom="@dimen/spacing_8dp"
+            android:text="申请"
+            android:textColor="@color/them"
+            android:textSize="@dimen/text_18"
+            app:rv_backgroundColor="@color/white"
+            app:rv_cornerRadius="@dimen/spacing_10dp" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

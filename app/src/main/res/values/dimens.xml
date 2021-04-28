@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--==========================通用============================-->
+    <dimen name="action_bar_height">44dp</dimen>
+    <dimen name="action_bar_bottom_line_height">1dp</dimen>
+    <dimen name="action_bar_title_text">17dp</dimen>
+    <dimen name="action_bar_text">15dp</dimen>
+    <dimen name="action_bar_icon_padding">15dp</dimen>
+    <dimen name="bottom_bar_height">49dp</dimen>
+    <dimen name="card_corner_radius">8dp</dimen>
+    <dimen name="class_cover_corner_radius">@dimen/card_corner_radius</dimen>
+
+    <!--==========================文字大小============================-->
+    <dimen name="text_headline">22sp</dimen>
+    <dimen name="text_title">18sp</dimen>
+    <dimen name="text_subtitle">16sp</dimen>
+    <dimen name="text_content">15sp</dimen>
+    <dimen name="text_auxiliary">13sp</dimen>
+    <dimen name="text_notes">12sp</dimen>
+    <dimen name="text_city_index">11sp</dimen>
+    <dimen name="text_course_label">10sp</dimen>
+
+    <!--==========================登录注册============================-->
+    <dimen name="login_text_title">@dimen/text_headline</dimen>
+    <dimen name="login_et_height">45dp</dimen>
+    <dimen name="login_et_text_size">15sp</dimen>
+    <dimen name="login_code_text">@dimen/text_headline</dimen>
+    <dimen name="login_bottom_line_default">1dp</dimen>
+    <dimen name="login_bottom_line_focus">2dp</dimen>
+
+    <dimen name="text_size_9">9sp</dimen>
+    <dimen name="text_size_10">10sp</dimen>
+    <dimen name="text_size_11">11sp</dimen>
+    <dimen name="text_size_12">12sp</dimen>
+    <dimen name="text_size_13">13sp</dimen>
+    <dimen name="text_size_14">14sp</dimen>
+    <dimen name="text_size_15">15sp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="avatar_max_size">60dip</dimen>
+
+
+
+
+
+
+    <!--字体大小-->
+    <dimen name="text_4">4sp</dimen>
+    <dimen name="text_6">6sp</dimen>
+    <dimen name="text_8">8sp</dimen>
+    <dimen name="text_9">9sp</dimen>
+    <dimen name="text_10">10sp</dimen>
+    <dimen name="text_11">11sp</dimen>
+    <dimen name="text_12">12sp</dimen>
+    <dimen name="text_13">13sp</dimen>
+    <dimen name="text_14">14sp</dimen>
+    <dimen name="text_15">15sp</dimen>
+    <dimen name="text_16">16sp</dimen>
+    <dimen name="text_17">17sp</dimen>
+    <dimen name="text_18">18sp</dimen>
+    <dimen name="text_19">19sp</dimen>
+    <dimen name="text_20">20sp</dimen>
+    <dimen name="text_21">21sp</dimen>
+    <dimen name="text_22">22sp</dimen>
+    <dimen name="text_23">23sp</dimen>
+    <dimen name="text_24">24sp</dimen>
+    <dimen name="text_25">25sp</dimen>
+    <dimen name="text_26">26sp</dimen>
+    <dimen name="text_27">27sp</dimen>
+    <dimen name="text_28">28sp</dimen>
+    <dimen name="text_29">29sp</dimen>
+    <dimen name="text_30">30sp</dimen>
+    <dimen name="text_31">31sp</dimen>
+    <dimen name="text_32">32sp</dimen>
+    <dimen name="text_33">33sp</dimen>
+    <dimen name="text_34">34sp</dimen>
+    <dimen name="text_35">35sp</dimen>
+    <dimen name="text_40">40sp</dimen>
+    <dimen name="text_45">45sp</dimen>
+    <dimen name="text_50">50sp</dimen>
+    <dimen name="text_55">55sp</dimen>
+    <dimen name="text_60">60sp</dimen>
+
+
+
+    <dimen name="spacing_05dp">0.5dp</dimen>
+    <dimen name="spacing_1dp">1dp</dimen>
+    <dimen name="spacing_2dp">2dp</dimen>
+    <dimen name="spacing_205dp">2.5dp</dimen>
+    <dimen name="spacing_3dp">3dp</dimen>
+    <dimen name="spacing_4dp">4dp</dimen>
+    <dimen name="spacing_5dp">5dp</dimen>
+    <dimen name="spacing_6dp">6dp</dimen>
+    <dimen name="spacing_7dp">7dp</dimen>
+    <dimen name="spacing_8dp">8dp</dimen>
+    <dimen name="spacing_9dp">9dp</dimen>
+    <dimen name="spacing_10dp">10dp</dimen>
+    <dimen name="spacing_11dp">11dp</dimen>
+    <dimen name="spacing_12dp">12dp</dimen>
+    <dimen name="spacing_13dp">13dp</dimen>
+    <dimen name="spacing_14dp">14dp</dimen>
+    <dimen name="spacing_15dp">15dp</dimen>
+    <dimen name="spacing_16dp">16dp</dimen>
+    <dimen name="spacing_17dp">17dp</dimen>
+    <dimen name="spacing_18dp">18dp</dimen>
+    <dimen name="spacing_19dp">19dp</dimen>
+    <dimen name="spacing_20dp">20dp</dimen>
+    <dimen name="spacing_23dp">23dp</dimen>
+    <dimen name="spacing_25dp">25dp</dimen>
+    <dimen name="spacing_26dp">26dp</dimen>
+    <dimen name="spacing_27dp">26dp</dimen>
+    <dimen name="spacing_28dp">28dp</dimen>
+    <dimen name="spacing_30dp">30dp</dimen>
+    <dimen name="spacing_31dp">31dp</dimen>
+    <dimen name="spacing_32dp">32dp</dimen>
+    <dimen name="spacing_33dp">33dp</dimen>
+    <dimen name="spacing_34dp">34dp</dimen>
+    <dimen name="spacing_35dp">35dp</dimen>
+    <dimen name="spacing_40dp">40dp</dimen>
+    <dimen name="spacing_45dp">45dp</dimen>
+    <dimen name="spacing_50dp">50dp</dimen>
+    <dimen name="spacing_55dp">55dp</dimen>
+    <dimen name="spacing_60dp">60dp</dimen>
+    <dimen name="spacing_61dp">61dp</dimen>
+    <dimen name="spacing_62dp">62dp</dimen>
+    <dimen name="spacing_63dp">63dp</dimen>
+    <dimen name="spacing_64dp">64dp</dimen>
+    <dimen name="spacing_65dp">65dp</dimen>
+    <dimen name="spacing_70dp">70dp</dimen>
+    <dimen name="spacing_75dp">75dp</dimen>
+    <dimen name="spacing_80dp">80dp</dimen>
+    <dimen name="spacing_85dp">85dp</dimen>
+    <dimen name="spacing_86dp">86dp</dimen>
+    <dimen name="spacing_87dp">87dp</dimen>
+    <dimen name="spacing_88dp">88dp</dimen>
+    <dimen name="spacing_89dp">89dp</dimen>
+    <dimen name="spacing_90dp">90dp</dimen>
+    <dimen name="spacing_95dp">95dp</dimen>
+    <dimen name="spacing_100dp">100dp</dimen>
+    <dimen name="spacing_110dp">110dp</dimen>
+    <dimen name="spacing_120dp">120dp</dimen>
+    <dimen name="spacing_130dp">130dp</dimen>
+    <dimen name="spacing_140dp">140dp</dimen>
+    <dimen name="spacing_150dp">150dp</dimen>
+    <dimen name="spacing_160dp">160dp</dimen>
+    <dimen name="spacing_170dp">170dp</dimen>
+    <dimen name="spacing_180dp">180dp</dimen>
+    <dimen name="spacing_190dp">190dp</dimen>
+    <dimen name="spacing_195dp">195dp</dimen>
+    <dimen name="spacing_200dp">200dp</dimen>
+    <dimen name="spacing_220dp">220dp</dimen>
+    <dimen name="spacing_230dp">230dp</dimen>
+    <dimen name="spacing_235dp">235dp</dimen>
+    <dimen name="spacing_240dp">240dp</dimen>
+    <dimen name="spacing_250dp">250dp</dimen>
+    <dimen name="spacing_255dp">255dp</dimen>
+    <dimen name="spacing_260dp">260dp</dimen>
+    <dimen name="spacing_270dp">270dp</dimen>
+    <dimen name="spacing_280dp">280dp</dimen>
+    <dimen name="spacing_290dp">290dp</dimen>
+    <dimen name="spacing_300dp">300dp</dimen>
+    <dimen name="spacing_350dp">350dp</dimen>
+    <dimen name="spacing_400dp">400dp</dimen>
+
+
+
+
+
+
+
+</resources>

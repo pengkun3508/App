@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/member_item_bg"
+    android:layout_width="@dimen/spacing_100dp"
+    android:layout_height="@dimen/spacing_130dp"
+    android:layout_margin="@dimen/spacing_5dp"
+    android:background="@drawable/member_bg"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/member_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_25dp"
+        android:layout_marginTop="@dimen/spacing_20dp"
+        android:layout_marginRight="@dimen/spacing_25dp"
+        android:text="年卡会员"
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/text_12" />
+
+    <TextView
+        android:id="@+id/member_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_15dp"
+        android:layout_marginBottom="@dimen/spacing_15dp"
+        android:text="￥88"
+        android:textColor="@color/them"
+        android:textSize="@dimen/text_16" />
+
+    <TextView
+        android:id="@+id/member_original_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_20dp"
+        android:text="￥188"
+        android:textColor="@color/member_text1"
+        android:textSize="@dimen/text_12" />
+
+
+</LinearLayout>

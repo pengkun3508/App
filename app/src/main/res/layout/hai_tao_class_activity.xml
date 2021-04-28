@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/spacing_25dp"
+        android:layout_marginBottom="@dimen/spacing_8dp">
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="@dimen/spacing_25dp"
+            android:layout_height="@dimen/spacing_25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/spacing_15dp"
+            android:padding="@dimen/spacing_3dp"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:id="@+id/title_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="商品列表"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/text_18" />
+
+
+        <LinearLayout
+            android:id="@+id/search_linear_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/spacing_40dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/spacing_3dp">
+
+
+            <ImageView
+                android:id="@+id/searchview_icon"
+                android:layout_width="@dimen/spacing_25dp"
+                android:layout_height="@dimen/spacing_25dp"
+                android:layout_marginLeft="@dimen/spacing_10dp"
+                android:layout_marginRight="@dimen/spacing_5dp"
+                android:padding="@dimen/spacing_5dp"
+                android:src="@mipmap/home_searchview" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/smart_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ScrollView
+                android:id="@+id/home_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#F1F1F1"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:id="@+id/hai_banner_fragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/home_banner_layout">
+
+                        <com.youth.banner.Banner
+                            android:id="@+id/hai_banner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-70dp"
+                        android:background="@mipmap/hai_zi_zhuanqu_title_bg">
+                        <!--                        android:background="@drawable/hai_zi_zhuanqu_bg"-->
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerv_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/spacing_10dp"
+                            android:layout_marginTop="@dimen/spacing_40dp"
+                            android:padding="5dp" />
+
+                    </LinearLayout>
+
+
+                    <ImageView
+                        android:id="@+id/re_title_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_20dp"
+                        android:layout_marginTop="@dimen/spacing_10dp"
+                        android:layout_marginRight="@dimen/spacing_20dp"
+                        android:layout_marginBottom="@dimen/spacing_10dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerv_remai"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/spacing_5dp"
+                            android:layout_marginRight="@dimen/spacing_5dp" />
+
+                    </RelativeLayout>
+
+
+                    <ImageView
+                        android:id="@+id/pin_title_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_20dp"
+                        android:layout_marginTop="@dimen/spacing_10dp"
+                        android:layout_marginRight="@dimen/spacing_20dp"
+                        android:layout_marginBottom="@dimen/spacing_10dp" />
+
+                    <com.flyco.roundview.RoundRelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:rv_backgroundColor="@color/white"
+                        app:rv_cornerRadius="10dp">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerv_pinpai"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/spacing_5dp"
+                            android:layout_marginRight="@dimen/spacing_5dp" />
+
+                    </com.flyco.roundview.RoundRelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/pao_title_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/spacing_10dp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_paoqi"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/spacing_5dp"
+                        android:layout_marginRight="@dimen/spacing_5dp" />
+
+                </LinearLayout>
+            </ScrollView>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    </RelativeLayout>
+</LinearLayout>

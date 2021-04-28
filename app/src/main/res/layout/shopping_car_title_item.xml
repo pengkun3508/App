@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/haitao_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_10dp"
+        tools:ignore="MissingConstraints">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/car_item_check_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/car_item_check_img"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@mipmap/shop_cat_icon_2" />
+
+                <ImageView
+                    android:id="@+id/img_icon"
+                    android:layout_width="@dimen/spacing_15dp"
+                    android:layout_height="@dimen/spacing_15dp"
+                    android:layout_marginLeft="@dimen/spacing_10dp" />
+
+                <TextView
+                    android:id="@+id/car_item_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_5dp"
+                    android:text="海淘仓"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_13" />
+
+                <TextView
+                    android:id="@+id/car_item_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="（部分地区满200包邮）"
+                    android:textSize="@dimen/text_12" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/car_item_coudan_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/spacing_5dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="去凑单"
+                    android:textColor="#727171"
+                    android:textSize="@dimen/text_13" />
+
+                <ImageView
+                    android:layout_width="@dimen/spacing_8dp"
+                    android:layout_height="@dimen/spacing_15dp"
+                    android:layout_marginLeft="@dimen/spacing_5dp"
+                    android:background="@mipmap/shoppingcar_img" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/shixiao_clear_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/spacing_5dp"
+                android:text="清空失效宝贝"
+                android:textColor="#E5661F"
+                android:textSize="@dimen/text_12"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <!--        <com.flyco.roundview.RoundRelativeLayout-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="@dimen/spacing_10dp"-->
+        <!--            android:padding="@dimen/spacing_10dp"-->
+        <!--            app:rv_backgroundColor="@color/white"-->
+        <!--            app:rv_cornerRadius="10dp">-->
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/car_item_recycler_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <!--        <com.yanzhenjie.recyclerview.SwipeRecyclerView-->
+        <!--            android:id="@+id/car_item_recycler_list"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            />-->
+
+        <!--        </com.flyco.roundview.RoundRelativeLayout>-->
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

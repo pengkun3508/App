@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.youth.banner.Banner
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/banners"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+           />
+<!--        app:indicator_drawable_selected="@mipmap/drawable_selected"-->
+<!--        app:indicator_drawable_unselected="@mipmap/drawable_unselected"-->
+
+        <!-- 折扣商品布局 -->
+
+        <RelativeLayout
+            android:id="@+id/move_re_layout_1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_100dp"
+            android:layout_marginTop="298dp"
+            android:background="@mipmap/details_bg_img_2"
+            android:padding="@dimen/spacing_10dp">
+
+            <TextView
+                android:id="@+id/move_transaction_prices_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_30dp"
+                android:text="￥150.00"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_20"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/move_transaction_prices_1"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/spacing_5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="原价"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_14" />
+
+                <TextView
+                    android:id="@+id/move_transaction_prices_yuan_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥150.00"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_14" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_110dp"
+                android:layout_marginTop="@dimen/spacing_40dp"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/details_icon_img" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_5dp"
+                        android:background="@drawable/detailse_text_bg"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/dp_10"
+                        android:paddingTop="@dimen/spacing_3dp"
+                        android:paddingRight="@dimen/spacing_10dp"
+                        android:paddingBottom="@dimen/spacing_3dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Plus价"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_10" />
+
+                        <TextView
+                            android:id="@+id/details_vip_price_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="￥220"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_10" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/details_vip_zhe_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_5dp"
+                    android:text="全年包邮再享9.5折"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_11" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/details_vip_open_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/details_vip_open_text_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="会员中心"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_12" />
+
+                <ImageView
+                    android:layout_width="@dimen/spacing_10dp"
+                    android:layout_height="@dimen/spacing_10dp"
+                    android:src="@mipmap/me_icon_6" />
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/spacing_35dp"
+                android:layout_marginBottom="@dimen/spacing_10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="距结束还剩："
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_9" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/move_xianshi_hour"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/spacing_3dp"
+                            android:text="00"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_9" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=":"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_9"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/move_xianshi_min"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/count"
+                            android:padding="@dimen/spacing_3dp"
+                            android:text="00"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_9"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=":"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_9"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/move_xianshi_second"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/count"
+                            android:padding="@dimen/spacing_3dp"
+                            android:text="00"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_9"
+                            android:visibility="gone" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <!-- 普通商品布局 -->
+
+        <RelativeLayout
+            android:id="@+id/move_re_layout_2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_100dp"
+            android:layout_marginTop="298dp"
+            android:background="@mipmap/details_bg_img"
+            android:padding="@dimen/spacing_10dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/move_transaction_prices_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_40dp"
+                android:text="￥150.00"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_20"
+                android:textStyle="bold" />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_110dp"
+                android:layout_marginTop="@dimen/spacing_40dp"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/details_icon_img" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_5dp"
+                        android:background="@drawable/detailse_text_bg"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/dp_10"
+                        android:paddingTop="@dimen/spacing_3dp"
+                        android:paddingRight="@dimen/spacing_10dp"
+                        android:paddingBottom="@dimen/spacing_3dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Plus价"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_10" />
+
+                        <TextView
+                            android:id="@+id/details_vip_price_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="￥220"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_10" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/details_vip_zhe_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_5dp"
+                    android:text="全年包邮再享9.5折"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_11" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/details_vip_open_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/details_vip_open_text_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="会员中心"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_12" />
+
+                <ImageView
+                    android:layout_width="@dimen/spacing_10dp"
+                    android:layout_height="@dimen/spacing_10dp"
+                    android:src="@mipmap/me_icon_6" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

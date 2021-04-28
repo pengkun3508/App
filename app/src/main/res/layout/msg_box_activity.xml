@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/line"
+    android:orientation="vertical">
+
+    <com.vinnlook.www.widgat.actionbar.ActionBarSimple
+        android:id="@+id/action_bar"
+        style="@style/ActionBarStyle.Simple"
+        android:background="@color/white"
+        android:visibility="gone"
+        app:ab_bottom_line_height="0dp"
+        app:abs_back_icon="@mipmap/back"
+        app:abs_title="消息" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingTop="@dimen/spacing_30dp">
+
+        <ImageView
+            android:id="@+id/msg_title_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_10dp"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/spacing_10dp"
+            android:text="消息"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_18" />
+
+
+        <LinearLayout
+            android:id="@+id/msg_title_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/spacing_5dp"
+            android:orientation="horizontal"
+            android:padding="@dimen/spacing_10dp">
+
+            <ImageView
+                android:layout_width="@dimen/spacing_10dp"
+                android:layout_height="@dimen/spacing_10dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/spacing_5dp"
+                android:background="@mipmap/my_xiaoxi_clear_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="清除未读"
+                android:textColor="#774B9A"
+                android:textSize="@dimen/text_12" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_05dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:id="@+id/tips_msg_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_10dp"
+                android:layout_marginTop="@dimen/spacing_10dp"
+                android:layout_marginRight="@dimen/spacing_10dp"
+                android:background="@drawable/msg_tips_bg"
+                android:padding="@dimen/spacing_10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="打开消息通知"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_13" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="第一时间接受服务，优惠信息等"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_13" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <com.flyco.roundview.RoundTextView
+                        android:id="@+id/msg_open_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/spacing_5dp"
+                        android:paddingTop="@dimen/spacing_2dp"
+                        android:paddingRight="@dimen/spacing_5dp"
+                        android:paddingBottom="@dimen/spacing_2dp"
+                        android:text="立即开启"
+                        app:rv_backgroundColor="@color/white"
+                        app:rv_cornerRadius="@dimen/spacing_10dp" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="X"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_16"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:id="@+id/msg_close_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/spacing_15dp">
+
+                        <ImageView
+                            android:layout_width="@dimen/spacing_15dp"
+                            android:layout_height="@dimen/spacing_15dp"
+                            android:layout_marginLeft="@dimen/spacing_10dp"
+                            android:background="@mipmap/login_yijian_img" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <com.flyco.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_10dp"
+                android:layout_marginTop="@dimen/spacing_10dp"
+                android:layout_marginRight="@dimen/spacing_10dp"
+                android:orientation="horizontal"
+                android:padding="@dimen/spacing_10dp"
+                app:rv_backgroundColor="@color/white"
+                app:rv_cornerRadius="@dimen/spacing_6dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="@dimen/spacing_40dp"
+                        android:layout_height="@dimen/spacing_40dp"
+                        android:layout_gravity="center"
+                        android:background="@mipmap/my_msg_kefu_icon_1" />
+
+                    <TextView
+                        android:id="@+id/msg_kefu_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_30dp"
+                        android:background="@drawable/bg_tab_roundtip"
+                        android:gravity="center"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="8sp"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/msg_kefu_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="官方客服"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_14" />
+
+                    <TextView
+                        android:id="@+id/msg_kefu_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_3dp"
+                        android:text="暂时没收到新的消息"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:textSize="@dimen/text_12" />
+
+                </LinearLayout>
+
+
+            </com.flyco.roundview.RoundLinearLayout>
+
+            <com.flyco.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_10dp"
+                android:layout_marginTop="@dimen/spacing_10dp"
+                android:layout_marginRight="@dimen/spacing_10dp"
+                android:layout_marginBottom="@dimen/spacing_10dp"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_10dp"
+                app:rv_backgroundColor="@color/white"
+                app:rv_cornerRadius="@dimen/spacing_6dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/spacing_15dp"
+                        android:layout_height="@dimen/spacing_15dp"
+                        android:layout_gravity="center"
+                        android:background="@mipmap/my_msg_time_icon" />
+
+                    <TextView
+                        android:id="@+id/msg_time_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_10dp"
+                        android:text="两周前的消息"
+                        android:textSize="@dimen/text_12" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/msg_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/spacing_10dp"
+                        android:overScrollMode="never"
+                        android:scrollbars="none" />
+                </RelativeLayout>
+
+            </com.flyco.roundview.RoundLinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <FrameLayout
+        android:id="@+id/fragm_layou1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_5dp"
+        android:layout_marginBottom="@dimen/spacing_5dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_1dp">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/xianshi_img"
+                android:layout_width="@dimen/spacing_80dp"
+                android:layout_height="@dimen/spacing_80dp"
+                android:background="@color/them"
+                app:riv_corner_radius="@dimen/spacing_5dp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="@dimen/spacing_20dp"
+            android:layout_height="@dimen/spacing_20dp"
+            android:layout_marginLeft="@dimen/spacing_20dp"
+            android:background="@mipmap/home_xs_image3"
+            android:visibility="gone" />
+
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/spacing_5dp"
+        android:layout_marginRight="@dimen/spacing_5dp"
+        android:layout_marginBottom="@dimen/spacing_5dp"
+        android:layout_toRightOf="@+id/fragm_layou1"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/xianshi_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="日本美瞳Limoon月抛"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_12" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:id="@+id/layout111"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/group_go_line"
+                        android:paddingLeft="@dimen/spacing_3dp"
+                        android:paddingRight="@dimen/spacing_3dp"
+                        android:text="4人团"
+                        android:textColor="#F78B8B"
+                        android:textSize="@dimen/text_8" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_5dp"
+                        android:background="@drawable/group_go_line_1"
+                        android:paddingLeft="@dimen/spacing_3dp"
+                        android:paddingRight="@dimen/spacing_3dp"
+                        android:text="包邮"
+                        android:textColor="#00A0E9"
+                        android:textSize="@dimen/text_8" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_3dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/xianshi_price_fuhao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="￥"
+                        android:textColor="#FF0000"
+                        android:textSize="@dimen/text_10" />
+
+                    <TextView
+                        android:id="@+id/xianshi_jiage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_1dp"
+                        android:text="145.00"
+                        android:textColor="#FF0000"
+                        android:textSize="@dimen/text_12"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_3dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/xianshi_yuanjia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/xianshi_jiage"
+                        android:text="单价卖￥145.00"
+                        android:textColor="#727171"
+                        android:textSize="@dimen/text_8" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/layout111"
+                android:layout_alignParentRight="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/home_add_xianshi_car"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:background="@drawable/group_go_jian_bg_1"
+                    android:paddingLeft="@dimen/spacing_5dp"
+                    android:paddingTop="1dp"
+                    android:paddingRight="@dimen/spacing_5dp"
+                    android:paddingBottom="@dimen/spacing_1dp"
+                    android:text="立即抢购"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_12" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/jieshu_text"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="@dimen/spacing_8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="距结束"
+                        android:textColor="#C29AFD"
+                        android:textSize="@dimen/text_8" />
+
+                    <com.flyco.roundview.RoundTextView
+                        android:id="@+id/home_xianshi_time_text_days"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_5dp"
+                        android:paddingLeft="@dimen/spacing_3dp"
+                        android:paddingRight="@dimen/spacing_3dp"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_8"
+                        app:rv_backgroundColor="#C29AFD"
+                        app:rv_cornerRadius="@dimen/spacing_3dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_3dp"
+                        android:text="天"
+                        android:textColor="#C29AFD"
+                        android:textSize="@dimen/text_8" />
+
+                    <com.flyco.roundview.RoundTextView
+                        android:id="@+id/home_xianshi_time_text_hours"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_3dp"
+                        android:paddingLeft="@dimen/spacing_3dp"
+                        android:paddingRight="@dimen/spacing_3dp"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_8"
+                        app:rv_backgroundColor="#C29AFD"
+                        app:rv_cornerRadius="@dimen/spacing_3dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_3dp"
+                        android:text="时"
+                        android:textColor="#C29AFD"
+                        android:textSize="@dimen/text_8" />
+
+                    <com.flyco.roundview.RoundTextView
+                        android:id="@+id/home_xianshi_time_text_minutes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_3dp"
+                        android:paddingLeft="@dimen/spacing_3dp"
+                        android:paddingRight="@dimen/spacing_3dp"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_8"
+                        app:rv_backgroundColor="#C29AFD"
+                        app:rv_cornerRadius="@dimen/spacing_3dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_3dp"
+                        android:text="分"
+                        android:textColor="#C29AFD"
+                        android:textSize="@dimen/text_8" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/spacing_100dp"
+    android:layout_height="@dimen/spacing_100dp"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/rl_image_fiv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/spacing_5dp">
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:src="@color/bg_default">-->
+
+        <!--            <ImageView-->
+        <!--                android:id="@+id/fiv"-->
+        <!--                android:layout_width="101dp"-->
+        <!--                android:layout_height="101dp"-->
+        <!--                android:scaleType="centerCrop" />-->
+        <!--        </LinearLayout>-->
+
+
+        <ImageView
+            android:id="@+id/fiv"
+            android:layout_width="@dimen/spacing_75dp"
+            android:layout_height="@dimen/spacing_75dp"
+            android:layout_centerInParent="true"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/wentifankui_icon" />
+
+
+        <TextView
+            android:id="@+id/tv_duration"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/buybuybuy"
+            android:drawableLeft="@drawable/video_icon"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="5dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="5dp"
+            android:text="00:00"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:visibility="gone" />
+        <!--<include
+            android:id="@+id/view_dialog_picture"
+            layout="@layout/dialog_picture_data"
+            android:visibility="gone"/>-->
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_del"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:gravity="right"
+        android:orientation="vertical">
+
+        <!--        <ImageView-->
+        <!--            android:id="@+id/iv_del"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:scaleType="center"-->
+        <!--            android:src="@mipmap/claear_search" />-->
+
+        <ImageView
+            android:id="@+id/iv_del"
+            android:layout_width="30dp"
+            android:layout_height="@dimen/spacing_30dp"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/spacing_5dp"
+            android:src="@mipmap/claear_search" />
+
+    </LinearLayout>
+
+</RelativeLayout>

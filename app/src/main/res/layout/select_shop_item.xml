@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/shopping_bg_relayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <com.flyco.roundview.RoundLinearLayout
+        android:id="@+id/item_shopping_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/spacing_15dp"
+        android:paddingBottom="15dp"
+        app:rv_backgroundColor="@color/white"
+        app:rv_cornerRadius="6dp">
+
+
+        <RelativeLayout
+            android:id="@+id/select_check_circle_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="15dp">
+
+            <ImageView
+                android:id="@+id/select_check_circle"
+                android:layout_width="@dimen/spacing_20dp"
+                android:layout_height="@dimen/spacing_20dp" />
+
+        </RelativeLayout>
+
+        <com.flyco.roundview.RoundLinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:rv_cornerRadius="2dp"
+            app:rv_strokeColor="@color/line"
+            app:rv_strokePressColor="@color/line"
+            app:rv_strokeWidth="1dp">
+
+            <ImageView
+                android:id="@+id/select_cart_img"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+        </com.flyco.roundview.RoundLinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/select_cart_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:ellipsize="end"
+                android:lines="2"
+                android:text="日本美瞳Topards日抛型"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/select_cart_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="light peach,10枚,-575"
+                    android:textColor="#727171"
+                    android:textSize="@dimen/text_10" />
+
+                <TextView
+                    android:id="@+id/select_cart_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="X1"
+                    android:textColor="#727171"
+                    android:textSize="@dimen/text_10" />
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+    </com.flyco.roundview.RoundLinearLayout>
+
+
+</RelativeLayout>

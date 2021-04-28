@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/move_text7"
+    android:orientation="vertical">
+
+    <com.vinnlook.www.widgat.actionbar.ActionBarSimple
+        android:id="@+id/action_bar"
+        style="@style/ActionBarStyle.Simple"
+        android:background="@color/white"
+        app:ab_bottom_line_color="@color/line"
+        app:ab_bottom_line_height="1dp"
+        app:abs_back_icon="@mipmap/back"
+        app:abs_title="编辑资料"
+        app:abs_title_text_color="@color/text_black" />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_1dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/spacing_15dp"
+            android:paddingRight="@dimen/spacing_15dp">
+
+            <LinearLayout
+                android:id="@+id/edit_genghuan_heat_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/edit_heat_img"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/spacing_35dp"
+                    app:riv_corner_radius="999dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/spacing_17dp"
+                    android:text="更换头像"
+                    android:textColor="@color/them"
+                    android:textSize="@dimen/text_16" />
+
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_1dp"
+                android:layout_marginTop="@dimen/spacing_20dp"
+                android:background="@color/black_90" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:paddingTop="@dimen/spacing_20dp"
+                    android:paddingBottom="@dimen/spacing_20dp"
+                    android:text="用户昵称"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_16" />
+
+                <EditText
+                    android:id="@+id/edit_name_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_40dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="asdasdasd"
+                    android:paddingTop="@dimen/spacing_20dp"
+                    android:paddingBottom="@dimen/spacing_20dp"
+                    android:textColor="@color/edit_text1"
+                    android:textSize="@dimen/text_16" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:paddingTop="@dimen/spacing_15dp"
+                    android:paddingBottom="@dimen/spacing_15dp"
+                    android:text="用户名"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_16" />
+
+<!--                <com.vinnlook.www.widgat.EmojiEditText-->
+                <EditText
+                    android:id="@+id/edit_nicheng_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_10dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint=""
+                    android:paddingTop="@dimen/spacing_15dp"
+                    android:paddingBottom="@dimen/spacing_15dp"
+                    android:textColor="@color/edit_text1"
+                    android:maxLength="12"
+                    android:textCursorDrawable="@drawable/my_cursor"
+                    android:textSize="@dimen/text_14" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:paddingTop="@dimen/spacing_20dp"
+                    android:paddingBottom="@dimen/spacing_20dp"
+                    android:text="性别"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_16" />
+
+                <TextView
+                    android:id="@+id/edit_sex_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_40dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="保密"
+                    android:paddingTop="@dimen/spacing_20dp"
+                    android:paddingBottom="@dimen/spacing_20dp"
+                    android:textColor="@color/edit_text1"
+                    android:textSize="@dimen/text_16" />
+
+                <ImageView
+                    android:layout_width="@dimen/spacing_6dp"
+                    android:layout_height="@dimen/spacing_10dp"
+                    android:layout_gravity="center"
+                    android:background="@mipmap/edit_sex_right" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="限制最大输入12个字符,不可以输入表情符号"
+        android:textSize="@dimen/text_size_10"
+        android:layout_marginTop="@dimen/spacing_5dp"
+        android:layout_marginLeft="@dimen/spacing_15dp"
+        android:textColor="@color/gray_light"/>
+
+        <include layout="@layout/picker_education_layout" />
+
+
+
+
+</LinearLayout>

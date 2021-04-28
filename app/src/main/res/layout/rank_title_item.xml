@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/item_rank_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/spacing_5dp"
+        android:paddingTop="@dimen/spacing_10dp"
+        android:paddingRight="@dimen/spacing_5dp">
+
+
+        <TextView
+            android:id="@+id/rank_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="热卖畅销榜"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_11"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/title_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            android:id="@+id/rank_title_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_5dp"
+            android:background="@drawable/rank_text_bg"
+            android:paddingLeft="@dimen/spacing_4dp"
+            android:paddingRight="@dimen/spacing_4dp"
+            android:paddingBottom="@dimen/spacing_1dp"
+            android:text="Hot"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_11" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

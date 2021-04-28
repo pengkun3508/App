@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#93B5C8"
+    android:orientation="vertical">
+    <!--    android:fitsSystemWindows="true"-->
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/smart_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/ctlTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+                    <ImageView
+                        android:id="@+id/img_list_bg"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_250dp"
+                        android:scaleType="fitXY"
+                        android:background="@mipmap/baiwan_img_2" />
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_50dp"
+                    android:layout_marginLeft="@dimen/spacing_10dp"
+                    android:layout_marginRight="@dimen/spacing_10dp"
+                    android:background="@drawable/xianshi_baiwan_new_bg"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/spacing_5dp"
+                    android:paddingBottom="@dimen/spacing_5dp"
+                    android:visibility="gone">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/spacing_10dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/icon1"
+                            android:layout_width="@dimen/spacing_30dp"
+                            android:layout_height="@dimen/spacing_30dp"
+                            android:layout_centerVertical="true"
+                            android:src="@mipmap/xianshi_new_time_icon" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/spacing_5dp"
+                            android:layout_marginTop="@dimen/spacing_5dp"
+                            android:layout_toRightOf="@+id/icon1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="活动时间"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_12" />
+
+                            <TextView
+                                android:id="@+id/date_stare_end_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="4月02日到04月28日"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_10" />
+
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="@dimen/spacing_2dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/white_60" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_3dp"
+                        android:layout_marginRight="@dimen/spacing_10dp"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/jieshu_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:text="距离结束还剩："
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_12" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/jieshu_text"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginTop="@dimen/spacing_5dp"
+                            android:orientation="horizontal">
+
+                            <com.flyco.roundview.RoundTextView
+                                android:id="@+id/home_xianshi_time_text_days"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="@dimen/spacing_3dp"
+                                android:paddingRight="@dimen/spacing_3dp"
+                                android:text="0"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_12"
+                                app:rv_backgroundColor="@color/white"
+                                app:rv_cornerRadius="@dimen/spacing_3dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_3dp"
+                                android:text="天"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_10" />
+
+                            <com.flyco.roundview.RoundTextView
+                                android:id="@+id/home_xianshi_time_text_hours"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_3dp"
+                                android:paddingLeft="@dimen/spacing_3dp"
+                                android:paddingRight="@dimen/spacing_3dp"
+                                android:text="0"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_12"
+                                app:rv_backgroundColor="@color/white"
+                                app:rv_cornerRadius="@dimen/spacing_3dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_3dp"
+                                android:text="时"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_10" />
+
+                            <com.flyco.roundview.RoundTextView
+                                android:id="@+id/home_xianshi_time_text_minutes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_3dp"
+                                android:paddingLeft="@dimen/spacing_3dp"
+                                android:paddingRight="@dimen/spacing_3dp"
+                                android:text="0"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_12"
+                                app:rv_backgroundColor="@color/white"
+                                app:rv_cornerRadius="@dimen/spacing_3dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_3dp"
+                                android:text="分"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_10" />
+
+                            <com.flyco.roundview.RoundTextView
+                                android:id="@+id/home_xianshi_time_text_seconds"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_3dp"
+                                android:paddingLeft="@dimen/spacing_3dp"
+                                android:paddingRight="@dimen/spacing_3dp"
+                                android:text="0"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_12"
+                                app:rv_backgroundColor="@color/white"
+                                app:rv_cornerRadius="@dimen/spacing_3dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_3dp"
+                                android:text="秒"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_10" />
+
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </com.google.android.material.appbar.AppBarLayout>
+
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none"
+                android:layout_marginTop="-30dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+
+                </RelativeLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+</RelativeLayout>

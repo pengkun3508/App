@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/shop_line"
+    android:orientation="vertical">
+
+    <com.vinnlook.www.widgat.actionbar.ActionBarSimple
+        android:id="@+id/action_bar"
+        style="@style/ActionBarStyle.Simple"
+        android:background="@color/white"
+        app:ab_bottom_line_height="0dp"
+        app:abs_back_icon="@mipmap/back"
+        app:abs_title="我的优惠券"
+        app:abs_title_text_color="@color/text_black" />
+
+    <!--    <View-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="0.5dp"-->
+    <!--        android:background="#B2B2B2" />-->
+
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/spacing_5dp"
+        android:paddingBottom="@dimen/spacing_5dp">
+
+
+        <RadioButton
+            android:id="@+id/imageButton1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:paddingTop="@dimen/spacing_3dp"
+            android:paddingBottom="@dimen/spacing_3dp"
+            android:text="待领取"
+            android:textColor="@drawable/classify_button_selector"
+            android:textSize="@dimen/text_16" />
+
+
+        <RadioButton
+            android:id="@+id/imageButton2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:paddingTop="@dimen/spacing_3dp"
+            android:paddingBottom="@dimen/spacing_3dp"
+            android:text="待使用"
+            android:textColor="@drawable/classify_button_selector"
+            android:textSize="@dimen/text_16" />
+
+        <RadioButton
+
+            android:id="@+id/imageButton3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:paddingTop="@dimen/spacing_3dp"
+            android:paddingBottom="@dimen/spacing_3dp"
+            android:text="已使用"
+            android:textColor="@drawable/classify_button_selector"
+            android:textSize="@dimen/text_16" />
+
+
+        <RadioButton
+
+            android:id="@+id/imageButton4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:paddingTop="@dimen/spacing_3dp"
+            android:paddingBottom="@dimen/spacing_3dp"
+            android:text="已过期"
+            android:textColor="@drawable/classify_button_selector"
+            android:textSize="@dimen/text_16" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/view_1"
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:layout_marginLeft="@dimen/spacing_20dp"
+            android:layout_marginRight="@dimen/spacing_20dp"
+            android:layout_weight="1"
+            android:background="@color/them" />
+
+        <View
+            android:id="@+id/view_2"
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:layout_marginLeft="@dimen/spacing_20dp"
+            android:layout_marginRight="@dimen/spacing_20dp"
+            android:layout_weight="1"
+            android:background="@color/white" />
+
+        <View
+            android:id="@+id/view_3"
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:layout_marginLeft="@dimen/spacing_20dp"
+            android:layout_marginRight="@dimen/spacing_20dp"
+            android:layout_weight="1"
+            android:background="@color/white" />
+
+        <View
+            android:id="@+id/view_4"
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:layout_marginLeft="@dimen/spacing_20dp"
+            android:layout_marginRight="@dimen/spacing_20dp"
+            android:layout_weight="1"
+            android:background="@color/white" />
+
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/spacing_10dp"
+        android:overScrollMode="never"
+        android:scrollbars="none" />
+</LinearLayout>

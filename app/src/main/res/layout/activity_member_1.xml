@@ -1,0 +1,840 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/them"
+    android:orientation="vertical">
+
+
+    <com.vinnlook.www.widgat.actionbar.ActionBarSimple
+        android:id="@+id/action_bar"
+        style="@style/ActionBarStyle.Simple"
+        android:background="@color/them"
+        app:ab_bottom_line_height="0dp"
+        app:abs_back_icon="@mipmap/back_white"
+        app:abs_title="会员中心"
+        app:abs_title_text_color="@color/white" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fadingEdge="none"
+        android:overScrollMode="never"
+        android:padding="@dimen/spacing_1dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/spacing_20dp">
+
+                <RelativeLayout
+                    android:layout_width="@dimen/spacing_60dp"
+                    android:layout_height="@dimen/spacing_60dp"
+                    android:gravity="center">
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/memeber_heart"
+                        android:layout_width="@dimen/spacing_50dp"
+                        android:layout_height="@dimen/spacing_50dp"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:src="@mipmap/icon_heart"
+                        app:riv_corner_radius="999dp" />
+
+
+                    <ImageView
+                        android:id="@+id/memeber_huiyuan_biaozhi1"
+                        android:layout_width="@dimen/spacing_20dp"
+                        android:layout_height="@dimen/spacing_20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/spacing_5dp"
+                        android:background="@mipmap/memeber_img_icon23" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/memeber_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_15dp"
+                        android:text="会员名称"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_15"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/memeber_huiyuan_biaozhi2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_10dp"
+                        android:layout_marginTop="@dimen/spacing_5dp"
+                        android:layout_toRightOf="@+id/memeber_user_name"
+                        android:background="@mipmap/memeber_img_icon24"
+                        android:paddingLeft="@dimen/spacing_5dp"
+                        android:paddingRight="@dimen/spacing_5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Plus会员"
+                            android:textColor="#714F29"
+                            android:textSize="@dimen/text_10" />
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/memeber_huiyuan_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/memeber_user_name"
+                        android:layout_alignLeft="@+id/memeber_user_name"
+                        android:layout_marginTop="@dimen/spacing_5dp"
+                        android:text="2020.10.26到期，可续费尊享会员"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_10" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_80dp"
+                    android:background="@mipmap/memeber_bg_new_1"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_140dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="3dp"
+                            android:layout_height="3dp"
+                            android:layout_marginLeft="@dimen/spacing_5dp"
+                            android:layout_marginRight="@dimen/spacing_10dp"
+                            android:background="@drawable/memeber_img_raidus" />
+
+                        <ImageView
+                            android:layout_width="4dp"
+                            android:layout_height="4dp"
+                            android:layout_marginLeft="@dimen/spacing_5dp"
+                            android:layout_marginRight="@dimen/spacing_10dp"
+                            android:background="@drawable/memeber_img_raidus" />
+
+                        <ImageView
+                            android:layout_width="5dp"
+                            android:layout_height="5dp"
+                            android:layout_marginLeft="@dimen/spacing_5dp"
+                            android:layout_marginRight="@dimen/spacing_10dp"
+                            android:background="@drawable/memeber_img_raidus" />
+
+                        <TextView
+                            android:id="@+id/memeber_xu_kai_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="开卡领取优惠券"
+                            android:textColor="@color/them_3"
+                            android:textSize="@dimen/text_14"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="5dp"
+                            android:layout_height="5dp"
+                            android:layout_marginLeft="@dimen/spacing_10dp"
+                            android:layout_marginRight="@dimen/spacing_5dp"
+                            android:background="@drawable/memeber_img_raidus" />
+
+                        <ImageView
+                            android:layout_width="4dp"
+                            android:layout_height="4dp"
+                            android:layout_marginLeft="@dimen/spacing_10dp"
+                            android:layout_marginRight="@dimen/spacing_5dp"
+                            android:background="@drawable/memeber_img_raidus" />
+
+                        <ImageView
+                            android:layout_width="3dp"
+                            android:layout_height="3dp"
+                            android:layout_marginLeft="@dimen/spacing_10dp"
+                            android:layout_marginRight="@dimen/spacing_5dp"
+                            android:background="@drawable/memeber_img_raidus" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/spacing_10dp"
+                        android:background="@drawable/memeber_youhuiquan_bg_1"
+                        android:orientation="vertical"
+                        android:padding="@dimen/spacing_15dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/spacing_5dp"
+                            android:gravity="center"
+                            android:text="首开可获得以下优惠券"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_13"
+                            android:visibility="gone" />
+
+                        <com.flyco.roundview.RoundRelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:descendantFocusability="blocksDescendants"
+                            app:rv_backgroundColor="@color/white"
+                            app:rv_cornerRadius="6dp">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/memeber_recycler_1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:overScrollMode="never"
+                                android:scrollbars="none" />
+                        </com.flyco.roundview.RoundRelativeLayout>
+                    </LinearLayout>
+
+                    <com.flyco.roundview.RoundLinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_10dp"
+                        android:layout_marginRight="@dimen/spacing_10dp"
+                        android:orientation="vertical"
+                        android:padding="@dimen/spacing_15dp"
+                        app:rv_backgroundColor="@color/white"
+                        app:rv_cornerRadius="6dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/member_text1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/memeber_img_raidus"
+                                android:padding="@dimen/spacing_2dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="@dimen/spacing_5dp"
+                                android:layout_toRightOf="@+id/member_text1"
+                                android:text="尊享8大权益"
+                                android:textColor="@color/them_3"
+                                android:textSize="@dimen/text_16"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:id="@+id/memeber_see_benefit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:padding="@dimen/spacing_3dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="会员权益说明"
+                                    android:textColor="@color/them_3"
+                                    android:textSize="@dimen/text_10"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:layout_width="@dimen/spacing_13dp"
+                                    android:layout_height="@dimen/spacing_13dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/spacing_5dp"
+                                    android:src="@mipmap/memeber_icon_1" />
+
+                            </LinearLayout>
+
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_20dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:id="@+id/memeber_zhe_layou_btn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="@dimen/spacing_40dp"
+                                    android:layout_height="@dimen/spacing_40dp"
+                                    android:src="@mipmap/memeber_zhe_1" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/spacing_6dp"
+                                    android:text="全场95折"
+                                    android:textColor="@color/member_text"
+                                    android:textSize="@dimen/text_13" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/memeber_fen_layou_btn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="@dimen/spacing_40dp"
+                                    android:layout_height="@dimen/spacing_40dp"
+                                    android:src="@mipmap/memeber_ji_2" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/spacing_6dp"
+                                    android:text="专属积分"
+                                    android:textColor="@color/member_text"
+                                    android:textSize="@dimen/text_13" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/memeber_tui_layou_btn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="@dimen/spacing_40dp"
+                                    android:layout_height="@dimen/spacing_40dp"
+                                    android:src="@mipmap/memeber_tui_3" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/spacing_6dp"
+                                    android:text="极速退款"
+                                    android:textColor="@color/member_text"
+                                    android:textSize="@dimen/text_13" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/memeber_ke_layou_btn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="@dimen/spacing_40dp"
+                                    android:layout_height="@dimen/spacing_40dp"
+                                    android:src="@mipmap/memeber_ke_4" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/spacing_6dp"
+                                    android:text="专属客服"
+                                    android:textColor="@color/member_text"
+                                    android:textSize="@dimen/text_13" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_20dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:id="@+id/memeber_gou_layou_btn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="@dimen/spacing_40dp"
+                                    android:layout_height="@dimen/spacing_40dp"
+                                    android:src="@mipmap/memeber_gou_5" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/spacing_6dp"
+                                    android:text="会员购物节"
+                                    android:textColor="@color/member_text"
+                                    android:textSize="@dimen/text_13" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/memeber_you_layou_btn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="@dimen/spacing_40dp"
+                                    android:layout_height="@dimen/spacing_40dp"
+                                    android:src="@mipmap/memeber_you_6" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/spacing_6dp"
+                                    android:text="一件包邮"
+                                    android:textColor="@color/member_text"
+                                    android:textSize="@dimen/text_13" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/memeber_quan_layou_btn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="@dimen/spacing_40dp"
+                                    android:src="@mipmap/memeber_sheng_7" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/spacing_6dp"
+                                    android:text="神秘礼券"
+                                    android:textColor="@color/member_text"
+                                    android:textSize="@dimen/text_13" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/memeber_fa_layou_btn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="@dimen/spacing_40dp"
+                                    android:layout_height="@dimen/spacing_40dp"
+                                    android:src="@mipmap/memeber_fa_8" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/spacing_6dp"
+                                    android:text="优先发货"
+                                    android:textColor="@color/member_text"
+                                    android:textSize="@dimen/text_13" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </com.flyco.roundview.RoundLinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/spacing_5dp"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/memeber_remen_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/spacing_10dp"
+                                android:text="热门推荐"
+                                android:textColor="@color/them_3"
+                                android:textSize="@dimen/text_16"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:id="@+id/memeber_see_quanbu_shop"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="@dimen/spacing_10dp"
+                                android:padding="@dimen/spacing_3dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="全部商品"
+                                    android:textColor="@color/them_3"
+                                    android:textSize="@dimen/text_10"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:layout_width="@dimen/spacing_10dp"
+                                    android:layout_height="@dimen/spacing_10dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/spacing_5dp"
+                                    android:src="@mipmap/memeber_icon_img_111" />
+
+                            </LinearLayout>
+
+
+                        </RelativeLayout>
+
+
+                        <com.flyco.roundview.RoundRelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/memeber_remen_text"
+                            android:layout_marginTop="@dimen/spacing_5dp"
+                            android:layout_marginBottom="@dimen/spacing_30dp"
+                            android:descendantFocusability="blocksDescendants"
+                            app:rv_backgroundColor="@color/white"
+                            app:rv_cornerRadius="6dp">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/memeber_recycler_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="5dp" />
+                        </com.flyco.roundview.RoundRelativeLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <!--                未购买会员-->
+                <LinearLayout
+                    android:id="@+id/memeber_not_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/memeber_bg_22"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="尊享"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_25"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="8"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_50"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="大权益"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_25"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="每次购买均能享受9.5折特权"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_18"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/memeber_pay_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_35dp"
+                        android:layout_marginTop="@dimen/spacing_10dp"
+                        android:layout_marginRight="@dimen/spacing_35dp"
+                        android:layout_marginBottom="@dimen/spacing_8dp"
+                        android:background="@drawable/member_zhongxin_text_1"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/spacing_10dp"
+                        android:paddingBottom="@dimen/spacing_10dp"
+                        android:text="88元/年 立即开通" />
+
+                    <LinearLayout
+                        android:id="@+id/memeber_agreement_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/car_item_check_img"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/shop_cat_icon_2_11" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/spacing_5dp"
+                            android:text="请阅读并同意"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_10" />
+
+                        <TextView
+                            android:id="@+id/memeber_agreement_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autoLink="web"
+                            android:paddingTop="@dimen/spacing_1dp"
+                            android:paddingBottom="@dimen/spacing_1dp"
+                            android:text="《Vinnlook Plus会员服务协议》"
+                            android:textColor="@color/them"
+                            android:textSize="@dimen/text_10" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_8dp"
+                        android:layout_marginBottom="@dimen/spacing_15dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="按用户消费计算 一年预计省"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_12" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="￥2570"
+                            android:textColor="#EFCC7E"
+                            android:textSize="@dimen/text_12" />
+
+                        <ImageView
+                            android:layout_width="@dimen/spacing_11dp"
+                            android:layout_height="@dimen/spacing_11dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/spacing_2dp"
+                            android:background="@mipmap/memeber_img_icon_1" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!--                已购买会员-->
+                <LinearLayout
+                    android:id="@+id/memeber_yes_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/memeber_bg_22"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_20dp"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="已省"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_20"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/memeber_sheng_price_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_40"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="元"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_20"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/memeber_see_order_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="点击查看节省订单 >"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_13"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/memeber_xufei_pay_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_35dp"
+                        android:layout_marginTop="@dimen/spacing_15dp"
+                        android:layout_marginRight="@dimen/spacing_35dp"
+                        android:layout_marginBottom="@dimen/spacing_15dp"
+                        android:background="@drawable/member_zhongxin_text_1"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/spacing_6dp"
+                        android:paddingBottom="@dimen/spacing_6dp"
+                        android:text="88元/年 立即续卡"
+                        android:textColor="@color/black" />
+
+                    <LinearLayout
+                        android:id="@+id/memeber_agreement_layout_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/car_item_check_img_2"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:src="@mipmap/shop_cat_icon_2_11" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/spacing_5dp"
+                            android:text="请阅读并同意"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_10" />
+
+                        <TextView
+                            android:id="@+id/memeber_agreement_text_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autoLink="web"
+                            android:text="《Vinnlook Plus会员服务协议》"
+                            android:paddingTop="@dimen/spacing_1dp"
+                            android:paddingBottom="@dimen/spacing_1dp"
+                            android:textColor="@color/them"
+                            android:textSize="@dimen/text_10" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_15dp"
+                        android:orientation="horizontal"
+                        android:visibility="invisible">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="按用户消费计算 一年预计省"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_12" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="￥2570"
+                            android:textColor="#EFCC7E"
+                            android:textSize="@dimen/text_12" />
+
+                        <ImageView
+                            android:layout_width="@dimen/spacing_11dp"
+                            android:layout_height="@dimen/spacing_11dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/spacing_2dp"
+                            android:background="@mipmap/memeber_img_icon_1" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </FrameLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

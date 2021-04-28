@@ -1,0 +1,214 @@
+apply plugin: 'com.android.application'
+
+android {
+
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.vinnlook.www"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 301
+        versionName "3.0.1"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
+        ndk {
+            abiFilters "armeabi-v7a", "armeabi", "arm64-v8a", "x86", "x86_64"
+        }
+
+        javaCompileOptions {
+            annotationProcessorOptions.includeCompileClasspath = true
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("../app/vinnlook.jks")
+            keyAlias 'vinnlook_key'
+            keyPassword 'vinnlook123'
+            storeFile file('vinnlook.jks')
+            storePassword 'vinnlook123'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            debuggable false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // 在 apply plugin: 'com.android.application' 下添加
+    apply plugin: 'com.aliyun.ams.emas-services'
+
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {//这里是all，下面是根据自己的情况来定制
+            def date = new Date()
+            def formattedDate = date.format('yyyyMMdd')
+            def fileName
+            if (variant.buildType.name == "release") {
+                // 输出apk名称为app_100_release.apk
+                fileName = "vinnlook_V${defaultConfig.versionName}.apk"
+            } else if (variant.buildType.name == "debug") {
+                // 输出apk名称为app_100_debug.apk
+                fileName = "vinnlook_debug_V${defaultConfig.versionName}_${formattedDate}.apk"
+            } else {
+                // 输出apk名称为app_v1.0.0_2017-12-11_101_beta.apk
+                fileName = "vinnlook_Beta_V${defaultConfig.versionName}.apk"
+            }
+            //outputFileName = "HuaxiaSign_${defaultConfig.versionName}_${formattedDate}.apk"
+            //很多博客只是写了上面这句话，没有具体赋值，自己来选择赋值给outputFileName
+            outputFileName = fileName
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:support-vector-drawable:28.0.0'
+    api project(':lib_core')
+    // ButterKnife
+    implementation 'com.jakewharton:butterknife:10.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+    // 自由指定宽高比的ImageView
+    implementation 'com.github.goweii:PercentImageView:v1.0.1'
+    // 投影效果
+    implementation 'com.github.devlight.shadowlayout:library:1.0.2'
+    // 圆角图片
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+    // 圆图片
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+    // 轮播
+//    implementation 'com.youth.banner:banner:1.4.10'
+    implementation 'com.youth.banner:banner:2.1.0'
+    // 下拉刷新上拉加载框架
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-3'
+    // 照片，视频，音频的选择和拍摄
+    implementation 'com.github.goweii:PictureSelector:v2.3.1'
+    //自定义View
+//    implementation 'com.github.goweii:AnyView:v1.0.1'
+    // Loading动画
+    implementation 'me.zhanghai.android.materialprogressbar:library:1.4.2'
+
+    //极光推送
+    implementation files('libs/jcore-android-1.2.6.jar')
+    implementation files('libs/jpush-android-3.1.8.jar')
+    // 友盟
+    implementation 'com.umeng.umsdk:analytics:8.0.0'
+    implementation 'com.umeng.umsdk:common:2.0.0'
+    // TabLayout
+    implementation 'com.github.yanbo469:FlycoTabLayout:v2.0.4'
+    //高德地图
+    implementation 'com.amap.api:3dmap:6.7.0'
+    implementation 'com.amap.api:location:4.5.0'
+    // 自动换行布局 支持RecyclerView
+    implementation 'com.google.android:flexbox:1.0.0'
+    // 图片压缩
+    implementation 'com.github.nanchen2251:CompressHelper:1.0.5'
+
+    // 滑动选择按钮
+    implementation 'com.github.zcweng:switch-button:0.0.3@aar'
+
+    implementation 'com.yanzhenjie.recyclerview:x:1.3.2'
+
+    implementation 'com.github.paradoxie:AutoVerticalTextview:0.1'
+
+    //省市区三级联动
+    implementation 'com.contrarywind:Android-PickerView:4.1.8'
+
+    implementation 'com.github.jdsjlzx:LRecyclerView:1.4.1'
+
+    /*EventBus*/
+    implementation 'com.alibaba:fastjson:1.2.9'
+
+    /*微信支付--分享*/
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+
+//    // 要引用的aar文件
+//    implementation(name:'phoneNumber-AuthSDK-2.8.0-20200326',ext:'aar')
+
+
+    //支付宝支付
+//    implementation (name: 'alipaySdk-15.7.5-20200422171619', ext: 'aar')
+    implementation(name: 'alipaySdk-15.7.5-20200422171636-noUtdid', ext: 'aar')
+
+    //一键登录
+//    implementation(name: 'phoneNumber-L-AuthSDK-2.10.1', ext: 'aar')
+    implementation(name: 'phoneNumber-L-AuthSDK-2.11.0', ext: 'aar')
+
+
+    //阿里移动推送
+    implementation 'com.aliyun.ams:alicloud-android-push:3.3.0'
+    //阿里移动数据分析
+    implementation 'com.aliyun.ams:alicloud-android-man:1.2.0'
+
+
+//    implementation 'com.aliyun.ams:alicloud-android-third-push-huawei:3.3.0'
+
+//    //华为依赖
+//    implementation 'com.aliyun.ams:alicloud-android-third-push-huawei:5.0.4.302'
+////小米依赖
+//    implementation 'com.aliyun.ams:alicloud-android-third-push-xiaomi:3.3.0'
+////OPPO依赖
+//    implementation 'com.aliyun.ams:alicloud-android-third-push-oppo:3.3.0'
+////vivo依赖
+//    implementation 'com.aliyun.ams:alicloud-android-third-push-vivo:3.3.0'
+
+//    implementation(name: 'alicloud-android-third-push-3.0.9', ext: 'aar')
+
+//    implementation 'com.google.firebase:firebase-messaging:17.6.0'
+
+
+    //加载GIF图
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.15'
+
+    implementation 'com.zhy:okhttputils:2.6.2'
+    implementation project(path: ':ykfsdk')
+
+    //视频播放器
+    implementation 'com.shuyu:GSYVideoPlayer:7.1.3'
+    //二维码
+    implementation 'com.google.zxing:core:3.3.0'
+//    implementation 'com.google.zxing:core:3.0.1'
+
+
+
+
+}

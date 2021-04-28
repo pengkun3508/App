@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_80">
+
+    <com.flyco.roundview.RoundLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_400dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/gray_light"
+        android:orientation="vertical"
+        app:rv_backgroundColor="@color/white"
+        app:rv_cornerRadius_TL="@dimen/spacing_5dp"
+        app:rv_cornerRadius_TR="@dimen/spacing_5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/spacing_5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="选择优惠券"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16" />
+
+            <ImageView
+                android:id="@+id/conpon_list_clear"
+                android:layout_width="@dimen/spacing_10dp"
+                android:layout_height="@dimen/spacing_10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:background="@mipmap/express_clear_img1"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/clear_conpon_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:padding="10dp"
+                android:text="不使用" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/shop_line"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/conpon_list_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15dp"
+                android:overScrollMode="never"
+                android:scrollbars="none" />
+
+
+        </LinearLayout>
+    </com.flyco.roundview.RoundLinearLayout>
+
+</RelativeLayout>

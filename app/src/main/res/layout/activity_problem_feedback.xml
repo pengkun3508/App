@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/shop_line"
+    android:orientation="vertical">
+
+
+    <com.vinnlook.www.widgat.actionbar.ActionBarSimple
+        android:id="@+id/action_bar"
+        style="@style/ActionBarStyle.Simple"
+        android:background="@color/white"
+        app:ab_bottom_line_color="@color/line"
+        app:ab_bottom_line_height="1dp"
+        app:abs_back_icon="@mipmap/back"
+        app:abs_title="问题反馈"
+        app:abs_title_text_color="@color/text_black" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/action_bar">
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/wenti_title_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/spacing_10dp"
+                android:background="#fff7f4"
+                >
+
+                <ImageView
+                    android:layout_width="@dimen/spacing_20dp"
+                    android:layout_height="@dimen/spacing_20dp"
+                    android:src="@mipmap/wenti_tips_icon"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_12"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/spacing_2dp"
+                    android:text="订单售后建议您使用订单售后或在线客服，会更加方便快捷"
+                    android:textColor="#ef9e71"/>
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/wenti_layout"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_margin="@dimen/spacing_15dp"
+                android:layout_below="@+id/wenti_title_layout"
+                android:background="@drawable/me_bg2"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_5dp">
+
+                <TextView
+                    android:id="@+id/id_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="问题和建议"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_16" />
+
+                <EditText
+                    android:id="@+id/editText1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/id_1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:hint="某个功能无法使用、页面卡顿/白屏/闪退、或其他产品建议"
+                    android:maxLength="300"
+                    android:minHeight="100dp"
+                    android:paddingBottom="30dp"
+                    android:textCursorDrawable="@null"
+                    android:textSize="@dimen/text_14" />
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="0/300" />
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/wenti_layout"
+                android:layout_marginLeft="@dimen/spacing_15dp"
+                android:layout_marginRight="@dimen/spacing_15dp"
+                android:background="@drawable/me_bg2"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="图片上传："
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_16" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rclPicture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/white"
+                    android:overScrollMode="never"
+                    android:scrollbars="none" />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <com.flyco.roundview.RoundTextView
+        android:id="@+id/add_ok"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/spacing_20dp"
+        android:layout_marginEnd="@dimen/spacing_20dp"
+        android:layout_marginBottom="@dimen/spacing_20dp"
+        android:gravity="center"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_18"
+        app:rv_backgroundColor="@color/them"
+        app:rv_cornerRadius="20dp" />
+</RelativeLayout>

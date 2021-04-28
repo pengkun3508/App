@@ -1,0 +1,19 @@
+<resources>
+
+    <string name="dialog_btn_yes">确定</string>
+    <string name="dialog_btn_no">取消</string>
+    <string name="dialog_btn_close">关闭</string>
+
+    <string name="rv_item_state_empty">暂无新数据</string>
+    <string name="rv_item_state_no_more">没有更多啦~</string>
+    <string name="rv_item_state_loading">加载中</string>
+
+    <!--==========================权限申请============================-->
+    <string name="permission_dialog_btn_cancel">取消</string>
+    <string name="permission_dialog_btn_request">申请</string>
+    <string name="permission_dialog_btn_go_setting">去设置</string>
+    <string name="permission_dialog_title">权限申请</string>
+    <string name="permission_dialog_msg_first">为确保功能的正常运行，你需要允许以下权限。</string>
+    <string name="permission_dialog_msg_again">为确保功能的正常运行，你需要允许以下权限。</string>
+    <string name="permission_dialog_msg_go_setting">你已拒绝应用的必要权限，为确保功能的正常运行，请前往设置打开。</string>
+</resources>

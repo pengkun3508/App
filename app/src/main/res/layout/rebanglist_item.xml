@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/spacing_5dp"
+    android:background="@drawable/paoqi_item_bg"
+    android:orientation="horizontal"
+    android:paddingLeft="0.5dp"
+    android:paddingRight="0.5dp">
+
+    <RelativeLayout
+        android:id="@+id/rebang_paihang_img"
+        android:layout_width="@dimen/spacing_20dp"
+        android:layout_height="@dimen/spacing_35dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/spacing_10dp"
+        android:background="@mipmap/move_rebang_list_item_img1">
+
+        <TextView
+            android:id="@+id/rebang_paihang_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/spacing_1dp"
+            android:text="1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_14"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/spacing_10dp"
+
+        android:padding="@dimen/spacing_1dp">
+<!--        android:background="@drawable/home_adapter_bg_line"-->
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/rebang_img"
+            android:layout_width="@dimen/spacing_95dp"
+            android:layout_height="@dimen/spacing_95dp"
+            app:riv_corner_radius="@dimen/spacing_10dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_5dp"
+        android:layout_marginTop="@dimen/spacing_10dp"
+        android:layout_marginRight="@dimen/spacing_5dp"
+        android:layout_marginBottom="@dimen/spacing_10dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/rebang_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="2"
+            android:text="日本美瞳Limoon月抛"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_12" />
+
+
+        <com.flyco.roundview.RoundLinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_8dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/spacing_5dp"
+            android:paddingTop="@dimen/spacing_1dp"
+            android:paddingRight="@dimen/spacing_5dp"
+            android:paddingBottom="@dimen/spacing_1dp"
+            app:rv_backgroundColor="@color/them"
+            app:rv_cornerRadius="@dimen/spacing_10dp">
+
+            <ImageView
+                android:layout_width="@dimen/spacing_10dp"
+                android:layout_height="@dimen/spacing_10dp"
+                android:background="@mipmap/rebang_item_img" />
+
+
+            <TextView
+                android:id="@+id/rebang_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/spacing_5dp"
+                android:text="已下单678件"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_8" />
+
+        </com.flyco.roundview.RoundLinearLayout>
+
+        <TextView
+            android:id="@+id/rebang_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_10dp"
+            android:text="￥105.00"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_12"
+            android:textStyle="bold"
+            android:layout_marginBottom="-10dp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp">
+
+            <LinearLayout
+                android:id="@+id/rebang_add_car"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:padding="@dimen/spacing_5dp"
+                android:paddingLeft="@dimen/spacing_10dp"
+                android:paddingTop="@dimen/spacing_5dp"
+                android:paddingRight="@dimen/spacing_5dp"
+                android:paddingBottom="@dimen/spacing_5dp">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:background="@mipmap/home_img_icon_suo" />
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

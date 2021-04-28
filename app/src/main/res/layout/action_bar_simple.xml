@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    tools:layout_height="@dimen/action_bar_height"
+    android:id="@+id/rela"
+    >
+
+    <per.goweii.percentimageview.percentimageview.PercentImageView
+        android:id="@+id/iv_action_bar_simple_back"
+        style="@style/ActionBarIconStyle"
+        android:layout_marginLeft="2dp"
+        android:src="@mipmap/back" />
+
+    <ImageView
+        android:id="@+id/iv_action_bar_simple_title"
+        style="@style/ActionBarAStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible" />
+
+
+    <TextView
+        android:id="@+id/tv_action_bar_simple_back"
+        style="@style/ActionBarTextStyle.Menu"
+        android:layout_marginLeft="15dp" />
+
+    <TextView
+        android:id="@+id/tv_action_bar_simple_title"
+        style="@style/ActionBarTextStyle.Title"
+        android:layout_centerInParent="true"
+        android:maxWidth="240dp" />
+
+    <per.goweii.percentimageview.percentimageview.PercentImageView
+        android:id="@+id/iv_action_bar_simple_right"
+        style="@style/ActionBarIconStyle"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="2dp" />
+
+    <TextView
+        android:id="@+id/tv_action_bar_simple_right"
+        style="@style/ActionBarTextStyle.Menu"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp" />
+
+</RelativeLayout>

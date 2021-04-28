@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_50">
+
+    <com.vinnlook.www.widgat.actionbar.MoveAboutBarSimple
+        android:id="@+id/action_bar"
+        style="@style/ActionBarStyle.Simple"
+        android:background="@color/touming"
+        app:ab_bottom_line_color="@color/touming"
+        app:ab_bottom_line_height="1dp"
+        app:abs_back_icon="@mipmap/back_white"
+        app:abs_title_text_color="@color/text_black" />
+
+
+    <TextView
+        android:id="@+id/tv_image_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_80dp"
+        android:gravity="center"
+        android:text="0/1"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_16"
+        android:textStyle="bold" />
+
+    <com.vinnlook.www.widgat.PhotoViewPager
+        android:id="@+id/view_pager_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_image_count"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/spacing_80dp" />
+
+    <TextView
+        android:id="@+id/tv_save_image_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="right"
+        android:padding="@dimen/spacing_10dp"
+        android:text="保存"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_16"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+</RelativeLayout>

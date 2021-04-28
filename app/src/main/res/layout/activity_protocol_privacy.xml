@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.vinnlook.www.widgat.actionbar.ActionBarSimple
+        android:id="@+id/action_bar"
+        style="@style/ActionBarStyle.Simple"
+        android:background="@color/white"
+        app:ab_bottom_line_color="@color/line"
+        app:ab_bottom_line_height="1dp"
+        app:abs_back_icon="@mipmap/back"
+        app:abs_title="隐私"
+        app:abs_title_text_color="@color/text_black" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_1dp"
+        android:layout_marginStart="13dp"
+        android:background="@color/me_line" />
+
+
+    <LinearLayout
+        android:id="@+id/protocol_btn"
+        style="@style/top_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="用户协议"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_16" />
+
+        <ImageView
+            android:layout_width="@dimen/spacing_15dp"
+            android:layout_height="@dimen/spacing_15dp"
+            android:src="@mipmap/me_icon_6" />
+    </LinearLayout>
+    <!-- 分割线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_1dp"
+        android:layout_marginStart="13dp"
+        android:background="@color/me_line" />
+
+    <LinearLayout
+        android:id="@+id/privacy_btn"
+        style="@style/top_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="隐私政策"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_16" />
+
+        <ImageView
+            android:layout_width="@dimen/spacing_15dp"
+            android:layout_height="@dimen/spacing_15dp"
+            android:src="@mipmap/me_icon_6" />
+    </LinearLayout>
+    <!-- 分割线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_1dp"
+        android:layout_marginStart="13dp"
+        android:background="@color/me_line" />
+
+    <LinearLayout
+        android:id="@+id/pay_btn"
+        style="@style/top_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="购买须知"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_16" />
+
+        <ImageView
+            android:layout_width="@dimen/spacing_15dp"
+            android:layout_height="@dimen/spacing_15dp"
+            android:src="@mipmap/me_icon_6" />
+    </LinearLayout>
+    <!-- 分割线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_1dp"
+        android:layout_marginStart="13dp"
+        android:background="@color/me_line" />
+
+</LinearLayout>

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/shop_line"
+    android:orientation="vertical">
+
+    <com.vinnlook.www.widgat.actionbar.ActionBarSimple
+        android:id="@+id/action_bar"
+        style="@style/ActionBarStyle.Simple"
+        android:background="@color/white"
+        app:ab_bottom_line_color="@color/line"
+        app:ab_bottom_line_height="1dp"
+        app:abs_back_icon="@mipmap/back"
+        app:abs_title="回答大家"
+        app:abs_title_text_color="@color/text_black" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/action_bar">
+
+        <LinearLayout
+            android:id="@+id/wen_1_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/spacing_10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/spacing_5dp"
+                android:background="@drawable/home_adapter_bg_line"
+                android:padding="@dimen/spacing_1dp">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/wen_details_img"
+                    android:layout_width="@dimen/spacing_55dp"
+                    android:layout_height="@dimen/spacing_55dp"
+                    app:riv_corner_radius="@dimen/spacing_10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_6dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/wen_details_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="日本美瞳Limoon月抛"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_16" />
+
+                <TextView
+                    android:id="@+id/wen_details_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_10dp"
+                    android:text="56个"
+                    android:textColor="#9FA0A0"
+                    android:textSize="@dimen/text_13" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <com.flyco.roundview.RoundLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/wen_1_layout"
+            android:layout_marginLeft="@dimen/spacing_10dp"
+            android:layout_marginTop="@dimen/spacing_10dp"
+            android:layout_marginRight="@dimen/spacing_10dp"
+            android:layout_marginBottom="@dimen/spacing_40dp"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_15dp"
+            app:rv_backgroundColor="@color/white">
+
+            <TextView
+                android:id="@+id/wen_details_number2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="全部回答几个"
+                android:textColor="#B5B5B6"
+                android:textSize="@dimen/text_12"
+                android:visibility="gone"/>
+
+
+            <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                android:id="@+id/smart_refresh_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/problem_details_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_5dp"
+                    android:layout_marginBottom="@dimen/spacing_5dp" />
+            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+        </com.flyco.roundview.RoundLinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.flyco.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_margin="@dimen/spacing_10dp"
+                android:layout_marginRight="@dimen/spacing_100dp"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/spacing_10dp"
+                android:paddingTop="@dimen/spacing_6dp"
+                android:paddingRight="@dimen/spacing_10dp"
+                android:paddingBottom="@dimen/spacing_6dp"
+                app:rv_backgroundColor="#F6F6F6"
+                app:rv_cornerRadius="@dimen/spacing_20dp">
+
+                <TextView
+                    android:id="@+id/wen_details_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="进行回答问题，0~50字"
+                    android:maxLines="5"
+                    android:textColor="@color/ex_col_2"
+                    android:textSize="@dimen/text_13" />
+
+            </com.flyco.roundview.RoundLinearLayout>
+
+            <com.flyco.roundview.RoundTextView
+                android:id="@+id/wen_details_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/spacing_10dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/spacing_10dp"
+                android:paddingTop="@dimen/spacing_2dp"
+                android:paddingRight="@dimen/spacing_10dp"
+                android:paddingBottom="@dimen/spacing_2dp"
+                android:text="提交"
+                android:textColor="@color/white"
+                app:rv_backgroundColor="@color/them"
+                app:rv_cornerRadius="@dimen/spacing_20dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/shurukuang_details_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black_60"
+            android:visibility="gone">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.flyco.roundview.RoundLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="@dimen/spacing_10dp"
+                    android:layout_marginRight="@dimen/spacing_100dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/spacing_10dp"
+                    android:paddingTop="@dimen/spacing_6dp"
+                    android:paddingRight="@dimen/spacing_10dp"
+                    android:paddingBottom="@dimen/spacing_6dp"
+                    app:rv_backgroundColor="#F6F6F6"
+                    app:rv_cornerRadius="@dimen/spacing_20dp">
+
+                    <EditText
+                        android:id="@+id/wen_shuru_details_edittext"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:hint="进行回答问题，0~50字"
+                        android:maxLength="50"
+                        android:maxLines="5"
+                        android:textCursorDrawable="@null"
+                        android:textSize="@dimen/text_13" />
+
+                </com.flyco.roundview.RoundLinearLayout>
+
+                <com.flyco.roundview.RoundTextView
+                    android:id="@+id/wen_shuru_details_btn"
+                    android:layout_width="@dimen/spacing_50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/spacing_10dp"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/spacing_10dp"
+                    android:paddingTop="@dimen/spacing_2dp"
+                    android:paddingRight="@dimen/spacing_10dp"
+                    android:paddingBottom="@dimen/spacing_2dp"
+                    android:text="提交"
+                    android:textColor="@color/white"
+                    app:rv_backgroundColor="@color/them"
+                    app:rv_cornerRadius="@dimen/spacing_20dp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

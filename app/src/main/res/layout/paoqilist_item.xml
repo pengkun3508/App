@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/title_bg_relayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center">
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="1dp"
+                android:background="@color/them" />
+
+            <TextView
+                android:id="@+id/paoqi_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="日抛专区"
+                android:textColor="@color/them"
+                android:textSize="@dimen/text_16" />
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="1dp"
+                android:background="@color/them" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/paoqi_move"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/spacing_10dp"
+            android:text="查看更多>"
+            android:textColor="@color/them"
+            android:textSize="@dimen/text_12" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/paoqi_title_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_20dp"
+        android:layout_marginTop="@dimen/spacing_10dp"
+        android:layout_marginRight="@dimen/spacing_20dp"
+        android:layout_marginBottom="@dimen/spacing_10dp"
+        />
+
+    <ImageView
+        android:id="@+id/paoqi_title_bg2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_20dp"
+        android:layout_marginTop="@dimen/spacing_10dp"
+        android:layout_marginRight="@dimen/spacing_20dp"
+        android:layout_marginBottom="@dimen/spacing_10dp"
+        android:visibility="gone"/>
+
+
+    <com.flyco.roundview.RoundRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rv_backgroundColor="@color/white"
+        app:rv_cornerRadius="@dimen/spacing_10dp">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_paoqi_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_5dp"
+            android:padding="@dimen/spacing_3dp" />
+
+
+
+    </com.flyco.roundview.RoundRelativeLayout>
+
+</LinearLayout>

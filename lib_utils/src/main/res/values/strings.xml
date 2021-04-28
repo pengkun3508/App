@@ -1,0 +1,5 @@
+<resources>
+
+    <string name="double_click_to_exit">连续两次退出</string>
+    <string name="http_no_net">当前网络不可用，请检查网络设置</string>
+</resources>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/spacing_2dp"
+    android:background="@drawable/paoqi_item_bg"
+    android:orientation="horizontal"
+    android:paddingLeft="0.5dp"
+    android:paddingRight="0.5dp">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/spacing_8dp"
+        android:layout_marginTop="@dimen/spacing_8dp"
+        android:layout_marginRight="@dimen/spacing_5dp"
+        android:layout_marginBottom="@dimen/spacing_8dp"
+        android:background="@drawable/home_adapter_bg_line"
+        android:padding="@dimen/spacing_1dp">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/Commodity_tiem_img"
+            android:layout_width="@dimen/spacing_90dp"
+            android:layout_height="@dimen/spacing_90dp"
+            android:layout_gravity="center"
+            app:riv_corner_radius="@dimen/spacing_12dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_5dp"
+        android:layout_marginRight="@dimen/spacing_5dp"
+        android:layout_marginBottom="@dimen/spacing_5dp"
+
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/Commodity_supi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_10dp"
+                android:background="@drawable/classify_list_item"
+                android:paddingLeft="@dimen/spacing_7dp"
+                android:paddingRight="@dimen/spacing_7dp"
+                android:text="自营"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/Commodity_tiem_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/Commodity_supi"
+                android:layout_marginTop="@dimen/spacing_1dp"
+                android:ellipsize="end"
+                android:lines="2"
+                android:text="日本美瞳Limoon月抛"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_14" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/Commodity_tiem_attr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="2"
+            android:textSize="@dimen/text_12" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/Commodity_tiem_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥145.00"
+                android:textColor="@color/them"
+                android:textSize="@dimen/text_13" />
+
+            <TextView
+                android:id="@+id/xianshi_yuanjia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_5dp"
+                android:layout_toRightOf="@+id/Commodity_tiem_price"
+                android:text="￥145.00"
+                android:textColor="@color/iron"
+                android:textSize="@dimen/text_12" />
+
+            <TextView
+                android:id="@+id/Commodity_activity_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/spacing_5dp"
+                android:layout_toRightOf="@+id/xianshi_yuanjia"
+                android:background="#F4FE80"
+                android:paddingLeft="@dimen/spacing_5dp"
+                android:paddingTop="@dimen/spacing_1dp"
+                android:paddingRight="@dimen/spacing_5dp"
+                android:paddingBottom="@dimen/spacing_1dp"
+                android:text="满200减10"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_10" />
+
+
+            <LinearLayout
+                android:id="@+id/huodong_tiem_car"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:padding="@dimen/spacing_5dp"
+                android:paddingLeft="@dimen/spacing_10dp"
+                android:paddingTop="@dimen/spacing_5dp"
+                android:paddingRight="@dimen/spacing_5dp"
+                android:paddingBottom="@dimen/spacing_5dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:background="@mipmap/home_img_icon_suo" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_10dp"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_5dp">
+
+        <ImageView
+            android:id="@+id/msg_item_img"
+            android:layout_width="@dimen/spacing_40dp"
+            android:layout_height="@dimen/spacing_40dp"
+            android:background="@mipmap/my_msg_zhanghu_icon" />
+
+        <TextView
+            android:id="@+id/msg_item_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_35dp"
+            android:background="@drawable/bg_tab_roundtip"
+            android:gravity="center"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="8sp" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/spacing_10dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/msg_item_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="账户通知"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_14" />
+
+            <TextView
+                android:id="@+id/msg_item_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_5dp"
+                android:text=""
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/text_10" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/msg_item_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_5dp"
+            android:text="暂时没收到新的消息"
+            android:textSize="@dimen/text_12" />
+
+        <TextView
+            android:id="@+id/msg_item_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_05dp"
+            android:layout_marginTop="@dimen/spacing_5dp"
+            android:background="@color/line" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_5dp"
+        android:layout_marginBottom="@dimen/spacing_5dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/home_haitao_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/spacing_45dp"
+                android:layout_height="@dimen/spacing_45dp"
+                android:src="@mipmap/new_haitao_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="海淘专区"
+                android:textColor="@color/my_text1"
+                android:textSize="@dimen/text_13" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/home_ziying_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="@dimen/spacing_45dp"
+                android:layout_height="@dimen/spacing_45dp"
+                android:src="@mipmap/new_ziying_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="自营专区"
+                android:textColor="@color/my_text1"
+                android:textSize="@dimen/text_13" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/home_huli_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/spacing_45dp"
+                android:layout_height="@dimen/spacing_45dp"
+                android:src="@mipmap/new_huli_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="护理液"
+                android:textColor="@color/my_text1"
+                android:textSize="@dimen/text_13" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/home_touming_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/spacing_45dp"
+                android:layout_height="@dimen/spacing_45dp"
+                android:src="@mipmap/new_touming_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="透明片"
+                android:textColor="@color/my_text1"
+                android:textSize="@dimen/text_13" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

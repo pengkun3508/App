@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/shopping_bg_relayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:id="@+id/item_shopping_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_10dp"
+        android:layout_marginRight="@dimen/spacing_10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/spacing_15dp"
+        android:paddingBottom="15dp">
+
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/meal_2_img"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            app:riv_corner_radius="@dimen/spacing_10dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1">
+
+
+            <TextView
+                android:id="@+id/meal_2_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/spacing_2dp"
+                android:layout_marginEnd="5dp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="日本美瞳Topards日抛型"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+
+            <RelativeLayout
+                android:id="@+id/meal_2_type_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/meal_2_name">
+
+                <TextView
+                    android:id="@+id/meal_2_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="@dimen/spacing_65dp"
+                    android:background="@color/shop_cat_type_bg"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:paddingLeft="@dimen/spacing_1dp"
+                    android:paddingTop="@dimen/spacing_3dp"
+                    android:paddingRight="@dimen/spacing_10dp"
+                    android:paddingBottom="@dimen/spacing_3dp"
+                    android:text="红 0度红 0度红 0度红 0度红"
+                    android:textColor="@color/shop_text"
+                    android:textSize="12sp" />
+
+
+                <LinearLayout
+                    android:id="@+id/meal_2_select_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/spacing_5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/confirm_item_zeng_text_bg"
+                        android:paddingLeft="@dimen/spacing_5dp"
+                        android:paddingTop="@dimen/spacing_3dp"
+                        android:paddingRight="@dimen/spacing_5dp"
+                        android:paddingBottom="@dimen/spacing_3dp"
+                        android:text="选择规格"
+                        android:textColor="#FF0000"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/price_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/meal_2_type_layout"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="原价"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_10" />
+
+                <TextView
+                    android:id="@+id/meal_2_price1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥320"
+                    android:textColor="#FF0000"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/price_layout"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="套装购买一共节省"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_10" />
+
+                <TextView
+                    android:id="@+id/meal_2_price2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥320"
+                    android:textColor="#FF0000"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

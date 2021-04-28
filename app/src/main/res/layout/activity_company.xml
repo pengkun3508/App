@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.vinnlook.www.widgat.actionbar.ActionBarSimple
+        android:id="@+id/action_bar"
+        style="@style/ActionBarStyle.Simple"
+        android:background="@color/white"
+        app:ab_bottom_line_color="@color/line"
+        app:ab_bottom_line_height="1dp"
+        app:abs_back_icon="@mipmap/back"
+        app:abs_title="关于Vinnlook"
+        app:abs_title_text_color="@color/text_black" />
+
+
+    <ImageView
+        android:layout_width="@dimen/spacing_60dp"
+        android:layout_height="@dimen/spacing_60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/spacing_60dp"
+        android:background="@mipmap/start_welcome_bg_2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Vinnlook"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_16" />
+
+
+    <RelativeLayout
+        android:id="@+id/about_call"
+        style="@style/top_layout"
+        android:layout_marginTop="@dimen/spacing_40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="联系电话："
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_13" />
+
+        <TextView
+            android:id="@+id/phone_tel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="029-33676599"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_13" />
+
+
+    </RelativeLayout>
+
+    <!-- 分割线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_1dp"
+        android:layout_marginStart="13dp"
+        android:background="@color/me_line" />
+
+    <RelativeLayout
+        android:id="@+id/about_update"
+        style="@style/top_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="微信客服："
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_13" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Vinnlook"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_13" />
+
+
+    </RelativeLayout>
+
+    <!-- 分割线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_1dp"
+        android:layout_marginStart="13dp"
+        android:background="@color/me_line" />
+
+    <RelativeLayout
+        android:id="@+id/about_company"
+        style="@style/top_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="公众号："
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_13" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Vinnlook日本美瞳跨境购"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_13" />
+
+    </RelativeLayout>
+
+
+    <!-- 分割线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_1dp"
+        android:layout_marginStart="13dp"
+        android:background="@color/me_line" />
+
+    <RelativeLayout
+        android:id="@+id/about_guize"
+        style="@style/top_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="联系邮箱："
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_13" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="service@vinnlook.com"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_13" />
+
+    </RelativeLayout>
+
+    <!-- 分割线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_1dp"
+        android:layout_marginStart="13dp"
+        android:background="@color/me_line" />
+
+</LinearLayout>

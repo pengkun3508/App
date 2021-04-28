@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/shop_line"
+    android:orientation="vertical">
+
+    <com.vinnlook.www.widgat.actionbar.ActionBarSimple
+        android:id="@+id/action_bar"
+        style="@style/ActionBarStyle.Simple"
+        android:background="@color/white"
+        app:ab_bottom_line_color="@color/line"
+        app:ab_bottom_line_height="1dp"
+        app:abs_back_icon="@mipmap/back"
+        app:abs_title="评价"
+        app:abs_title_text_color="@color/text_black" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/action_bar"
+        android:layout_marginBottom="@dimen/spacing_80dp"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <com.flyco.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_10dp"
+                android:orientation="vertical"
+                app:rv_backgroundColor="@color/white"
+                app:rv_cornerRadius="6dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/spacing_10dp">
+
+                    <ImageView
+                        android:id="@+id/public_item_image"
+                        android:layout_width="@dimen/spacing_70dp"
+                        android:layout_height="@dimen/spacing_70dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_15dp"
+                        android:layout_marginTop="@dimen/spacing_10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/public_item_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:lines="1"
+                            android:text="日本美瞳Topards日抛型10枚彩色 隐形眼镜"
+                            android:textColor="@color/move_text4"
+                            android:textSize="@dimen/text_16" />
+
+                        <TextView
+                            android:id="@+id/public_item_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_10dp"
+                            android:text="颜色分类：100度、refrear、30片"
+
+                            android:textColor="@color/move_text5"
+                            android:textSize="@dimen/text_12" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/spacing_10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="总体评分："
+                        android:textColor="@color/order_text1"
+                        android:textSize="@dimen/text_16" />
+
+
+                    <com.vinnlook.www.widgat.StarBarView
+                        android:id="@+id/starBar1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        app:space_width="2dp"
+                        app:star_height="16dp"
+                        app:star_hollow="@mipmap/publish_star_2"
+                        app:star_isIndicator="false"
+                        app:star_max="5"
+                        app:star_orientation="horizontal"
+                        app:star_rating="5"
+                        app:star_solid="@mipmap/publish_star_1"
+                        app:star_width="16dp" />
+
+                    <TextView
+                        android:id="@+id/pingjia_text_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_10dp"
+                        android:text="非常满意"
+                        android:textColor="@color/order_text1"
+                        android:textSize="@dimen/text_16" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/public_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@null"
+                        android:gravity="top"
+                        android:hint="请输入您的问题和建议"
+                        android:maxLength="400"
+                        android:minHeight="100dp"
+                        android:paddingLeft="25dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="30dp"
+                        android:textCursorDrawable="@null"
+                        android:textSize="@dimen/text_16" />
+
+                    <ImageView
+                        android:layout_width="@dimen/spacing_16dp"
+                        android:layout_height="@dimen/spacing_16dp"
+                        android:layout_marginLeft="@dimen/spacing_15dp"
+                        android:layout_marginTop="@dimen/spacing_13dp"
+                        android:background="@mipmap/publish_pen" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/public_photo_layout"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="@dimen/spacing_15dp"
+                    android:layout_marginTop="@dimen/spacing_10dp"
+                    android:background="@drawable/publish_poto_bg"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/public_photo_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@mipmap/xiangji_icon" />
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rclPicture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_10dp"
+                    android:layout_marginRight="@dimen/spacing_10dp"
+                    android:overScrollMode="never"
+                    android:scrollbars="none" />
+
+                <RelativeLayout
+                    android:id="@+id/iv_check_circle_ly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_10dp"
+                    android:layout_marginTop="@dimen/spacing_15dp"
+                    android:layout_marginRight="@dimen/spacing_10dp"
+                    android:layout_marginBottom="@dimen/spacing_10dp">
+
+                    <LinearLayout
+                        android:id="@+id/public_niming_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/public_check_circle"
+                            android:layout_width="@dimen/spacing_16dp"
+                            android:layout_height="@dimen/spacing_16dp"
+                            android:layout_centerVertical="true"
+                            android:background="@mipmap/shop_cat_icon_2" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_toRightOf="@+id/iv_check_circle"
+                            android:layout_weight="1"
+                            android:text="匿名评论"
+                            android:textColor="@color/me_address_text"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/spacing_15dp"
+                        android:text="选择后评论主页不显示全部昵称"
+                        android:textColor="@color/me_address_text"
+                        android:textSize="14sp" />
+
+                </RelativeLayout>
+            </com.flyco.roundview.RoundLinearLayout>
+
+            <com.flyco.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_10dp"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_10dp"
+                app:rv_backgroundColor="@color/white"
+                app:rv_cornerRadius="6dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vinnlook" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/spacing_10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="描述相符："
+                        android:textColor="@color/order_text1"
+                        android:textSize="@dimen/text_16" />
+
+
+                    <com.vinnlook.www.widgat.StarBarView
+                        android:id="@+id/starBar2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/sbv_starbar"
+                        android:layout_centerHorizontal="true"
+                        app:space_width="2dp"
+                        app:star_height="@dimen/spacing_16dp"
+                        app:star_hollow="@mipmap/publish_heart_2"
+                        app:star_isIndicator="false"
+                        app:star_max="5"
+                        app:star_orientation="horizontal"
+                        app:star_rating="5"
+                        app:star_solid="@mipmap/publish_heart_1"
+                        app:star_width="@dimen/spacing_16dp" />
+
+                    <TextView
+                        android:id="@+id/pingjia_text_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_10dp"
+                        android:text="非常满意"
+                        android:textColor="@color/order_text1"
+                        android:textSize="@dimen/text_16" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/spacing_10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="物流服务："
+                        android:textColor="@color/order_text1"
+                        android:textSize="@dimen/text_16" />
+
+
+                    <com.vinnlook.www.widgat.StarBarView
+                        android:id="@+id/starBar3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/sbv_starbar"
+                        android:layout_centerHorizontal="true"
+                        app:space_width="2dp"
+                        app:star_height="@dimen/spacing_16dp"
+                        app:star_hollow="@mipmap/publish_heart_2"
+                        app:star_isIndicator="false"
+                        app:star_max="5"
+                        app:star_orientation="horizontal"
+                        app:star_rating="5"
+                        app:star_solid="@mipmap/publish_heart_1"
+                        app:star_width="@dimen/spacing_16dp" />
+
+                    <TextView
+                        android:id="@+id/pingjia_text_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_10dp"
+                        android:text="非常满意"
+                        android:textColor="@color/order_text1"
+                        android:textSize="@dimen/text_16" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/spacing_10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="服务态度："
+                        android:textColor="@color/order_text1"
+                        android:textSize="@dimen/text_16" />
+
+
+                    <com.vinnlook.www.widgat.StarBarView
+                        android:id="@+id/starBar4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/sbv_starbar"
+                        android:layout_centerHorizontal="true"
+                        app:space_width="2dp"
+                        app:star_height="@dimen/spacing_16dp"
+                        app:star_hollow="@mipmap/publish_heart_2"
+                        app:star_isIndicator="false"
+                        app:star_max="5"
+                        app:star_orientation="horizontal"
+                        app:star_rating="5"
+                        app:star_solid="@mipmap/publish_heart_1"
+                        app:star_width="@dimen/spacing_16dp" />
+
+                    <TextView
+                        android:id="@+id/pingjia_text_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_10dp"
+                        android:text="非常满意"
+                        android:textColor="@color/order_text1"
+                        android:textSize="@dimen/text_16" />
+                </LinearLayout>
+
+
+            </com.flyco.roundview.RoundLinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/public__btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/spacing_15dp"
+        android:layout_marginRight="@dimen/spacing_15dp"
+        android:layout_marginBottom="@dimen/spacing_20dp"
+        android:background="@drawable/pay_bt_bg"
+        android:gravity="center"
+        android:paddingTop="@dimen/spacing_12dp"
+        android:paddingBottom="@dimen/spacing_12dp"
+        android:text="发表评价"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_18" />
+
+</RelativeLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_80">
+
+    <com.flyco.roundview.RoundLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_350dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/gray_light"
+        android:orientation="vertical"
+        app:rv_backgroundColor="@color/white"
+        app:rv_cornerRadius_TL="@dimen/spacing_5dp"
+        app:rv_cornerRadius_TR="@dimen/spacing_5dp">
+e
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/spacing_15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="选择快递"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16" />
+
+            <ImageView
+                android:id="@+id/express_clear"
+                android:layout_width="@dimen/spacing_10dp"
+                android:layout_height="@dimen/spacing_10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:background="@mipmap/express_clear_img1" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F8F8F8"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/spacing_15dp"
+            android:paddingTop="@dimen/spacing_5dp"
+            android:paddingRight="@dimen/spacing_15dp"
+            android:paddingBottom="@dimen/spacing_15dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/express_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none"
+                android:overScrollMode="never"/>
+
+
+        </LinearLayout>
+    </com.flyco.roundview.RoundLinearLayout>
+
+</RelativeLayout>

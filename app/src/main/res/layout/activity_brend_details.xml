@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/brand_details_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_20dp"
+                    android:layout_marginTop="@dimen/spacing_10dp"
+                    android:layout_marginBottom="@dimen/spacing_10dp"
+                    android:text="品牌说明"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_16" />
+
+
+                <com.vinnlook.www.utils.ScrollExpandTextView
+                    android:id="@+id/brand_details_shuoming"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_20dp"
+                    android:layout_marginRight="@dimen/spacing_20dp" />
+            </LinearLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/spacing_15dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:overScrollMode="never"
+                android:scrollbars="none">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:background="#F6F6F6">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/brand_details_recylist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+            </ScrollView>
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_25dp">
+
+            <ImageView
+                android:id="@+id/msg_title_back"
+                android:layout_width="45dp"
+                android:layout_height="@dimen/spacing_45dp"
+                android:padding="@dimen/spacing_15dp"
+                android:src="@mipmap/classify_return_img1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:padding="@dimen/spacing_10dp"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_16"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+    </FrameLayout>
+</LinearLayout>

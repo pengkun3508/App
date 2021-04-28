@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.flyco.roundview.RoundLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/spacing_10dp"
+    android:layout_marginTop="@dimen/spacing_10dp"
+    android:layout_marginRight="@dimen/spacing_10dp"
+    android:orientation="vertical"
+    app:rv_backgroundColor="@color/white"
+    android:padding="@dimen/spacing_10dp"
+    app:rv_cornerRadius="@dimen/spacing_10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ICP备案号"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_14"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_5dp"
+            android:text="陕ICP备 1586448572"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_12" />
+
+
+    </LinearLayout>
+
+
+</com.flyco.roundview.RoundLinearLayout>
