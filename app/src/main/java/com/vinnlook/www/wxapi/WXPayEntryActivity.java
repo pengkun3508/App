@@ -92,6 +92,7 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
                 }
             }
 
+
         }
 
 //        Toast.makeText(this,"支付成功",Toast.LENGTH_SHORT).show();
