@@ -30,6 +30,7 @@ import com.vinnlook.www.surface.adapter.MemeberPrice_Adapter_2;
 import com.vinnlook.www.surface.bean.MemberBean;
 import com.vinnlook.www.surface.mvp.presenter.MemberPresenter;
 import com.vinnlook.www.surface.mvp.view.MemberView;
+import com.vinnlook.www.utils.CacheActivity;
 import com.vinnlook.www.utils.ImageLoader;
 
 import butterknife.BindView;
@@ -140,6 +141,7 @@ public class MemberActivity_1 extends BaseActivity<MemberPresenter> implements M
     @Override
     protected void initView() {
         StatusBarUtils.setStatusBarMode(getActivity(), true);
+        CacheActivity.addActivity(this);
 
         ScaleAnimation scaleAnimation = new ScaleAnimation(1.0f, 0.8f, 1.0f, 0.8f,
                 Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);

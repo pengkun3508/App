@@ -28,6 +28,17 @@ public class PersonalInformationBean extends BaseBean {
     private String points;
     private List<BannerBean> banner;
     private List<WaybillListBean> waybillList;
+    private String share_code;
+
+    public String getShare_code() {
+        return share_code;
+    }
+
+    public void setShare_code(String share_code) {
+        this.share_code = share_code;
+    }
+
+
 
     public List<WaybillListBean> getWaybillList() {
         return waybillList;

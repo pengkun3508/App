@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,7 @@ import com.vinnlook.www.http.model.SignBean;
 import com.vinnlook.www.surface.activity.MoveAbooutActivity_3;
 import com.vinnlook.www.surface.activity.MsggingBoxActivity;
 import com.vinnlook.www.surface.activity.SearchActivity;
+import com.vinnlook.www.surface.activity.WebActivity;
 import com.vinnlook.www.surface.bean.QrCodeImgBean;
 import com.vinnlook.www.surface.fragment.adapter.MyJourneyVPAdapter;
 import com.vinnlook.www.surface.mvp.presenter.HomeFragment_1Presenter;
@@ -160,11 +162,16 @@ public class HomeFragment_1 extends BaseFragment<HomeFragment_1Presenter> implem
                 if (content != null) {
                     Uri scanUri = Uri.parse(content);
                     if (scanUri != null) {
-                        String good_id = scanUri.getQueryParameter("good_id");//7
-                        String search_attr = scanUri.getQueryParameter("search_attr");//7
-                        Log.e("扫描成功", "==good_id==" + good_id);
-                        Log.e("扫描成功", "==search_attr==" + search_attr);
-                        MoveAbooutActivity_3.startSelf(getActivity(), good_id, search_attr);
+                        if (scanUri.getQueryParameter("good_id")!=null){
+                            String good_id = scanUri.getQueryParameter("good_id");//7
+                            String search_attr = scanUri.getQueryParameter("search_attr");//7
+                            Log.e("扫描成功", "==good_id==" + good_id);
+                            Log.e("扫描成功", "==search_attr==" + search_attr);
+                            MoveAbooutActivity_3.startSelf(getActivity(), good_id, search_attr);
+                        }else{
+                            WebActivity.startSelf(getActivity(),content);
+                        }
+
                     }
                 }
             }

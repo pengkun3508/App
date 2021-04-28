@@ -5,6 +5,7 @@ import android.Manifest;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -29,6 +30,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.sdk.android.man.MANService;
@@ -52,6 +55,7 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX;
+import com.tencent.mm.opensdk.modelmsg.WXImageObject;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
 import com.vinnlook.www.R;
@@ -89,6 +93,7 @@ import com.vinnlook.www.surface.mvp.view.MyFragmentView;
 import com.vinnlook.www.utils.AppUtils;
 import com.vinnlook.www.utils.CacheActivity;
 import com.vinnlook.www.utils.ImageLoader;
+import com.vinnlook.www.utils.SavePhoto;
 import com.vinnlook.www.utils.UserInfoBean;
 import com.vinnlook.www.utils.UserUtils;
 import com.vinnlook.www.widgat.VerticalScrollLayout;
@@ -99,11 +104,16 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+
+import static com.vinnlook.www.surface.activity.MoveAbooutActivity_3.bmpToByteArray;
 
 
 /**
@@ -198,6 +208,9 @@ public class MyFragment extends BaseFragment<MyFragmentPresenter> implements MyF
     TextView xiaoxiText;
 //    @BindView(R.id.auto_recylerview)
 //    RExLoopRecyclerView autoRecylerview;
+
+    Bitmap bitmaps;//二维码图片
+    public PopupWindow popupwindow1;
 
 
     private int mScreenWidthDp;
@@ -512,13 +525,14 @@ public class MyFragment extends BaseFragment<MyFragmentPresenter> implements MyF
     }
 
     private void initmPopupWindowView() {
-        LinearLayout wx_py_btn, wx_pyq_btn, copy_btn;
+        LinearLayout wx_py_btn, wx_pyq_btn, wx_qrcode_btn, copy_btn;
 
         TextView share_cancel_btn;
         // // 获取自定义布局文件pop.xml的视图
         View customView = getLayoutInflater().inflate(R.layout.share_layout, null, false);
         wx_py_btn = customView.findViewById(R.id.wx_py_btn);//好友
         wx_pyq_btn = customView.findViewById(R.id.wx_pyq_btn);//朋友圈
+        wx_qrcode_btn = customView.findViewById(R.id.wx_qrcode_btn);//微信二维码
         copy_btn = customView.findViewById(R.id.copy_btn);
         share_cancel_btn = customView.findViewById(R.id.share_cancel_btn);//取消
 
@@ -555,7 +569,20 @@ public class MyFragment extends BaseFragment<MyFragmentPresenter> implements MyF
         WXMediaMessage msg = new WXMediaMessage(webpage);
         msg.title = "vinnlook美瞳商城 ";
         msg.description = "一家专业销售隐形眼镜彩片的电商购物平台，涵盖众多知名隐形眼镜品牌，款式全、数量多、物美价廉，秉承“正品、价优、快速”的理念，足不出户即可享受方便、快捷的购物体验。";
-        Bitmap thumbBmp = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.jeal_shear_logo);
+        Bitmap thumbBmp = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.ic_launcher_foreground);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //二维码图片
+                try {
+                    bitmaps = BitmapFactory.decodeStream(new URL(personalInformationBean.getShare_code()).openStream());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+
 //         Bitmap thumbBmp = BitmapFactory.decodeResource(getActivity().getResources(), R.mipmap.jeal_shear_logo);
         Log.e("分享", "==thumbBmp==" + thumbBmp);
         msg.thumbData = bmpToByteArray1(thumbBmp, true);
@@ -604,6 +631,31 @@ public class MyFragment extends BaseFragment<MyFragmentPresenter> implements MyF
 
             }
         });
+
+        //微信二维码
+        wx_qrcode_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                } else {
+                    if (popupwindow1 != null && popupwindow1.isShowing()) {
+                        popupwindow1.dismiss();
+                        return;
+                    } else {
+                        initmPopupWindowView1(bitmaps);
+                        popupwindow1.showAtLocation(getActivity().getWindow().getDecorView(), Gravity.CENTER, 0, 0);
+                    }
+                    if (popupwindow != null && popupwindow.isShowing()) {
+                        popupwindow.dismiss();
+                        popupwindow = null;
+                    }
+
+                }
+            }
+        });
+
+
         //复制
         copy_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -621,6 +673,120 @@ public class MyFragment extends BaseFragment<MyFragmentPresenter> implements MyF
                 if (popupwindow != null && popupwindow.isShowing()) {
                     popupwindow.dismiss();
                     popupwindow = null;
+                }
+            }
+        });
+    }
+
+    //分享二维码
+    private void initmPopupWindowView1(Bitmap coreBmps) {
+        ImageView core_img;
+        LinearLayout wx_hy_btn, wx_py_btn, save_core_btn;
+
+        TextView share_cancel_btn;
+        // // 获取自定义布局文件pop.xml的视图
+        View customView = getLayoutInflater().inflate(R.layout.share_2_layout, null, false);
+        core_img = customView.findViewById(R.id.core_img);//二维码
+        wx_hy_btn = customView.findViewById(R.id.wx_hy_btn);//好友
+        wx_py_btn = customView.findViewById(R.id.wx_py_btn);//朋友圈
+        save_core_btn = customView.findViewById(R.id.save_core_btn);//保存到相册
+
+        // 创建PopupWindow实例,先宽度，后高度
+        popupwindow1 = new PopupWindow(customView, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+        // 设置动画效果 [R.style.AnimationFade 是自己事先定义好的]
+//        popupwindow.setAnimationStyle(R.style.AnimationFade);
+        // 自定义view添加触摸事件
+        customView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (popupwindow1 != null && popupwindow1.isShowing()) {
+                    popupwindow1.dismiss();
+                    popupwindow1 = null;
+                }
+                return false;
+            }
+        });
+        Log.e("分享二维码", "coreBmps====" + coreBmps);
+        ImageLoader.image(getActivity(), core_img, personalInformationBean.getShare_code());
+
+
+        //初始化 WXImageObject 和 WXMediaMessage 对象
+        WXImageObject imgObj = new WXImageObject(coreBmps);
+        WXMediaMessage msg = new WXMediaMessage();
+        msg.mediaObject = imgObj;
+//        //设置缩略图
+//        Bitmap thumbBmp = Bitmap.createScaledBitmap(coreBmps, 500, 500, true);
+        msg.thumbData = bmpToByteArray(coreBmps, true);
+        //构造一个Req
+        SendMessageToWX.Req req = new SendMessageToWX.Req();
+        req.transaction = buildTransaction("img");
+        req.message = msg;
+
+
+        //微信好友
+        wx_hy_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!App.getwxApi().isWXAppInstalled()) {
+                    Toast.makeText(getActivity(), "您的设备未安装微信客户端", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    req.scene = SendMessageToWX.Req.WXSceneSession;//分享通道
+                    req.userOpenId = UserUtils.getInstance().getUserId();//分享人的ID
+                    App.getwxApi().sendReq(req);
+
+                    if (popupwindow1 != null && popupwindow1.isShowing()) {
+                        popupwindow1.dismiss();
+                        popupwindow1 = null;
+                    }
+                }
+            }
+        });
+
+        //朋友圈
+        wx_py_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!App.getwxApi().isWXAppInstalled()) {
+                    Toast.makeText(getActivity(), "您的设备未安装微信客户端", Toast.LENGTH_SHORT).show();
+                } else {
+                    req.scene = SendMessageToWX.Req.WXSceneTimeline;//分享通道
+                    req.userOpenId = UserUtils.getInstance().getUserId();//分享人的ID
+                    App.getwxApi().sendReq(req);
+
+                    if (popupwindow1 != null && popupwindow1.isShowing()) {
+                        popupwindow1.dismiss();
+                        popupwindow1 = null;
+                    }
+                }
+            }
+        });
+
+        //保存到相册
+        save_core_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String[] PERMISSIONS = {
+                        "android.permission.READ_EXTERNAL_STORAGE",
+                        "android.permission.WRITE_EXTERNAL_STORAGE"};
+                //检测是否有写的权限
+                int permission = ContextCompat.checkSelfPermission(getActivity(),
+                        "android.permission.WRITE_EXTERNAL_STORAGE");
+                if (permission != PackageManager.PERMISSION_GRANTED) {
+                    // 没有写的权限，去申请写的权限，会弹出对话框
+                    ActivityCompat.requestPermissions(getActivity(), PERMISSIONS, 1);
+                }
+                try {
+                    //创建savephoto类保存图片
+                    SavePhoto savePhoto = new SavePhoto(getActivity());
+                    savePhoto.SaveBitmapFromView(core_img);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                if (popupwindow1 != null && popupwindow1.isShowing()) {
+                    popupwindow1.dismiss();
+                    popupwindow1 = null;
                 }
             }
         });

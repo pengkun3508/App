@@ -80,9 +80,10 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
                     //支付成功  执行相关操作
                     //支付成功
                     Toast.makeText(this, "微信支付成功", Toast.LENGTH_SHORT).show();
-                    CacheActivity.finishSingleActivityByClass(PayOrderActivity.class);
-                    CacheActivity.finishSingleActivityByClass(ConfirmOrderActivity_1.class);
+//                    CacheActivity.finishSingleActivityByClass(PayOrderActivity.class);
+//                    CacheActivity.finishSingleActivityByClass(ConfirmOrderActivity_1.class);
                     MemberCompleteActivity.startSelf(this, ConstantData.CHANNELS);//channel会员购买入口:  1---详情页面，，2--其他页面进入会员购买页面，3---确认订单页面
+                    CacheActivity.finishActivity();
                     finish();
                 } else {
                     //支付失败

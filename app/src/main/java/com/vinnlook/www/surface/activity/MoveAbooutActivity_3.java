@@ -1448,8 +1448,10 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
                     } else if (moveDataBean.getInfo().getBanner().get(0).getType() == 2) {
                         thumbBmp = BitmapFactory.decodeStream(new URL(moveDataBean.getInfo().getBanner().get(1).getUrl()).openStream());
                     }
+
                     //二维码图片
                     bitmaps = BitmapFactory.decodeStream(new URL(moveDataBean.getInfo().getImage_code()).openStream());
+                    Log.e("分享二维码", "bitmaps====" + bitmaps);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
