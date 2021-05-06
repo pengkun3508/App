@@ -30,6 +30,7 @@ import com.vinnlook.www.surface.bean.CertifyListBean;
 import com.vinnlook.www.surface.bean.ClassifyBean;
 import com.vinnlook.www.surface.bean.ClassifyTypeBean;
 import com.vinnlook.www.surface.bean.CommodityTitleBean;
+import com.vinnlook.www.surface.bean.CompanyBean;
 import com.vinnlook.www.surface.bean.ConfirmOrderBean;
 import com.vinnlook.www.surface.bean.EvaluateListBean;
 import com.vinnlook.www.surface.bean.ExchangeBean;
@@ -1146,6 +1147,23 @@ public class MainRequest extends BaseRequest {
             }
         }, listener);
     }
+
+
+    /**
+     * 关于我们
+     *
+     * @return
+     */
+    public static Disposable getCompanyListData(final RequestBackListener<List<CompanyBean>> listener) {
+        return requestWithSign(new RequestCallback<List<CompanyBean>>() {
+            @Override
+            public Observable<ResponseBean<List<CompanyBean>>> request(boolean isAppForceUpdate) {
+                return ProjectApi.api().getCompanyListData();
+            }
+        }, listener);
+    }
+
+
 
     /**
      * 获取品牌商品列表头部

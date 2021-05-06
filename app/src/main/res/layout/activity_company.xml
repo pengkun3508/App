@@ -21,7 +21,7 @@
         android:layout_height="@dimen/spacing_60dp"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/spacing_60dp"
-        android:background="@mipmap/start_welcome_bg_2" />
+        android:background="@mipmap/ic_launcher" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,12 +31,27 @@
         android:textColor="@color/black"
         android:textSize="@dimen/text_16" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_40dp">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/about_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+    </RelativeLayout>
+
 
     <RelativeLayout
         android:id="@+id/about_call"
         style="@style/top_layout"
         android:layout_marginTop="@dimen/spacing_40dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
@@ -62,11 +77,13 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/spacing_1dp"
         android:layout_marginStart="13dp"
-        android:background="@color/me_line" />
+        android:background="@color/me_line"
+        android:visibility="gone"/>
 
     <RelativeLayout
         android:id="@+id/about_update"
-        style="@style/top_layout">
+        style="@style/top_layout"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
@@ -92,11 +109,13 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/spacing_1dp"
         android:layout_marginStart="13dp"
-        android:background="@color/me_line" />
+        android:background="@color/me_line"
+        android:visibility="gone"/>
 
     <RelativeLayout
         android:id="@+id/about_company"
-        style="@style/top_layout">
+        style="@style/top_layout"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
@@ -122,11 +141,13 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/spacing_1dp"
         android:layout_marginStart="13dp"
-        android:background="@color/me_line" />
+        android:background="@color/me_line"
+        android:visibility="gone"/>
 
     <RelativeLayout
         android:id="@+id/about_guize"
-        style="@style/top_layout">
+        style="@style/top_layout"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
@@ -151,6 +172,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/spacing_1dp"
         android:layout_marginStart="13dp"
-        android:background="@color/me_line" />
+        android:background="@color/me_line"
+        android:visibility="gone"/>
 
 </LinearLayout>

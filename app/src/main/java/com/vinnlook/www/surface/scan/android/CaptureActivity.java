@@ -146,40 +146,10 @@ public final class CaptureActivity extends Activity implements
             switch (requestCode) {
                 case 0:
                     handleAlbumPic(data);
-//                    Intent resultIntent = new Intent();
-//                    Bundle bundle = new Bundle();
-//                    bundle.putString("getDataString", data.getData().toString());
-//                    resultIntent.putExtras(bundle);
-//                    setResult(RESULT_OK, resultIntent);
-//                    finish();
-
-//                    Intent intent = getIntent();
-//                    intent.putExtra("getDataString", data.getDataString());
-//                    setResult(RESULT_OK, intent);
                     break;
             }
 
         }
-
-//        if (resultCode == RESULT_OK) {
-//            switch (requestCode) {
-//                case PictureConfig.CHOOSE_REQUEST:
-//                    Log.e("PublishCommentActivity", "==回调照片==" + data);
-//                    //图片选择结果回调
-//
-//                    List<LocalMedia> selectList = PictureSelector.obtainMultipleResult(data);
-//                    for (int i = 0; i < selectList.size(); i++) {
-//                        getPath = selectList.get(i).getPath();
-//
-//                        Log.e("二维码", "==getPath==" + getPath);
-//                    }
-////                    Intent intent = getIntent();
-////                    intent.putExtra("getDataString", getPath);
-////                    setResult(RESULT_OK, intent);
-//                    break;
-//            }
-//        }
-
     }
 
     /**
@@ -332,19 +302,33 @@ public final class CaptureActivity extends Activity implements
      */
     public void handleDecode(Result rawResult, Bitmap barcode, float scaleFactor) {
         inactivityTimer.onActivity();
-
+        Log.e("扫描成功", "===处理反馈信息====barcode==" + barcode);
         boolean fromLiveScan = barcode != null;
         //这里处理解码完成后的结果，此处将参数回传到Activity处理
+
+
         if (fromLiveScan) {
-            beepManager.playBeepSoundAndVibrate();
+
+            Log.e("扫描成功", "===处理反馈信息====fromLiveScan==" + fromLiveScan);
+//            beepManager.playBeepSoundAndVibrate();
 
             Toast.makeText(this, "扫描成功", Toast.LENGTH_SHORT).show();
 
-            Intent intent = getIntent();
-            intent.putExtra("codedContent", rawResult.getText());
-            intent.putExtra("codedBitmap", barcode);
-            setResult(RESULT_OK, intent);
+//            Intent intent = getIntent();
+//            intent.putExtra("codedContent", rawResult.getText());
+//            intent.putExtra("codedBitmap", barcode);
+//            setResult(RESULT_OK, intent);
+
+            Intent resultIntent = new Intent();
+            Bundle bundle = new Bundle();
+            bundle.putString("codedContent", rawResult.getText());
+            resultIntent.putExtras(bundle);
+            CaptureActivity.this.setResult(RESULT_OK, resultIntent);
+
+
             finish();
+        }else{
+            Log.e("扫描成功", "===处理反馈信息====失败==" );
         }
 
     }

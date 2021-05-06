@@ -148,6 +148,7 @@ public class HomeFragment_1 extends BaseFragment<HomeFragment_1Presenter> implem
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Log.e("扫描成功", "==data==" + data);
         // 扫描二维码/条码回传
         if (requestCode == REQUEST_CODE_SCAN && resultCode == RESULT_OK) {
             if (data != null) {

@@ -569,7 +569,7 @@ public class MyFragment extends BaseFragment<MyFragmentPresenter> implements MyF
         WXMediaMessage msg = new WXMediaMessage(webpage);
         msg.title = "vinnlook美瞳商城 ";
         msg.description = "一家专业销售隐形眼镜彩片的电商购物平台，涵盖众多知名隐形眼镜品牌，款式全、数量多、物美价廉，秉承“正品、价优、快速”的理念，足不出户即可享受方便、快捷的购物体验。";
-        Bitmap thumbBmp = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.ic_launcher_foreground);
+        Bitmap thumbBmp = BitmapFactory.decodeResource(getActivity().getResources(), R.mipmap.ic_launcher_foreground);
         new Thread(new Runnable() {
             @Override
             public void run() {

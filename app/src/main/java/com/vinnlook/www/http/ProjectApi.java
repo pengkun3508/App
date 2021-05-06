@@ -26,6 +26,7 @@ import com.vinnlook.www.surface.bean.CertifyListBean;
 import com.vinnlook.www.surface.bean.ClassifyBean;
 import com.vinnlook.www.surface.bean.ClassifyTypeBean;
 import com.vinnlook.www.surface.bean.CommodityTitleBean;
+import com.vinnlook.www.surface.bean.CompanyBean;
 import com.vinnlook.www.surface.bean.ConfirmOrderBean;
 import com.vinnlook.www.surface.bean.EvaluateListBean;
 import com.vinnlook.www.surface.bean.ExchangeBean;
@@ -745,6 +746,14 @@ public class ProjectApi extends Api {
                                                                      @Query("flood") String getFlood,
                                                                      @Query("pieces") String getPieces,
                                                                      @Query("type") String type);
+
+        /**
+         * 关于我们
+         */
+        @GET("list/get-about")
+        Observable<ResponseBean<List<CompanyBean>>> getCompanyListData();
+
+
 
         /**
          * 0004--- 搜索页面，搜索商品列表

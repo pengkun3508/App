@@ -94,6 +94,8 @@ android {
 
 }
 
+apply plugin: 'com.huawei.agconnect'
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:28.0.0'
@@ -178,6 +180,9 @@ dependencies {
     implementation 'com.aliyun.ams:alicloud-android-push:3.3.0'
     //阿里移动数据分析
     implementation 'com.aliyun.ams:alicloud-android-man:1.2.0'
+
+    //华为
+    implementation 'com.huawei.hms:hianalytics:5.1.0.300'
 
 
 //    implementation 'com.aliyun.ams:alicloud-android-third-push-huawei:3.3.0'

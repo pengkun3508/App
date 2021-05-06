@@ -450,7 +450,7 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
                 } else if (bannerImage.get(position).getType().equals("8")) {//新活动专区
                     HuoDongZoneActivity_1.startSelf(getActivity());
                 } else if (bannerImage.get(position).getType().equals("9")) {//9：品团go
-                    GroupWorkGoActivity.startSelf(getActivity());
+//                    GroupWorkGoActivity.startSelf(getActivity());
                 } else if (bannerImage.get(position).getType().equals("10")) {//10：限时折扣
                     LimitedActivity_1.startSelf(getActivity());
                 } else if (bannerImage.get(position).getType().equals("11")) {//11：排行榜
@@ -482,7 +482,7 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
                 } else if (recommBanner.get(position).getType().equals("8")) {//新活动专区
                     HuoDongZoneActivity_1.startSelf(getActivity());
                 } else if (recommBanner.get(position).getType().equals("9")) {//9：品团go
-                    GroupWorkGoActivity.startSelf(getActivity());
+//                    GroupWorkGoActivity.startSelf(getActivity());
                 } else if (recommBanner.get(position).getType().equals("10")) {//10：限时折扣
                     LimitedActivity_1.startSelf(getActivity());
                 } else if (recommBanner.get(position).getType().equals("11")) {//11：排行榜
@@ -534,7 +534,7 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
                 } else if (gatBannetData2.get(position).getType().equals("8")) {//新活动专区
                     HuoDongZoneActivity_1.startSelf(getActivity());
                 } else if (gatBannetData2.get(position).getType().equals("9")) {//9：品团go
-                    GroupWorkGoActivity.startSelf(getActivity());
+//                    GroupWorkGoActivity.startSelf(getActivity());
                 } else if (gatBannetData2.get(position).getType().equals("10")) {//10：限时折扣
                     LimitedActivity_1.startSelf(getActivity());
                 } else if (gatBannetData2.get(position).getType().equals("11")) {//11：排行榜
@@ -588,7 +588,7 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
                     } else if (getIndex_ad.getType().equals("8")) {//新活动专区
                         HuoDongZoneActivity_1.startSelf(getActivity());
                     } else if (getIndex_ad.getType().equals("9")) {//9：品团go
-                        GroupWorkGoActivity.startSelf(getActivity());
+//                        GroupWorkGoActivity.startSelf(getActivity());
                     } else if (getIndex_ad.getType().equals("10")) {//10：限时折扣
                         LimitedActivity_1.startSelf(getActivity());
                     } else if (getIndex_ad.getType().equals("11")) {//11：排行榜
@@ -948,7 +948,7 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
                 } else if (getAlert_ad.getType().equals("8")) {//新活动专区
                     HuoDongZoneActivity_1.startSelf(getActivity());
                 } else if (getAlert_ad.getType().equals("9")) {//9：品团go
-                    GroupWorkGoActivity.startSelf(getActivity());
+//                    GroupWorkGoActivity.startSelf(getActivity());
                 } else if (getAlert_ad.getType().equals("10")) {//10：限时折扣
                     LimitedActivity_1.startSelf(getActivity());
                 } else if (getAlert_ad.getType().equals("11")) {//11：排行榜
