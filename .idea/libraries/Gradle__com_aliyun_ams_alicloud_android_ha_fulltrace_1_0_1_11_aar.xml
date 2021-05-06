@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.aliyun.ams:alicloud-android-ha-fulltrace:1.0.1.11@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e6066db6e3529f91fe18f0329382220e/alicloud-android-ha-fulltrace-1.0.1.11/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e6066db6e3529f91fe18f0329382220e/alicloud-android-ha-fulltrace-1.0.1.11/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

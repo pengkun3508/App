@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.goweii:AnyLayer:v2.2.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4286682d1ff538a33f85c831cf9ee4bb/jetified-AnyLayer-v2.2.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4286682d1ff538a33f85c831cf9ee4bb/jetified-AnyLayer-v2.2.0/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.goweii/AnyLayer/v2.2.0/d082ea47ec71ed18ff889b655040728b2d4ec0a5/AnyLayer-v2.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

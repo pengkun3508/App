@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.aliyun.ams:alicloud-android-ha-telescopesdk:1.1.0.2-open@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ee7b307a2977eef00511c2b0652fc293/jetified-alicloud-android-ha-telescopesdk-1.1.0.2-open/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ee7b307a2977eef00511c2b0652fc293/jetified-alicloud-android-ha-telescopesdk-1.1.0.2-open/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ee7b307a2977eef00511c2b0652fc293/jetified-alicloud-android-ha-telescopesdk-1.1.0.2-open/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

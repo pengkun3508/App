@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.aliyun.ams:alicloud-android-ha-apm-impl:1.0.7.0-open@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/af957d99431dbc6fb0f82807761b223a/jetified-alicloud-android-ha-apm-impl-1.0.7.0-open/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/af957d99431dbc6fb0f82807761b223a/jetified-alicloud-android-ha-apm-impl-1.0.7.0-open/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/af957d99431dbc6fb0f82807761b223a/jetified-alicloud-android-ha-apm-impl-1.0.7.0-open/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

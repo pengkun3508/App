@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/App.iml" filepath="$PROJECT_DIR$/App.iml" group="App" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="App/app" />
+      <module fileurl="file://$PROJECT_DIR$/lib_core/lib_core.iml" filepath="$PROJECT_DIR$/lib_core/lib_core.iml" group="App/lib_core" />
+      <module fileurl="file://$PROJECT_DIR$/lib_utils/lib_utils.iml" filepath="$PROJECT_DIR$/lib_utils/lib_utils.iml" group="App/lib_utils" />
+      <module fileurl="file://$PROJECT_DIR$/ykfsdk/ykfsdk.iml" filepath="$PROJECT_DIR$/ykfsdk/ykfsdk.iml" group="App/ykfsdk" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.aliyun.ams:alicloud-android-ha-core:1.1.0.6.1-open@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4e428e7d9d808bb2e20465c7b604cef1/alicloud-android-ha-core-1.1.0.6.1-open/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4e428e7d9d808bb2e20465c7b604cef1/alicloud-android-ha-core-1.1.0.6.1-open/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

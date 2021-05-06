@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.taobao.android:tnet4android:3.1.14.7-all@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1d99037b4ca8c2dd15bb3296b9d3f823/tnet4android-3.1.14.7-all/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1d99037b4ca8c2dd15bb3296b9d3f823/tnet4android-3.1.14.7-all/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

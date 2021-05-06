@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.aliyun.ams:alicloud-android-ha-tlog-uploader-oss:1.1.0.6.3-open@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/55a65453852369c0b82de41c2e617429/alicloud-android-ha-tlog-uploader-oss-1.1.0.6.3-open/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/55a65453852369c0b82de41c2e617429/alicloud-android-ha-tlog-uploader-oss-1.1.0.6.3-open/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.goweii:ActionBarEx:v2.2.8@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0e5bbc0ab90cc4a238e2357f62ac9372/jetified-ActionBarEx-v2.2.8/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0e5bbc0ab90cc4a238e2357f62ac9372/jetified-ActionBarEx-v2.2.8/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.goweii/ActionBarEx/v2.2.8/3c8a3478f7b431c0cc2fc7bbcf2bf1ae269b7e6e/ActionBarEx-v2.2.8-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

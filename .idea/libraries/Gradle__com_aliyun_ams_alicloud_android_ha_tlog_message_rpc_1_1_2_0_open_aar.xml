@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.aliyun.ams:alicloud-android-ha-tlog-message-rpc:1.1.2.0-open@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ee15409ade69b76f4273def3e97f2645/alicloud-android-ha-tlog-message-rpc-1.1.2.0-open/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ee15409ade69b76f4273def3e97f2645/alicloud-android-ha-tlog-message-rpc-1.1.2.0-open/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

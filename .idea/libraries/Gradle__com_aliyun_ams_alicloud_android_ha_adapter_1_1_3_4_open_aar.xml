@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.aliyun.ams:alicloud-android-ha-adapter:1.1.3.4-open@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/bf4fc5de492a8f24f886dd4508943dff/alicloud-android-ha-adapter-1.1.3.4-open/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/bf4fc5de492a8f24f886dd4508943dff/alicloud-android-ha-adapter-1.1.3.4-open/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

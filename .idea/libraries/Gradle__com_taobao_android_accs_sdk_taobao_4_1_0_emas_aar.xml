@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.taobao.android:accs_sdk_taobao:4.1.0-emas@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b981ea3669085d86aeb5a5e564874054/jetified-accs_sdk_taobao-4.1.0-emas/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b981ea3669085d86aeb5a5e564874054/jetified-accs_sdk_taobao-4.1.0-emas/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b981ea3669085d86aeb5a5e564874054/jetified-accs_sdk_taobao-4.1.0-emas/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
