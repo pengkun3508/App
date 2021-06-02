@@ -176,12 +176,21 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
         Log.e("JumpActivity", "==appLinkData==" + appLinkData);
 
         if (appLinkData != null) {
+            String is_group = appLinkData.getQueryParameter("is_group");//7
+            String group_id = appLinkData.getQueryParameter("group_id");//7
             String good_id = appLinkData.getQueryParameter("good_id");//7
             String search_attr = appLinkData.getQueryParameter("search_attr");//7
+            Log.e("JumpActivity", "==is_group==" + is_group);
+            Log.e("JumpActivity", "==group_id==" + group_id);
             Log.e("JumpActivity", "==good_id==" + good_id);
             Log.e("JumpActivity", "==search_attr==" + search_attr);
-//            MoveAbooutActivity_1.startSelf(getActivity(), good_id, search_attr);
-            MoveAbooutActivity_3.startSelf(getActivity(), good_id, search_attr);
+
+            if (is_group == null||is_group.equals("0")) {
+                MoveAbooutActivity_3.startSelf(getActivity(), good_id, search_attr);
+            } else {
+                MoveAbooutActivity_4.startSelf(getActivity(), good_id, search_attr,group_id,"");
+            }
+
         }
 
 
@@ -217,7 +226,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
      */
     private void handlePermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (PickUtils.PermissionUtils.hasAlwaysDeniedPermission(this, Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            if (PickUtils.PermissionUtils.hasAlwaysDeniedPermission(this, Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE,
                     Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_EXTERNAL_STORAGE)) {
 
                 PickUtils.PermissionUtils.requestPermissions(this, 0x11, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_EXTERNAL_STORAGE}, new PickUtils.PermissionUtils.OnPermissionListener() {

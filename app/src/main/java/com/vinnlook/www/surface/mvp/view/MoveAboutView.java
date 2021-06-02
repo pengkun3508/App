@@ -34,4 +34,16 @@ public interface MoveAboutView extends MvpView {
     void getTypeShopSuccess(int code, MoveDataBean data);
 
     void getTypeShopFail(int code, String msg);
+
+    void getTypeShop4Success(int code, MoveDataBean data);
+
+    void getTypeShop4Fail(int code, String msg);
+
+    void getTypeShop5Success(int code, MoveDataBean data);
+
+    void getTypeShop5Fail(int code, String msg);
+
+    void getTypeShop6Success(int code, MoveDataBean data);
+
+    void getTypeShop6Fail(int code, String msg);
 }

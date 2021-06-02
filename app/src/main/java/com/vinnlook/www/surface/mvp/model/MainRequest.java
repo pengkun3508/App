@@ -34,6 +34,9 @@ import com.vinnlook.www.surface.bean.CompanyBean;
 import com.vinnlook.www.surface.bean.ConfirmOrderBean;
 import com.vinnlook.www.surface.bean.EvaluateListBean;
 import com.vinnlook.www.surface.bean.ExchangeBean;
+import com.vinnlook.www.surface.bean.GroupDetailsBean;
+import com.vinnlook.www.surface.bean.GroupListBean;
+import com.vinnlook.www.surface.bean.GroupOrderListBean;
 import com.vinnlook.www.surface.bean.HaiTaoClassBean;
 import com.vinnlook.www.surface.bean.HomeGoodsListBean;
 import com.vinnlook.www.surface.bean.HomePublicListBean;
@@ -176,9 +179,6 @@ public class MainRequest extends BaseRequest {
     }
 
 
-
-
-
     /**
      * 获取搜索列表数据
      *
@@ -209,6 +209,22 @@ public class MainRequest extends BaseRequest {
             }
         }, listener);
     }
+
+    /**
+     * 获取商品详情数据--拼团
+     *
+     * @param listener
+     * @return
+     */
+    public static Disposable getMoveindex4(String goods_id, String search_attr,String group_id,String type, final RequestBackListener<MoveDataBean> listener) {
+        return requestWithSign(new RequestCallback<MoveDataBean>() {
+            @Override
+            public Observable<ResponseBean<MoveDataBean>> request(boolean isAppForceUpdate) {
+                return ProjectApi.api().getMoveData4(goods_id, search_attr,group_id,type);
+            }
+        }, listener);
+    }
+
 
     /**
      * 消息列表
@@ -363,7 +379,6 @@ public class MainRequest extends BaseRequest {
             }
         }, listener);
     }
-
 
 
     /**
@@ -546,7 +561,6 @@ public class MainRequest extends BaseRequest {
             }
         }, listener);
     }
-
 
 
     /**
@@ -826,11 +840,11 @@ public class MainRequest extends BaseRequest {
      * @return
      */
     public static Disposable getConfirmOrderData(String recId, String goods_id, String product_id, String num, String wayBillId, String integralNum, String address_id,
-                                                 String id, String ht_sendid, String zy_sendid, String proIdSb, final RequestBackListener<ConfirmOrderBean> listener) {
+                                                 String id, String ht_sendid, String zy_sendid, String proIdSb, String group_info, String group_id, final RequestBackListener<ConfirmOrderBean> listener) {
         return requestWithSign(new RequestCallback<ConfirmOrderBean>() {
             @Override
             public Observable<ResponseBean<ConfirmOrderBean>> request(boolean isAppForceUpdate) {
-                return ProjectApi.api().getConfirmOrderData(recId, goods_id, product_id, num, wayBillId, integralNum, address_id, id, ht_sendid, zy_sendid, proIdSb);
+                return ProjectApi.api().getConfirmOrderData(recId, goods_id, product_id, num, wayBillId, integralNum, address_id, id, ht_sendid, zy_sendid, proIdSb, group_info, group_id);
             }
         }, listener);
     }
@@ -846,6 +860,51 @@ public class MainRequest extends BaseRequest {
             @Override
             public Observable<ResponseBean<HaiTaoClassBean>> request(boolean isAppForceUpdate) {
                 return ProjectApi.api().getHaiListData(type);
+            }
+        }, listener);
+    }
+
+
+    /**
+     * 拼团列表
+     *
+     * @return
+     */
+    public static Disposable getGroupListData(int page, int limit, final RequestBackListener<GroupListBean> listener) {
+        return requestWithSign(new RequestCallback<GroupListBean>() {
+            @Override
+            public Observable<ResponseBean<GroupListBean>> request(boolean isAppForceUpdate) {
+                return ProjectApi.api().getGroupListData(page, limit);
+            }
+        }, listener);
+    }
+
+    /**
+     * 拼团订单详情
+     *
+     * @return
+     */
+    public static Disposable getGroupInfoData(String orderId, final RequestBackListener<GroupDetailsBean> listener) {
+        return requestWithSign(new RequestCallback<GroupDetailsBean>() {
+            @Override
+            public Observable<ResponseBean<GroupDetailsBean>> request(boolean isAppForceUpdate) {
+                return ProjectApi.api().getGroupInfoData(orderId);
+            }
+        }, listener);
+    }
+
+
+
+    /**
+     * 拼团订单列表
+     *
+     * @return
+     */
+    public static Disposable getGroupOrderListData(int page, int limit, String type, final RequestBackListener<GroupOrderListBean> listener) {
+        return requestWithSign(new RequestCallback<GroupOrderListBean>() {
+            @Override
+            public Observable<ResponseBean<GroupOrderListBean>> request(boolean isAppForceUpdate) {
+                return ProjectApi.api().getGroupOrderListData(page, limit, type);
             }
         }, listener);
     }
@@ -903,12 +962,12 @@ public class MainRequest extends BaseRequest {
      * @return
      */
     public static Disposable postSubmitOrder(String recIds, String goods_ids, String product_ids, String nums, String real_ids, String address_ids, String types, String confirmMessages,
-                                             String confirmMessage2, String order_ids, String bonus_id, String waybill_id, String zYSb, String hTSb,
+                                             String confirmMessage2, String order_ids, String bonus_id, String waybill_id, String zYSb, String hTSb, String group_info, String group_id,
                                              final RequestBackListener<WeCatPayBean> listener) {
         return requestWithSign(new RequestCallback<WeCatPayBean>() {
             @Override
             public Observable<ResponseBean<WeCatPayBean>> request(boolean isAppForceUpdate) {
-                return ProjectApi.api().postSubmitOrder(recIds, goods_ids, product_ids, nums, real_ids, address_ids, types, confirmMessages, confirmMessage2, order_ids, bonus_id, waybill_id, zYSb, hTSb);
+                return ProjectApi.api().postSubmitOrder(recIds, goods_ids, product_ids, nums, real_ids, address_ids, types, confirmMessages, confirmMessage2, order_ids, bonus_id, waybill_id, zYSb, hTSb, group_info, group_id);
             }
         }, listener);
     }
@@ -919,12 +978,12 @@ public class MainRequest extends BaseRequest {
      * @return
      */
     public static Disposable postALiSubmitOrder(String recIds, String goods_ids, String product_ids, String nums, String real_ids, String address_ids, String types,
-                                                String confirmMessages, String confirmMessage2, String order_ids, String bonus_id, String waybill_id, String zYSb, String hTSb,
+                                                String confirmMessages, String confirmMessage2, String order_ids, String bonus_id, String waybill_id, String zYSb, String hTSb, String group_info, String group_id,
                                                 final RequestBackListener<ALiPayBean> listener) {
         return requestWithSign(new RequestCallback<ALiPayBean>() {
             @Override
             public Observable<ResponseBean<ALiPayBean>> request(boolean isAppForceUpdate) {
-                return ProjectApi.api().postALiSubmitOrder(recIds, goods_ids, product_ids, nums, real_ids, address_ids, types, confirmMessages, confirmMessage2, order_ids, bonus_id, waybill_id, zYSb, hTSb);
+                return ProjectApi.api().postALiSubmitOrder(recIds, goods_ids, product_ids, nums, real_ids, address_ids, types, confirmMessages, confirmMessage2, order_ids, bonus_id, waybill_id, zYSb, hTSb, group_info, group_id);
             }
         }, listener);
     }
@@ -949,11 +1008,11 @@ public class MainRequest extends BaseRequest {
      *
      * @return
      */
-    public static Disposable getCouponListData1(String recIds, String goods_ids, String product_ids, String nums, final RequestBackListener<List<AlreadyCouponListBean>> listener) {
+    public static Disposable getCouponListData1(String recIds, String goods_ids, String product_ids, String nums, String group_info, final RequestBackListener<List<AlreadyCouponListBean>> listener) {
         return requestWithSign(new RequestCallback<List<AlreadyCouponListBean>>() {
             @Override
             public Observable<ResponseBean<List<AlreadyCouponListBean>>> request(boolean isAppForceUpdate) {
-                return ProjectApi.api().getCouponListData1(recIds, goods_ids, product_ids, nums);
+                return ProjectApi.api().getCouponListData1(recIds, goods_ids, product_ids, nums, group_info);
             }
         }, listener);
     }
@@ -1121,17 +1180,14 @@ public class MainRequest extends BaseRequest {
      *
      * @return
      */
-    public static Disposable getBrandDetailsList(String page,String limit,String getBrand_id, final RequestBackListener<BrandDetailsBean> listener) {
+    public static Disposable getBrandDetailsList(String page, String limit, String getBrand_id, final RequestBackListener<BrandDetailsBean> listener) {
         return requestWithSign(new RequestCallback<BrandDetailsBean>() {
             @Override
             public Observable<ResponseBean<BrandDetailsBean>> request(boolean isAppForceUpdate) {
-                return ProjectApi.api().getBrandDetailsList(page,limit,getBrand_id);
+                return ProjectApi.api().getBrandDetailsList(page, limit, getBrand_id);
             }
         }, listener);
     }
-
-
-
 
 
     /**
@@ -1162,7 +1218,6 @@ public class MainRequest extends BaseRequest {
             }
         }, listener);
     }
-
 
 
     /**
@@ -1613,7 +1668,6 @@ public class MainRequest extends BaseRequest {
             }
         }, listener);
     }
-
 
 
     /**

@@ -55,6 +55,17 @@ public class EvaluateListBean extends BaseBean {
         private String img_url;
         private String info;
         private List<String> image;
+        private String reply_content;
+
+        public String getReply_content() {
+            return reply_content;
+        }
+
+        public void setReply_content(String reply_content) {
+            this.reply_content = reply_content;
+        }
+
+
 
         public String getUser_name() {
             return user_name;

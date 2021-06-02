@@ -36,6 +36,10 @@ public interface Config {
      */
 //    String HTTP_HOST = "http://192.168.2.239:20002/";
     String HTTP_HOST = "http://shop.jealook.com/";
+
+//    String HTTP_HOST = "http://v6.vinnlook.com/";
+
+
     /**
      * api版本
      */
@@ -43,7 +47,8 @@ public interface Config {
 //    String HTTP_VERSION = "v2/";
 //    String HTTP_VERSION = "v3/";
 //    String HTTP_VERSION = "v4/";
-    String HTTP_VERSION = "v5/";
+//    String HTTP_VERSION = "v5/";
+    String HTTP_VERSION = "v6/";
 //    String HTTP_VERSION = "develop/";
 
 

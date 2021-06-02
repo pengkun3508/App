@@ -1139,7 +1139,7 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsPresenter> im
                 String confirmMessage = "";
                 String confirmMessage2 = "";
                 PayOrderActivity.startSelf(this, recId, goods_id, product_id, num, real_id, address_id, type, confirmMessage, confirmMessage2, getOrder_id,
-                        getOrder_amount, "", "", "", "");
+                        getOrder_amount, "", "", "", "","","");
 
                 break;
             case R.id.order_update_address://修改地址

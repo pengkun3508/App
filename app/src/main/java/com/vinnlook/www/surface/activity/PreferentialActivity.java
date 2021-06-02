@@ -38,6 +38,7 @@ import com.vinnlook.www.surface.adapter.ConponList_1Adapter;
 import com.vinnlook.www.surface.adapter.PreferentialAdapter;
 import com.vinnlook.www.surface.bean.PreferentialBean;
 import com.vinnlook.www.surface.dialog.TypeSelectDialog;
+import com.vinnlook.www.surface.mvp.model.bean.ProductBean;
 import com.vinnlook.www.surface.mvp.presenter.PreferentialPresenter;
 import com.vinnlook.www.surface.mvp.view.PreferentialView;
 import com.vinnlook.www.utils.CacheActivity;
@@ -379,7 +380,7 @@ public class PreferentialActivity extends BaseActivity<PreferentialPresenter> im
 
         TypeSelectDialog.with(getActivity(), data, listBean.getSearch_attr(), "", new TypeSelectDialog.AddShopCarClickListener() {
             @Override
-            public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name, String mmake) {
+            public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name, ProductBean productBean, String mmake) {
 
 //                presenter.getModifyType(mark, getRec_id, num, product_id);
                 Log.e("getTypeShopSuccess", "TypeSelectDialog");

@@ -18,6 +18,7 @@ import com.vinnlook.www.http.model.MoveDataBean;
 import com.vinnlook.www.surface.adapter.MealAdapter;
 import com.vinnlook.www.surface.bean.SetMealBean;
 import com.vinnlook.www.surface.dialog.TypeSelectDialog;
+import com.vinnlook.www.surface.mvp.model.bean.ProductBean;
 import com.vinnlook.www.surface.mvp.presenter.SetMealPresenter;
 import com.vinnlook.www.surface.mvp.view.SetMealView;
 import com.vinnlook.www.widgat.actionbar.ActionBarSimple;
@@ -186,7 +187,7 @@ public class SetMealActivity extends BaseActivity<SetMealPresenter> implements S
 
         TypeSelectDialog.with(getActivity(), moveDataBeas, goods_attr, "2", new TypeSelectDialog.AddShopCarClickListener() {
             @Override
-            public void onBtnClickListener(String goods_id, String getRec_id, String product_ids, String num, String getAttr_name, String mmake) {
+            public void onBtnClickListener(String goods_id, String getRec_id, String product_ids, String num, String getAttr_name, ProductBean productBean, String mmake) {
                 adapter.getData().get(position1).getList().get(position2).setProduct_id(product_ids);
                 Log.e("TypeSelectDialog", "===product_id=====" + product_ids);
                 Log.e("TypeSelectDialog", "===getAttr_name=====" + getAttr_name);

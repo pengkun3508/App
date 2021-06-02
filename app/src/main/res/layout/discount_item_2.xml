@@ -9,7 +9,8 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/discount_item_img"
@@ -28,6 +29,44 @@
             android:textColor="@color/black"
             android:textSize="@dimen/text_12" />
     </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/spacing_40dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/title_more_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:src="@mipmap/more_icon_img"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/title_more_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/spacing_10dp"
+            android:gravity="center"
+            android:text="查看更多"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_12"/>
+
+    </LinearLayout>
 
 
 </LinearLayout>

@@ -21,6 +21,7 @@ import com.vinnlook.www.R;
 import com.vinnlook.www.base.BaseFragment;
 import com.vinnlook.www.http.model.SignBean;
 import com.vinnlook.www.surface.activity.MoveAbooutActivity_3;
+import com.vinnlook.www.surface.activity.MoveAbooutActivity_4;
 import com.vinnlook.www.surface.activity.MsggingBoxActivity;
 import com.vinnlook.www.surface.activity.SearchActivity;
 import com.vinnlook.www.surface.activity.WebActivity;
@@ -164,11 +165,21 @@ public class HomeFragment_1 extends BaseFragment<HomeFragment_1Presenter> implem
                     Uri scanUri = Uri.parse(content);
                     if (scanUri != null) {
                         if (scanUri.getQueryParameter("good_id")!=null){
+                            String is_group = scanUri.getQueryParameter("is_group");//7
+                            String group_id = scanUri.getQueryParameter("group_id");//7
                             String good_id = scanUri.getQueryParameter("good_id");//7
                             String search_attr = scanUri.getQueryParameter("search_attr");//7
+                            Log.e("JumpActivity", "==is_group==" + is_group);
                             Log.e("扫描成功", "==good_id==" + good_id);
                             Log.e("扫描成功", "==search_attr==" + search_attr);
-                            MoveAbooutActivity_3.startSelf(getActivity(), good_id, search_attr);
+//                            MoveAbooutActivity_3.startSelf(getActivity(), good_id, search_attr);
+                            if (is_group == null) {
+                                MoveAbooutActivity_3.startSelf(getActivity(), good_id, search_attr);
+                            } else {
+                                MoveAbooutActivity_4.startSelf(getActivity(), good_id, search_attr,group_id,"");
+                            }
+
+
                         }else{
                             WebActivity.startSelf(getActivity(),content);
                         }

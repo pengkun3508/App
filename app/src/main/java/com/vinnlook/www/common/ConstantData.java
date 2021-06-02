@@ -23,6 +23,18 @@ public class ConstantData {
     public static String CHANNELS = "";//会员购买入口  1---详情页面，，2--其他页面进入会员购买页面，3---确认订单页面
 
     /**
+     * 订单
+     */
+    public static String ORDER_ID = "";//
+
+    /**
+     * 订单
+     */
+    public static String GROUP_END = "";//判断是否最后一个参团
+
+
+
+    /**
      * 一键登录手机号
      */
     public static String Number_Phone = "";

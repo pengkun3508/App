@@ -43,6 +43,7 @@ import com.vinnlook.www.R;
 import com.vinnlook.www.base.BaseFragment;
 import com.vinnlook.www.common.Constant;
 import com.vinnlook.www.event.GuangGaoEvent;
+import com.vinnlook.www.event.MainHomeActivityEvent;
 import com.vinnlook.www.event.StratMoveAbooutActivity_1;
 import com.vinnlook.www.http.model.SignBean;
 import com.vinnlook.www.receiver.AppUpdateReceiver;
@@ -58,6 +59,7 @@ import com.vinnlook.www.surface.activity.MoveAbooutActivity_3;
 import com.vinnlook.www.surface.activity.ProductDetailsActivity;
 import com.vinnlook.www.surface.activity.RankingListActivity_1;
 import com.vinnlook.www.surface.activity.WebActivity;
+import com.vinnlook.www.surface.activity.WebActivity3;
 import com.vinnlook.www.surface.adapter.BannerImgAdapter;
 import com.vinnlook.www.surface.adapter.BannerImgAdapter1;
 import com.vinnlook.www.surface.adapter.BannerImgAdapter4;
@@ -65,6 +67,7 @@ import com.vinnlook.www.surface.adapter.BannerImgAdapter6;
 import com.vinnlook.www.surface.adapter.Discount_Adapter_1;
 import com.vinnlook.www.surface.adapter.PaoQiList_New_Adapter;
 import com.vinnlook.www.surface.adapter.Recommend_Adapter;
+import com.vinnlook.www.surface.adapter.Title_New2_Adapter;
 import com.vinnlook.www.surface.bean.HomeTab1Bean;
 import com.vinnlook.www.surface.fragment.adapter.Title_New_Adapter;
 import com.vinnlook.www.surface.mvp.presenter.HomeTab1FragmentPresenter;
@@ -76,7 +79,6 @@ import com.vinnlook.www.utils.UserUtils;
 import com.vinnlook.www.widgat.SpaceItemDecoration;
 import com.vinnlook.www.widgat.SpacesItemDecoration;
 import com.youth.banner.Banner;
-import com.youth.banner.config.IndicatorConfig;
 import com.youth.banner.indicator.RectangleIndicator;
 import com.youth.banner.listener.OnBannerListener;
 
@@ -128,6 +130,13 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
     @BindView(R.id.recycler_recommend)
     RecyclerView recyclerRecommend;
 
+    @BindView(R.id.title_recycler)
+    RecyclerView titleRecycler;
+    @BindView(R.id.viewpage_layout2)
+    RelativeLayout viewpageLayout2;
+    @BindView(R.id.huodong2_img)
+    ImageView huodong2Img;
+
 
     private final String[] mTitles = {"", ""};
 
@@ -154,18 +163,16 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
     List<HomeTab1Bean.HeadBannerBean> gatBannetData2;
     PaoQiList_New_Adapter paoQiAdapter3;
     Recommend_Adapter paoQiAdapter4;
-    Title_New_Adapter titleAdapter;
+    Title_New2_Adapter titleAdapter;
+    Title_New_Adapter titleAdapte;
     List<HomeTab1Bean.DiscountBean.ListBeanXX> getDiscounts;
     HomeTab1Bean.AlertAdBean getAlert_ad;//广告
     public PopupWindow popupwindow;//广告弹框
-    @BindView(R.id.title_recycler)
-    RecyclerView titleRecycler;
 
 
     HashMap<String, Object> map;
     List<HashMap<String, Object>> list;
-    @BindView(R.id.viewpage_layout2)
-    RelativeLayout viewpageLayout2;
+
 
     List<String> bannerList1_1;
 
@@ -187,7 +194,7 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
 
     @Override
     protected void initView() {
-        addTitleList();//添加数据
+//        addTitleList();//添加数据
 
         banner1.addBannerLifecycleObserver(this);
         banner2.addBannerLifecycleObserver(this);
@@ -278,6 +285,39 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
             }
         });
 
+        //Title适配器
+        titleAdapter = new Title_New2_Adapter(getActivity());
+        final GridLayoutManager titleManager = new GridLayoutManager(getActivity(), 4);
+//        titleManager.setOrientation(GridLayoutManager.HORIZONTAL);
+        titleRecycler.setLayoutManager(titleManager);
+        titleRecycler.addItemDecoration(new SpacesItemDecoration(DensityUtils.dp2px(getActivity(), 0)));
+        titleRecycler.addItemDecoration(new SpaceItemDecoration(0, 40));
+        titleRecycler.setNestedScrollingEnabled(false);
+        titleRecycler.setHasFixedSize(true);
+        titleRecycler.setAdapter(titleAdapter);
+
+        titleAdapter.addOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                if (titleAdapter.getData().get(position).getType() == 0) {//海淘专区
+                    HaiTaoClassActivity.startSelf(getActivity(), "海淘专区", "2");
+                } else if (titleAdapter.getData().get(position).getType() == 1) {//自营专区
+                    HaiTaoClassActivity.startSelf(getActivity(), "自营专区", "1");
+                } else if (titleAdapter.getData().get(position).getType() == 2) {//限时折扣
+                    LimitedActivity_1.startSelf(getActivity());
+                } else if (titleAdapter.getData().get(position).getType() == 3) {//排行榜
+                    RankingListActivity_1.startSelf(getActivity());
+                } else if (titleAdapter.getData().get(position).getType() == 4) {//护理液
+                    HomePublicClassActivity.startSelf(getActivity(), "护理液专区", "", "2", "", "", "");
+                } else if (titleAdapter.getData().get(position).getType() == 5) {//佩戴工具
+                    HomePublicClassActivity.startSelf(getActivity(), "佩戴工具专区", "", "", "1", "", "");
+                } else if (titleAdapter.getData().get(position).getType() == 6) {//医美专区
+                    HomePublicClassActivity.startSelf(getActivity(), "医美专区", "", "", "2", "", "");
+                } else if (titleAdapter.getData().get(position).getType() == 7) {//更多
+                    new MainHomeActivityEvent("4").post();
+                }
+            }
+        });
 
     }
 
@@ -313,37 +353,39 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
 
         Log.e("TitleDatas", "==list==" + list);
 
-        //Title适配器
-        titleAdapter = new Title_New_Adapter(getActivity(), list);
-        final GridLayoutManager titleManager = new GridLayoutManager(getActivity(), 4);
-//        titleManager.setOrientation(GridLayoutManager.HORIZONTAL);
-        titleRecycler.setLayoutManager(titleManager);
-        titleRecycler.addItemDecoration(new SpacesItemDecoration(DensityUtils.dp2px(getActivity(), 0)));
-        titleRecycler.addItemDecoration(new SpaceItemDecoration(0, 20));
-        titleRecycler.setNestedScrollingEnabled(false);
-        titleRecycler.setHasFixedSize(true);
-        titleRecycler.setAdapter(titleAdapter);
-        titleAdapter.setOnItemClickListener(new Title_New_Adapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                if (position == 0) {//海淘专区
-                    HaiTaoClassActivity.startSelf(getActivity(), "海淘专区", "2");
-                } else if (position == 1) {//自营专区
-                    HaiTaoClassActivity.startSelf(getActivity(), "自营专区", "1");
-                } else if (position == 2) {//限时折扣
-                    LimitedActivity_1.startSelf(getActivity());
-                } else if (position == 3) {//排行榜
-                    RankingListActivity_1.startSelf(getActivity());
-                } else if (position == 4) {//护理液
-                    HomePublicClassActivity.startSelf(getActivity(), "护理液专区", "", "2", "", "", "");
-                } else if (position == 5) {//佩戴工具
-                    HomePublicClassActivity.startSelf(getActivity(), "佩戴工具专区", "", "", "1", "", "");
-                } else if (position == 6) {//医美专区
-                    HomePublicClassActivity.startSelf(getActivity(), "医美专区", "", "", "2", "", "");
-                }
-
-            }
-        });
+//        //Title适配器
+//        titleAdapter = new Title_New_Adapter(getActivity(), list);
+//        final GridLayoutManager titleManager = new GridLayoutManager(getActivity(), 4);
+////        titleManager.setOrientation(GridLayoutManager.HORIZONTAL);
+//        titleRecycler.setLayoutManager(titleManager);
+//        titleRecycler.addItemDecoration(new SpacesItemDecoration(DensityUtils.dp2px(getActivity(), 10)));
+//        titleRecycler.addItemDecoration(new SpaceItemDecoration(0, 40));
+//        titleRecycler.setNestedScrollingEnabled(false);
+//        titleRecycler.setHasFixedSize(true);
+//        titleRecycler.setAdapter(titleAdapter);
+//        titleAdapter.setOnItemClickListener(new Title_New_Adapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(int position) {
+//
+//
+//                if (position == 0) {//海淘专区
+//                    HaiTaoClassActivity.startSelf(getActivity(), "海淘专区", "2");
+//                } else if (position == 1) {//自营专区
+//                    HaiTaoClassActivity.startSelf(getActivity(), "自营专区", "1");
+//                } else if (position == 2) {//限时折扣
+//                    LimitedActivity_1.startSelf(getActivity());
+//                } else if (position == 3) {//排行榜
+//                    RankingListActivity_1.startSelf(getActivity());
+//                } else if (position == 4) {//护理液
+//                    HomePublicClassActivity.startSelf(getActivity(), "护理液专区", "", "2", "", "", "");
+//                } else if (position == 5) {//佩戴工具
+//                    HomePublicClassActivity.startSelf(getActivity(), "佩戴工具专区", "", "", "1", "", "");
+//                } else if (position == 6) {//医美专区
+//                    HomePublicClassActivity.startSelf(getActivity(), "医美专区", "", "", "2", "", "");
+//                }
+//
+//            }
+//        });
     }
 
 
@@ -357,39 +399,6 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
             //更新UI
             switch (msg.what) {
                 case 1:
-//                    if (banner1 != null) {
-//                        Log.e("mHandler", "==banner1==" + banner1);
-//                        Log.e("mHandler", "==bannerList==" + bannerList);
-//                        banner1.setDatas(bannerList);
-//                        Bitmap bitm1 = bannerList.get(0);
-//                        int bitmHeight = bitm1.getHeight();
-//                        Log.e("handleMessage", "bitmHeight=111=" + bitmHeight);
-//                        int bitmHeight2 = DensityUtil.px2dip(getActivity(), bitmHeight);
-//                        Log.e("handleMessage", "bitmHeight=222=" + bitmHeight2);
-//
-//
-//                        int height = banner1.getMeasuredHeight();
-////                        Log.e("handleMessage", "height==-----==" + height);
-////                        height = getViewHeight(banner1, true);
-//                        Log.e("handleMessage", "height==000==" + height);
-//
-//                        int height4 = height / 3;
-//                        Log.e("handleMessage", "height4==444==" + height4);
-//                        int height5 = height - height4;
-//                        Log.e("handleMessage", "height5==555==" + height5);
-//
-//
-//                        int height1 = DensityUtil.px2dip(getActivity(), height);
-//                        Log.e("handleMessage", "height==111==" + height1);
-//                        int height2 = height1 / 2 + 50;
-//                        Log.e("handleMessage", "height==222==" + height2);
-//                        int height3 = height1 + height2;
-//                        Log.e("handleMessage", "height1==333==" + height3);
-////                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-////                        layoutParams.setMargins(0, height5, 0, 0);
-////                        viewpageLayout2.setLayoutParams(layoutParams);
-//                    }
-
                     break;
             }
 
@@ -533,8 +542,8 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
                     CommodityActivity.startSelf(getContext(), gatBannetData2.get(position).getList().getActive_id(), gatBannetData2.get(position).getList().getId(), "商品列表", "0");//进入活动详情页面
                 } else if (gatBannetData2.get(position).getType().equals("8")) {//新活动专区
                     HuoDongZoneActivity_1.startSelf(getActivity());
-                } else if (gatBannetData2.get(position).getType().equals("9")) {//9：品团go
-//                    GroupWorkGoActivity.startSelf(getActivity());
+                } else if (gatBannetData2.get(position).getType().equals("9")) {//9：拼团go
+                    GroupWorkGoActivity.startSelf(getActivity());
                 } else if (gatBannetData2.get(position).getType().equals("10")) {//10：限时折扣
                     LimitedActivity_1.startSelf(getActivity());
                 } else if (gatBannetData2.get(position).getType().equals("11")) {//11：排行榜
@@ -544,10 +553,75 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
                 }
             }
         });
+        List<HomeTab1Bean.MenuBean> asdas = data.getMenu();
+        titleAdapter.setData(data.getMenu());//title数据
+
+        //活动
+        HomeTab1Bean.ActiveInfoBean getActivityInfo = data.getActiveInfo();
+        if (getActivityInfo.getId().equals("") || getActivityInfo.getId() == null) {
+            huodong2Img.setVisibility(View.GONE);
+        } else {
+            huodong2Img.setVisibility(View.VISIBLE);
+            Matrix matrix = new Matrix();           //创建一个单位矩阵
+            matrix.setTranslate(0, 0);          //平移x和y各100单位
+            matrix.preRotate(0);                   //顺时针旋转30度
+            huodong2Img.setScaleType(ImageView.ScaleType.MATRIX);
+            huodong2Img.setImageMatrix(matrix);
+            ImageLoader.image(getActivity(), huodong2Img, data.getActiveInfo().getPhoto());
+            huodong2Img.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (getActivityInfo.getType().equals("1")) {
+//                    MoveAbooutActivity_1.startSelf(getActivity(), getIndex_ad.getList().getGoods_id(), getIndex_ad.getList().getSearch_attr());
+                        MoveAbooutActivity_3.startSelf(getActivity(), getActivityInfo.getList().getGoods_id(), getActivityInfo.getList().getSearch_attr());
+
+                    } else if (getActivityInfo.getType().equals("2")) {
+                        ProductDetailsActivity.startSelf(getContext(), getActivityInfo.getList().getActive_id());//进入活动详情页面
+                    } else if (getActivityInfo.getType().equals("3")) {
+//                        WebActivity.startSelf(getActivity(), getActivityInfo.getList().getUrl());
+//                        WebActivity3.startSelf(getActivity(), "https://h5.jealook.com/test-activeH5/index.html" + "?userId=" + UserUtils.getInstance().getUserId());
+                        String url;
+                        if (getActivityInfo.getList().getUrl().contains("?")) {
+                            url = getActivityInfo.getList().getUrl() + "&userId=" + UserUtils.getInstance().getUserId();
+                        } else {
+                            url = getActivityInfo.getList().getUrl() + "?userId=" + UserUtils.getInstance().getUserId();
+                        }
+                        WebActivity3.startSelf(getActivity(), url);
+
+                    } else if (getActivityInfo.getType().equals("4")) {
+
+                    } else if (getActivityInfo.getType().equals("5")) {
+//                    RecommendActivity_1.startSelf(getContext(), "", getIndex_ad.getList().getId());//商品列表
+                        HomePublicClassActivity.startSelf(getContext(), "", "0", "", "", "", getActivityInfo.getList().getId());
+                    } else if (getActivityInfo.getType().equals("6")) {
+
+                        if (!UserUtils.getInstance().getUserId().equals("")) {
+//                        MemberActivity.startSelf(getContext(), "2");//会员购买入口
+                            MemberActivity_1.startSelf(getContext(), "2");//会员购买入口
+                        } else {
+                            Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                        }
+                    } else if (getActivityInfo.getType().equals("7")) {//7：品牌商品列表
+                        CommodityActivity.startSelf(getContext(), getActivityInfo.getList().getActive_id(), getActivityInfo.getList().getId(), "商品列表", "0");//进入活动详情页面
+                    } else if (getActivityInfo.getType().equals("8")) {//新活动专区
+                        HuoDongZoneActivity_1.startSelf(getActivity());
+                    } else if (getActivityInfo.getType().equals("9")) {//9：品团go
+                        GroupWorkGoActivity.startSelf(getActivity());
+                    } else if (getActivityInfo.getType().equals("10")) {//10：限时折扣
+                        LimitedActivity_1.startSelf(getActivity());
+                    } else if (getActivityInfo.getType().equals("11")) {//11：排行榜
+                        RankingListActivity_1.startSelf(getActivity());
+                    } else if (getActivityInfo.getType().equals("12")) {//12：优惠券
+                        CouponActivity.startSelf(getActivity());
+                    }
+                }
+            });
+
+
+        }
 
 
         HomeTab1Bean.IndexAdBean getIndex_ad = data.getIndex_ad();
-
         if (getIndex_ad.getId().equals("") || getIndex_ad.getId() == null) {
             huodongImg.setVisibility(View.GONE);
         } else {
@@ -565,7 +639,6 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
                     if (getIndex_ad.getType().equals("1")) {
 //                    MoveAbooutActivity_1.startSelf(getActivity(), getIndex_ad.getList().getGoods_id(), getIndex_ad.getList().getSearch_attr());
                         MoveAbooutActivity_3.startSelf(getActivity(), getIndex_ad.getList().getGoods_id(), getIndex_ad.getList().getSearch_attr());
-
                     } else if (getIndex_ad.getType().equals("2")) {
                         ProductDetailsActivity.startSelf(getContext(), getIndex_ad.getList().getActive_id());//进入活动详情页面
                     } else if (getIndex_ad.getType().equals("3")) {
@@ -576,7 +649,6 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
 //                    RecommendActivity_1.startSelf(getContext(), "", getIndex_ad.getList().getId());//商品列表
                         HomePublicClassActivity.startSelf(getContext(), "", "0", "", "", "", getIndex_ad.getList().getId());
                     } else if (getIndex_ad.getType().equals("6")) {
-
                         if (!UserUtils.getInstance().getUserId().equals("")) {
 //                        MemberActivity.startSelf(getContext(), "2");//会员购买入口
                             MemberActivity_1.startSelf(getContext(), "2");//会员购买入口
@@ -588,7 +660,7 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
                     } else if (getIndex_ad.getType().equals("8")) {//新活动专区
                         HuoDongZoneActivity_1.startSelf(getActivity());
                     } else if (getIndex_ad.getType().equals("9")) {//9：品团go
-//                        GroupWorkGoActivity.startSelf(getActivity());
+                        GroupWorkGoActivity.startSelf(getActivity());
                     } else if (getIndex_ad.getType().equals("10")) {//10：限时折扣
                         LimitedActivity_1.startSelf(getActivity());
                     } else if (getIndex_ad.getType().equals("11")) {//11：排行榜
@@ -948,7 +1020,7 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
                 } else if (getAlert_ad.getType().equals("8")) {//新活动专区
                     HuoDongZoneActivity_1.startSelf(getActivity());
                 } else if (getAlert_ad.getType().equals("9")) {//9：品团go
-//                    GroupWorkGoActivity.startSelf(getActivity());
+                    GroupWorkGoActivity.startSelf(getActivity());
                 } else if (getAlert_ad.getType().equals("10")) {//10：限时折扣
                     LimitedActivity_1.startSelf(getActivity());
                 } else if (getAlert_ad.getType().equals("11")) {//11：排行榜

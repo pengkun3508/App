@@ -13,6 +13,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
@@ -84,12 +85,14 @@ import com.vinnlook.www.surface.adapter.DetailsImags1Adapter;
 import com.vinnlook.www.surface.adapter.DetailsImags2Adapter;
 import com.vinnlook.www.surface.adapter.MultipleTypesAdapter;
 import com.vinnlook.www.surface.adapter.ReBangImagAdapter;
+import com.vinnlook.www.surface.adapter.ShopColourImgAdapter;
 import com.vinnlook.www.surface.adapter.TuiJianAdapter;
 import com.vinnlook.www.surface.adapter.WenListAdapter;
 import com.vinnlook.www.surface.bean.ConfirmOrderBean;
 import com.vinnlook.www.surface.bean.DatasBean;
 import com.vinnlook.www.surface.bean.DetailsBean;
 import com.vinnlook.www.surface.dialog.TypeSelectDialog;
+import com.vinnlook.www.surface.mvp.model.bean.ProductBean;
 import com.vinnlook.www.surface.mvp.presenter.MoveAboutPresenter;
 import com.vinnlook.www.surface.mvp.view.MoveAboutView;
 import com.vinnlook.www.surface.viewholder.VideoHolder;
@@ -322,6 +325,14 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
     RelativeLayout moveYushouBtn;
     @BindView(R.id.move_yushou_line_view)
     View moveYushouLineView;
+    @BindView(R.id.move3_huodong_img)
+    ImageView move3HuodongImg;
+    @BindView(R.id.move_shop_explain)
+    TextView moveShopExplain;
+    @BindView(R.id.move_shop_attr_recycler)
+    RecyclerView moveShopAttrRecycler;
+    @BindView(R.id.move_shop_explain_layout)
+    LinearLayout moveShopExplainLayout;
 
 
     private float totaldy;
@@ -375,7 +386,7 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
 
     String goods_attr;
 
-
+    ShopColourImgAdapter shopColourImgAdapter;
     CommentListAdapter commentAdapter;//评价适配器
     WenListAdapter wenAdapter;//问一问适配器
     DetailsImags1Adapter adapter;//详情适配器
@@ -443,8 +454,10 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
                         popupwindow.dismiss();
                         return;
                     } else {
-                        initmPopupWindowView();
-                        popupwindow.showAtLocation(getActivity().getWindow().getDecorView(), Gravity.CENTER, 0, 0);
+                        if (moveDataBean != null) {
+                            initmPopupWindowView();
+                            popupwindow.showAtLocation(getActivity().getWindow().getDecorView(), Gravity.CENTER, 0, 0);
+                        }
                     }
                 } else {
                     showLoadingDialog();
@@ -648,6 +661,65 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
 
     //创建适配器
     private void initAdapter() {
+
+        //颜色图片
+        shopColourImgAdapter = new ShopColourImgAdapter(this);
+        final GridLayoutManager manag = new GridLayoutManager(this, 1);
+        manag.setOrientation(LinearLayoutManager.HORIZONTAL);
+        moveShopAttrRecycler.setLayoutManager(manag);
+        moveShopAttrRecycler.addItemDecoration(new SpacesItemDecoration(DensityUtils.dp2px(this, 1)));
+        moveShopAttrRecycler.addItemDecoration(new SpaceItemDecoration(0, 0));
+        moveShopAttrRecycler.setNestedScrollingEnabled(false);
+        moveShopAttrRecycler.setHasFixedSize(false);
+        shopColourImgAdapter.addOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                List<MoveDataBean.AttrBean.ValueBean.BannerBeanX> getShopBanner = shopColourImgAdapter.getData().get(position).getBanner();
+                //判断是不是视频， 改变主页数据
+                List<MoveDataBean.InfoBean.BannerBean> banlist = new ArrayList<>();
+                for (int i = 0; i < getShopBanner.size(); i++) {
+                    MoveDataBean.InfoBean.BannerBean bannerBeans = new MoveDataBean.InfoBean.BannerBean();
+                    bannerBeans.setUrl(getShopBanner.get(i).getUrl());
+                    bannerBeans.setType(getShopBanner.get(i).getType());
+                    banlist.add(bannerBeans);
+                }
+//        BannerImgAdapter bannerImgAdapter = new BannerImgAdapter(getActivity(), strings);
+//        banner.setAdapter(bannerImgAdapter);
+//        banner.setIndicator(new CircleIndicator(getActivity()));
+                banner.addBannerLifecycleObserver(MoveAbooutActivity_3.this)
+                        .setAdapter(new MultipleTypesAdapter(MoveAbooutActivity_3.this, banlist, moveDataBean.getInfo().getProduct_price(), moveDataBean.getInfo().getBorder_image()))
+                        .setIndicator(new NumIndicator(MoveAbooutActivity_3.this))
+                        .setIndicatorGravity(IndicatorConfig.Direction.RIGHT)
+                        .addOnPageChangeListener(new OnPageChangeListener() {
+                            @Override
+                            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                            }
+
+                            @Override
+                            public void onPageSelected(int position) {
+                                Log.e("--", "position:" + position);
+                                if (player == null) {
+                                    RecyclerView.ViewHolder viewHolder = banner.getAdapter().getViewHolder();
+                                    if (viewHolder instanceof VideoHolder) {
+                                        VideoHolder holder = (VideoHolder) viewHolder;
+                                        player = holder.player;
+                                    }
+                                    return;
+                                }
+                                if (position != 0) {
+                                    player.onVideoReset();
+                                }
+                            }
+
+                            @Override
+                            public void onPageScrollStateChanged(int state) {
+                            }
+                        });
+
+            }
+        });
+
+
         //评价适配器
         commentAdapter = new CommentListAdapter(this);
         final GridLayoutManager manager3 = new GridLayoutManager(this, 1);
@@ -750,6 +822,23 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
 
         moveDataBean = data;
 
+        //是否显示副标题
+        if (data.getInfo().getGoods_brief().equals("")) {
+            moveShopExplainLayout.setVisibility(View.GONE);
+        } else {
+            moveShopExplainLayout.setVisibility(View.VISIBLE);
+        }
+
+        //是否显示眼睛图片，0：不显示；1：显示
+        if (data.getInfo().getIs_show_sye().equals("1")) {
+            moveShopAttrRecycler.setVisibility(View.VISIBLE);
+        } else if (data.getInfo().getIs_show_sye().equals("0")) {
+            moveShopAttrRecycler.setVisibility(View.GONE);
+        }
+        moveShopExplain.setText(data.getInfo().getGoods_brief());
+        shopColourImgAdapter.setData(data.getAttr().get(0).getValue());
+        moveShopAttrRecycler.setAdapter(shopColourImgAdapter);
+
         int getIs_collect = moveDataBean.getInfo().getIs_collect();
         if (getIs_collect == 0) {//没有收藏
             moveShoucangImg.setImageDrawable(ResUtils.getDrawable(R.mipmap.move_img1));
@@ -768,6 +857,40 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
             bean.setType(i + 1);
             list.add(bean);
         }
+
+        //判断是否有活动
+        if (!data.getAd_info().getPhoto().equals("") && data.getAd_info().getPhoto() != null) {
+            move3HuodongImg.setVisibility(View.VISIBLE);
+            Matrix matrix = new Matrix();           //创建一个单位矩阵
+            matrix.setTranslate(0, 0);          //平移x和y各100单位
+            matrix.preRotate(0);                   //顺时针旋转30度
+            move3HuodongImg.setScaleType(ImageView.ScaleType.MATRIX);
+            move3HuodongImg.setImageMatrix(matrix);
+            ImageLoader.image(this, move3HuodongImg, data.getAd_info().getPhoto());
+            move3HuodongImg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+//                    WebActivity3.startSelf(MoveAbooutActivity_3.this, data.getAd_info().getPhoto());
+                    String url;
+//                WebActivity3.startSelf(getActivity(), "https://h5.jealook.com/test-activeH5/index.html" + "?userId=" + UserUtils.getInstance().getUserId());
+//                WebActivity3.startSelf(getActivity(), data.getAd_info().getList().getUrl() + "?userId=" + UserUtils.getInstance().getUserId());
+
+//                    url = "http://h5.jealook.com/test-activeH5/index.html";
+                    url = data.getAd_info().getList().getUrl();
+
+                    if (url.contains("?")) {
+                        url = url + "&userId=" + UserUtils.getInstance().getUserId();
+                    } else {
+                        url = url + "?userId=" + UserUtils.getInstance().getUserId();
+                    }
+                    WebActivity3.startSelf(getActivity(), url);
+                }
+            });
+        } else {
+            move3HuodongImg.setVisibility(View.GONE);
+        }
+
+
         //计算秒杀倒计时---ms
         dt = Integer.valueOf(data.getInfo().getSurplus_time());
         handler.sendEmptyMessageDelayed(0, 1000);
@@ -915,7 +1038,6 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
         }
 
 
-
         //规格
         if (data.getInfo().getShop_attr_name().equals("") || data.getInfo().getShop_attr_name() == null) {
             moveTypeText.setText("选择 颜色 规格（片数） 度数");
@@ -971,15 +1093,8 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
             @Override
             public void onClick(View view) {
                 Log.e("点击事件", "==选择规格==");
-                TypeSelectDialog.with(MoveAbooutActivity_3.this, data, goods_attr, "", new TypeSelectDialog.AddShopCarClickListener() {
-                    @Override
-                    public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_names, String mmake) {
-//                        moveDataBean.getInfo().setShop_attr_name(getAttr_names);
-//                        moveTypeText.setText(getAttr_names);
-//                            notifyDataSetChanged();
-                        TypeSelectDialog.dismiss();
-                    }
-                }).show();
+                presenter.getTypeShopData4(goods_id);
+
             }
         });
 
@@ -1225,13 +1340,18 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
 
                 break;
             case R.id.move_shoucang_btn://收藏
-                if (mark.equals("0")) {
-                    mark = "1";
-                    presenter.getMoveCollectionShop(moveDataBean.getInfo().getGoods_id(), mark);
-                } else if (mark.equals("1")) {
-                    mark = "0";
-                    presenter.getMoveCollectionShop(moveDataBean.getInfo().getGoods_id(), mark);
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    if (mark.equals("0")) {
+                        mark = "1";
+                        presenter.getMoveCollectionShop(moveDataBean.getInfo().getGoods_id(), mark);
+                    } else if (mark.equals("1")) {
+                        mark = "0";
+                        presenter.getMoveCollectionShop(moveDataBean.getInfo().getGoods_id(), mark);
+                    }
+                } else {
+                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
                 }
+
                 break;
             case R.id.move_add_shopcat_btn://加入购物车
                 if (moveDataBean == null) {
@@ -1239,14 +1359,8 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
                 }
                 if (!UserUtils.getInstance().getUserId().equals("")) {
 //                String getSearch_attr = moveDataBean.getInfo().getSearch_attr();//默认选中的规格和颜色
-                    TypeSelectDialog.with(getActivity(), moveDataBean, goods_attr, "", new TypeSelectDialog.AddShopCarClickListener() {
-                        @Override
-                        public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_names, String mmake) {
-                            Log.e("onBtnClLister=购物车==", "==getAttr_names==" + getAttr_names);
-//                            getAttr_name = getAttr_names;
-                            presenter.getAddShopCar(goods_id, product_id, num);
-                        }
-                    }).show();
+                    presenter.getTypeShopData5(goods_id);
+
                 } else {
                     Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
 
@@ -1264,20 +1378,7 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
                 }
 
                 if (!UserUtils.getInstance().getUserId().equals("")) {
-                    TypeSelectDialog.with(getActivity(), moveDataBean, goods_attr, "1", new TypeSelectDialog.AddShopCarClickListener() {
-                        @Override
-                        public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_names, String mmake) {
-                            Log.e("onBtnClickListen=即购买==", "==getAttr_names==" + getAttr_names);
-//                            getAttr_name = getAttr_names;
-//                            presenter.getAddShopCar(goods_id, product_id, num);
-                            mmark = mmake;
-//                            presenter.getConfirmOrderData("", goods_id, product_id, num, "", "", "");
-                            presenter.getConfirmOrderData("", goods_id, product_id, num, "", "", "", "", "", "", "");
-                            product_ids = product_id;
-                            nums = num;
-
-                        }
-                    }).show();
+                    presenter.getTypeShopData6(goods_id);
                 } else {
                     Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
 //                    loginDialog();
@@ -2338,7 +2439,7 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
     @Override
     public void getConfirmOrderSuccess(int code, ConfirmOrderBean data) {
         if (mmark.equals("1")) {
-            ConfirmOrderActivity_1.startSelf(MoveAbooutActivity_3.this, "", goods_id, product_ids, nums, "2");
+            ConfirmOrderActivity_1.startSelf(MoveAbooutActivity_3.this, "", goods_id, product_ids, nums, "2", "", "");
 
             TypeSelectDialog.dismiss();
         }
@@ -2382,7 +2483,7 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
 
         TypeSelectDialog.with(getActivity(), data, ecommendBean.getSearch_attr(), "", new TypeSelectDialog.AddShopCarClickListener() {
             @Override
-            public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name, String mmake) {
+            public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name, ProductBean productBean, String mmake) {
 //                presenter.getModifyType(mark, getRec_id, num, product_id);
                 presenter.getAddShopCar(goods_id, product_id, num);
 
@@ -2398,6 +2499,106 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
      */
     @Override
     public void getTypeShopFail(int code, String msg) {
+
+    }
+
+    /**
+     * 下载商品规格成功
+     *
+     * @param code
+     * @param data
+     */
+    @Override
+    public void getTypeShop4Success(int code, MoveDataBean data) {
+        moveDataBean.setProduct(data.getProduct());
+        TypeSelectDialog.with(MoveAbooutActivity_3.this, moveDataBean, goods_attr, "", new TypeSelectDialog.AddShopCarClickListener() {
+            @Override
+            public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_names, ProductBean productBean, String mmake) {
+//                        moveDataBean.getInfo().setShop_attr_name(getAttr_names);
+//                        moveTypeText.setText(getAttr_names);
+//                            notifyDataSetChanged();
+                TypeSelectDialog.dismiss();
+            }
+        }).show();
+
+    }
+
+    /**
+     * 下载商品规格失败
+     *
+     * @param code
+     * @param
+     */
+    @Override
+    public void getTypeShop4Fail(int code, String msg) {
+
+    }
+
+    /**
+     * 下载商品规格成功
+     *
+     * @param code
+     * @param data
+     */
+    @Override
+    public void getTypeShop5Success(int code, MoveDataBean data) {
+        moveDataBean.setProduct(data.getProduct());
+        TypeSelectDialog.with(getActivity(), moveDataBean, goods_attr, "", new TypeSelectDialog.AddShopCarClickListener() {
+            @Override
+            public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_names, ProductBean productBean, String mmake) {
+                Log.e("onBtnClLister=购物车==", "==getAttr_names==" + getAttr_names);
+//                            getAttr_name = getAttr_names;
+                presenter.getAddShopCar(goods_id, product_id, num);
+            }
+        }).show();
+
+    }
+
+    /**
+     * 下载商品规格失败
+     *
+     * @param code
+     * @param
+     */
+    @Override
+    public void getTypeShop5Fail(int code, String msg) {
+
+    }
+
+    /**
+     * 下载商品规格成功
+     *
+     * @param code
+     * @param data
+     */
+    @Override
+    public void getTypeShop6Success(int code, MoveDataBean data) {
+        moveDataBean.setProduct(data.getProduct());
+        TypeSelectDialog.with(getActivity(), moveDataBean, goods_attr, "1", new TypeSelectDialog.AddShopCarClickListener() {
+            @Override
+            public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_names, ProductBean productBean, String mmake) {
+                Log.e("onBtnClickListen=即购买==", "==getAttr_names==" + getAttr_names);
+//                            getAttr_name = getAttr_names;
+//                            presenter.getAddShopCar(goods_id, product_id, num);
+                mmark = mmake;
+//                            presenter.getConfirmOrderData("", goods_id, product_id, num, "", "", "");
+                presenter.getConfirmOrderData("", goods_id, product_id, num, "", "", "", "", "", "", "", "", "");
+                product_ids = product_id;
+                nums = num;
+
+            }
+        }).show();
+
+    }
+
+    /**
+     * 下载商品规格失败
+     *
+     * @param code
+     * @param
+     */
+    @Override
+    public void getTypeShop6Fail(int code, String msg) {
 
     }
 

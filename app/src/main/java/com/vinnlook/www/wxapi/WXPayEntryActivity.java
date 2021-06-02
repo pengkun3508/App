@@ -15,7 +15,10 @@ import com.tencent.mm.opensdk.utils.Log;
 import com.vinnlook.www.common.ConstantData;
 import com.vinnlook.www.surface.activity.AllOrderActivity;
 import com.vinnlook.www.surface.activity.ConfirmOrderActivity_1;
+import com.vinnlook.www.surface.activity.GroupOrderDetailsActivity;
 import com.vinnlook.www.surface.activity.MemberCompleteActivity;
+import com.vinnlook.www.surface.activity.MoveAbooutActivity_4;
+import com.vinnlook.www.surface.activity.OpenGroupSuccessActivity;
 import com.vinnlook.www.surface.activity.PayOrderActivity;
 import com.vinnlook.www.surface.activity.PayResultsActivity;
 import com.vinnlook.www.utils.CacheActivity;
@@ -82,16 +85,39 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
                     Toast.makeText(this, "微信支付成功", Toast.LENGTH_SHORT).show();
 //                    CacheActivity.finishSingleActivityByClass(PayOrderActivity.class);
 //                    CacheActivity.finishSingleActivityByClass(ConfirmOrderActivity_1.class);
-                    MemberCompleteActivity.startSelf(this, ConstantData.CHANNELS);//channel会员购买入口:  1---详情页面，，2--其他页面进入会员购买页面，3---确认订单页面
                     CacheActivity.finishActivity();
+                    MemberCompleteActivity.startSelf(this, ConstantData.CHANNELS);//channel会员购买入口:  1---详情页面，，2--其他页面进入会员购买页面，3---确认订单页面
+
                     finish();
                 } else {
                     //支付失败
                     Toast.makeText(this, "微信支付失败", Toast.LENGTH_SHORT).show();
                     finish();
                 }
-            }
+            } else if (ConstantData.CHANNEL.equals("3")) {//购买拼图商品
+                if (resp.errCode == 0) {//返回参数意思 参考文档即可
+                    //支付成功  执行相关操作
+                    //支付成功
+                    Toast.makeText(this, "微信支付成功", Toast.LENGTH_SHORT).show();
+                    if (ConstantData.GROUP_END.equals("1")){//最后一位参团
+                        CacheActivity.finishSingleActivityByClass(MoveAbooutActivity_4.class);
+                        CacheActivity.finishSingleActivityByClass(PayOrderActivity.class);
+                        CacheActivity.finishSingleActivityByClass(ConfirmOrderActivity_1.class);
+                        GroupOrderDetailsActivity.startSelf(this, ConstantData.ORDER_ID);
+                        finish();
+                    }else{
+                        CacheActivity.finishSingleActivityByClass(PayOrderActivity.class);
+                        CacheActivity.finishSingleActivityByClass(ConfirmOrderActivity_1.class);
+                        OpenGroupSuccessActivity.startSelf(this, ConstantData.ORDER_ID);
+                        finish();
+                    }
 
+                } else {
+                    //支付失败
+                    Toast.makeText(this, "微信支付失败", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            }
 
 
         }

@@ -29,6 +29,25 @@ public class HomeTab1Bean extends BaseBean {
     private List<BannerBeanX> banner;
     private List<HeadBannerBean> head_banner;
     private List<ShopBean> shop;
+    private List<MenuBean> menu;
+    private ActiveInfoBean activeInfo;
+
+    public List<MenuBean> getMenu() {
+        return menu;
+    }
+
+    public void setMenu(List<MenuBean> menu) {
+        this.menu = menu;
+    }
+
+    public ActiveInfoBean getActiveInfo() {
+        return activeInfo;
+    }
+
+    public void setActiveInfo(ActiveInfoBean activeInfo) {
+        this.activeInfo = activeInfo;
+    }
+
 
     public IndexAdBean getIndex_ad() {
         return index_ad;
@@ -93,6 +112,199 @@ public class HomeTab1Bean extends BaseBean {
     public void setShop(List<ShopBean> shop) {
         this.shop = shop;
     }
+
+
+    public static class MenuBean {
+
+        /**
+         * name : 海淘专区
+         * type : 0
+         * image : /app_img/20210518/20210518113750_59902.png
+         */
+
+        private String name;
+        private int type;
+        private String image;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getType() {
+            return type;
+        }
+
+        public void setType(int type) {
+            this.type = type;
+        }
+
+        public String getImage() {
+            return image;
+        }
+
+        public void setImage(String image) {
+            this.image = image;
+        }
+    }
+
+    public static class ActiveInfoBean {
+
+
+        /**
+         * value : http://h5.jealook.com/test/index.html?good_id=471&search_attr=20686_20893&channel=OPPO&group_id=16804&is_group=1
+         * type : 3
+         * id : 73
+         * end_time :
+         * start_time :
+         * position_id : 38
+         * photo : http://vinnlook1.oss-cn-zhangjiakou.aliyuncs.com/app_img/20210518/20210518144800_98827.png
+         * list : {"goods_id":"","search_attr":"","active_id":"","url":"http://h5.jealook.com/test/index.html?good_id=471&search_attr=20686_20893&channel=OPPO&group_id=16804&is_group=1","text":"","id":""}
+         */
+
+        private String value;
+        private String type;
+        private String id;
+        private String end_time;
+        private String start_time;
+        private String position_id;
+        private String photo;
+        private ListBean list;
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getEnd_time() {
+            return end_time;
+        }
+
+        public void setEnd_time(String end_time) {
+            this.end_time = end_time;
+        }
+
+        public String getStart_time() {
+            return start_time;
+        }
+
+        public void setStart_time(String start_time) {
+            this.start_time = start_time;
+        }
+
+        public String getPosition_id() {
+            return position_id;
+        }
+
+        public void setPosition_id(String position_id) {
+            this.position_id = position_id;
+        }
+
+        public String getPhoto() {
+            return photo;
+        }
+
+        public void setPhoto(String photo) {
+            this.photo = photo;
+        }
+
+        public ListBean getList() {
+            return list;
+        }
+
+        public void setList(ListBean list) {
+            this.list = list;
+        }
+
+        public static class ListBean {
+            /**
+             * goods_id :
+             * search_attr :
+             * active_id :
+             * url : http://h5.jealook.com/test/index.html?good_id=471&search_attr=20686_20893&channel=OPPO&group_id=16804&is_group=1
+             * text :
+             * id :
+             */
+
+            private String goods_id;
+            private String search_attr;
+            private String active_id;
+            private String url;
+            private String text;
+            private String id;
+
+            public String getGoods_id() {
+                return goods_id;
+            }
+
+            public void setGoods_id(String goods_id) {
+                this.goods_id = goods_id;
+            }
+
+            public String getSearch_attr() {
+                return search_attr;
+            }
+
+            public void setSearch_attr(String search_attr) {
+                this.search_attr = search_attr;
+            }
+
+            public String getActive_id() {
+                return active_id;
+            }
+
+            public void setActive_id(String active_id) {
+                this.active_id = active_id;
+            }
+
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
+            }
+
+            public String getText() {
+                return text;
+            }
+
+            public void setText(String text) {
+                this.text = text;
+            }
+
+            public String getId() {
+                return id;
+            }
+
+            public void setId(String id) {
+                this.id = id;
+            }
+        }
+    }
+
 
     public static class IndexAdBean {
         /**

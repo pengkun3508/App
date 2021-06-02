@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,8 +48,9 @@ public class EvaluateListAdapter extends BaseStateAdapter<EvaluateListBean.ListB
 
     class EvaluateListHolder extends BaseHolder<EvaluateListBean.ListBean> {
         RoundedImageView comment_img_head;
-        TextView comment_name, comment_time, comment_type, comment_conten;
+        TextView comment_name, comment_time, comment_type, comment_conten, kefu_content;
         RecyclerView comment_img_grid;
+        LinearLayout kefu_content_layout;
 
         EvaluateListHolder(View itemView) {
             super(itemView);
@@ -58,6 +60,8 @@ public class EvaluateListAdapter extends BaseStateAdapter<EvaluateListBean.ListB
             comment_type = itemView.findViewById(R.id.comment_type);//规格类型
             comment_conten = itemView.findViewById(R.id.comment_conten);//规格类型
             comment_img_grid = itemView.findViewById(R.id.comment_img_grid);//图片List
+            kefu_content = itemView.findViewById(R.id.kefu_content);//客服回复内容
+            kefu_content_layout = itemView.findViewById(R.id.kefu_content_layout);//客服回复内容
 
 
         }
@@ -94,11 +98,20 @@ public class EvaluateListAdapter extends BaseStateAdapter<EvaluateListBean.ListB
                 comment_img_grid.setVisibility(View.GONE);
             }
 
+            //是否有客服回复内容
+            if (data.getReply_content().equals("")) {
+                kefu_content_layout.setVisibility(View.GONE);
+            } else {
+                kefu_content_layout.setVisibility(View.VISIBLE);
+                kefu_content.setText(data.getReply_content());
+            }
+
+
             //查看图片
             commentAdapter.addOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view, int position) {
-                    PhotoViewActivity.startSelf((Activity) context,data.getImage(),position);
+                    PhotoViewActivity.startSelf((Activity) context, data.getImage(), position);
                 }
             });
 

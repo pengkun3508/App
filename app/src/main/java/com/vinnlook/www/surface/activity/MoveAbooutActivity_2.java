@@ -83,6 +83,7 @@ import com.vinnlook.www.surface.bean.ConfirmOrderBean;
 import com.vinnlook.www.surface.bean.DatasBean;
 import com.vinnlook.www.surface.bean.DetailsBean;
 import com.vinnlook.www.surface.dialog.TypeSelectDialog;
+import com.vinnlook.www.surface.mvp.model.bean.ProductBean;
 import com.vinnlook.www.surface.mvp.presenter.MoveAboutPresenter;
 import com.vinnlook.www.surface.mvp.view.MoveAboutView;
 import com.vinnlook.www.surface.viewholder.VideoHolder;
@@ -908,7 +909,7 @@ public class MoveAbooutActivity_2 extends BaseActivity<MoveAboutPresenter> imple
             public void onClick(View view) {
                 TypeSelectDialog.with(MoveAbooutActivity_2.this, data, "", "", new TypeSelectDialog.AddShopCarClickListener() {
                     @Override
-                    public void onBtnClickListener(String goods_id, String getRec_id,String product_id, String num, String getAttr_names, String mmake) {
+                    public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_names, ProductBean productBean, String mmake) {
 //                            dataBean.getInfo().setShop_attr_name(getAttr_names);
 //                            move_type_text.setText(getAttr_names);
 //                            notifyDataSetChanged();
@@ -1171,7 +1172,7 @@ public class MoveAbooutActivity_2 extends BaseActivity<MoveAboutPresenter> imple
 //                String getSearch_attr = moveDataBean.getInfo().getSearch_attr();//默认选中的规格和颜色
                     TypeSelectDialog.with(getActivity(), moveDataBean, "", "", new TypeSelectDialog.AddShopCarClickListener() {
                         @Override
-                        public void onBtnClickListener(String goods_id,String getRec_id, String product_id, String num, String getAttr_names, String mmake) {
+                        public void onBtnClickListener(String goods_id,String getRec_id, String product_id, String num, String getAttr_names, ProductBean productBean,String mmake) {
                             Log.e("onBtnClLister=购物车==", "==getAttr_names==" + getAttr_names);
 //                            getAttr_name = getAttr_names;
                             presenter.getAddShopCar(goods_id, product_id, num);
@@ -1196,13 +1197,13 @@ public class MoveAbooutActivity_2 extends BaseActivity<MoveAboutPresenter> imple
                 if (!UserUtils.getInstance().getUserId().equals("")) {
                     TypeSelectDialog.with(getActivity(), moveDataBean, "", "1", new TypeSelectDialog.AddShopCarClickListener() {
                         @Override
-                        public void onBtnClickListener(String goods_id, String getRec_id,String product_id, String num, String getAttr_names, String mmake) {
+                        public void onBtnClickListener(String goods_id, String getRec_id,String product_id, String num, String getAttr_names,ProductBean productBean, String mmake) {
                             Log.e("onBtnClickListen=即购买==", "==getAttr_names==" + getAttr_names);
 //                            getAttr_name = getAttr_names;
 //                            presenter.getAddShopCar(goods_id, product_id, num);
                             mmark = mmake;
 //                            presenter.getConfirmOrderData("", goods_id, product_id, num, "", "", "");
-                            presenter.getConfirmOrderData("", goods_id, product_id, num, "", "", "", "", "", "", "");
+                            presenter.getConfirmOrderData("", goods_id, product_id, num, "", "", "", "", "", "", "","","");
                             product_ids = product_id;
                             nums = num;
 
@@ -1985,7 +1986,7 @@ public class MoveAbooutActivity_2 extends BaseActivity<MoveAboutPresenter> imple
     @Override
     public void getConfirmOrderSuccess(int code, ConfirmOrderBean data) {
         if (mmark.equals("1")) {
-            ConfirmOrderActivity_1.startSelf(MoveAbooutActivity_2.this, "", goods_id, product_ids, nums,"2");
+            ConfirmOrderActivity_1.startSelf(MoveAbooutActivity_2.this, "", goods_id, product_ids, nums,"2","","");
 
             TypeSelectDialog.dismiss();
         }
@@ -2029,7 +2030,7 @@ public class MoveAbooutActivity_2 extends BaseActivity<MoveAboutPresenter> imple
 
         TypeSelectDialog.with(getActivity(), data, ecommendBean.getSearch_attr(), "", new TypeSelectDialog.AddShopCarClickListener() {
             @Override
-            public void onBtnClickListener(String goods_id, String getRec_id,String product_id, String num, String getAttr_name, String mmake) {
+            public void onBtnClickListener(String goods_id, String getRec_id,String product_id, String num, String getAttr_name, ProductBean productBean,String mmake) {
 //                presenter.getModifyType(mark, getRec_id, num, product_id);
                 presenter.getAddShopCar(goods_id, product_id, num);
 
@@ -2045,6 +2046,36 @@ public class MoveAbooutActivity_2 extends BaseActivity<MoveAboutPresenter> imple
      */
     @Override
     public void getTypeShopFail(int code, String msg) {
+
+    }
+
+    @Override
+    public void getTypeShop4Success(int code, MoveDataBean data) {
+
+    }
+
+    @Override
+    public void getTypeShop4Fail(int code, String msg) {
+
+    }
+
+    @Override
+    public void getTypeShop5Success(int code, MoveDataBean data) {
+
+    }
+
+    @Override
+    public void getTypeShop5Fail(int code, String msg) {
+
+    }
+
+    @Override
+    public void getTypeShop6Success(int code, MoveDataBean data) {
+
+    }
+
+    @Override
+    public void getTypeShop6Fail(int code, String msg) {
 
     }
 

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical">
+    android:background="@color/white">
 
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
@@ -12,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ScrollView
+        <com.vinnlook.www.utils.MyScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:overScrollMode="never"
@@ -22,6 +21,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:orientation="vertical">
 
 
@@ -287,6 +288,39 @@
 
 
                 </LinearLayout>
+
+                <com.flyco.roundview.RoundLinearLayout
+                    android:id="@+id/my_guonggao_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/home_banner_fragment"
+                    android:layout_marginLeft="@dimen/spacing_15dp"
+                    android:layout_marginTop="@dimen/spacing_15dp"
+                    android:layout_marginRight="@dimen/spacing_15dp"
+                    android:gravity="left|center"
+                    android:orientation="horizontal"
+                    app:rv_backgroundColor="@color/shop_title_bg11"
+                    app:rv_cornerRadius="@dimen/spacing_6dp">
+
+                    <ImageView
+                        android:layout_width="@dimen/spacing_35dp"
+                        android:layout_height="@dimen/spacing_20dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/home_gonggao_1" />
+
+
+                    <ViewFlipper
+                        android:id="@+id/my_guonggao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autoStart="true"
+                        android:flipInterval="2000"
+                        android:inAnimation="@anim/in_animation"
+                        android:outAnimation="@anim/out_animation" />
+
+
+                </com.flyco.roundview.RoundLinearLayout>
+
 
 
                 <LinearLayout
@@ -607,6 +641,196 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="135dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@mipmap/my_bg_1"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/spacing_20dp"
+                    android:paddingTop="@dimen/spacing_10dp"
+                    android:paddingRight="@dimen/spacing_20dp">
+
+                    <RelativeLayout
+                        android:id="@+id/my_group_all_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_15dp"
+                        android:layout_marginTop="@dimen/spacing_5dp"
+                        android:layout_marginRight="@dimen/spacing_15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="我的拼团"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/spacing_20dp"
+                            android:paddingTop="@dimen/spacing_5dp"
+                            android:paddingBottom="@dimen/spacing_5dp"
+                            android:text="全部"
+                            android:textColor="@color/me_text_1"
+                            android:textSize="@dimen/text_12" />
+
+                        <ImageView
+                            android:layout_width="@dimen/spacing_10dp"
+                            android:layout_height="@dimen/spacing_10dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@mipmap/me_icon_5" />
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_1dp"
+                        android:layout_marginTop="@dimen/spacing_5dp"
+                        android:background="@color/me_line" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_10dp"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:id="@+id/my_group_1_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:layout_width="@dimen/spacing_30dp"
+                                    android:layout_height="@dimen/spacing_30dp"
+                                    android:background="@mipmap/my_group_icon_2" />
+
+                                <TextView
+                                    android:id="@+id/my_group_1_num"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/spacing_25dp"
+                                    android:background="@drawable/bg_tab_roundtip"
+                                    android:gravity="center"
+                                    android:paddingLeft="3dp"
+                                    android:paddingRight="3dp"
+                                    android:text="0"
+                                    android:textColor="@color/white"
+                                    android:textSize="8sp" />
+                            </RelativeLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_5dp"
+                                android:text="开团中"
+                                android:textColor="@color/my_text1"
+                                android:textSize="@dimen/text_12" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/my_group_2_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+
+                                <ImageView
+                                    android:layout_width="@dimen/spacing_30dp"
+                                    android:layout_height="@dimen/spacing_30dp"
+                                    android:background="@mipmap/my_group_icon_1" />
+
+                                <TextView
+                                    android:id="@+id/my_group_2_num"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/spacing_25dp"
+                                    android:background="@drawable/bg_tab_roundtip"
+                                    android:gravity="center"
+                                    android:paddingLeft="3dp"
+                                    android:paddingRight="3dp"
+                                    android:text="0"
+                                    android:textColor="@color/white"
+                                    android:textSize="8sp" />
+
+                            </RelativeLayout>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_5dp"
+                                android:text="参团中"
+                                android:textColor="@color/my_text1"
+                                android:textSize="@dimen/text_12" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/my_group_3_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:layout_width="@dimen/spacing_30dp"
+                                    android:layout_height="@dimen/spacing_30dp"
+                                    android:background="@mipmap/my_group_icon_3" />
+
+                                <TextView
+                                    android:id="@+id/my_group_3_num"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/spacing_25dp"
+                                    android:background="@drawable/bg_tab_roundtip"
+                                    android:gravity="center"
+                                    android:paddingLeft="3dp"
+                                    android:paddingRight="3dp"
+                                    android:text="0"
+                                    android:textColor="@color/white"
+                                    android:textSize="8sp" />
+                            </RelativeLayout>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_5dp"
+                                android:text="完成拼团"
+                                android:textColor="@color/my_text1"
+                                android:textSize="@dimen/text_12" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -833,7 +1057,7 @@
                                     android:text="0"
                                     android:textColor="@color/white"
                                     android:textSize="8sp"
-                                    android:visibility="gone"/>
+                                    android:visibility="gone" />
                             </RelativeLayout>
 
                             <TextView
@@ -850,6 +1074,6 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-        </ScrollView>
+        </com.vinnlook.www.utils.MyScrollView>
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-</LinearLayout>
+</RelativeLayout>

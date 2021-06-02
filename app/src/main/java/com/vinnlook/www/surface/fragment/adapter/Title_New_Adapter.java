@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -142,10 +141,14 @@ public class Title_New_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     class FootViewHolder extends RecyclerView.ViewHolder {
         LinearLayout more_layout_btn;
+        ImageView title_more_img;
+        TextView title_more_text;
 
         public FootViewHolder(View itemView) {
             super(itemView);
             more_layout_btn = itemView.findViewById(R.id.more_layout_btn);
+            title_more_img = itemView.findViewById(R.id.title_more_img);
+            title_more_text = itemView.findViewById(R.id.title_more_text);
         }
     }
 

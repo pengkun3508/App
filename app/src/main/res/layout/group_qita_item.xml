@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_5dp"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_1dp"
+        android:background="@color/line" />
+
+    <com.flyco.roundview.RoundLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_15dp"
+        android:layout_marginRight="@dimen/spacing_15dp"
+        android:orientation="horizontal"
+        android:padding="@dimen/spacing_10dp"
+        app:rv_backgroundColor="@color/white"
+        app:rv_cornerRadius="@dimen/spacing_5dp">
+
+        <ImageView
+            android:id="@+id/group_item_qita_image"
+            android:layout_width="@dimen/spacing_70dp"
+            android:layout_height="@dimen/spacing_70dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_15dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/group_item_qita_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lines="2"
+                    android:text="日本美瞳日抛"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_14" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_10dp">
+
+                <TextView
+                    android:id="@+id/group_item_qita_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥600.00"
+                    android:textColor="#502292"
+                    android:textSize="@dimen/text_12" />
+
+                <TextView
+                    android:id="@+id/group_item_qita_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_10dp"
+                    android:layout_toRightOf="@+id/group_item_qita_price"
+                    android:background="@drawable/group_jianbian_btn"
+                    android:paddingLeft="@dimen/spacing_5dp"
+                    android:paddingRight="@dimen/spacing_5dp"
+                    android:text="已拼830件"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_12"/>
+
+                <com.flyco.roundview.RoundLinearLayout
+                    android:id="@+id/group_item1_time_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="距结束"
+                        android:textColor="#C29AFD"
+                        android:textSize="@dimen/text_12" />
+
+                    <com.flyco.roundview.RoundTextView
+                        android:id="@+id/group_item_qita_hour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_5dp"
+                        android:paddingLeft="@dimen/spacing_2dp"
+                        android:paddingTop="@dimen/spacing_1dp"
+                        android:paddingRight="@dimen/spacing_2dp"
+                        android:paddingBottom="@dimen/spacing_1dp"
+                        android:text="00"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_10"
+                        app:rv_backgroundColor="#C29AFD"
+                        app:rv_cornerRadius="@dimen/spacing_2dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_3dp"
+                        android:layout_marginRight="@dimen/spacing_3dp"
+                        android:text=":"
+                        android:textColor="#C29AFD" />
+
+                    <com.flyco.roundview.RoundTextView
+                        android:id="@+id/group_item_qita_min"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/spacing_2dp"
+                        android:paddingTop="@dimen/spacing_1dp"
+                        android:paddingRight="@dimen/spacing_2dp"
+                        android:paddingBottom="@dimen/spacing_1dp"
+                        android:text="00"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_10"
+                        app:rv_backgroundColor="#C29AFD"
+                        app:rv_cornerRadius="@dimen/spacing_2dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_3dp"
+                        android:layout_marginRight="@dimen/spacing_3dp"
+                        android:text=":"
+                        android:textColor="#C29AFD" />
+
+                    <com.flyco.roundview.RoundTextView
+                        android:id="@+id/group_item_qita_second"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/spacing_2dp"
+                        android:paddingTop="@dimen/spacing_1dp"
+                        android:paddingRight="@dimen/spacing_2dp"
+                        android:paddingBottom="@dimen/spacing_1dp"
+                        android:text="00"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_10"
+                        app:rv_backgroundColor="#C29AFD"
+                        app:rv_cornerRadius="@dimen/spacing_2dp" />
+
+                </com.flyco.roundview.RoundLinearLayout>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </com.flyco.roundview.RoundLinearLayout>
+
+
+</LinearLayout>

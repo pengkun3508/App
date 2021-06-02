@@ -370,6 +370,7 @@ public class AllOrderActivity extends BaseActivity<AllOrderPresenter> implements
 //            adapter.setData(data.getList());
 //            presenter.dismissLoading();
 //        }
+        smartRefreshLayout.finishRefresh();
     }
 
 

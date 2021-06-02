@@ -68,6 +68,7 @@ import com.vinnlook.www.surface.adapter.PinpaiList_Adapter;
 import com.vinnlook.www.surface.adapter.XianShiList_Adapter;
 import com.vinnlook.www.surface.dialog.TypeSelectDialog;
 import com.vinnlook.www.surface.dialog.UpdateDialog;
+import com.vinnlook.www.surface.mvp.model.bean.ProductBean;
 import com.vinnlook.www.surface.mvp.presenter.HomeFragmentPresenter;
 import com.vinnlook.www.surface.mvp.view.HomeFragmentView;
 import com.vinnlook.www.utils.DensityUtils;
@@ -1013,7 +1014,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentPresenter> implements
 
         TypeSelectDialog.with(getActivity(), moveDataBeas, xianGoods_attr, "", new TypeSelectDialog.AddShopCarClickListener() {
             @Override
-            public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name, String mmake) {
+            public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name, ProductBean productBean, String mmake) {
                 xianGoods_attr = "";
 //                presenter.getModifyType(mark, getRec_id, num, product_id);
                 presenter.getAddShopCar(goods_id, product_id, num);
@@ -1087,7 +1088,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentPresenter> implements
         Log.e("选择商品类型", "===抛期====xianGoods_attr===" + xianGoods_attr);
         TypeSelectDialog.with(getActivity(), moveDataBeas, xianGoods_attr, "", new TypeSelectDialog.AddShopCarClickListener() {
             @Override
-            public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name, String mmake) {
+            public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name,ProductBean productBean, String mmake) {
                 xianGoods_attr = "";
 //                presenter.getModifyType(mark, getRec_id, num, product_id);
                 presenter.getAddShopCar(goods_id, product_id, num);

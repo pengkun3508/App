@@ -34,6 +34,7 @@ import com.vinnlook.www.surface.adapter.ReMaiListAdapter;
 import com.vinnlook.www.surface.adapter.TitleList_Adapter;
 import com.vinnlook.www.surface.bean.HaiTaoClassBean;
 import com.vinnlook.www.surface.dialog.TypeSelectDialog;
+import com.vinnlook.www.surface.mvp.model.bean.ProductBean;
 import com.vinnlook.www.surface.mvp.presenter.HaiTaoClassPresenter;
 import com.vinnlook.www.surface.mvp.view.HaiTaoClassView;
 import com.vinnlook.www.utils.CacheActivity;
@@ -389,7 +390,7 @@ public class HaiTaoClassActivity extends BaseActivity<HaiTaoClassPresenter> impl
         Log.e("选择商品类型", "===抛期====xianGoods_attr===" + xianGoods_attr);
         TypeSelectDialog.with(getActivity(), moveDataBeas, xianGoods_attr, "", new TypeSelectDialog.AddShopCarClickListener() {
             @Override
-            public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name, String mmake) {
+            public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name, ProductBean productBean, String mmake) {
                 xianGoods_attr = "";
 //                presenter.getModifyType(mark, getRec_id, num, product_id);
                 presenter.getAddShopCar(goods_id, product_id, num);
@@ -451,7 +452,7 @@ public class HaiTaoClassActivity extends BaseActivity<HaiTaoClassPresenter> impl
         data.setInfo(infoBean);
         TypeSelectDialog.with(getActivity(), data, listBean.getSearch_attr(), "", new TypeSelectDialog.AddShopCarClickListener() {
             @Override
-            public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name, String mmake) {
+            public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name,ProductBean productBean, String mmake) {
 
                 presenter.getAddShopCar(goods_id, product_id, num);
 

@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/open_group_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.vinnlook.www.widgat.actionbar.ActionBarSimple
+            android:id="@+id/action_bar"
+            style="@style/ActionBarStyle.Simple"
+            android:background="@color/white"
+            app:ab_bottom_line_color="@color/line"
+            app:ab_bottom_line_height="1dp"
+            app:abs_back_icon="@mipmap/back"
+            app:abs_title="开团成功"
+            app:abs_title_text_color="@color/text_black" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_15dp">
+
+            <com.flyco.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_20dp"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_15dp"
+                app:rv_backgroundColor="@color/white"
+                app:rv_cornerRadius="@dimen/spacing_10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_25dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="您已成功参团，再邀请"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_12" />
+
+                    <TextView
+                        android:id="@+id/group_success_peo2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2人"
+                        android:textColor="@color/text_main"
+                        android:textSize="@dimen/text_12" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="即可成团啦！"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_12" />
+                </LinearLayout>
+
+
+                <com.flyco.roundview.RoundLinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/spacing_20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/spacing_20dp"
+                    android:paddingTop="@dimen/spacing_5dp"
+                    android:paddingRight="@dimen/spacing_20dp"
+                    android:paddingBottom="5dp"
+                    app:rv_backgroundColor="#F7F7F7"
+                    app:rv_cornerRadius="@dimen/spacing_30dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="距结束"
+                        android:textColor="#C29AFD"
+                        android:textSize="@dimen/text_16" />
+
+                    <com.flyco.roundview.RoundTextView
+                        android:id="@+id/group_success_hour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_5dp"
+                        android:paddingLeft="@dimen/spacing_2dp"
+                        android:paddingTop="@dimen/spacing_1dp"
+                        android:paddingRight="@dimen/spacing_2dp"
+                        android:paddingBottom="@dimen/spacing_1dp"
+                        android:text="23"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_12"
+                        app:rv_backgroundColor="#C29AFD"
+                        app:rv_cornerRadius="@dimen/spacing_2dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_3dp"
+                        android:layout_marginRight="@dimen/spacing_3dp"
+                        android:text=":"
+                        android:textColor="#C29AFD" />
+
+                    <com.flyco.roundview.RoundTextView
+                        android:id="@+id/group_success_min"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/spacing_2dp"
+                        android:paddingTop="@dimen/spacing_1dp"
+                        android:paddingRight="@dimen/spacing_2dp"
+                        android:paddingBottom="@dimen/spacing_1dp"
+                        android:text="23"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_12"
+                        app:rv_backgroundColor="#C29AFD"
+                        app:rv_cornerRadius="@dimen/spacing_2dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_3dp"
+                        android:layout_marginRight="@dimen/spacing_3dp"
+                        android:text=":"
+                        android:textColor="#C29AFD" />
+
+                    <com.flyco.roundview.RoundTextView
+                        android:id="@+id/group_success_seconds"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/spacing_2dp"
+                        android:paddingTop="@dimen/spacing_1dp"
+                        android:paddingRight="@dimen/spacing_2dp"
+                        android:paddingBottom="@dimen/spacing_1dp"
+                        android:text="23"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_12"
+                        app:rv_backgroundColor="#C29AFD"
+                        app:rv_cornerRadius="@dimen/spacing_2dp" />
+
+                </com.flyco.roundview.RoundLinearLayout>
+
+
+                <TextView
+                    android:id="@+id/group_success_yaoqing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_20dp"
+                    android:background="@drawable/open_group_bg_btn"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/spacing_5dp"
+                    android:paddingBottom="@dimen/spacing_5dp"
+                    android:text="邀请好友"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_16" />
+
+                <TextView
+                    android:id="@+id/group_success_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_10dp"
+                    android:background="@drawable/open_group_bg_btn"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/spacing_5dp"
+                    android:paddingBottom="@dimen/spacing_5dp"
+                    android:text="查看订单"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_16" />
+
+                <TextView
+                    android:id="@+id/group_success_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_10dp"
+                    android:background="@drawable/open_group_bg_btn"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/spacing_5dp"
+                    android:paddingBottom="@dimen/spacing_5dp"
+                    android:text="回到首页"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_16" />
+
+
+            </com.flyco.roundview.RoundLinearLayout>
+
+            <ImageView
+                android:layout_width="@dimen/spacing_40dp"
+                android:layout_height="@dimen/spacing_40dp"
+                android:layout_centerHorizontal="true"
+                android:background="@mipmap/open_group_icon" />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/group_success_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_20"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_150dp"
+            android:gravity="center"
+            android:text="开团成功，离发货仅差一步"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_16" />
+
+        <com.flyco.roundview.RoundLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_40dp"
+            android:layout_marginTop="@dimen/spacing_30dp"
+            android:layout_marginRight="@dimen/spacing_40dp"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_15dp"
+            app:rv_backgroundColor="@color/white"
+            app:rv_cornerRadius="@dimen/spacing_10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_5dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="再邀"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_12" />
+
+                <TextView
+                    android:id="@+id/group_success_peo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2"
+                    android:textColor="@color/text_main"
+                    android:textSize="@dimen/text_16" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="人 超值商品立马到手！"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_12" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_5dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="去"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_12" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="大群"
+                    android:textColor="@color/text_main"
+                    android:textSize="@dimen/text_12" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="邀请，将提升"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_12" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="95%"
+                    android:textColor="@color/text_main"
+                    android:textSize="@dimen/text_12" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="拼团成功率哦！"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_12" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_15dp"
+                android:layout_marginBottom="@dimen/spacing_10dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/wx_py_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/spacing_30dp"
+                        android:layout_height="@dimen/spacing_30dp"
+                        android:background="@mipmap/share_wechat_icon_1" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="微信"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_12" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/wx_pyq_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/spacing_30dp"
+                        android:layout_height="@dimen/spacing_30dp"
+                        android:background="@mipmap/share_wxcircle_icon_1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="朋友圈"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_12" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/wx_qrcode_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/spacing_30dp"
+                        android:layout_height="@dimen/spacing_30dp"
+                        android:background="@mipmap/share_qrcode_icon_1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="通过二维码"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_12" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/copy_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/spacing_30dp"
+                        android:layout_height="@dimen/spacing_30dp"
+                        android:background="@mipmap/share_copy_icon_1" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="复制"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_12" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </com.flyco.roundview.RoundLinearLayout>
+
+        <LinearLayout
+            android:id="@+id/group_success_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/spacing_10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/spacing_20dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/cha_cha_cha" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

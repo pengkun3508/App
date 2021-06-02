@@ -145,19 +145,19 @@ public class PayMemberActivity extends BaseActivity<PayMemberPresenter> implemen
     public void getPostPayMemberSuccess(int code, WeCatPayBean data) {
 //        MemberCompleteActivity.startSelf(this, channel);
 
-        ConstantData.APP_ID = data.getAppid();
+        ConstantData.APP_ID = data.getContent().getAppid();
         ConstantData.CHANNEL = "1";
         ConstantData.CHANNEL = channel;//channel==会员购买入口  1---详情页面，，2--其他页面进入会员购买页面，3---确认订单页面
-        String getAppid = data.getAppid();
-        String getPartnerid = data.getPartnerid();
-        String getPrepayid = data.getPrepayid();
-        String getPackageX = data.getPackageX();
-        String getNoncestr = data.getNoncestr();
-        String getTimestamp = data.getTimestamp() + "";
-        String getSign = data.getSign();
+        String getAppid = data.getContent().getAppid();
+        String getPartnerid = data.getContent().getPartnerid();
+        String getPrepayid = data.getContent().getPrepayid();
+        String getPackageX = data.getContent().getPackageX();
+        String getNoncestr = data.getContent().getNoncestr();
+        String getTimestamp = data.getContent().getTimestamp() + "";
+        String getSign = data.getContent().getSign();
         WXPayUtils.WXPayBuilder builder = new WXPayUtils.WXPayBuilder();
         builder.setAppId(getAppid)
-                .setPartnerId(data.getPartnerid())
+                .setPartnerId(data.getContent().getPartnerid())
                 .setPrepayId(getPrepayid)
                 .setPackageValue(getPackageX)
                 .setNonceStr(getNoncestr)
@@ -189,7 +189,7 @@ public class PayMemberActivity extends BaseActivity<PayMemberPresenter> implemen
             @Override
             public void run() {
                 PayTask alipay = new PayTask(PayMemberActivity.this);
-                Map<String, String> result = alipay.payV2(data.getZfb_info(), true);
+                Map<String, String> result = alipay.payV2(data.getContent().getZfb_info(), true);
                 Log.i("msp", result.toString());
 
                 Message msg = new Message();

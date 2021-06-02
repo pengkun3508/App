@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dm.lib.core.adapter.rv.OnClickListener;
 import com.dm.lib.core.adapter.rv.state.BaseHolder;
+import com.flyco.roundview.RoundLinearLayout;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.vinnlook.www.R;
@@ -53,10 +54,11 @@ public class CommentListAdapter extends BaseStateAdapter5<MoveDataBean.CommentBe
     class CommentListHolder extends BaseHolder<MoveDataBean.CommentBean> {
 
         RoundedImageView comment_img_head;
-        TextView comment_name, comment_time, comment_type, comment_conten;
+        TextView comment_name, comment_time, comment_type, comment_conten,kefu_content;
         RecyclerView comment_img_grid;
         ImageView comment_logo_img;
         View comment_item_line;
+        RoundLinearLayout kefu_content_layout;
 
         CommentListHolder(View itemView) {
             super(itemView);
@@ -68,6 +70,8 @@ public class CommentListAdapter extends BaseStateAdapter5<MoveDataBean.CommentBe
             comment_img_grid = itemView.findViewById(R.id.comment_img_grid);//图片List
             comment_logo_img = itemView.findViewById(R.id.comment_logo_img);//会员最贵象征
             comment_item_line = itemView.findViewById(R.id.comment_item_line);
+            kefu_content_layout = itemView.findViewById(R.id.kefu_content_layout);
+            kefu_content = itemView.findViewById(R.id.kefu_content);
 
 
         }
@@ -97,6 +101,13 @@ public class CommentListAdapter extends BaseStateAdapter5<MoveDataBean.CommentBe
                 comment_logo_img.setVisibility(View.VISIBLE);
             } else {
                 comment_logo_img.setVisibility(View.GONE);
+            }
+            //是否有客服回复内容
+            if (data.getReply_content().equals("")) {
+                kefu_content_layout.setVisibility(View.GONE);
+            } else {
+                kefu_content_layout.setVisibility(View.VISIBLE);
+                kefu_content.setText(data.getReply_content());
             }
 
 

@@ -16,14 +16,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dm.lib.utils.ToastMaker;
 import com.vinnlook.www.R;
-import com.vinnlook.www.event.ChangeDetailPriceEvent;
 import com.vinnlook.www.http.model.MoveDataBean;
 import com.vinnlook.www.surface.activity.PhotoViewActivity_1;
 import com.vinnlook.www.surface.adapter.TypeSelectAdapter;
 import com.vinnlook.www.surface.mvp.model.bean.ProductBean;
 import com.vinnlook.www.utils.ImageLoader;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import per.goweii.anylayer.AnimHelper;
@@ -38,7 +36,7 @@ public class TypeSelectDialog {
 
     static AnyLayer mAnyLayer;
     private static Activity mActivity;
-    private MoveDataBean moveDataBean;
+    MoveDataBean moveDataBean;
     List<String> getBanner;
     String getBannerUrl;
     static RelativeLayout all_layout;
@@ -102,10 +100,28 @@ public class TypeSelectDialog {
                         String getSearch_attrs = getInfo.getSearch_attr() + "|" + getAttr_value;
                         getSearch_attr = getInfo.getSearch_attr();
 
+                        Log.e("默认选择值", "===第一次====goods_attr===000000==" + goods_attr);
+
+                        Log.e("默认选择值", "===第一次====getSearch_attr===000000==" + getSearch_attr);
+
                         if (goods_attr != null && !goods_attr.equals("")) {
                             getSearch_attr = goods_attr;
+                            Log.e("默认选择值", "===默认值====goods_attr===000000==" + goods_attr);
+
+                            for (int i = 0; i < moveDataBean.getProduct().size(); i++) {
+                                Log.e("默认选择值", "===默认值====getGoods_attr===111111111==" + moveDataBean.getProduct().get(i).getGoods_attr());
+                                if (goods_attr.equals(moveDataBean.getProduct().get(i).getGoods_attr())) {
+                                    productBean = moveDataBean.getProduct().get(i);
+                                    Log.e("默认选择值", "===默认值====productBean==111===" + productBean);
+                                }
+                            }
                         }
-                        Log.e("默认选择值", "===默认值=========" + getSearch_attr);
+
+
+                        Log.e("默认选择值", "===默认值====productBean===222==" + productBean);
+                        Log.e("默认选择值", "===默认值====getSearch_attr=====" + getSearch_attr);
+                        Log.e("默认选择值", "===默认值====getProduct=====" + moveDataBean.getProduct());
+                        Log.e("默认选择值", "===默认值====getAttr=====" + moveDataBean.getAttr());
 
                         TypeSelectAdapter typeSelectAdapter = new TypeSelectAdapter(getSearch_attr, getProduct, moveDataBean.getAttr());
                         recyclerView.setAdapter(typeSelectAdapter);
@@ -118,11 +134,26 @@ public class TypeSelectDialog {
                                 }
                                 productBean = productBeans;
                                 type_number.setText("库存" + productBeans.getProduct_number() + "件");
-                                type_price.setText(Html.fromHtml("&yen") + productBeans.getProduct_price());
-                                getRec_id=productBean.getRec_id();
+
+                                if (moveDataBean.getInfo().getIs_group().equals("1")) {
+                                    type_price.setText(Html.fromHtml("&yen") + moveDataBean.getInfo().getPreferential_price());
+                                } else {
+                                    if (moveDataBean.getInfo().getIs_promote().equals("1")) {//显示限时页面
+                                        type_price.setText(Html.fromHtml("&yen") + productBeans.getPreferential_price());
+                                    } else {
+                                        type_price.setText(Html.fromHtml("&yen") + productBeans.getProduct_price());
+                                    }
+                                }
+
+
+                                getRec_id = productBean.getRec_id();
                                 getProduct_id = productBean.getProduct_id();
-                                Log.e("ScreenItemAdapter","getRec_id==getRec_id=="+getRec_id);
-                                Log.e("ScreenItemAdapter","getProduct_id==getProduct_id=="+getProduct_id);
+                                Log.e("ScreenItemAdapter", "==getIs_promote==" + moveDataBean.getInfo().getIs_promote());
+                                Log.e("ScreenItemAdapter", "==getPreferential_price==" + productBeans.getPreferential_price());
+                                Log.e("ScreenItemAdapter", "==getProduct_price==" + productBeans.getProduct_price());
+                                Log.e("ScreenItemAdapter", "==productBeans==" + productBeans);
+                                Log.e("ScreenItemAdapter", "getRec_id==getRec_id==" + getRec_id);
+                                Log.e("ScreenItemAdapter", "getProduct_id==getProduct_id==" + getProduct_id);
                                 Log.e("TypeSelectDialog", "==getProduct_id==" + productBeans.getProduct_id());
                                 Log.e("TypeSelectDialog", "==getAttr_name==" + productBeans.getAttr_name());
                                 Log.e("TypeSelectDialog", "==getBanner==" + getBanner);
@@ -190,7 +221,18 @@ public class TypeSelectDialog {
 
                         Log.e("getBannerUrl", "==getBannerUrl==" + getBannerUrl);
                         ImageLoader.image(mActivity, type_img, getBannerUrl);
-                        type_price.setText(Html.fromHtml("&yen") + getInfo.getProduct_price());
+
+                        if (moveDataBean.getInfo().getIs_group().equals("1")) {
+                            type_price.setText(Html.fromHtml("&yen") + moveDataBean.getInfo().getPreferential_price());
+                        } else {
+                            if (moveDataBean.getInfo().getIs_promote().equals("1")) {//显示限时页面
+                                type_price.setText(Html.fromHtml("&yen") + getInfo.getPreferential_price());
+                            } else {
+                                type_price.setText(Html.fromHtml("&yen") + getInfo.getProduct_price());
+                            }
+                        }
+
+
                         type_number.setText("库存" + getInfo.getProduct_number() + "件");
                         type_img.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -246,7 +288,7 @@ public class TypeSelectDialog {
                             public void onClick(View view) {
                                 Log.e("确定", "==productBean==" + productBean);
                                 if (productBean != null) {
-                                    addShopCarClickListener.onBtnClickListener(moveDataBean.getInfo().getGoods_id(), getRec_id,getProduct_id, tv_num.getText().toString().trim(), productBean.getAttr_name(), mark);
+                                    addShopCarClickListener.onBtnClickListener(moveDataBean.getInfo().getGoods_id(), getRec_id, getProduct_id, tv_num.getText().toString().trim(), productBean.getAttr_name(), productBean, mark);
                                 } else {
                                     Toast.makeText(mActivity, "请先选择完产品", Toast.LENGTH_SHORT).show();
                                 }
@@ -280,7 +322,7 @@ public class TypeSelectDialog {
 
 
     public interface AddShopCarClickListener {
-        void onBtnClickListener(String goods_id, String getRec_id,String product_id, String num, String getAttr_name, String mmake);
+        void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name, ProductBean productBean, String mmake);
     }
 
 

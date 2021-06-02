@@ -30,6 +30,9 @@ import com.vinnlook.www.surface.bean.CompanyBean;
 import com.vinnlook.www.surface.bean.ConfirmOrderBean;
 import com.vinnlook.www.surface.bean.EvaluateListBean;
 import com.vinnlook.www.surface.bean.ExchangeBean;
+import com.vinnlook.www.surface.bean.GroupDetailsBean;
+import com.vinnlook.www.surface.bean.GroupListBean;
+import com.vinnlook.www.surface.bean.GroupOrderListBean;
 import com.vinnlook.www.surface.bean.HaiTaoClassBean;
 import com.vinnlook.www.surface.bean.HomeGoodsListBean;
 import com.vinnlook.www.surface.bean.HomePublicListBean;
@@ -178,6 +181,15 @@ public class ProjectApi extends Api {
                                                            @Query("attr") String search_attr);
 
         /**
+         * 0004---获取商品详情数据--拼图
+         */
+        @GET("shop/get-group-shop-info")
+        Observable<ResponseBean<MoveDataBean>> getMoveData4(@Query("goods_id") String goods_id,
+                                                            @Query("attr") String search_attr,
+                                                            @Query("group_id") String group_id,
+                                                            @Query("type")String type);
+
+        /**
          * 0004---消息列表
          */
         @GET("push/get-type-list")
@@ -263,8 +275,7 @@ public class ProjectApi extends Api {
          */
         @GET("list/get-subsidy-list")
         Observable<ResponseBean<LimitedBean>> getBaiWanList(@Query("page") int page,
-                                                             @Query("limit") int limit);
-
+                                                            @Query("limit") int limit);
 
 
         /**
@@ -542,6 +553,28 @@ public class ProjectApi extends Api {
         @GET("index/get-type-index")
         Observable<ResponseBean<HaiTaoClassBean>> getHaiListData(@Query("type") String type);
 
+        /**
+         * 拼图列表
+         */
+        @GET("list/get-group-list")
+        Observable<ResponseBean<GroupListBean>> getGroupListData(@Query("page") int page,
+                                                                 @Query("limit") int limit);
+
+        /**
+         * 拼团订单详情
+         */
+        @GET("order/get-group-order-info")
+        Observable<ResponseBean<GroupDetailsBean>> getGroupInfoData(@Query("id") String orderId);
+
+
+        /**
+         * 拼图订单列表
+         */
+        @GET("order/get-group-order-list")
+        Observable<ResponseBean<GroupOrderListBean>> getGroupOrderListData(@Query("page") int page,
+                                                                           @Query("limit") int limit,
+                                                                           @Query("type") String type);
+
 
         /**
          * 0004---确认订单
@@ -558,7 +591,9 @@ public class ProjectApi extends Api {
                                                                        @Field("id") String type_id,
                                                                        @Field("ht_sendid") String ht_sendid,
                                                                        @Field("zy_sendid") String zy_sendid,
-                                                                       @Field("zeng_product") String proIdSb);
+                                                                       @Field("zeng_product") String proIdSb,
+                                                                       @Field("group_info") String group_info,
+                                                                       @Field("group_id") String group_id);
 
 
         /**
@@ -612,7 +647,9 @@ public class ProjectApi extends Api {
                                                                @Field("id") String bonus_id,
                                                                @Field("waybill") String waybill_id,
                                                                @Field("zy_sendid") String zYSb,
-                                                               @Field("ht_sendid") String hTSb);
+                                                               @Field("ht_sendid") String hTSb,
+                                                               @Field("group_info") String group_info,
+                                                               @Field("group_id") String group_id);
 
         /**
          * 0004---提交订单--支付宝支付
@@ -632,7 +669,9 @@ public class ProjectApi extends Api {
                                                                 @Field("id") String bonus_id,
                                                                 @Field("waybill") String waybill_id,
                                                                 @Field("zy_sendid") String zYSb,
-                                                                @Field("ht_sendid") String hTSb);
+                                                                @Field("ht_sendid") String hTSb,
+                                                                @Field("group_info") String group_info,
+                                                                @Field("group_id") String group_id);
 
 
         /**
@@ -651,7 +690,8 @@ public class ProjectApi extends Api {
         Observable<ResponseBean<List<AlreadyCouponListBean>>> getCouponListData1(@Query("rec_id") String recIds,
                                                                                  @Query("goods_id") String goods_ids,
                                                                                  @Query("product_id") String product_ids,
-                                                                                 @Query("num") String nums);
+                                                                                 @Query("num") String nums,
+                                                                                 @Query("group_info") String group_info);
 
         /**
          * 0004---领取优惠券
@@ -735,7 +775,6 @@ public class ProjectApi extends Api {
                                                                        @Query("brand_id") String getBrand_id);
 
 
-
         /**
          * 0004---根据品牌筛选商品
          */
@@ -752,7 +791,6 @@ public class ProjectApi extends Api {
          */
         @GET("list/get-about")
         Observable<ResponseBean<List<CompanyBean>>> getCompanyListData();
-
 
 
         /**
@@ -1007,8 +1045,6 @@ public class ProjectApi extends Api {
          */
         @GET("list/get-certify-list")
         Observable<ResponseBean<List<CertifyListBean>>> getCertifyList();
-
-
 
 
         /**

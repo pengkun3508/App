@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/group_go_item_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
@@ -17,12 +18,10 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/spacing_1dp">
 
-            <com.makeramen.roundedimageview.RoundedImageView
+            <ImageView
                 android:id="@+id/xianshi_img"
                 android:layout_width="@dimen/spacing_80dp"
-                android:layout_height="@dimen/spacing_80dp"
-                android:background="@color/them"
-                app:riv_corner_radius="@dimen/spacing_5dp" />
+                android:layout_height="@dimen/spacing_80dp" />
         </LinearLayout>
 
         <ImageView
@@ -81,6 +80,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/xianshi_group_num"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/group_go_line"
@@ -92,6 +92,7 @@
 
 
                     <TextView
+                        android:id="@+id/xianshi_group_flag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/spacing_5dp"
@@ -152,6 +153,7 @@
             </LinearLayout>
 
             <LinearLayout
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/layout111"

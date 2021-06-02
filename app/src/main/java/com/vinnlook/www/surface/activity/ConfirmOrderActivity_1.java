@@ -49,6 +49,7 @@ import com.vinnlook.www.surface.adapter.ExpressList_2Adapter;
 import com.vinnlook.www.surface.bean.ConfirmOrderBean;
 import com.vinnlook.www.surface.bean.RealNameListBean;
 import com.vinnlook.www.surface.dialog.TypeSelectDialog;
+import com.vinnlook.www.surface.mvp.model.bean.ProductBean;
 import com.vinnlook.www.surface.mvp.presenter.ConfirmOrderPresenter;
 import com.vinnlook.www.surface.mvp.view.ConfirmOrderView;
 import com.vinnlook.www.utils.CacheActivity;
@@ -170,6 +171,8 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
     static String product_id = "";
     static String num = "";
     static String flag;//等于1为购物车进入；等于2为商品详情进入；
+    static String group_info;//拼团的数据
+    static String group_id;//拼团的数据
     String address_id = "";
     String real_id = "";
     String bonus_id = "";//优惠券ID
@@ -208,7 +211,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
     String wayBillId = "";//快递ID
 
 
-    public static void startSelf(Context context, String recIds, String goods_ids, String product_ids, String nums, String flags) {
+    public static void startSelf(Context context, String recIds, String goods_ids, String product_ids, String nums, String flags, String group_infos, String group_ids) {
         Intent intent = new Intent(context, ConfirmOrderActivity_1.class);
         context.startActivity(intent);
         recId = recIds;
@@ -216,6 +219,8 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
         product_id = product_ids;
         num = nums;
         flag = flags;
+        group_info = group_infos;
+        group_id = group_ids;
     }
 
     @Override
@@ -309,7 +314,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
 
     @Override
     protected void loadData() {
-        presenter.getConfirmOrderData(recId, goods_id, product_id, num, wayBillId, "", address_id, bonus_id, hTSbString, zYSbString, proIdSbs);
+        presenter.getConfirmOrderData(recId, goods_id, product_id, num, wayBillId, "", address_id, bonus_id, hTSbString, zYSbString, proIdSbs, group_info, group_id);
 
     }
 
@@ -392,6 +397,8 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
                 Log.e("提交订单", "==sB.toString()==" + sBuilder.toString());
                 Log.e("提交订单", "==zYSbString==" + zYSbString);
                 Log.e("提交订单", "== hTSbString==" + hTSbString);
+                Log.e("提交订单", "== group_info==" + group_info);
+                Log.e("提交订单", "== group_id==" + group_id);
 
                 StringBuilder sb = new StringBuilder();
                 StringBuilder sb1 = new StringBuilder();
@@ -431,7 +438,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
                                 } else {
                                     if (getSuppliers_id.equals("")) {//没有海淘商品
                                         PayOrderActivity.startSelf(this, recId, goods_id, product_id, num, real_id, address_id, type, confirmMessage1.getText().toString(),
-                                                confirmMessage2.getText().toString(), "", payPrice, bonus_id, sBuilder.toString(), zYSbString, hTSbString);
+                                                confirmMessage2.getText().toString(), "", payPrice, bonus_id, sBuilder.toString(), zYSbString, hTSbString, group_info, group_id);
                                     } else if (getSuppliers_id.equals("1")) {//有海淘商品
                                         if (real_id.equals("")) {
                                             Toast.makeText(this, "请先选择实名认证信息", Toast.LENGTH_SHORT).show();
@@ -454,7 +461,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
                             } else {
                                 if (getSuppliers_id.equals("")) {//没有海淘商品
                                     PayOrderActivity.startSelf(this, recId, goods_id, product_id, num, real_id, address_id, type, confirmMessage1.getText().toString(),
-                                            confirmMessage2.getText().toString(), "", payPrice, bonus_id, sBuilder.toString(), zYSbString, hTSbString);
+                                            confirmMessage2.getText().toString(), "", payPrice, bonus_id, sBuilder.toString(), zYSbString, hTSbString, group_info, group_id);
                                 } else if (getSuppliers_id.equals("1")) {//有海淘商品
                                     if (real_id.equals("")) {
                                         Toast.makeText(this, "请先选择实名认证信息", Toast.LENGTH_SHORT).show();
@@ -493,7 +500,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
                         } else {
                             if (getSuppliers_id.equals("")) {//没有海淘商品
                                 PayOrderActivity.startSelf(this, recId, goods_id, product_id, num, real_id, address_id, type, confirmMessage1.getText().toString(),
-                                        confirmMessage2.getText().toString(), "", payPrice, bonus_id, sBuilder.toString(), zYSbString, hTSbString);
+                                        confirmMessage2.getText().toString(), "", payPrice, bonus_id, sBuilder.toString(), zYSbString, hTSbString, group_info, group_id);
                             } else if (getSuppliers_id.equals("1")) {//有海淘商品
                                 if (real_id.equals("")) {
                                     Toast.makeText(this, "请先选择实名认证信息", Toast.LENGTH_SHORT).show();
@@ -515,7 +522,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
                     } else {
                         if (getSuppliers_id.equals("")) {//没有海淘商品
                             PayOrderActivity.startSelf(this, recId, goods_id, product_id, num, real_id, address_id, type, confirmMessage1.getText().toString(),
-                                    confirmMessage2.getText().toString(), "", payPrice, bonus_id, sBuilder.toString(), zYSbString, hTSbString);
+                                    confirmMessage2.getText().toString(), "", payPrice, bonus_id, sBuilder.toString(), zYSbString, hTSbString, group_info, group_id);
                         } else if (getSuppliers_id.equals("1")) {//有海淘商品
                             if (real_id.equals("")) {
                                 Toast.makeText(this, "请先选择实名认证信息", Toast.LENGTH_SHORT).show();
@@ -573,7 +580,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
             @Override
             public void onClick(View view) {
                 PayOrderActivity.startSelf(ConfirmOrderActivity_1.this, recId, goods_id, product_id, num, real_id, address_id, type, confirmMessage1.getText().toString(),
-                        confirmMessage2.getText().toString(), "", payPrice, bonus_id, sBuilder.toString(), zYSbString, hTSbString);
+                        confirmMessage2.getText().toString(), "", payPrice, bonus_id, sBuilder.toString(), zYSbString, hTSbString, group_info, group_id);
                 if (popupwindow != null && popupwindow.isShowing()) {
                     popupwindow.dismiss();
                     popupwindow = null;
@@ -624,7 +631,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
             @Override
             public void onClick(View view, int position) {
 //                presenter.getConfirmOrderData1(recId, goods_id, product_id, num, yesAdapter.getData().get(position).getId(), address_id);
-                presenter.getConfirmOrderData(recId, goods_id, product_id, num, wayBillId, "", address_id, yesAdapter.getData().get(position).getId(), hTSbString, zYSbString, proIdSbs);
+                presenter.getConfirmOrderData(recId, goods_id, product_id, num, wayBillId, "", address_id, yesAdapter.getData().get(position).getId(), hTSbString, zYSbString, proIdSbs, "", "");
                 if (popupwindow != null && popupwindow.isShowing()) {
                     popupwindow.dismiss();
                     popupwindow = null;
@@ -639,7 +646,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
             @Override
             public void onClick(View view) {
 //                presenter.getConfirmOrderData1(recId, goods_id, product_id, num, "-1", address_id);//传-1，不使用优惠券
-                presenter.getConfirmOrderData(recId, goods_id, product_id, num, wayBillId, "", address_id, "-1", hTSbString, zYSbString, proIdSbs);
+                presenter.getConfirmOrderData(recId, goods_id, product_id, num, wayBillId, "", address_id, "-1", hTSbString, zYSbString, proIdSbs, "", "");
                 if (popupwindow != null && popupwindow.isShowing()) {
                     popupwindow.dismiss();
                     popupwindow = null;
@@ -753,7 +760,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
                 wayBillId = sBuilder.toString();
                 Log.e("快递适配器", "快递ID===" + sBuilder.toString());
 //                presenter.getConfirmOrderData(recId, goods_id, product_id, num, sBuilder.toString(), "", address_id);
-                presenter.getConfirmOrderData(recId, goods_id, product_id, num, sBuilder.toString(), "", address_id, bonus_id, hTSbString, zYSbString, proIdSbs);
+                presenter.getConfirmOrderData(recId, goods_id, product_id, num, sBuilder.toString(), "", address_id, bonus_id, hTSbString, zYSbString, proIdSbs, "", "");
                 if (popupwindow != null && popupwindow.isShowing()) {
                     popupwindow.dismiss();
                     popupwindow = null;
@@ -821,7 +828,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
                 wayBillId = sBuilder.toString();
                 Log.e("快递适配器", "快递ID===" + sBuilder.toString());
 //                presenter.getConfirmOrderData(recId, goods_id, product_id, num, sBuilder.toString(), "", address_id);
-                presenter.getConfirmOrderData(recId, goods_id, product_id, num, sBuilder.toString(), "", address_id, bonus_id, hTSbString, zYSbString, proIdSbs);
+                presenter.getConfirmOrderData(recId, goods_id, product_id, num, sBuilder.toString(), "", address_id, bonus_id, hTSbString, zYSbString, proIdSbs, "", "");
                 if (popupwindow != null && popupwindow.isShowing()) {
                     popupwindow.dismiss();
                     popupwindow = null;
@@ -842,7 +849,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
     public void onEventMainThread(Address_KeyDown event) {
         Log.e("Address_KeyDown", "==系统返回键==");
 //        presenter.getConfirmOrderData(recId, goods_id, product_id, num, "", "", "");
-        presenter.getConfirmOrderData(recId, goods_id, product_id, num, wayBillId, "", address_id, bonus_id, hTSbString, zYSbString, proIdSbs);
+        presenter.getConfirmOrderData(recId, goods_id, product_id, num, wayBillId, "", address_id, bonus_id, hTSbString, zYSbString, proIdSbs, "", "");
     }
 
 
@@ -852,7 +859,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
         Log.e("", "==实名接收消息==");
         bonus_id = event.getMark();
 //        presenter.getConfirmOrderData1(recId, goods_id, product_id, num, bonus_id, address_id);
-        presenter.getConfirmOrderData(recId, goods_id, product_id, num, wayBillId, "", address_id, bonus_id, hTSbString, zYSbString, proIdSbs);
+        presenter.getConfirmOrderData(recId, goods_id, product_id, num, wayBillId, "", address_id, bonus_id, hTSbString, zYSbString, proIdSbs, "", "");
 
     }
 
@@ -874,7 +881,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
         Log.e("接收消息", "==地址接收消息==" + event.getAddressListBean());
         address_id = event.getAddressListBean().getAddress_id();
 //        presenter.getConfirmOrderData(recId, goods_id, product_id, num, sBuilder.toString(), "", address_id);
-        presenter.getConfirmOrderData(recId, goods_id, product_id, num, sBuilder.toString(), "", address_id, bonus_id, hTSbString, zYSbString, proIdSbs);
+        presenter.getConfirmOrderData(recId, goods_id, product_id, num, sBuilder.toString(), "", address_id, bonus_id, hTSbString, zYSbString, proIdSbs, "", "");
     }
 
 
@@ -883,7 +890,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
     public void onEventMainThread(PayMemberEvent event) {
         Log.e("确认订单页面", "==购买完会员==");
         if (event.getFlag()) {
-            presenter.getConfirmOrderData(recId, goods_id, product_id, num, wayBillId, "", address_id, bonus_id, hTSbString, zYSbString, proIdSbs);
+            presenter.getConfirmOrderData(recId, goods_id, product_id, num, wayBillId, "", address_id, bonus_id, hTSbString, zYSbString, proIdSbs, "", "");
         }
     }
 
@@ -953,7 +960,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
         haiTitleText.setText(event.getData().getHt_shop_list().getTitle());//海淘标题
         orderHaiExpress.setText(event.getData().getHt_shop_list().getWaybillList().get(0).getName());//海淘快递
         waybill_HT_id = String.valueOf(event.getData().getHt_shop_list().getWaybillList().get(0).getId());//海淘快递ID
-        confirmHaiShuifei.setText(event.getData().getTax_total());//税费
+        confirmHaiShuifei.setText(Html.fromHtml("&yen") +event.getData().getTax_total());//税费
         ImageLoader.image(this, zyIconImg, event.getData().getZy_shop_list().getLogo_image());
         ziTitleText.setText(event.getData().getZy_shop_list().getTitle());//自营标题
         orderZiExpress.setText(event.getData().getZy_shop_list().getWaybillList().get(0).getName());//自营快递
@@ -1016,7 +1023,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
      */
     @Override
     public void getConfirmOrderSuccess(int code, ConfirmOrderBean data) {
-        presenter.getCouponListData1(recId, goods_id, product_id, num);//已领取列表数据
+        presenter.getCouponListData1(recId, goods_id, product_id, num, group_info);//已领取列表数据
         confirmOrderBean = data;
         confirmOrderPrice.setText(Html.fromHtml("&yen") + "" + data.getGoods_price());
         payPrice = data.getPrice();
@@ -1083,7 +1090,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
         haiTitleText.setText(data.getHt_shop_list().getTitle());//海淘标题
         orderHaiExpress.setText(data.getHt_shop_list().getWaybillList().get(0).getName());//海淘快递
         waybill_HT_id = String.valueOf(data.getHt_shop_list().getWaybillList().get(0).getId());//海淘快递ID
-        confirmHaiShuifei.setText(data.getTax_total());//税费
+        confirmHaiShuifei.setText(Html.fromHtml("&yen") +data.getTax_total());//税费
         ImageLoader.image(this, zyIconImg, data.getZy_shop_list().getLogo_image());
         ziTitleText.setText(data.getZy_shop_list().getTitle());//自营标题
         orderZiExpress.setText(data.getZy_shop_list().getWaybillList().get(0).getName());//自营快递
@@ -1257,7 +1264,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
 
             TypeSelectDialog.with(getActivity(), data, listBean.getSearch_attr(), "2", new TypeSelectDialog.AddShopCarClickListener() {
                 @Override
-                public void onBtnClickListener(String goods_id, String getRec_id, String product_ids, String nums, String getAttr_name, String mmake) {
+                public void onBtnClickListener(String goods_id, String getRec_id, String product_ids, String nums, String getAttr_name, ProductBean productBean, String mmake) {
                     ziZengAdapter.getData().get(position).setProduct_id(product_ids);
 //                    ziZengAdapter.getData().get(position).setRec_id(getRec_id);
 
@@ -1303,7 +1310,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
                     Log.e("赠品", "zYSbString==请求==" + zYSbString);
                     //请求确认订单接口
 //                    presenter.getConfirmTypeData(recId, goods_id, product_id, num, hTSb.toString(), zYSb.toString(), proIdSb.toString());
-                    presenter.getConfirmOrderData(recId, goods_id, product_id, num, wayBillId, "", address_id, bonus_id, hTSbString, zYSbString, proIdSbs);
+                    presenter.getConfirmOrderData(recId, goods_id, product_id, num, wayBillId, "", address_id, bonus_id, hTSbString, zYSbString, proIdSbs, "", "");
 
                     TypeSelectDialog.dismiss();
 
@@ -1330,7 +1337,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
 
             TypeSelectDialog.with(getActivity(), data, listBean2.getSearch_attr(), "2", new TypeSelectDialog.AddShopCarClickListener() {
                 @Override
-                public void onBtnClickListener(String goods_id, String getRec_id, String product_ids, String nums, String getAttr_name, String mmake) {
+                public void onBtnClickListener(String goods_id, String getRec_id, String product_ids, String nums, String getAttr_name, ProductBean productBean, String mmake) {
                     Log.e("赠品", "getRec_id==222==1==" + getRec_id);
                     Log.e("赠品", "getRec_id==222==2==" + getRec_id);
                     haiZengAdapter.getData().get(position).setProduct_id(product_ids);
@@ -1377,7 +1384,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
                     Log.e("赠品==拼接ProductId", "==proIdSb==222===" + proIdSb);
                     //请求确认订单接口
 //                    presenter.getConfirmTypeData(recId, goods_id, product_id, num, hTSb.toString(), zYSb.toString(), proIdSb.toString());
-                    presenter.getConfirmOrderData(recId, goods_id, product_id, num, wayBillId, "", address_id, bonus_id, hTSbString, zYSbString, proIdSbs);
+                    presenter.getConfirmOrderData(recId, goods_id, product_id, num, wayBillId, "", address_id, bonus_id, hTSbString, zYSbString, proIdSbs, "", "");
                     TypeSelectDialog.dismiss();
 
                 }
@@ -1407,6 +1414,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
      */
     @Override
     public void getCouponList1Success(int code, List<AlreadyCouponListBean> data) {
+        Log.e("下载可使用优惠券成功", "==data===" + data);
         alreadyCouponListBean = data;
 
     }
@@ -1419,6 +1427,8 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
      */
     @Override
     public void getCouponList1Fail(int code, String msg) {
+        Log.e("下载可使用优惠券失败", "==code===" + code);
+        Log.e("下载可使用优惠券失败", "==msg===" + msg);
 
     }
 

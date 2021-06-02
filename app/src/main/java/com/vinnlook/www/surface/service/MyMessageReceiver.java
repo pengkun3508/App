@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.alibaba.sdk.android.push.MessageReceiver;
 import com.alibaba.sdk.android.push.notification.CPushMessage;
+import com.vinnlook.www.surface.activity.MsggingBoxActivity;
 
 import java.util.Map;
 
@@ -25,16 +26,16 @@ public class MyMessageReceiver extends MessageReceiver {
     public void onNotification(Context context, String title, String summary, Map<String, String> extraMap) {
         // TODO 处理推送通知
         Log.e("MyMessageReceiver", "Receive notification, title: " + title + ", summary: " + summary + ", extraMap: " + extraMap);
-        if ( null != extraMap ) {
+        if (null != extraMap) {
             for (Map.Entry<String, String> entry : extraMap.entrySet()) {
-                Log.e(REC_TAG,"@Get diy param : Key=" + entry.getKey() + " , Value=" + entry.getValue());
+                Log.e(REC_TAG, "@Get diy param : Key=" + entry.getKey() + " , Value=" + entry.getValue());
             }
         } else {
-            Log.e(REC_TAG,"@收到通知 && 自定义消息为空");
+            Log.e(REC_TAG, "@收到通知 && 自定义消息为空");
         }
-        Log.e(REC_TAG,"收到一条推送通知 ： " + title + ", summary:" + summary);
+        Log.e(REC_TAG, "收到一条推送通知 ： " + title + ", summary:" + summary);
 //        MainApplication.setConsoleText("收到一条推送通知 ： " + title + ", summary:" + summary);
-//        createNotificationChannel(context,title,summary,extraMap);
+        createNotificationChannel(context, title, summary, extraMap);
 
     }
 
@@ -46,6 +47,9 @@ public class MyMessageReceiver extends MessageReceiver {
     @Override
     public void onNotificationOpened(Context context, String title, String summary, String extraMap) {
         Log.e("MyMessageReceiver", "onNotificationOpened, title: " + title + ", summary: " + summary + ", extraMap:" + extraMap);
+        MsggingBoxActivity.startSelf(context);
+
+
     }
 
     @Override
@@ -65,17 +69,17 @@ public class MyMessageReceiver extends MessageReceiver {
 
 
     private void createNotificationChannel(Context context, String title, String summary, Map<String, String> extraMap) {
-        Log.e("createNotificatio","===SDK_INT=="+Build.VERSION.SDK_INT);
-        Log.e("createNotificatio","===VERSION_CODES=="+Build.VERSION_CODES.O);
+        Log.e("createNotificatio", "===SDK_INT==" + Build.VERSION.SDK_INT);
+        Log.e("createNotificatio", "===VERSION_CODES==" + Build.VERSION_CODES.O);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Log.e("asdasd","===createNotificationChannel");
+            Log.e("asdasd", "===createNotificationChannel");
             NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
             // 通知渠道的id
             String id = "1";
             // 用户可以看到的通知渠道的名字.
             CharSequence name = title;
             // 用户可以看到的通知渠道的描述
-            String description = summary+"==="+extraMap;
+            String description = summary + "===" + extraMap;
             int importance = NotificationManager.IMPORTANCE_HIGH;
             NotificationChannel mChannel = new NotificationChannel(id, name, importance);
             // 配置通知渠道的属性

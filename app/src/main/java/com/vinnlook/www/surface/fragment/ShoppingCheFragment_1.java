@@ -24,6 +24,7 @@ import com.vinnlook.www.surface.adapter.ShoppingCheAdapter_1;
 import com.vinnlook.www.surface.bean.ConfirmOrderBean;
 import com.vinnlook.www.surface.bean.ShopCartListBean_1;
 import com.vinnlook.www.surface.dialog.TypeSelectDialog;
+import com.vinnlook.www.surface.mvp.model.bean.ProductBean;
 import com.vinnlook.www.surface.mvp.presenter.VideonFragmentPresenter_1;
 import com.vinnlook.www.surface.mvp.view.VideonFragmentView_1;
 import com.vinnlook.www.utils.DensityUtils;
@@ -245,7 +246,7 @@ public class ShoppingCheFragment_1 extends BaseFragment<VideonFragmentPresenter_
                     if (sb.length() > 0) {
                         recId = sb.deleteCharAt(sb.length() - 1).toString();//去掉最后逗号
                         Log.e("结算", "===拼接字符串===" + recId);
-                        presenter.getConfirmOrderData(recId, "", "", "", "", "", "", "", "", "", "");
+                        presenter.getConfirmOrderData(recId, "", "", "", "", "", "", "", "", "", "","","");
                     } else {
                         Toast.makeText(getActivity(), "请先选择商品后再进行结算", Toast.LENGTH_SHORT).show();
                     }
@@ -586,7 +587,7 @@ public class ShoppingCheFragment_1 extends BaseFragment<VideonFragmentPresenter_
 
         TypeSelectDialog.with(getActivity(), moveDataBeas, goods_attr, "", new TypeSelectDialog.AddShopCarClickListener() {
             @Override
-            public void onBtnClickListener(String goods_id,String getRec_id, String product_id, String num, String getAttr_name, String mmake) {
+            public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name, ProductBean productBean, String mmake) {
                 goods_attr = "";
                 presenter.getModifyType_1(getRec_id, num, product_id);
             }
@@ -750,7 +751,7 @@ public class ShoppingCheFragment_1 extends BaseFragment<VideonFragmentPresenter_
     public void getConfirmOrderSuccess(int code, ConfirmOrderBean data) {
         Log.e("购物车", "结算成功===code===" + code);
 //        ConfirmOrderActivity.startSelf(getContext(), recId, "", "", "");
-        ConfirmOrderActivity_1.startSelf(getContext(), recId, "", "", "", "1");
+        ConfirmOrderActivity_1.startSelf(getContext(), recId, "", "", "", "1","","");
 
 
     }
@@ -795,7 +796,7 @@ public class ShoppingCheFragment_1 extends BaseFragment<VideonFragmentPresenter_
 
         TypeSelectDialog.with(getActivity(), moveDataBeas, goods_attr, "2", new TypeSelectDialog.AddShopCarClickListener() {
             @Override
-            public void onBtnClickListener(String goods_id, String getRec_id,String product_id, String num, String getAttr_name, String mmake) {
+            public void onBtnClickListener(String goods_id, String getRec_id,String product_id, String num, String getAttr_name,ProductBean productBean, String mmake) {
                 goods_attr = "";
                 presenter.getModifyType_1(getRec_id, num, product_id);
             }
@@ -839,7 +840,7 @@ public class ShoppingCheFragment_1 extends BaseFragment<VideonFragmentPresenter_
 
         TypeSelectDialog.with(getActivity(), moveDataBeas, goods_attr, "2", new TypeSelectDialog.AddShopCarClickListener() {
             @Override
-            public void onBtnClickListener(String goods_id,String getRec_id, String product_id, String num, String getAttr_name, String mmake) {
+            public void onBtnClickListener(String goods_id,String getRec_id, String product_id, String num, String getAttr_name,ProductBean productBean, String mmake) {
                 goods_attr = "";
                 presenter.getModifyType_1(getRec_id, num, product_id);
             }

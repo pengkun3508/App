@@ -30,6 +30,37 @@ public class MoveDataBean extends BaseBean {
     private List<RecommendBean> recommend;
     private List<QuestionListBean> question_list;
     private ShopActiveInfoBean shopActiveInfo;
+    private List<GroupListBean> group_list;
+    private String surplus_time;
+    private AdInfoBean ad_info;
+
+
+    public AdInfoBean getAd_info() {
+        return ad_info;
+    }
+
+    public void setAd_info(AdInfoBean ad_info) {
+        this.ad_info = ad_info;
+    }
+
+
+    public String getSurplus_time() {
+        return surplus_time;
+    }
+
+    public void setSurplus_time(String surplus_time) {
+        this.surplus_time = surplus_time;
+    }
+
+
+    public List<GroupListBean> getGroup_list() {
+        return group_list;
+    }
+
+    public void setGroup_list(List<GroupListBean> group_list) {
+        this.group_list = group_list;
+    }
+
 
     public ShopActiveInfoBean getShopActiveInfo() {
         return shopActiveInfo;
@@ -96,6 +127,128 @@ public class MoveDataBean extends BaseBean {
         this.question_list = question_list;
     }
 
+    public static class AdInfoBean {
+        /**
+         * value :
+         * type :
+         * id :
+         * photo :
+         * list : {"goods_id":"","search_attr":"","active_id":"","url":"","text":"","id":""}
+         */
+
+        private String value;
+        private String type;
+        private String id;
+        private String photo;
+        private ListBean list;
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getPhoto() {
+            return photo;
+        }
+
+        public void setPhoto(String photo) {
+            this.photo = photo;
+        }
+
+        public ListBean getList() {
+            return list;
+        }
+
+        public void setList(ListBean list) {
+            this.list = list;
+        }
+
+        public static class ListBean {
+            /**
+             * goods_id :
+             * search_attr :
+             * active_id :
+             * url :
+             * text :
+             * id :
+             */
+
+            private String goods_id;
+            private String search_attr;
+            private String active_id;
+            private String url;
+            private String text;
+            private String id;
+
+            public String getGoods_id() {
+                return goods_id;
+            }
+
+            public void setGoods_id(String goods_id) {
+                this.goods_id = goods_id;
+            }
+
+            public String getSearch_attr() {
+                return search_attr;
+            }
+
+            public void setSearch_attr(String search_attr) {
+                this.search_attr = search_attr;
+            }
+
+            public String getActive_id() {
+                return active_id;
+            }
+
+            public void setActive_id(String active_id) {
+                this.active_id = active_id;
+            }
+
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
+            }
+
+            public String getText() {
+                return text;
+            }
+
+            public void setText(String text) {
+                this.text = text;
+            }
+
+            public String getId() {
+                return id;
+            }
+
+            public void setId(String id) {
+                this.id = id;
+            }
+        }
+    }
+
     public static class ShopActiveInfoBean {
 
         /**
@@ -109,6 +262,93 @@ public class MoveDataBean extends BaseBean {
         private String long_flag;
         private String act_id;
         private String type;
+        private String group_people;
+        private String group_price;
+        private String astrict_num;
+        private String end_time;
+        private String again_invite;
+        private String group_id;
+        private String is_join_group;
+        private String group_status;
+        private String order_id;
+
+        public String getOrder_id() {
+            return order_id;
+        }
+
+        public void setOrder_id(String order_id) {
+            this.order_id = order_id;
+        }
+
+
+
+        public String getGroup_status() {
+            return group_status;
+        }
+
+        public void setGroup_status(String group_status) {
+            this.group_status = group_status;
+        }
+
+
+
+        public String getIs_join_group() {
+            return is_join_group;
+        }
+
+        public void setIs_join_group(String is_join_group) {
+            this.is_join_group = is_join_group;
+        }
+
+        public String getAgain_invite() {
+            return again_invite;
+        }
+
+        public void setAgain_invite(String again_invite) {
+            this.again_invite = again_invite;
+        }
+
+        public String getGroup_id() {
+            return group_id;
+        }
+
+        public void setGroup_id(String group_id) {
+            this.group_id = group_id;
+        }
+
+
+        public String getGroup_people() {
+            return group_people;
+        }
+
+        public void setGroup_people(String group_people) {
+            this.group_people = group_people;
+        }
+
+        public String getGroup_price() {
+            return group_price;
+        }
+
+        public void setGroup_price(String group_price) {
+            this.group_price = group_price;
+        }
+
+        public String getAstrict_num() {
+            return astrict_num;
+        }
+
+        public void setAstrict_num(String astrict_num) {
+            this.astrict_num = astrict_num;
+        }
+
+        public String getEnd_time() {
+            return end_time;
+        }
+
+        public void setEnd_time(String end_time) {
+            this.end_time = end_time;
+        }
+
 
         public String getType() {
             return type;
@@ -227,6 +467,33 @@ public class MoveDataBean extends BaseBean {
         private String image_code;
         private String purchasing;
         private String presell;
+        private String goods_brief;
+        private String is_show_sye;
+        private String is_group;
+
+        public String getIs_group() {
+            return is_group;
+        }
+
+        public void setIs_group(String is_group) {
+            this.is_group = is_group;
+        }
+
+        public String getIs_show_sye() {
+            return is_show_sye;
+        }
+
+        public void setIs_show_sye(String is_show_sye) {
+            this.is_show_sye = is_show_sye;
+        }
+
+        public String getGoods_brief() {
+            return goods_brief;
+        }
+
+        public void setGoods_brief(String goods_brief) {
+            this.goods_brief = goods_brief;
+        }
 
         public String getPresell() {
             return presell;
@@ -243,7 +510,6 @@ public class MoveDataBean extends BaseBean {
         public void setPurchasing(String purchasing) {
             this.purchasing = purchasing;
         }
-
 
 
         public String getImage_code() {
@@ -818,6 +1084,15 @@ public class MoveDataBean extends BaseBean {
         private String info;
         private List<String> image;
         private String is_member;
+        private String reply_content;
+
+        public String getReply_content() {
+            return reply_content;
+        }
+
+        public void setReply_content(String reply_content) {
+            this.reply_content = reply_content;
+        }
 
         public String getIs_member() {
             return is_member;
@@ -1035,6 +1310,51 @@ public class MoveDataBean extends BaseBean {
 
         public void setGoods_thumb(String goods_thumb) {
             this.goods_thumb = goods_thumb;
+        }
+    }
+
+    public static class GroupListBean {
+        /**
+         * user_id :
+         * user_name :
+         * img_url :
+         */
+
+        private String user_id;
+        private String user_name;
+        private String img_url;
+        private String order_id;
+
+        public String getOrder_id() {
+            return order_id;
+        }
+
+        public void setOrder_id(String order_id) {
+            this.order_id = order_id;
+        }
+
+        public String getUser_id() {
+            return user_id;
+        }
+
+        public void setUser_id(String user_id) {
+            this.user_id = user_id;
+        }
+
+        public String getUser_name() {
+            return user_name;
+        }
+
+        public void setUser_name(String user_name) {
+            this.user_name = user_name;
+        }
+
+        public String getImg_url() {
+            return img_url;
+        }
+
+        public void setImg_url(String img_url) {
+            this.img_url = img_url;
         }
     }
 

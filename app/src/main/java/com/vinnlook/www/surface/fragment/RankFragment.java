@@ -20,6 +20,7 @@ import com.vinnlook.www.surface.activity.MoveAbooutActivity_3;
 import com.vinnlook.www.surface.adapter.ReBangListAdapter;
 import com.vinnlook.www.surface.bean.ReBangListBean;
 import com.vinnlook.www.surface.dialog.TypeSelectDialog;
+import com.vinnlook.www.surface.mvp.model.bean.ProductBean;
 import com.vinnlook.www.surface.mvp.presenter.RankFragmentPresenter;
 import com.vinnlook.www.surface.mvp.view.RankFragmentView;
 import com.vinnlook.www.utils.ImageLoader;
@@ -202,7 +203,7 @@ public class RankFragment extends BaseFragment<RankFragmentPresenter> implements
 
         TypeSelectDialog.with(getActivity(), data, listBean.getSearch_attr(), "", new TypeSelectDialog.AddShopCarClickListener() {
             @Override
-            public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name, String mmake) {
+            public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name, ProductBean productBean, String mmake) {
 
 //                presenter.getModifyType(mark, getRec_id, num, product_id);
                 presenter.getAddShopCar(goods_id, product_id, num);

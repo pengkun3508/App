@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/order_to_details_btn"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/spacing_5dp"
+    android:layout_marginTop="@dimen/spacing_5dp"
+    android:layout_marginRight="@dimen/spacing_5dp"
+    android:background="@drawable/me_bg2"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_15dp"
+        android:layout_marginTop="@dimen/spacing_15dp"
+        android:layout_marginRight="@dimen/spacing_15dp">
+
+        <TextView
+            android:id="@+id/group_item1_static"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="拼团成功"
+            android:textColor="#502292"
+            android:textSize="@dimen/text_12" />
+
+        <com.flyco.roundview.RoundLinearLayout
+            android:id="@+id/group_item1_time_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="距结束"
+                android:textColor="#C29AFD"
+                android:textSize="@dimen/text_14" />
+
+            <com.flyco.roundview.RoundTextView
+                android:id="@+id/group_item1_time_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_5dp"
+                android:paddingLeft="@dimen/spacing_2dp"
+                android:paddingTop="@dimen/spacing_1dp"
+                android:paddingRight="@dimen/spacing_2dp"
+                android:paddingBottom="@dimen/spacing_1dp"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_10"
+                app:rv_backgroundColor="#C29AFD"
+                app:rv_cornerRadius="@dimen/spacing_2dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_3dp"
+                android:layout_marginRight="@dimen/spacing_3dp"
+                android:text=":"
+                android:textColor="#C29AFD" />
+
+            <com.flyco.roundview.RoundTextView
+                android:id="@+id/group_item1_time_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/spacing_2dp"
+                android:paddingTop="@dimen/spacing_1dp"
+                android:paddingRight="@dimen/spacing_2dp"
+                android:paddingBottom="@dimen/spacing_1dp"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_10"
+                app:rv_backgroundColor="#C29AFD"
+                app:rv_cornerRadius="@dimen/spacing_2dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_3dp"
+                android:layout_marginRight="@dimen/spacing_3dp"
+                android:text=":"
+                android:textColor="#C29AFD" />
+
+            <com.flyco.roundview.RoundTextView
+                android:id="@+id/group_item1_time_second"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/spacing_2dp"
+                android:paddingTop="@dimen/spacing_1dp"
+                android:paddingRight="@dimen/spacing_2dp"
+                android:paddingBottom="@dimen/spacing_1dp"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_10"
+                app:rv_backgroundColor="#C29AFD"
+                app:rv_cornerRadius="@dimen/spacing_2dp" />
+
+        </com.flyco.roundview.RoundLinearLayout>
+
+
+        <TextView
+            android:id="@+id/tuikuan_static_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/group_go_jian_bg_1"
+            android:paddingLeft="@dimen/spacing_5dp"
+            android:paddingRight="@dimen/spacing_5dp"
+            android:text="退款成功"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_12"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/group_item1_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_15dp"
+            android:layout_marginTop="@dimen/spacing_10dp"
+            android:layout_marginRight="@dimen/spacing_15dp" />
+
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_1dp"
+        android:layout_marginTop="@dimen/spacing_5dp"
+        android:background="@color/line" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.flyco.roundview.RoundRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_15dp"
+            android:layout_marginTop="@dimen/spacing_10dp"
+            android:layout_marginRight="@dimen/spacing_15dp"
+            android:padding="@dimen/spacing_10dp"
+            app:rv_backgroundColor="@color/go_bg_80"
+            app:rv_cornerRadius="@dimen/spacing_5dp">
+
+            <TextView
+                android:id="@+id/group_item1_peonple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3人团"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_12" />
+
+            <TextView
+                android:id="@+id/group_item1_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="￥126"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_12" />
+        </com.flyco.roundview.RoundRelativeLayout>
+
+        <ImageView
+            android:id="@+id/group_item1_chief"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="@dimen/spacing_5dp"
+            android:layout_marginRight="13dp"
+            android:background="@mipmap/go_new_icon6" />
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_10dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/spacing_10dp"
+            android:layout_marginBottom="@dimen/spacing_5dp">
+
+            <TextView
+                android:id="@+id/group_item1_see_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/me_bg2_1"
+                android:paddingLeft="@dimen/spacing_8dp"
+                android:paddingTop="@dimen/spacing_3dp"
+                android:paddingRight="@dimen/spacing_8dp"
+                android:paddingBottom="@dimen/spacing_3dp"
+                android:text="查看订单"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_14" />
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

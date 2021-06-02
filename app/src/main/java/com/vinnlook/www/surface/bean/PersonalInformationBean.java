@@ -29,6 +29,28 @@ public class PersonalInformationBean extends BaseBean {
     private List<BannerBean> banner;
     private List<WaybillListBean> waybillList;
     private String share_code;
+    private GroupCountBean group_count;
+    private List<ArticleBean> article;
+
+    public List<ArticleBean> getArticle() {
+        return article;
+    }
+
+    public void setArticle(List<ArticleBean> article) {
+        this.article = article;
+    }
+
+
+
+    public GroupCountBean getGroup_count() {
+        return group_count;
+    }
+
+    public void setGroup_count(GroupCountBean group_count) {
+        this.group_count = group_count;
+    }
+
+
 
     public String getShare_code() {
         return share_code;
@@ -103,6 +125,63 @@ public class PersonalInformationBean extends BaseBean {
     public void setBanner(List<BannerBean> banner) {
         this.banner = banner;
     }
+
+    public static class ArticleBean{
+        /**
+         * id : 153
+         * title : 拒绝容貌焦虑|那些小宝藏推荐
+         * content :
+         * add_time : 2020-12-24 17:46:19
+         * info_url : https://shop.jealook.com/v6/html/article-info?id=153
+         */
+
+        private String id;
+        private String title;
+        private String content;
+        private String add_time;
+        private String info_url;
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
+
+        public String getAdd_time() {
+            return add_time;
+        }
+
+        public void setAdd_time(String add_time) {
+            this.add_time = add_time;
+        }
+
+        public String getInfo_url() {
+            return info_url;
+        }
+
+        public void setInfo_url(String info_url) {
+            this.info_url = info_url;
+        }
+    }
+
 
     public static class WaybillListBean {
 
@@ -291,6 +370,43 @@ public class PersonalInformationBean extends BaseBean {
 
         public void setIs_member(int is_member) {
             this.is_member = is_member;
+        }
+    }
+
+    public static  class  GroupCountBean{
+
+        /**
+         * open_group : 1
+         * join_group : 0
+         * finish_group : 0
+         */
+
+        private int open_group;
+        private int join_group;
+        private int finish_group;
+
+        public int getOpen_group() {
+            return open_group;
+        }
+
+        public void setOpen_group(int open_group) {
+            this.open_group = open_group;
+        }
+
+        public int getJoin_group() {
+            return join_group;
+        }
+
+        public void setJoin_group(int join_group) {
+            this.join_group = join_group;
+        }
+
+        public int getFinish_group() {
+            return finish_group;
+        }
+
+        public void setFinish_group(int finish_group) {
+            this.finish_group = finish_group;
         }
     }
 

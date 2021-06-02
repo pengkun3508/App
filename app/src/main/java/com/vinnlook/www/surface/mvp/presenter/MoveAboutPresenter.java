@@ -170,8 +170,8 @@ public class MoveAboutPresenter extends MvpPresenter<MoveAboutView> {
 
 
     public void getConfirmOrderData(String recId, String goods_id, String product_id, String num, String ecpressId, String integralNum, String address_id,
-                                    String id, String ht_sendid, String zy_sendid, String proIdSb) {
-        addToRxLife(MainRequest.getConfirmOrderData(recId, goods_id, product_id, num, ecpressId, integralNum, address_id, id, ht_sendid, zy_sendid, proIdSb, new RequestBackListener<ConfirmOrderBean>() {
+                                    String id, String ht_sendid, String zy_sendid, String proIdSb,String group_info,String group_id) {
+        addToRxLife(MainRequest.getConfirmOrderData(recId, goods_id, product_id, num, ecpressId, integralNum, address_id, id, ht_sendid, zy_sendid, proIdSb,group_info, group_id,new RequestBackListener<ConfirmOrderBean>() {
             @Override
             public void onStart() {
                 showLoading();
@@ -227,6 +227,158 @@ public class MoveAboutPresenter extends MvpPresenter<MoveAboutView> {
                 Log.e("msg", "msg===" + msg);
                 if (isAttachView())
                     getBaseView().getTypeShopFail(code, msg);
+            }
+
+            @Override
+            public void onNoNet() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onFinish() {
+//                dismissLoading();
+            }
+        }));
+    }
+
+    public void getMove4Datas(String goods_id, String search_attr,String group_id,String type) {
+        addToRxLife(MainRequest.getMoveindex4(goods_id, search_attr,group_id,type, new RequestBackListener<MoveDataBean>() {
+            @Override
+            public void onStart() {
+                showLoading();
+            }
+
+            @Override
+            public void onSuccess(int code, MoveDataBean data) {
+                if (isAttachView())
+                    getBaseView().getMoveDataSuccess(code, data);
+            }
+
+            @Override
+            public void onFailed(int code, String msg) {
+                Log.e("code", "code===" + code);
+                Log.e("msg", "msg===" + msg);
+                if (isAttachView())
+                    getBaseView().getMoveDataFail(code, msg);
+            }
+
+            @Override
+            public void onNoNet() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                dismissLoading();
+            }
+        }));
+    }
+
+    public void getTypeShopData4(String goods_id) {
+        addToRxLife(MainRequest.getTypeShopData(goods_id, new RequestBackListener<MoveDataBean>() {
+            @Override
+            public void onStart() {
+//                showLoading();
+            }
+
+            @Override
+            public void onSuccess(int code, MoveDataBean data) {
+                if (isAttachView())
+                    getBaseView().getTypeShop4Success(code, data);
+            }
+
+            @Override
+            public void onFailed(int code, String msg) {
+                Log.e("code", "code===" + code);
+                Log.e("msg", "msg===" + msg);
+                if (isAttachView())
+                    getBaseView().getTypeShop4Fail(code, msg);
+            }
+
+            @Override
+            public void onNoNet() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onFinish() {
+//                dismissLoading();
+            }
+        }));
+    }
+
+    public void getTypeShopData5(String goods_id) {
+        addToRxLife(MainRequest.getTypeShopData(goods_id, new RequestBackListener<MoveDataBean>() {
+            @Override
+            public void onStart() {
+//                showLoading();
+            }
+
+            @Override
+            public void onSuccess(int code, MoveDataBean data) {
+                if (isAttachView())
+                    getBaseView().getTypeShop5Success(code, data);
+            }
+
+            @Override
+            public void onFailed(int code, String msg) {
+                Log.e("code", "code===" + code);
+                Log.e("msg", "msg===" + msg);
+                if (isAttachView())
+                    getBaseView().getTypeShop5Fail(code, msg);
+            }
+
+            @Override
+            public void onNoNet() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onFinish() {
+//                dismissLoading();
+            }
+        }));
+    }
+
+    public void getTypeShopData6(String goods_id) {
+        addToRxLife(MainRequest.getTypeShopData(goods_id, new RequestBackListener<MoveDataBean>() {
+            @Override
+            public void onStart() {
+//                showLoading();
+            }
+
+            @Override
+            public void onSuccess(int code, MoveDataBean data) {
+                if (isAttachView())
+                    getBaseView().getTypeShop6Success(code, data);
+            }
+
+            @Override
+            public void onFailed(int code, String msg) {
+                Log.e("code", "code===" + code);
+                Log.e("msg", "msg===" + msg);
+                if (isAttachView())
+                    getBaseView().getTypeShop6Fail(code, msg);
             }
 
             @Override

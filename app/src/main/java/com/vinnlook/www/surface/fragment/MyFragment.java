@@ -27,6 +27,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,6 +40,7 @@ import com.alibaba.sdk.android.man.MANServiceProvider;
 import com.dm.lib.core.permission.PermissionHelper;
 import com.dm.lib.utils.SPUtils;
 import com.dm.lib.utils.StatusBarUtils;
+import com.flyco.roundview.RoundLinearLayout;
 import com.m7.imkfsdk.KfStartHelper;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.mobile.auth.gatewayauth.AuthRegisterXmlConfig;
@@ -72,6 +74,7 @@ import com.vinnlook.www.surface.activity.BrowseActivity;
 import com.vinnlook.www.surface.activity.CollectionActivity;
 import com.vinnlook.www.surface.activity.CouponActivity;
 import com.vinnlook.www.surface.activity.EditDataActivity;
+import com.vinnlook.www.surface.activity.GroupListActivity;
 import com.vinnlook.www.surface.activity.HomePublicClassActivity;
 import com.vinnlook.www.surface.activity.LoginActivity;
 import com.vinnlook.www.surface.activity.MemberActivity_1;
@@ -211,6 +214,24 @@ public class MyFragment extends BaseFragment<MyFragmentPresenter> implements MyF
 
     Bitmap bitmaps;//二维码图片
     public PopupWindow popupwindow1;
+    @BindView(R.id.my_group_all_btn)
+    RelativeLayout myGroupAllBtn;
+    @BindView(R.id.my_group_1_num)
+    TextView myGroup1Num;
+    @BindView(R.id.my_group_1_btn)
+    LinearLayout myGroup1Btn;
+    @BindView(R.id.my_group_2_num)
+    TextView myGroup2Num;
+    @BindView(R.id.my_group_2_btn)
+    LinearLayout myGroup2Btn;
+    @BindView(R.id.my_group_3_num)
+    TextView myGroup3Num;
+    @BindView(R.id.my_group_3_btn)
+    LinearLayout myGroup3Btn;
+    @BindView(R.id.my_guonggao)
+    ViewFlipper myGuonggao;
+    @BindView(R.id.my_guonggao_layout)
+    RoundLinearLayout myGuonggaoLayout;
 
 
     private int mScreenWidthDp;
@@ -226,6 +247,7 @@ public class MyFragment extends BaseFragment<MyFragmentPresenter> implements MyF
     PersonalInformationBean personalInformationBean;
 
     KfStartHelper helper;
+    List<String> gonggaoList2;
 
 
     @Override
@@ -241,6 +263,7 @@ public class MyFragment extends BaseFragment<MyFragmentPresenter> implements MyF
     @Override
     protected void initView() {
         StatusBarUtils.setStatusBarMode(getActivity(), true);
+
         ImageLoader.userIcon(getActivity(), catAvatar, UserUtils.getInstance().getUserInfo().getImg_url());
 //        if (UserUtils.getInstance().getUserInfo().getUser_name().equals("登录/注册")) {
 //            signRegisterText.setText(UserUtils.getInstance().getUserInfo().getUser_name());
@@ -291,7 +314,7 @@ public class MyFragment extends BaseFragment<MyFragmentPresenter> implements MyF
 
     @OnClick({R.id.cat_avatar, R.id.sign_register_text, R.id.my_seeting_btn, R.id.youhuiquan_layout, R.id.all_order_text, R.id.daifukuan_layout, R.id.daifahuo_layout, R.id.daishouhuo_layout,
             R.id.me_realname, R.id.daipingjia_layout, R.id.tuihuanhuo_layout, R.id.me_shoucang, R.id.me_address, R.id.me_wenti, R.id.me_guanyu, R.id.me_jifen, R.id.me_share, R.id.my_member_add,
-            R.id.my_browse_layout, R.id.my_jifen_layout, R.id.me_msg})
+            R.id.my_browse_layout, R.id.my_jifen_layout, R.id.me_msg, R.id.my_group_all_btn, R.id.my_group_1_btn, R.id.my_group_2_btn, R.id.my_group_3_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.cat_avatar://头像s
@@ -521,6 +544,44 @@ public class MyFragment extends BaseFragment<MyFragmentPresenter> implements MyF
                     mAlicomAuthHelper.getLoginToken(getActivity(), 0);
                 }
                 break;
+
+            case R.id.my_group_all_btn://拼团全部
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    GroupListActivity.startSelf(getActivity(), 0);
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+                break;
+            case R.id.my_group_1_btn://开团中
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    GroupListActivity.startSelf(getActivity(), 1);
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+                break;
+            case R.id.my_group_2_btn://参团中
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    GroupListActivity.startSelf(getActivity(), 2);
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+                break;
+            case R.id.my_group_3_btn://拼团完成
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    GroupListActivity.startSelf(getActivity(), 3);
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+                break;
+
         }
     }
 
@@ -886,7 +947,33 @@ public class MyFragment extends BaseFragment<MyFragmentPresenter> implements MyF
             myBrowseCount.setText("0");//浏览数量
             myDiscountCount.setText("0");//优惠券数量
             catAvatar.setImageResource(R.mipmap.icon_heart);
+
+            myGroup1Num.setVisibility(View.GONE);
+            myGroup2Num.setVisibility(View.GONE);
+            myGroup3Num.setVisibility(View.GONE);
         } else {
+
+            if (data.getArticle().size() > 0 && data.getArticle() != null && !data.getArticle().equals("")) {
+                myGuonggaoLayout.setVisibility(View.VISIBLE);
+            } else {
+                myGuonggaoLayout.setVisibility(View.GONE);
+            }
+            gonggaoList2 = new ArrayList<>();
+            for (int i = 0; i < data.getArticle().size(); i++) {
+                gonggaoList2.add(data.getArticle().get(i).getTitle());
+            }
+            for (int i = 0; i < gonggaoList2.size(); i++) {
+                LinearLayout linearLayout = new LinearLayout(getActivity());
+                linearLayout.setOrientation(LinearLayout.VERTICAL);
+                linearLayout.setPadding(10, 10, 10, 10);
+                TextView textView1 = new TextView(getActivity());
+                textView1.setText(gonggaoList2.get(i));
+                linearLayout.addView(textView1);
+                myGuonggao.addView(linearLayout);
+            }
+            Log.e("我的", "公告内容=======" + gonggaoList2);
+
+
             if (data.getUser().getMobile().equals("")) {
 //                ModifyPhoneActivity.startSelf(getActivity(), "2");
                 UserUtils.getInstance().logout();
@@ -950,6 +1037,28 @@ public class MyFragment extends BaseFragment<MyFragmentPresenter> implements MyF
                 tuihuanhuoText.setVisibility(View.GONE);
             }
 
+            //开团中
+            if (data.getGroup_count().getOpen_group() > 0) {
+                myGroup1Num.setVisibility(View.VISIBLE);
+                myGroup1Num.setText(String.valueOf(data.getGroup_count().getOpen_group()));//开团中
+            } else {
+                myGroup1Num.setVisibility(View.GONE);
+            }
+            //参团中
+            if (data.getGroup_count().getJoin_group() > 0) {
+                myGroup2Num.setVisibility(View.VISIBLE);
+                myGroup2Num.setText(String.valueOf(data.getGroup_count().getJoin_group()));//参团中
+            } else {
+                myGroup2Num.setVisibility(View.GONE);
+            }
+            //拼团成功
+            if (data.getGroup_count().getFinish_group() > 0) {
+                myGroup3Num.setVisibility(View.VISIBLE);
+                myGroup3Num.setText(String.valueOf(data.getGroup_count().getFinish_group()));//拼团成功
+            } else {
+                myGroup3Num.setVisibility(View.GONE);
+            }
+
             initImkf(xiaoxiText, data.getUser().getUnread_count());
 
             myCollectCount.setText(data.getCollect_count());//收藏数量
@@ -959,7 +1068,6 @@ public class MyFragment extends BaseFragment<MyFragmentPresenter> implements MyF
         }
 
         bannerImage = data.getBanner();//轮播
-
         BannerImgAdapter2 bannerImgAdapter = new BannerImgAdapter2(getActivity(), gatBannetData());
         bannerMy.setAdapter(bannerImgAdapter);
 //        bannerMy.setIndicator(new CircleIndicator(getActivity()));

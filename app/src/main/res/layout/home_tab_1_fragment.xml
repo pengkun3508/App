@@ -51,6 +51,13 @@
 
                 </RelativeLayout>
 
+                <ImageView
+                    android:id="@+id/huodong2_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_20dp"
+                    android:layout_marginRight="@dimen/spacing_20dp" />
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -51,6 +51,15 @@ public class ConfirmOrderBean extends BaseBean {
     private boolean is_member;
     private String member_price;
     private String member_order_price;
+    private String is_group;
+
+    public String getIs_group() {
+        return is_group;
+    }
+
+    public void setIs_group(String is_group) {
+        this.is_group = is_group;
+    }
 
     public boolean getIs_member() {
         return is_member;
@@ -565,6 +574,8 @@ public class ConfirmOrderBean extends BaseBean {
             private String goods_thumb;
             private String number;
             private String active_name;
+            private String is_gift;
+            private String payment;
 
             public String getIs_gift() {
                 return is_gift;
@@ -574,8 +585,6 @@ public class ConfirmOrderBean extends BaseBean {
                 this.is_gift = is_gift;
             }
 
-            private String is_gift;
-
             public String getPayment() {
                 return payment;
             }
@@ -583,8 +592,6 @@ public class ConfirmOrderBean extends BaseBean {
             public void setPayment(String payment) {
                 this.payment = payment;
             }
-
-            private String payment;
 
             public String getActive_name() {
                 return active_name;

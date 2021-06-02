@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/action_bar"
-        android:layout_marginBottom="@dimen/spacing_75dp"
+        android:layout_marginBottom="@dimen/spacing_60dp"
         android:overScrollMode="never"
         android:scrollbars="none">
 
@@ -50,7 +50,7 @@
                     <com.youth.banner.Banner
                         android:id="@+id/banners"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="360dp"
                         app:banner_infinite_loop="false"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -344,7 +344,7 @@
                             android:id="@+id/move_transaction_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/spacing_18dp"
+                            android:layout_marginTop="@dimen/spacing_15dp"
                             android:ellipsize="end"
                             android:lines="2"
                             android:text="日本美瞳Topards日抛型10枚彩色隐形眼镜"
@@ -356,11 +356,58 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/move_shop_explain_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/spacing_15dp"
+                    android:layout_marginTop="@dimen/spacing_10dp"
+                    android:layout_marginRight="@dimen/spacing_15dp"
+                    android:layout_marginBottom="@dimen/spacing_10dp"
+                    android:orientation="horizontal">
+
+
+                    <com.flyco.roundview.RoundTextView
+                        android:layout_width="@dimen/spacing_5dp"
+                        android:layout_height="@dimen/spacing_5dp"
+                        android:layout_gravity="center"
+                        app:rv_backgroundColor="@color/them"
+                        app:rv_cornerRadius="999dp"/>
+
+                    <TextView
+                        android:id="@+id/move_shop_explain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_10dp"
+                        android:text="蔡卓妍推荐，万物可爱！吾皇万岁联名款~C位站得稳"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_12" />
+
+
+                </LinearLayout>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/move_shop_attr_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_15dp"
+                    android:layout_marginRight="@dimen/spacing_15dp"/>
+
+
+                <ImageView
+                    android:id="@+id/move3_huodong_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_10dp"
+                    android:background="@mipmap/move_test_img" />
+
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/spacing_5dp"
-                    android:layout_marginTop="@dimen/spacing_10dp"
+                    android:layout_marginTop="@dimen/spacing_5dp"
                     android:layout_marginBottom="@dimen/spacing_10dp"
                     android:background="@color/move_text1" />
 
@@ -795,7 +842,7 @@
                             android:text="货号"
                             android:textColor="@color/move_text8"
                             android:textSize="@dimen/text_13"
-                            android:visibility="gone"/>
+                            android:visibility="gone" />
 
                         <TextView
                             android:id="@+id/details_goods_sn"
@@ -805,7 +852,8 @@
                             android:text="JLH100010"
                             android:textColor="@color/move_text9"
                             android:textSize="@dimen/text_13"
-                            android:visibility="gone"/>
+                            android:visibility="gone" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -985,7 +1033,7 @@
                             android:text="使用期限"
                             android:textColor="@color/move_text8"
                             android:textSize="@dimen/text_13"
-                            android:visibility="invisible"/>
+                            android:visibility="invisible" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -994,7 +1042,7 @@
                             android:text="3-5年"
                             android:textColor="@color/move_text9"
                             android:textSize="@dimen/text_13"
-                            android:visibility="invisible"/>
+                            android:visibility="invisible" />
 
                     </LinearLayout>
 
@@ -1302,6 +1350,7 @@
                 android:id="@+id/move_tuijian_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_10dp"
                 android:nestedScrollingEnabled="false" />
 
 
@@ -1375,7 +1424,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/spacing_55dp"
+        android:layout_marginBottom="@dimen/spacing_60dp"
         android:background="@color/line" />
 
     <LinearLayout

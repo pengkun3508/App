@@ -268,9 +268,9 @@ public class VideonFragmentPresenter extends MvpPresenter<VideonFragmentView> {
 
     //结算
     public void getConfirmOrderData(String recId, String goods_id, String product_id, String num, String ecpressId, String integralNum, String address_id,
-                                    String id, String ht_sendid, String zy_sendid, String proIdSb) {
+                                    String id, String ht_sendid, String zy_sendid, String proIdSb,String group_info,String group_id) {
 
-        addToRxLife(MainRequest.getConfirmOrderData(recId, goods_id, product_id, num, ecpressId, integralNum, address_id, id, ht_sendid, zy_sendid, proIdSb, new RequestBackListener<ConfirmOrderBean>() {
+        addToRxLife(MainRequest.getConfirmOrderData(recId, goods_id, product_id, num, ecpressId, integralNum, address_id, id, ht_sendid, zy_sendid, proIdSb,group_info,group_id, new RequestBackListener<ConfirmOrderBean>() {
             @Override
             public void onStart() {
                 showLoading();

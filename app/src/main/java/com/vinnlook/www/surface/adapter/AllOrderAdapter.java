@@ -266,7 +266,7 @@ public class AllOrderAdapter extends BaseStateAdapter<AllOrderListBean.ListBean,
                     String confirmMessage = "";
                     String confirmMessage2 = "";
                     PayOrderActivity.startSelf(context, recId, goods_id, product_id, num, real_id, address_id, type, confirmMessage, confirmMessage2, data.getOrder_id(),
-                            data.getOrder_amount(), "", "", "", "");
+                            data.getOrder_amount(), "", "", "", "","","");
 
                 }
             });

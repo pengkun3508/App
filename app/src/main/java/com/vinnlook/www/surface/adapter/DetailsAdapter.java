@@ -19,6 +19,7 @@ import com.vinnlook.www.surface.activity.CouponActivity;
 import com.vinnlook.www.surface.activity.WebActivity;
 import com.vinnlook.www.surface.bean.DetailsBean;
 import com.vinnlook.www.surface.dialog.TypeSelectDialog;
+import com.vinnlook.www.surface.mvp.model.bean.ProductBean;
 import com.vinnlook.www.utils.DensityUtils;
 import com.vinnlook.www.widgat.SpaceItemDecoration;
 import com.vinnlook.www.widgat.SpacesItemDecoration;
@@ -201,7 +202,7 @@ public class DetailsAdapter extends ListBaseAdapter<DetailsBean> {
                 public void onClick(View view) {
                     TypeSelectDialog.with((Activity) context, dataBean, "", "", new TypeSelectDialog.AddShopCarClickListener() {
                         @Override
-                        public void onBtnClickListener(String goods_id, String getRec_id,String product_id, String num, String getAttr_names, String mmake) {
+                        public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_names, ProductBean productBean, String mmake) {
 //                            dataBean.getInfo().setShop_attr_name(getAttr_names);
 //                            move_type_text.setText(getAttr_names);
 //                            notifyDataSetChanged();

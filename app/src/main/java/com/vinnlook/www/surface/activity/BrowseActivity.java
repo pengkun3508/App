@@ -94,7 +94,7 @@ public class BrowseActivity extends BaseActivity<BrowsePresenter> implements Bro
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 LinearLayoutManager manager = (LinearLayoutManager) recyclerView.getLayoutManager();
                 int lastVisibleItem = manager.findLastCompletelyVisibleItemPosition();
-                if (adapter.getData().size() - 5 == lastVisibleItem) {
+                if (adapter.getData().size() - 12 == lastVisibleItem) {
                     if (lastItem != lastVisibleItem) {
                         lastItem = lastVisibleItem;
                         page++;

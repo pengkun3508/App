@@ -2,7 +2,6 @@ package com.vinnlook.www.surface.fragment;
 
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -127,8 +126,6 @@ public class HomeTab3Fragment extends BaseFragment<HomeTab3FragmentPresenter> im
 
             }
         });
-
-
     }
 
     @Override
@@ -172,7 +169,7 @@ public class HomeTab3Fragment extends BaseFragment<HomeTab3FragmentPresenter> im
      */
     @Override
     public void getLimiteFail(int code, String msg) {
-
+        smartRefreshLayout.finishRefresh();
     }
 
     private Handler handler = new Handler() {

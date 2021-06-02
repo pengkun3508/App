@@ -5,15 +5,13 @@
     android:layout_height="match_parent"
     android:background="@color/black_80">
 
-    <com.flyco.roundview.RoundLinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="vertical"
         android:padding="@dimen/spacing_20dp"
-        app:rv_backgroundColor="@color/move_text1"
-        app:rv_cornerRadius_TL="@dimen/spacing_10dp"
-        app:rv_cornerRadius_TR="@dimen/spacing_10dp">
+        android:background="@mipmap/share_bg">
 
 
         <LinearLayout
@@ -67,7 +65,7 @@
                 <ImageView
                     android:layout_width="@dimen/spacing_35dp"
                     android:layout_height="@dimen/spacing_35dp"
-                    android:background="@mipmap/share_wechat_icon" />
+                    android:background="@mipmap/share_wechat_icon_1" />
 
                 <TextView
 
@@ -93,7 +91,7 @@
                 <ImageView
                     android:layout_width="@dimen/spacing_35dp"
                     android:layout_height="@dimen/spacing_35dp"
-                    android:background="@mipmap/share_wxcircle_icon" />
+                    android:background="@mipmap/share_wxcircle_icon_1" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -118,7 +116,7 @@
                 <ImageView
                     android:layout_width="@dimen/spacing_35dp"
                     android:layout_height="@dimen/spacing_35dp"
-                    android:background="@mipmap/share_qrcode_icon" />
+                    android:background="@mipmap/share_qrcode_icon_1" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -143,7 +141,7 @@
                 <ImageView
                     android:layout_width="@dimen/spacing_35dp"
                     android:layout_height="@dimen/spacing_35dp"
-                    android:background="@mipmap/share_copy_icon" />
+                    android:background="@mipmap/share_copy_icon_1" />
 
                 <TextView
 
@@ -185,7 +183,7 @@
             android:visibility="gone" />
 
 
-    </com.flyco.roundview.RoundLinearLayout>
+    </LinearLayout>
 
 
 </RelativeLayout>

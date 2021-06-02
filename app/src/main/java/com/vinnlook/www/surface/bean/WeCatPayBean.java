@@ -12,77 +12,122 @@ import per.goweii.rxhttp.request.base.BaseBean;
 public class WeCatPayBean extends BaseBean {
 
     /**
-     * appid : wx15087974bfc54020
-     * partnerid : 1591210801
-     * prepayid : wx14160639936086ff7977619d1970018000
-     * package : Sign=WXPay
-     * noncestr : kKqBsRv72UnI5oSu
-     * timestamp : 1589443599
-     * sign : 27A8F6D6F61A4CB985E7866DDE21188C
+     * content : {"appid":"wx6a9c69dcb128c19f","partnerid":"1562591411","prepayid":"wx18101045691875040fb62bd61606350000","package":"Sign=WXPay","noncestr":"PFePwpAxA9mDx3rf","timestamp":1621303845,"sign":"1F2E35AB690601E8B97B2D9FF4F07FD5"}
+     * order_id : 16793
+     * is_group : 1
      */
 
-    private String appid;
-    private String partnerid;
-    private String prepayid;
-    @SerializedName("package")
-    private String packageX;
-    private String noncestr;
-    private int timestamp;
-    private String sign;
+    private ContentBean content;
+    private String order_id;
+    private int is_group;
+    private String is_group_end;
 
-    public String getAppid() {
-        return appid;
+    public String getIs_group_end() {
+        return is_group_end;
     }
 
-    public void setAppid(String appid) {
-        this.appid = appid;
+    public void setIs_group_end(String is_group_end) {
+        this.is_group_end = is_group_end;
     }
 
-    public String getPartnerid() {
-        return partnerid;
+    public ContentBean getContent() {
+        return content;
     }
 
-    public void setPartnerid(String partnerid) {
-        this.partnerid = partnerid;
+    public void setContent(ContentBean content) {
+        this.content = content;
     }
 
-    public String getPrepayid() {
-        return prepayid;
+    public String getOrder_id() {
+        return order_id;
     }
 
-    public void setPrepayid(String prepayid) {
-        this.prepayid = prepayid;
+    public void setOrder_id(String order_id) {
+        this.order_id = order_id;
     }
 
-    public String getPackageX() {
-        return packageX;
+    public int getIs_group() {
+        return is_group;
     }
 
-    public void setPackageX(String packageX) {
-        this.packageX = packageX;
+    public void setIs_group(int is_group) {
+        this.is_group = is_group;
     }
 
-    public String getNoncestr() {
-        return noncestr;
-    }
+    public static class ContentBean {
+        /**
+         * appid : wx6a9c69dcb128c19f
+         * partnerid : 1562591411
+         * prepayid : wx18101045691875040fb62bd61606350000
+         * package : Sign=WXPay
+         * noncestr : PFePwpAxA9mDx3rf
+         * timestamp : 1621303845
+         * sign : 1F2E35AB690601E8B97B2D9FF4F07FD5
+         */
 
-    public void setNoncestr(String noncestr) {
-        this.noncestr = noncestr;
-    }
+        private String appid;
+        private String partnerid;
+        private String prepayid;
+        @SerializedName("package")
+        private String packageX;
+        private String noncestr;
+        private int timestamp;
+        private String sign;
 
-    public int getTimestamp() {
-        return timestamp;
-    }
+        public String getAppid() {
+            return appid;
+        }
 
-    public void setTimestamp(int timestamp) {
-        this.timestamp = timestamp;
-    }
+        public void setAppid(String appid) {
+            this.appid = appid;
+        }
 
-    public String getSign() {
-        return sign;
-    }
+        public String getPartnerid() {
+            return partnerid;
+        }
 
-    public void setSign(String sign) {
-        this.sign = sign;
+        public void setPartnerid(String partnerid) {
+            this.partnerid = partnerid;
+        }
+
+        public String getPrepayid() {
+            return prepayid;
+        }
+
+        public void setPrepayid(String prepayid) {
+            this.prepayid = prepayid;
+        }
+
+        public String getPackageX() {
+            return packageX;
+        }
+
+        public void setPackageX(String packageX) {
+            this.packageX = packageX;
+        }
+
+        public String getNoncestr() {
+            return noncestr;
+        }
+
+        public void setNoncestr(String noncestr) {
+            this.noncestr = noncestr;
+        }
+
+        public int getTimestamp() {
+            return timestamp;
+        }
+
+        public void setTimestamp(int timestamp) {
+            this.timestamp = timestamp;
+        }
+
+        public String getSign() {
+            return sign;
+        }
+
+        public void setSign(String sign) {
+            this.sign = sign;
+        }
     }
 }
