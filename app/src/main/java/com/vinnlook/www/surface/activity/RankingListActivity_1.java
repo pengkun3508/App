@@ -211,8 +211,6 @@ public class RankingListActivity_1 extends BaseActivity<RankingListPresenter> im
 
         presenter.getTypeReBangList(String.valueOf(data.get(0).getId()));//下载列表数据
 //        adapter.notifyDataSetChanged();
-
-
     }
 
     /**

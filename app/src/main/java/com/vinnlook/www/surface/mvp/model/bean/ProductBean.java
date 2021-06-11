@@ -32,6 +32,26 @@ public class ProductBean {
     private String attr_name;
     private String attr_name_info;
     private String rec_id;
+    private String is_group;
+    private String is_promote;
+
+    public String getIs_group() {
+        return is_group;
+    }
+
+    public void setIs_group(String is_group) {
+        this.is_group = is_group;
+    }
+
+    public String getIs_promote() {
+        return is_promote;
+    }
+
+    public void setIs_promote(String is_promote) {
+        this.is_promote = is_promote;
+    }
+
+
 
     public String getRec_id() {
         return rec_id;

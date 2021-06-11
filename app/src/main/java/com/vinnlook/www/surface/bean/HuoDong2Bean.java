@@ -30,7 +30,6 @@ public class HuoDong2Bean extends BaseBean {
     }
 
 
-
     public String getId() {
         return id;
     }
@@ -232,6 +231,15 @@ public class HuoDong2Bean extends BaseBean {
             private String goods_thumb;
             private String attr;
             private String active_name;
+            private AttrNameBean attr_name;
+
+            public AttrNameBean getAttr_name() {
+                return attr_name;
+            }
+
+            public void setAttr_name(AttrNameBean attr_name) {
+                this.attr_name = attr_name;
+            }
 
             public String getProduct_id() {
                 return product_id;
@@ -383,6 +391,29 @@ public class HuoDong2Bean extends BaseBean {
 
             public void setActive_name(String active_name) {
                 this.active_name = active_name;
+            }
+
+            public static class AttrNameBean {
+                String num;
+                String str;
+
+                public String getNum() {
+                    return num;
+                }
+
+                public void setNum(String num) {
+                    this.num = num;
+                }
+
+                public String getStr() {
+                    return str;
+                }
+
+                public void setStr(String str) {
+                    this.str = str;
+                }
+
+
             }
         }
     }

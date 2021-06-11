@@ -69,6 +69,8 @@ public class TypeSelectDialog {
         this.goods_attr = goods_attrs;
         this.addShopCarClickListener = addShopCarClickListener;
         this.mark = marks;
+
+
     }
 
     public static void setUrl(String urls) {
@@ -100,22 +102,23 @@ public class TypeSelectDialog {
                         String getSearch_attrs = getInfo.getSearch_attr() + "|" + getAttr_value;
                         getSearch_attr = getInfo.getSearch_attr();
 
-                        Log.e("默认选择值", "===第一次====goods_attr===000000==" + goods_attr);
-
-                        Log.e("默认选择值", "===第一次====getSearch_attr===000000==" + getSearch_attr);
-
                         if (goods_attr != null && !goods_attr.equals("")) {
                             getSearch_attr = goods_attr;
-                            Log.e("默认选择值", "===默认值====goods_attr===000000==" + goods_attr);
-
                             for (int i = 0; i < moveDataBean.getProduct().size(); i++) {
                                 Log.e("默认选择值", "===默认值====getGoods_attr===111111111==" + moveDataBean.getProduct().get(i).getGoods_attr());
                                 if (goods_attr.equals(moveDataBean.getProduct().get(i).getGoods_attr())) {
                                     productBean = moveDataBean.getProduct().get(i);
                                     Log.e("默认选择值", "===默认值====productBean==111===" + productBean);
                                 }
+//                                if (moveDataBean.getProduct().get(i).getGoods_attr().contains(goods_attr)) {
+//                                    productBean = moveDataBean.getProduct().get(i);
+//                                    Log.e("默认选择值", "===默认值====productBean==212121===" + productBean);
+//                                    return;
+//                                }
                             }
+
                         }
+
 
 
                         Log.e("默认选择值", "===默认值====productBean===222==" + productBean);
@@ -135,15 +138,15 @@ public class TypeSelectDialog {
                                 productBean = productBeans;
                                 type_number.setText("库存" + productBeans.getProduct_number() + "件");
 
-                                if (moveDataBean.getInfo().getIs_group().equals("1")) {
-                                    type_price.setText(Html.fromHtml("&yen") + moveDataBean.getInfo().getPreferential_price());
+//                                if (productBeans.getIs_group().equals("1")) {
+//                                    type_price.setText(Html.fromHtml("&yen") + productBeans.getPreferential_price());
+//                                } else {
+                                if (productBeans.getIs_promote().equals("1")) {//显示限时页面
+                                    type_price.setText(Html.fromHtml("&yen") + productBeans.getPreferential_price());
                                 } else {
-                                    if (moveDataBean.getInfo().getIs_promote().equals("1")) {//显示限时页面
-                                        type_price.setText(Html.fromHtml("&yen") + productBeans.getPreferential_price());
-                                    } else {
-                                        type_price.setText(Html.fromHtml("&yen") + productBeans.getProduct_price());
-                                    }
+                                    type_price.setText(Html.fromHtml("&yen") + productBeans.getProduct_price());
                                 }
+//                                }
 
 
                                 getRec_id = productBean.getRec_id();
@@ -222,18 +225,26 @@ public class TypeSelectDialog {
                         Log.e("getBannerUrl", "==getBannerUrl==" + getBannerUrl);
                         ImageLoader.image(mActivity, type_img, getBannerUrl);
 
-                        if (moveDataBean.getInfo().getIs_group().equals("1")) {
-                            type_price.setText(Html.fromHtml("&yen") + moveDataBean.getInfo().getPreferential_price());
+//                        if (getInfo.getIs_group().equals("1")) {
+//                            type_price.setText(Html.fromHtml("&yen") + getInfo.getPreferential_price());
+//                        } else {
+                        if (moveDataBean.getProduct().get(0).getIs_promote().equals("1")) {//显示限时页面
+                            type_price.setText(Html.fromHtml("&yen") + moveDataBean.getProduct().get(0).getPreferential_price());
                         } else {
-                            if (moveDataBean.getInfo().getIs_promote().equals("1")) {//显示限时页面
-                                type_price.setText(Html.fromHtml("&yen") + getInfo.getPreferential_price());
-                            } else {
-                                type_price.setText(Html.fromHtml("&yen") + getInfo.getProduct_price());
-                            }
+                            type_price.setText(Html.fromHtml("&yen") + moveDataBean.getProduct().get(0).getProduct_price());
                         }
+//                        }
+//                        type_number.setText("库存" + moveDataBean.getProduct().get(0).getProduct_number() + "件");
 
+//                        if (productBean.getIs_promote().equals("1")) {//显示限时页面
+//                            type_price.setText(Html.fromHtml("&yen") + productBean.getPreferential_price());
+//                        } else {
+//                            type_price.setText(Html.fromHtml("&yen") + productBean.getProduct_price());
+//                        }
+////                        }
+//                        type_number.setText("库存" + productBean.getProduct_number() + "件");
+//                        getProduct_id = productBean.getProduct_id();
 
-                        type_number.setText("库存" + getInfo.getProduct_number() + "件");
                         type_img.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {

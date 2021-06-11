@@ -146,7 +146,7 @@ public class ShoppingCheFragment_1 extends BaseFragment<VideonFragmentPresenter_
             }
 
             @Override
-            public void onTypeClickListener(ShopCartListBean_1.ListBean data, int position1, int position2) {//修改规格
+            public void onTypeClickListener(ShopCartListBean_1.ListBean data, int position1, int position2) {//第一层列表修改规格
 //                getRec_id = adapter1.getData(position1).getList().get(position2).getRec_id();
 //                goods_attr = adapter1.getData(position1).getList().get(position2).getGoods_attr();
                 getRec_id = data.getRec_id();
@@ -563,7 +563,7 @@ public class ShoppingCheFragment_1 extends BaseFragment<VideonFragmentPresenter_
     }
 
     /**
-     * @Description:选择商品类型
+     * @Description:选择商品类型---第一层选择规格
      * @Time:2020/5/11 13:58
      * @Author:pk
      */
@@ -587,9 +587,12 @@ public class ShoppingCheFragment_1 extends BaseFragment<VideonFragmentPresenter_
 
         TypeSelectDialog.with(getActivity(), moveDataBeas, goods_attr, "", new TypeSelectDialog.AddShopCarClickListener() {
             @Override
-            public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name, ProductBean productBean, String mmake) {
+            public void onBtnClickListener(String goods_id, String getRec_ids, String product_id, String num, String getAttr_name, ProductBean productBean, String mmake) {
+                Log.e("确定后", "getRec_id==111=" + productBean.getRec_id());
+                Log.e("确定后", "num==111=" + num);
+                Log.e("确定后", "getProduct_id==111=" + productBean.getProduct_id());
                 goods_attr = "";
-                presenter.getModifyType_1(getRec_id, num, product_id);
+                presenter.getModifyType_1(getRec_id, num, productBean.getProduct_id());
             }
         }).show();
 
@@ -796,9 +799,12 @@ public class ShoppingCheFragment_1 extends BaseFragment<VideonFragmentPresenter_
 
         TypeSelectDialog.with(getActivity(), moveDataBeas, goods_attr, "2", new TypeSelectDialog.AddShopCarClickListener() {
             @Override
-            public void onBtnClickListener(String goods_id, String getRec_id,String product_id, String num, String getAttr_name,ProductBean productBean, String mmake) {
+            public void onBtnClickListener(String goods_id, String getRec_ids,String product_id, String num, String getAttr_name,ProductBean productBean, String mmake) {
+                Log.e("确定后", "getRec_id==222=" + productBean.getRec_id());
+                Log.e("确定后", "num==222=" + num);
+                Log.e("确定后", "getProduct_id==222=" + productBean.getProduct_id());
                 goods_attr = "";
-                presenter.getModifyType_1(getRec_id, num, product_id);
+                presenter.getModifyType_1(getRec_id, num, productBean.getProduct_id());
             }
         }).show();
 
@@ -840,9 +846,12 @@ public class ShoppingCheFragment_1 extends BaseFragment<VideonFragmentPresenter_
 
         TypeSelectDialog.with(getActivity(), moveDataBeas, goods_attr, "2", new TypeSelectDialog.AddShopCarClickListener() {
             @Override
-            public void onBtnClickListener(String goods_id,String getRec_id, String product_id, String num, String getAttr_name,ProductBean productBean, String mmake) {
+            public void onBtnClickListener(String goods_id,String getRec_ids, String product_id, String num, String getAttr_name,ProductBean productBean, String mmake) {
+                Log.e("确定后", "getRec_id==333=" + productBean.getRec_id());
+                Log.e("确定后", "num==333=" + num);
+                Log.e("确定后", "getProduct_id==333=" + productBean.getProduct_id());
                 goods_attr = "";
-                presenter.getModifyType_1(getRec_id, num, product_id);
+                presenter.getModifyType_1(getRec_id, num, productBean.getProduct_id());
             }
         }).show();
 

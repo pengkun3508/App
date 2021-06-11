@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="@dimen/spacing_50dp"
+    android:layout_height="@dimen/spacing_50dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/shop_coloru_img_select"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/details_img_line_bg" />
 
 
-    <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/shop_coloru_img"
-        android:layout_width="@dimen/spacing_55dp"
-        android:layout_height="@dimen/spacing_55dp"
-        app:riv_corner_radius="999dp" />
+        <ImageView
+            android:id="@+id/shop_coloru_img"
+            android:layout_width="@dimen/spacing_40dp"
+            android:layout_height="@dimen/spacing_40dp"
+            android:layout_centerInParent="true" />
+
+
+    </RelativeLayout>
+
 
 </LinearLayout>

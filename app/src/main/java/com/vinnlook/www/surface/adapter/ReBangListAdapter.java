@@ -79,7 +79,12 @@ public class ReBangListAdapter extends BaseStateAdapter<ReBangListBean, ReBangLi
 
 
             rebang_name.setText(data.getGoods_name());
-            rebang_price.setText(Html.fromHtml("&yen") + data.getProduct_price());
+            if (data.getIs_promote() == 0) {
+                rebang_price.setText(Html.fromHtml("&yen") + data.getProduct_price());
+            } else if (data.getIs_promote() == 1) {
+                rebang_price.setText(Html.fromHtml("&yen") + data.getPreferential_price());
+            }
+
             rebang_number.setText("已下单" + data.getVirtual_sales() + "件");
             rebang_paihang_text.setText(getAdapterPosition() + 1 + "");
             if (getAdapterPosition() == 0) {

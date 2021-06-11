@@ -1,35 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_bottoms"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
     android:orientation="vertical">
 
-<!--    <com.vinnlook.www.widgat.actionbar.ActionBarSimple-->
-<!--        android:id="@+id/action_bar"-->
-<!--        style="@style/ActionBarStyle.Simple"-->
-<!--        android:background="@color/black"-->
-<!--        app:ab_bottom_line_color="@color/line"-->
-<!--        app:ab_bottom_line_height="0dp"-->
-<!--        app:abs_back_icon="@mipmap/back_white"-->
-<!--        app:abs_title=""-->
-<!--        app:abs_title_text_color="@color/white" />-->
+    <!--    <com.vinnlook.www.widgat.actionbar.ActionBarSimple-->
+    <!--        android:id="@+id/action_bar"-->
+    <!--        style="@style/ActionBarStyle.Simple"-->
+    <!--        android:background="@color/black"-->
+    <!--        app:ab_bottom_line_color="@color/line"-->
+    <!--        app:ab_bottom_line_height="0dp"-->
+    <!--        app:abs_back_icon="@mipmap/back_white"-->
+    <!--        app:abs_title=""-->
+    <!--        app:abs_title_text_color="@color/white" />-->
 
     <RelativeLayout
-        android:id="@+id/layout_bottoms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_20dp"
         android:background="@color/black">
 
-        <ImageView
-            android:id="@+id/web_title_back"
+        <LinearLayout
+            android:id="@+id/web_title_back_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:padding="@dimen/spacing_10dp"
-            android:src="@mipmap/back_white" />
+            android:paddingLeft="@dimen/spacing_10dp"
+            android:paddingTop="@dimen/spacing_10dp"
+            android:paddingRight="@dimen/spacing_10dp"
+            android:paddingBottom="@dimen/spacing_10dp">
+
+            <ImageView
+                android:id="@+id/web_title_back"
+                android:layout_width="@dimen/spacing_10dp"
+                android:layout_height="@dimen/spacing_15dp"
+                android:background="@mipmap/back_white"
+                android:padding="@dimen/spacing_10dp" />
+
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/web_title_text"
@@ -37,7 +47,6 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:padding="@dimen/spacing_10dp"
-            android:text="百万补贴"
             android:textColor="@color/white"
             android:textSize="@dimen/text_18"
             android:textStyle="bold" />

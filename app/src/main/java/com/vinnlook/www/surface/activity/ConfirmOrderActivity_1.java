@@ -306,6 +306,9 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
                 getSearch_attr = getSearch_attrs;
                 position = positions;
 //                presenter.getTypeShopData(getGoods_id);
+                Log.e("赠品", "==data==" + data);
+                Log.e("赠品", "==getSearch_attrs==" + getSearch_attrs);
+                Log.e("赠品", "==getGoods_id==" + getGoods_id);
                 presenter.getTypeShopData(getGoods_id);
             }
         });
@@ -1246,6 +1249,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
     public void getTypeShopSuccess(int code, MoveDataBean data) {
         Log.e("getTypeShopSuccess", "下载规格成功");
         if (type.equals("1")) {//自营
+
             MoveDataBean.InfoBean infoBean = new MoveDataBean.InfoBean();
             List<MoveDataBean.InfoBean.BannerBean> banner = new ArrayList<>();
             MoveDataBean.InfoBean.BannerBean bannerBeans = new MoveDataBean.InfoBean.BannerBean();

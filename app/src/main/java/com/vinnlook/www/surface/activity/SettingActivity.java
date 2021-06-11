@@ -237,8 +237,10 @@ public class SettingActivity extends BaseActivity<SettingPresenter> implements S
                     case "samsung":
                         IntoShopUtils.goToSamsungMarket(this, "com.vinnlook.www");
                         break;
-                    case "Coolpad":
                     case "Meizu":
+                        IntoShopUtils.toMeizu(this, "com.vinnlook.www");
+                        break;
+                    case "Coolpad":
                     case "Sony":
                     case "LG":
                     default:

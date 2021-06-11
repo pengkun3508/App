@@ -659,6 +659,104 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
 
     }
 
+    //    private Handler handler = new Handler() {
+//        @Override
+//        public void handleMessage(Message msg) {
+//            super.handleMessage(msg);
+//            dt = dt - 1;
+//
+//            long hours = dt / (60 * 60);
+//            long minutes = (dt / 60) % 60;
+//            long seconds = dt % 60;
+//
+//            hourss = String.valueOf(hours);
+//            minutess = String.valueOf(minutes);
+//            secondss = String.valueOf(seconds);
+//
+//            if (hours < 10) {
+//                hourss = "0" + hours;
+//            }
+//            if (minutes < 10) {
+//                minutess = "0" + minutes;
+//            }
+//            if (seconds < 10) {
+//                secondss = "0" + seconds;
+//            }
+////            Log.e("倒计时--详情页", "seconds====" + secondss);
+//
+//
+//            //设置倒计时
+//            moveXianshiHour.setText(hourss + ":" + minutess + ":" + secondss);
+//            handler.removeMessages(0);
+//            handler.sendEmptyMessageDelayed(0, 1000);
+//            if (dt <= 0) {
+//                handler.removeCallbacksAndMessages(null);
+//            }
+//        }
+//    };
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            dt = dt - 1;
+            long days = dt / (60 * 60 * 24);
+            long hours1 = dt % (60 * 60 * 24) / (60 * 60);
+            long minutess1 = dt % (60 * 60) / 60;
+            long secondss1 = dt % 60;
+
+            String dayss;
+            String hourss;
+            String minutess;
+            String secondss;
+            if (days < 10) {
+                dayss = "0" + days;
+            } else {
+                dayss = String.valueOf(days);
+            }
+            if (hours1 < 10) {
+                hourss = "0" + hours1;
+            } else {
+                hourss = String.valueOf(hours1);
+            }
+            if (minutess1 < 10) {
+                minutess = "0" + minutess1;
+            } else {
+                minutess = String.valueOf(minutess1);
+            }
+            if (secondss1 < 10) {
+                secondss = "0" + secondss1;
+            } else {
+                secondss = String.valueOf(secondss1);
+            }
+            moveXianshiDay.setText(dayss);
+            moveXianshiHour.setText(hourss);
+            moveXianshiMin.setText(minutess);
+            moveXianshiSecond.setText(secondss);
+
+            handler.removeMessages(0);
+            handler.sendEmptyMessageDelayed(0, 1000);
+            if (dt <= 0) {
+                handler.removeCallbacksAndMessages(null);
+            }
+        }
+    };
+
+
+    @Override
+    protected void loadData() {
+//        presenter.getAppUpdate();//下载时间
+        presenter.getMoveDatas(goods_id, search_attr);//下载商品详情数据
+//        presenter.getMoveDatas("2", "26|27");//下载商品详情数据
+    }
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
+
     //创建适配器
     private void initAdapter() {
 
@@ -715,6 +813,23 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
                             public void onPageScrollStateChanged(int state) {
                             }
                         });
+
+                Log.e("选择的颜色", "===名称:===11111111=====");
+                Log.e("选择的颜色", "===名称:========" + moveDataBean.getInfo().getShop_name() + shopColourImgAdapter.getData().get(position).getShop_attr_name());
+                moveTransactionName.setText(moveDataBean.getInfo().getShop_name() + shopColourImgAdapter.getData().get(position).getShop_attr_name());
+                moveTypeText.setText("已选 " + shopColourImgAdapter.getData().get(position).getShop_attr_name());
+                goods_attr = shopColourImgAdapter.getData().get(position).getGoods_attr_id() + "|" + moveDataBean.getAttr().get(1).getValue().get(0).getGoods_attr_id();
+//                goods_attr = shopColourImgAdapter.getData().get(position).getGoods_attr_id() ;
+                Log.e("选择的颜色", "===goods_attr=====" + goods_attr);
+                if (shopColourImgAdapter.getData().get(position).getFlage().equals("0")) {
+                    for (int i = 0; i < shopColourImgAdapter.getData().size(); i++) {
+                        shopColourImgAdapter.getData().get(i).setFlage("0");
+                    }
+                    shopColourImgAdapter.getData().get(position).setFlage("1");
+
+                }
+                shopColourImgAdapter.notifyDataSetChanged();
+
 
             }
         });
@@ -795,21 +910,182 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
     }
 
 
+    /**
+     * 商品详情返回失败
+     *
+     * @param code
+     * @param
+     */
     @Override
-    protected void loadData() {
-//        presenter.getAppUpdate();//下载时间
-        presenter.getMoveDatas(goods_id, search_attr);//下载商品详情数据
-//        presenter.getMoveDatas("2", "26|27");//下载商品详情数据
+    public void getMoveDataFail(int code, String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * 收藏商品成功
+     *
+     * @param code
+     * @param
+     */
+    @Override
+    public void getCollectionShopSuccess(int code, Object data) {
+        Log.e("收藏商品成功", "==code==" + code);
+        Log.e("收藏商品成功", "==data==" + data);
+        if (mark.equals("1")) {
+            moveShoucangImg.setImageDrawable(ResUtils.getDrawable(R.mipmap.shoucang_img1));
+            Toast.makeText(this, "收藏成功", Toast.LENGTH_SHORT).show();
+        } else if (mark.equals("0")) {
+            moveShoucangImg.setImageDrawable(ResUtils.getDrawable(R.mipmap.move_img1));
+            Toast.makeText(this, "取消收藏成功", Toast.LENGTH_SHORT).show();
+        }
+
+
+    }
+
+    /**
+     * 收藏商品失败
+     *
+     * @param code
+     * @param
+     */
+    @Override
+    public void getCollectionShopFail(int code, String msg) {
+        Log.e("收藏商品失败", "==code==" + code);
+        Log.e("收藏商品失败", "==msg==" + msg);
+
+        if (mark.equals("1")) {
+            mark = "0";
+            moveShoucangImg.setImageDrawable(ResUtils.getDrawable(R.mipmap.move_img1));
+            Toast.makeText(this, "收藏失败", Toast.LENGTH_SHORT).show();
+        } else if (mark.equals("0")) {
+            mark = "1";
+            moveShoucangImg.setImageDrawable(ResUtils.getDrawable(R.mipmap.shoucang_img1));
+            Toast.makeText(this, "取消收藏失败", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    /**
+     * 添加购物车成功
+     *
+     * @param code
+     * @param
+     */
+    @Override
+    public void getAddShopCarSuccess(int code, Object data) {
+        Log.e("添加购物车成功", "==code==" + code);
+        Log.e("添加购物车成功", "==msg==" + data);
+        TypeSelectDialog.dismiss();
+//        TypeSelectDialog.with(getActivity(), moveDataBean, this).dismiss();
+        Toast.makeText(this, "加入购物车成功", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * 添加购物车失败
+     *
+     * @param code
+     * @param
+     */
+    @Override
+    public void getAddShopCarFail(int code, String msg) {
+        Log.e("添加购物车失败", "==code==" + code);
+        Log.e("添加购物车失败", "==msg==" + msg);
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+    @SuppressLint("MissingPermission")
+    @OnClick({R.id.move_shopcat_btn, R.id.move_kefu_btn, R.id.move_shoucang_btn, R.id.move_add_shopcat_btn, R.id.tv_move_about, R.id.rebang_layout_btn,
+            R.id.wen_see_all, R.id.move_see_all_btn})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.move_shopcat_btn://购物车
+                CacheActivity.finishActivity();
+//                setResult(10);
+                new MainShoppingEvent("10").post();
+                finish();
+                break;
+            case R.id.move_kefu_btn://客服
+                PermissionHelper.with(getContext()).permissions(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_EXTERNAL_STORAGE)
+                        .request(new PermissionHelper.PermissionListener() {
+                            @Override
+                            public void onSuccess() {
+                                if (!UserUtils.getInstance().getUserId().equals("")) {
+                                    initSdk();
+                                } else {
+                                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                                }
+                            }
 
+                            @Override
+                            public void onFailed() {
+                            }
+                        });
+                break;
+            case R.id.move_shoucang_btn://收藏
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    if (mark.equals("0")) {
+                        mark = "1";
+                        presenter.getMoveCollectionShop(moveDataBean.getInfo().getGoods_id(), mark);
+                    } else if (mark.equals("1")) {
+                        mark = "0";
+                        presenter.getMoveCollectionShop(moveDataBean.getInfo().getGoods_id(), mark);
+                    }
+                } else {
+                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                }
+
+                break;
+            case R.id.move_add_shopcat_btn://加入购物车
+                if (moveDataBean == null) {
+                    return;
+                }
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+//                String getSearch_attr = moveDataBean.getInfo().getSearch_attr();//默认选中的规格和颜色
+                    presenter.getTypeShopData5(goods_id);
+
+                } else {
+                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+
+//                    loginDialog();
+//                    getPhoneNumber();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+
+
+                break;
+            case R.id.tv_move_about://立即购买
+                if (moveDataBean == null) {
+                    return;
+                }
+
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    presenter.getTypeShopData6(goods_id);
+                } else {
+                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+//                    loginDialog();
+//                    getPhoneNumber();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+                break;
+            case R.id.rebang_layout_btn://进入热榜列表
+                ReBangListActivity.startSelf(MoveAbooutActivity_3.this, moveDataBean.getSalable().getType());
+
+                break;
+
+            case R.id.wen_see_all://问一问查看更多
+                ProblemActivity.startSelf(MoveAbooutActivity_3.this, moveDataBean);
+
+                break;
+            case R.id.move_see_all_btn://为您推荐查看更多
+                new MainHomeActivityEvent("4").post();
+                finish();
+                break;
+        }
+    }
 
     /**
      * 商品详情返回成功
@@ -836,6 +1112,10 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
             moveShopAttrRecycler.setVisibility(View.GONE);
         }
         moveShopExplain.setText(data.getInfo().getGoods_brief());
+        for (int i = 0; i < data.getAttr().get(0).getValue().size(); i++) {
+            data.getAttr().get(0).getValue().get(i).setFlage("0");
+        }
+        data.getAttr().get(0).getValue().get(0).setFlage("1");
         shopColourImgAdapter.setData(data.getAttr().get(0).getValue());
         moveShopAttrRecycler.setAdapter(shopColourImgAdapter);
 
@@ -870,12 +1150,7 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
             move3HuodongImg.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-//                    WebActivity3.startSelf(MoveAbooutActivity_3.this, data.getAd_info().getPhoto());
                     String url;
-//                WebActivity3.startSelf(getActivity(), "https://h5.jealook.com/test-activeH5/index.html" + "?userId=" + UserUtils.getInstance().getUserId());
-//                WebActivity3.startSelf(getActivity(), data.getAd_info().getList().getUrl() + "?userId=" + UserUtils.getInstance().getUserId());
-
-//                    url = "http://h5.jealook.com/test-activeH5/index.html";
                     url = data.getAd_info().getList().getUrl();
 
                     if (url.contains("?")) {
@@ -883,7 +1158,7 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
                     } else {
                         url = url + "?userId=" + UserUtils.getInstance().getUserId();
                     }
-                    WebActivity3.startSelf(getActivity(), url);
+                    WebActivity3.startSelf(getActivity(), url, data.getAd_info().getTitle_color());
                 }
             });
         } else {
@@ -1216,281 +1491,6 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
     }
 
 
-    /**
-     * 商品详情返回失败
-     *
-     * @param code
-     * @param
-     */
-    @Override
-    public void getMoveDataFail(int code, String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-
-    }
-
-    /**
-     * 收藏商品成功
-     *
-     * @param code
-     * @param
-     */
-    @Override
-    public void getCollectionShopSuccess(int code, Object data) {
-        Log.e("收藏商品成功", "==code==" + code);
-        Log.e("收藏商品成功", "==data==" + data);
-        if (mark.equals("1")) {
-            moveShoucangImg.setImageDrawable(ResUtils.getDrawable(R.mipmap.shoucang_img1));
-            Toast.makeText(this, "收藏成功", Toast.LENGTH_SHORT).show();
-        } else if (mark.equals("0")) {
-            moveShoucangImg.setImageDrawable(ResUtils.getDrawable(R.mipmap.move_img1));
-            Toast.makeText(this, "取消收藏成功", Toast.LENGTH_SHORT).show();
-        }
-
-
-    }
-
-    /**
-     * 收藏商品失败
-     *
-     * @param code
-     * @param
-     */
-    @Override
-    public void getCollectionShopFail(int code, String msg) {
-        Log.e("收藏商品失败", "==code==" + code);
-        Log.e("收藏商品失败", "==msg==" + msg);
-
-        if (mark.equals("1")) {
-            mark = "0";
-            moveShoucangImg.setImageDrawable(ResUtils.getDrawable(R.mipmap.move_img1));
-            Toast.makeText(this, "收藏失败", Toast.LENGTH_SHORT).show();
-        } else if (mark.equals("0")) {
-            mark = "1";
-            moveShoucangImg.setImageDrawable(ResUtils.getDrawable(R.mipmap.shoucang_img1));
-            Toast.makeText(this, "取消收藏失败", Toast.LENGTH_SHORT).show();
-        }
-
-    }
-
-    /**
-     * 添加购物车成功
-     *
-     * @param code
-     * @param
-     */
-    @Override
-    public void getAddShopCarSuccess(int code, Object data) {
-        Log.e("添加购物车成功", "==code==" + code);
-        Log.e("添加购物车成功", "==msg==" + data);
-        TypeSelectDialog.dismiss();
-//        TypeSelectDialog.with(getActivity(), moveDataBean, this).dismiss();
-        Toast.makeText(this, "加入购物车成功", Toast.LENGTH_SHORT).show();
-    }
-
-    /**
-     * 添加购物车失败
-     *
-     * @param code
-     * @param
-     */
-    @Override
-    public void getAddShopCarFail(int code, String msg) {
-        Log.e("添加购物车失败", "==code==" + code);
-        Log.e("添加购物车失败", "==msg==" + msg);
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-    }
-
-
-    @SuppressLint("MissingPermission")
-    @OnClick({R.id.move_shopcat_btn, R.id.move_kefu_btn, R.id.move_shoucang_btn, R.id.move_add_shopcat_btn, R.id.tv_move_about, R.id.rebang_layout_btn,
-            R.id.wen_see_all, R.id.move_see_all_btn})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.move_shopcat_btn://购物车
-//                CacheActivity.finishSingleActivityByClass(RecommendActivity.class);
-//                CacheActivity.finishSingleActivityByClass(SearchActivity.class);
-//                CacheActivity.finishSingleActivityByClass(SearchListActivity.class);
-//                CacheActivity.finishSingleActivityByClass(CommodityActivity.class);
-//                CacheActivity.finishSingleActivityByClass(BrandActivity.class);
-//                CacheActivity.finishSingleActivityByClass(LimitedActivity.class);
-//                CacheActivity.finishSingleActivityByClass(CollectionActivity.class);
-                CacheActivity.finishActivity();
-//                setResult(10);
-                new MainShoppingEvent("10").post();
-                finish();
-                break;
-            case R.id.move_kefu_btn://客服
-                PermissionHelper.with(getContext()).permissions(Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_EXTERNAL_STORAGE)
-                        .request(new PermissionHelper.PermissionListener() {
-                            @Override
-                            public void onSuccess() {
-                                if (!UserUtils.getInstance().getUserId().equals("")) {
-                                    initSdk();
-                                } else {
-                                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-
-                            @Override
-                            public void onFailed() {
-                            }
-                        });
-
-
-                break;
-            case R.id.move_shoucang_btn://收藏
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-                    if (mark.equals("0")) {
-                        mark = "1";
-                        presenter.getMoveCollectionShop(moveDataBean.getInfo().getGoods_id(), mark);
-                    } else if (mark.equals("1")) {
-                        mark = "0";
-                        presenter.getMoveCollectionShop(moveDataBean.getInfo().getGoods_id(), mark);
-                    }
-                } else {
-                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                }
-
-                break;
-            case R.id.move_add_shopcat_btn://加入购物车
-                if (moveDataBean == null) {
-                    return;
-                }
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-//                String getSearch_attr = moveDataBean.getInfo().getSearch_attr();//默认选中的规格和颜色
-                    presenter.getTypeShopData5(goods_id);
-
-                } else {
-                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-
-//                    loginDialog();
-//                    getPhoneNumber();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-
-
-                break;
-            case R.id.tv_move_about://立即购买
-                if (moveDataBean == null) {
-                    return;
-                }
-
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-                    presenter.getTypeShopData6(goods_id);
-                } else {
-                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-//                    loginDialog();
-//                    getPhoneNumber();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-                break;
-            case R.id.rebang_layout_btn://进入热榜列表
-                ReBangListActivity.startSelf(MoveAbooutActivity_3.this, moveDataBean.getSalable().getType());
-
-                break;
-
-            case R.id.wen_see_all://问一问查看更多
-                ProblemActivity.startSelf(MoveAbooutActivity_3.this, moveDataBean);
-
-                break;
-            case R.id.move_see_all_btn://为您推荐查看更多
-                new MainHomeActivityEvent("4").post();
-                finish();
-                break;
-        }
-    }
-
-
-//    private Handler handler = new Handler() {
-//        @Override
-//        public void handleMessage(Message msg) {
-//            super.handleMessage(msg);
-//            dt = dt - 1;
-//
-//            long hours = dt / (60 * 60);
-//            long minutes = (dt / 60) % 60;
-//            long seconds = dt % 60;
-//
-//            hourss = String.valueOf(hours);
-//            minutess = String.valueOf(minutes);
-//            secondss = String.valueOf(seconds);
-//
-//            if (hours < 10) {
-//                hourss = "0" + hours;
-//            }
-//            if (minutes < 10) {
-//                minutess = "0" + minutes;
-//            }
-//            if (seconds < 10) {
-//                secondss = "0" + seconds;
-//            }
-////            Log.e("倒计时--详情页", "seconds====" + secondss);
-//
-//
-//            //设置倒计时
-//            moveXianshiHour.setText(hourss + ":" + minutess + ":" + secondss);
-//            handler.removeMessages(0);
-//            handler.sendEmptyMessageDelayed(0, 1000);
-//            if (dt <= 0) {
-//                handler.removeCallbacksAndMessages(null);
-//            }
-//        }
-//    };
-
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            dt = dt - 1;
-            long days = dt / (60 * 60 * 24);
-            long hours1 = dt % (60 * 60 * 24) / (60 * 60);
-            long minutess1 = dt % (60 * 60) / 60;
-            long secondss1 = dt % 60;
-
-            String dayss;
-            String hourss;
-            String minutess;
-            String secondss;
-            if (days < 10) {
-                dayss = "0" + days;
-            } else {
-                dayss = String.valueOf(days);
-            }
-
-            if (hours1 < 10) {
-                hourss = "0" + hours1;
-            } else {
-                hourss = String.valueOf(hours1);
-            }
-
-            if (minutess1 < 10) {
-                minutess = "0" + minutess1;
-            } else {
-                minutess = String.valueOf(minutess1);
-            }
-
-            if (secondss1 < 10) {
-                secondss = "0" + secondss1;
-            } else {
-                secondss = String.valueOf(secondss1);
-            }
-            moveXianshiDay.setText(dayss);
-            moveXianshiHour.setText(hourss);
-            moveXianshiMin.setText(minutess);
-            moveXianshiSecond.setText(secondss);
-
-            handler.removeMessages(0);
-            handler.sendEmptyMessageDelayed(0, 1000);
-            if (dt <= 0) {
-                handler.removeCallbacksAndMessages(null);
-            }
-        }
-    };
-
-
     //分享
     private void initmPopupWindowView() {
         LinearLayout wx_py_btn, wx_pyq_btn, copy_btn, wx_qrcode_btn;
@@ -1797,7 +1797,6 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
                 : type + System.currentTimeMillis();
     }
 
-
     //接收消息
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(ShopTypeDataEvent event) {
@@ -1816,9 +1815,24 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
                     TypeSelectDialog.setUrl(getBannerEvents.get(2).getUrl());
                 }
             }
-
-
         }
+
+
+        String getGoods_attr_id = event.getBanner().getGoods_attr_id();
+        Log.e("返回的ID", "===iD==000=" + getGoods_attr_id);
+        for (int i = 0; i < shopColourImgAdapter.getData().size(); i++) {
+            shopColourImgAdapter.getData().get(i).setFlage("0");
+        }
+        for (int i = 0; i < shopColourImgAdapter.getData().size(); i++) {
+            Log.e("返回的ID", "===shopColourImgAdapter==000==" + shopColourImgAdapter.getData().get(i).getGoods_attr_id());
+            if (getGoods_attr_id.equals(shopColourImgAdapter.getData().get(i).getGoods_attr_id())) {
+                Log.e("返回的ID", "===111==000==");
+                shopColourImgAdapter.getData().get(i).setFlage("1");
+                Log.e("返回的ID", "===222==000==");
+                shopColourImgAdapter.notifyDataSetChanged();
+            }
+        }
+
 
 //        Log.e("选择的名称", "==已选择到的================" + moveDataBean.getInfo().getShop_name() + " " + event.getArrt_name());
 //        moveTransactionName.setText(moveDataBean.getInfo().getShop_name() + " " + event.getArrt_name());
@@ -1833,11 +1847,8 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
             bannerBeans.setType(getBannerEvents.get(i).getType());
             banlist.add(bannerBeans);
         }
-
         Log.e("判断是不是视频", "getProduct_price====" + event.getProduct_price());
-
         Log.e("判断是不是视频", "getProduct_price====" + event.getBanner());
-
 //        BannerImgAdapter bannerImgAdapter = new BannerImgAdapter(getActivity(), strings);
 //        banner.setAdapter(bannerImgAdapter);
 //        banner.setIndicator(new CircleIndicator(getActivity()));
@@ -1925,7 +1936,9 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
 //            moveDataBean.getInfo().setShop_attr_name(event.getProductBean().getAttr_name());
             moveTypeText.setText("已选 " + event.getProductBean().getAttr_name());
 
+
             goods_attr = event.getProductBean().getSearch_attr();
+//            goods_attr = event.getProductBean().getGoods_attr();
             Log.e("选择的名称", "==已选择到的===goods_attr==" + goods_attr);
             Log.e("选择的名称", "==已选择到的=======1111==" + moveDataBean.getInfo().getShop_name() + " " + event.getProductBean().getAttr_name());
             moveTransactionName.setText(moveDataBean.getInfo().getShop_name() + " " + event.getProductBean().getAttr_name());
@@ -1933,9 +1946,12 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
             detailsBaseCurve.setText(event.getProductBean().getBase_curve());//基弧
             detailsWaterContent.setText(event.getProductBean().getWater_content());//含水量
             detailsColoringDiameter.setText(event.getProductBean().getColoring_diameter());//着色直径
+
+
         } else if (event.getMark().equals("2")) {
             moveTypeText.setText("已选 " + event.getProductBean().getAttr_name_info());
 
+//            goods_attr = event.getProductBean().getSearch_attr();
             goods_attr = event.getProductBean().getSearch_attr();
             Log.e("选择的名称", "==已选择到的===goods_attr==" + goods_attr);
             Log.e("选择的名称", "==已选择到的=======222==" + moveDataBean.getInfo().getShop_name() + " " + event.getProductBean().getAttr_name_info());
@@ -2485,7 +2501,7 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
             @Override
             public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name, ProductBean productBean, String mmake) {
 //                presenter.getModifyType(mark, getRec_id, num, product_id);
-                presenter.getAddShopCar(goods_id, product_id, num);
+                presenter.getAddShopCar(goods_id, productBean.getProduct_id(), num);
 
             }
         }).show();
@@ -2548,7 +2564,7 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
             public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_names, ProductBean productBean, String mmake) {
                 Log.e("onBtnClLister=购物车==", "==getAttr_names==" + getAttr_names);
 //                            getAttr_name = getAttr_names;
-                presenter.getAddShopCar(goods_id, product_id, num);
+                presenter.getAddShopCar(goods_id, productBean.getProduct_id(), num);
             }
         }).show();
 
@@ -2582,8 +2598,8 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
 //                            presenter.getAddShopCar(goods_id, product_id, num);
                 mmark = mmake;
 //                            presenter.getConfirmOrderData("", goods_id, product_id, num, "", "", "");
-                presenter.getConfirmOrderData("", goods_id, product_id, num, "", "", "", "", "", "", "", "", "");
-                product_ids = product_id;
+                presenter.getConfirmOrderData("", goods_id, productBean.getProduct_id(), num, "", "", "", "", "", "", "", "", "");
+                product_ids = productBean.getProduct_id();
                 nums = num;
 
             }

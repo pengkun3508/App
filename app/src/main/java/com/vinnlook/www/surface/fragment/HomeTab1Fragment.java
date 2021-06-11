@@ -448,7 +448,17 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
                 } else if (bannerImage.get(position).getType().equals("2")) {//2：活动详情
                     ProductDetailsActivity.startSelf(getContext(), bannerImage.get(position).getList().getActive_id());//进入活动详情页面
                 } else if (bannerImage.get(position).getType().equals("3")) {//3：url
-                    WebActivity.startSelf(getActivity(), bannerImage.get(position).getList().getUrl());
+//                    WebActivity.startSelf(getActivity(), bannerImage.get(position).getList().getUrl());
+                    String url;
+                    url = bannerImage.get(position).getList().getUrl();
+                    Log.e("首页", "url====" + url);
+                    Log.e("首页", "getTitle_color====" + bannerImage.get(position).getTitle_color());
+                    if (url.contains("?")) {
+                        url = bannerImage.get(position).getList().getUrl() + "&userId=" + UserUtils.getInstance().getUserId();
+                    } else {
+                        url = bannerImage.get(position).getList().getUrl() + "?userId=" + UserUtils.getInstance().getUserId();
+                    }
+                    WebActivity3.startSelf(getActivity(), url, bannerImage.get(position).getTitle_color());
                 } else if (bannerImage.get(position).getType().equals("4")) {//4：文字
                 } else if (bannerImage.get(position).getType().equals("5")) {//5：广告商品列表
                     HomePublicClassActivity.startSelf(getContext(), "", "0", "", "", "", bannerImage.get(position).getList().getId());
@@ -480,7 +490,17 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
                 } else if (recommBanner.get(position).getType().equals("2")) {//2：活动详情
                     ProductDetailsActivity.startSelf(getContext(), recommBanner.get(position).getList().getActive_id());//进入活动详情页面
                 } else if (recommBanner.get(position).getType().equals("3")) {//3：url
-                    WebActivity.startSelf(getActivity(), recommBanner.get(position).getList().getUrl());
+//                    WebActivity.startSelf(getActivity(), recommBanner.get(position).getList().getUrl());
+                    String url;
+                    url = recommBanner.get(position).getList().getUrl();
+                    Log.e("首页", "url====" + url);
+                    Log.e("首页", "getTitle_color====" + recommBanner.get(position).getTitle_color());
+                    if (url.contains("?")) {
+                        url = recommBanner.get(position).getList().getUrl() + "&userId=" + UserUtils.getInstance().getUserId();
+                    } else {
+                        url = recommBanner.get(position).getList().getUrl() + "?userId=" + UserUtils.getInstance().getUserId();
+                    }
+                    WebActivity3.startSelf(getActivity(), url, recommBanner.get(position).getTitle_color());
                 } else if (recommBanner.get(position).getType().equals("4")) {//4：文字
                 } else if (recommBanner.get(position).getType().equals("5")) {//5：广告商品列表
                     HomePublicClassActivity.startSelf(getContext(), "", "0", "", "", "", recommBanner.get(position).getList().getId());
@@ -532,7 +552,17 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
                 } else if (gatBannetData2.get(position).getType().equals("2")) {//2：活动详情
                     ProductDetailsActivity.startSelf(getContext(), gatBannetData2.get(position).getList().getActive_id());//进入活动详情页面
                 } else if (gatBannetData2.get(position).getType().equals("3")) {//3：url
-                    WebActivity.startSelf(getActivity(), gatBannetData2.get(position).getList().getUrl());
+//                    WebActivity.startSelf(getActivity(), gatBannetData2.get(position).getList().getUrl());
+                    String url;
+                    url = gatBannetData2.get(position).getList().getUrl();
+                    Log.e("首页", "url====" + url);
+                    Log.e("首页", "getTitle_color====" + gatBannetData2.get(position).getTitle_color());
+                    if (url.contains("?")) {
+                        url = gatBannetData2.get(position).getList().getUrl() + "&userId=" + UserUtils.getInstance().getUserId();
+                    } else {
+                        url = gatBannetData2.get(position).getList().getUrl() + "?userId=" + UserUtils.getInstance().getUserId();
+                    }
+                    WebActivity3.startSelf(getActivity(), url, gatBannetData2.get(position).getTitle_color());
                 } else if (gatBannetData2.get(position).getType().equals("4")) {//4：文字
                 } else if (gatBannetData2.get(position).getType().equals("5")) {//5：广告商品列表
                     HomePublicClassActivity.startSelf(getContext(), "", "0", "", "", "", gatBannetData2.get(position).getList().getId());
@@ -581,12 +611,15 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
 //                        WebActivity.startSelf(getActivity(), getActivityInfo.getList().getUrl());
 //                        WebActivity3.startSelf(getActivity(), "https://h5.jealook.com/test-activeH5/index.html" + "?userId=" + UserUtils.getInstance().getUserId());
                         String url;
-                        if (getActivityInfo.getList().getUrl().contains("?")) {
+                        url = getActivityInfo.getList().getUrl();
+                        Log.e("首页", "url====" + url);
+                        Log.e("首页", "getTitle_color====" + getActivityInfo.getTitle_color());
+                        if (url.contains("?")) {
                             url = getActivityInfo.getList().getUrl() + "&userId=" + UserUtils.getInstance().getUserId();
                         } else {
                             url = getActivityInfo.getList().getUrl() + "?userId=" + UserUtils.getInstance().getUserId();
                         }
-                        WebActivity3.startSelf(getActivity(), url);
+                        WebActivity3.startSelf(getActivity(), url, getActivityInfo.getTitle_color());
 
                     } else if (getActivityInfo.getType().equals("4")) {
 
@@ -642,7 +675,17 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
                     } else if (getIndex_ad.getType().equals("2")) {
                         ProductDetailsActivity.startSelf(getContext(), getIndex_ad.getList().getActive_id());//进入活动详情页面
                     } else if (getIndex_ad.getType().equals("3")) {
-                        WebActivity.startSelf(getActivity(), getIndex_ad.getList().getUrl());
+//                        WebActivity.startSelf(getActivity(), getIndex_ad.getList().getUrl());
+                        String url;
+                        url = getIndex_ad.getList().getUrl();
+                        Log.e("首页", "url====" + url);
+                        Log.e("首页", "getTitle_color====" + getIndex_ad.getTitle_color());
+                        if (url.contains("?")) {
+                            url = getIndex_ad.getList().getUrl() + "&userId=" + UserUtils.getInstance().getUserId();
+                        } else {
+                            url = getIndex_ad.getList().getUrl() + "?userId=" + UserUtils.getInstance().getUserId();
+                        }
+                        WebActivity3.startSelf(getActivity(), url, getIndex_ad.getTitle_color());
                     } else if (getIndex_ad.getType().equals("4")) {
 
                     } else if (getIndex_ad.getType().equals("5")) {
@@ -1005,7 +1048,17 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
                 } else if (getAlert_ad.getType().equals("2")) {//2：活动详情
                     ProductDetailsActivity.startSelf(getContext(), getAlert_ad.getList().getActive_id());//进入活动详情页面
                 } else if (getAlert_ad.getType().equals("3")) {//3：url
-                    WebActivity.startSelf(getActivity(), getAlert_ad.getList().getUrl());
+//                    WebActivity.startSelf(getActivity(), getAlert_ad.getList().getUrl());
+                    String url;
+                    url = getAlert_ad.getList().getUrl();
+                    Log.e("首页", "url====" + url);
+                    Log.e("首页", "getTitle_color====" + getAlert_ad.getTitle_color());
+                    if (url.contains("?")) {
+                        url = getAlert_ad.getList().getUrl() + "&userId=" + UserUtils.getInstance().getUserId();
+                    } else {
+                        url = getAlert_ad.getList().getUrl() + "?userId=" + UserUtils.getInstance().getUserId();
+                    }
+                    WebActivity3.startSelf(getActivity(), url, getAlert_ad.getTitle_color());
 
                 } else if (getAlert_ad.getType().equals("4")) {//4：文字
 

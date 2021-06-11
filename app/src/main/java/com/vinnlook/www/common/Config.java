@@ -49,6 +49,7 @@ public interface Config {
 //    String HTTP_VERSION = "v4/";
 //    String HTTP_VERSION = "v5/";
     String HTTP_VERSION = "v6/";
+//    String HTTP_VERSION = "v7/";
 //    String HTTP_VERSION = "develop/";
 
 

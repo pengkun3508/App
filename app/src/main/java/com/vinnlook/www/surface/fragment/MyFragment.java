@@ -986,7 +986,7 @@ public class MyFragment extends BaseFragment<MyFragmentPresenter> implements MyF
 
             Log.e("获取订单数量及用户信息成功", "==code=123=" + code);
             if (data.getUser().getUser_name().equals("")) {
-                signRegisterText.setText("登录/注册");
+                signRegisterText.setText("");
 
             } else {
                 signRegisterText.setText(data.getUser().getUser_name());

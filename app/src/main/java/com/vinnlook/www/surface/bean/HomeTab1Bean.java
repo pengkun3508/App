@@ -173,6 +173,15 @@ public class HomeTab1Bean extends BaseBean {
         private String position_id;
         private String photo;
         private ListBean list;
+        private String  title_color;
+
+        public String getTitle_color() {
+            return title_color;
+        }
+
+        public void setTitle_color(String title_color) {
+            this.title_color = title_color;
+        }
 
         public String getValue() {
             return value;
@@ -326,6 +335,15 @@ public class HomeTab1Bean extends BaseBean {
         private String position_id;
         private String photo;
         private ListBean list;
+        private String  title_color;
+
+        public String getTitle_color() {
+            return title_color;
+        }
+
+        public void setTitle_color(String title_color) {
+            this.title_color = title_color;
+        }
 
         public String getValue() {
             return value;
@@ -472,6 +490,15 @@ public class HomeTab1Bean extends BaseBean {
         private String id;
         private String photo;
         private ListBeanX list;
+        private String  title_color;
+
+        public String getTitle_color() {
+            return title_color;
+        }
+
+        public void setTitle_color(String title_color) {
+            this.title_color = title_color;
+        }
 
         public String getValue() {
             return value;
@@ -847,6 +874,15 @@ public class HomeTab1Bean extends BaseBean {
             private String parent_id;
             private String photo;
             private ListBeanXXX list;
+            private String  title_color;
+
+            public String getTitle_color() {
+                return title_color;
+            }
+
+            public void setTitle_color(String title_color) {
+                this.title_color = title_color;
+            }
 
             public String getValue() {
                 return value;
@@ -1166,6 +1202,15 @@ public class HomeTab1Bean extends BaseBean {
         private String parent_id;
         private String photo;
         private ListBeanXXXXX list;
+        private String  title_color;
+
+        public String getTitle_color() {
+            return title_color;
+        }
+
+        public void setTitle_color(String title_color) {
+            this.title_color = title_color;
+        }
 
         public String getValue() {
             return value;
@@ -1248,6 +1293,7 @@ public class HomeTab1Bean extends BaseBean {
             private String text;
             private String id;
 
+
             public String getGoods_id() {
                 return goods_id;
             }
@@ -1320,6 +1366,15 @@ public class HomeTab1Bean extends BaseBean {
         private String photo;
         private ListBeanXXXXXX list;
         private List<ChildListBean> child_list;
+        private String  title_color;
+
+        public String getTitle_color() {
+            return title_color;
+        }
+
+        public void setTitle_color(String title_color) {
+            this.title_color = title_color;
+        }
 
         public String getValue() {
             return value;

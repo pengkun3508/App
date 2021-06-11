@@ -692,6 +692,7 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
 
 
     }
+
     private Handler handler1 = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -791,6 +792,7 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
                     bannerBeans.setType(getShopBanner.get(i).getType());
                     banlist.add(bannerBeans);
                 }
+
                 banners.addBannerLifecycleObserver(MoveAbooutActivity_4.this)
                         .setAdapter(new MultipleTypesAdapter(MoveAbooutActivity_4.this, banlist, moveDataBean.getInfo().getProduct_price(), moveDataBean.getInfo().getBorder_image()))
                         .setIndicator(new NumIndicator(MoveAbooutActivity_4.this))
@@ -804,6 +806,7 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
                             public void onPageSelected(int position) {
                                 Log.e("--", "position:" + position);
                                 if (player == null) {
+
                                     RecyclerView.ViewHolder viewHolder = banners.getAdapter().getViewHolder();
                                     if (viewHolder instanceof VideoHolder) {
                                         VideoHolder holder = (VideoHolder) viewHolder;
@@ -820,6 +823,18 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
                             public void onPageScrollStateChanged(int state) {
                             }
                         });
+
+                Log.e("选择的颜色", "===名称:===11111111=====");
+                Log.e("选择的颜色", "===名称:========" + moveDataBean.getInfo().getShop_name() + shopColourImgAdapter.getData().get(position).getShop_attr_name());
+                moveTransactionName.setText(moveDataBean.getInfo().getShop_name() + shopColourImgAdapter.getData().get(position).getShop_attr_name());
+                goods_attr = shopColourImgAdapter.getData().get(position).getGoods_attr_id() + "|" + moveDataBean.getAttr().get(1).getValue().get(0).getGoods_attr_id();
+                if (shopColourImgAdapter.getData().get(position).getFlage().equals("0")) {
+                    shopColourImgAdapter.getData().get(position).setFlage("1");
+                } else if (shopColourImgAdapter.getData().get(position).getFlage().equals("1")) {
+                    shopColourImgAdapter.getData().get(position).setFlage("0");
+                }
+                shopColourImgAdapter.notifyDataSetChanged();
+
 
             }
         });
@@ -996,7 +1011,7 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
 
     @Override
     protected void loadData() {
-        presenter.getMove4Datas(goods_id, search_attr, group_id,type);//下载商品详情数据
+        presenter.getMove4Datas(goods_id, search_attr, group_id, type);//下载商品详情数据
     }
 
     /**
@@ -1035,10 +1050,6 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
                 @Override
                 public void onClick(View view) {
                     String url;
-//                WebActivity3.startSelf(getActivity(), "https://h5.jealook.com/test-activeH5/index.html" + "?userId=" + UserUtils.getInstance().getUserId());
-//                WebActivity3.startSelf(getActivity(), data.getAd_info().getList().getUrl() + "?userId=" + UserUtils.getInstance().getUserId());
-
-//                url = "http://h5.jealook.com/test-activeH5/index.html";
                     url = data.getAd_info().getList().getUrl();
 
                     if (url.contains("?")) {
@@ -1046,7 +1057,7 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
                     } else {
                         url = url + "?userId=" + UserUtils.getInstance().getUserId();
                     }
-                    WebActivity3.startSelf(getActivity(), url);
+                    WebActivity3.startSelf(getActivity(), url, data.getAd_info().getTitle_color());
 
                 }
             });
@@ -1067,6 +1078,10 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
         } else if (data.getInfo().getIs_show_sye().equals("0")) {
             moveShopAttrRecycler.setVisibility(View.GONE);
         }
+        for (int i = 0; i < data.getAttr().get(0).getValue().size(); i++) {
+            data.getAttr().get(0).getValue().get(i).setFlage("0");
+        }
+        data.getAttr().get(0).getValue().get(0).setFlage("1");
         moveShopExplain.setText(data.getInfo().getGoods_brief());
         shopColourImgAdapter.setData(data.getAttr().get(0).getValue());
         moveShopAttrRecycler.setAdapter(shopColourImgAdapter);
@@ -1511,7 +1526,7 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
                 CacheActivity.finishActivity();
                 break;
             case R.id.move_success_no_layout_btn2://重新开团
-                MoveAbooutActivity_4.startSelf(this, goods_id, search_attr, "","");
+                MoveAbooutActivity_4.startSelf(this, goods_id, search_attr, "", "");
 //                presenter.getMove4Datas(goods_id, search_attr, "");//下载商品详情数据
                 finish();
                 break;
@@ -1866,9 +1881,24 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
                     urlselect = getBannerEvents.get(2).getUrl();
                 }
             }
-
-
         }
+
+
+        String getGoods_attr_id = event.getBanner().getGoods_attr_id();
+        Log.e("返回的ID", "===iD==000=" + getGoods_attr_id);
+        for (int i = 0; i < shopColourImgAdapter.getData().size(); i++) {
+            shopColourImgAdapter.getData().get(i).setFlage("0");
+        }
+        for (int i = 0; i < shopColourImgAdapter.getData().size(); i++) {
+            Log.e("返回的ID", "===shopColourImgAdapter==000==" + shopColourImgAdapter.getData().get(i).getGoods_attr_id());
+            if (getGoods_attr_id.equals(shopColourImgAdapter.getData().get(i).getGoods_attr_id())) {
+                Log.e("返回的ID", "===111==000==");
+                shopColourImgAdapter.getData().get(i).setFlage("1");
+                Log.e("返回的ID", "===222==000==");
+                shopColourImgAdapter.notifyDataSetChanged();
+            }
+        }
+
 
 //        Log.e("选择的名称", "==已选择到的================" + moveDataBean.getInfo().getShop_name() + " " + event.getArrt_name());
 //        moveTransactionName.setText(moveDataBean.getInfo().getShop_name() + " " + event.getArrt_name());

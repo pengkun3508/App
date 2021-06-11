@@ -109,7 +109,7 @@ public class ScreenItemAdapter extends BaseStateAdapter<MoveDataBean.AttrBean.Va
                                     }
                                     if (j==ids.length-1) {
                                         getProductdata.add(data.getProductBeanList().get(i));
-                                        new ChangeDetailPriceEvent(data.getProductBeanList().get(i), "2").post();
+                                        new ChangeDetailPriceEvent(data.getProductBeanList().get(i), "2",data.getGoods_attr_id()).post();
                                     }
                                 }
                             }
@@ -157,7 +157,7 @@ public class ScreenItemAdapter extends BaseStateAdapter<MoveDataBean.AttrBean.Va
                                     }
                                     if (j==ids.length-1) {
                                         getProductdata.add(data.getProductBeanList().get(i));
-                                        new ChangeDetailPriceEvent(data.getProductBeanList().get(i), "2").post();
+                                        new ChangeDetailPriceEvent(data.getProductBeanList().get(i), "2",data.getGoods_attr_id()).post();
                                     }
                                 }
                             }

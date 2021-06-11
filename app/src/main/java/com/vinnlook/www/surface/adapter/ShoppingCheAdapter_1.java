@@ -58,7 +58,7 @@ public class ShoppingCheAdapter_1 extends BaseStateAdapter4<ShopCartListBean_1, 
 
         void onBtnNumberClick(String num, String rec_id, int adapterPosition);
 
-        void onTypeClickListener(ShopCartListBean_1.ListBean data, int position1, int position2);
+        void onTypeClickListener(ShopCartListBean_1.ListBean data, int position1, int position2);//第一层列表选择规格
 
         void onLongClickListener(ShopCartListBean_1.ListBean data, int posion);
 
@@ -209,7 +209,7 @@ public class ShoppingCheAdapter_1 extends BaseStateAdapter4<ShopCartListBean_1, 
 
                 @Override
                 public void onTypeClickListener(ShopCartListBean_1.ListBean data, int adapterPosition) {//修改规格
-                    addClickListener.onTypeClickListener(data, getAdapterPosition(), adapterPosition);
+                    addClickListener.onTypeClickListener(data, getAdapterPosition(), adapterPosition);//第一层列表修改规格
                 }
 
                 @Override

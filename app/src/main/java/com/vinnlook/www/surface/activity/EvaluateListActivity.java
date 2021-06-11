@@ -47,7 +47,6 @@ public class EvaluateListActivity extends BaseActivity<EvaluateListPresenter> im
     EvaluateListAdapter commentAdapter;
     static String goods_id;
 
-
     public static void startSelf(Context context, String goods_ids) {
         Intent intent = new Intent(context, EvaluateListActivity.class);
         context.startActivity(intent);

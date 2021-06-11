@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 
 import com.dm.lib.core.adapter.rv.state.BaseHolder;
 import com.luck.picture.lib.entity.LocalMedia;
-import com.makeramen.roundedimageview.RoundedImageView;
 import com.vinnlook.www.R;
 import com.vinnlook.www.http.model.MoveDataBean;
 import com.vinnlook.www.surface.fragment.adapter.BaseStateAdapter5;
@@ -42,13 +41,12 @@ public class ShopColourImgAdapter extends BaseStateAdapter5<MoveDataBean.AttrBea
 
     class ShopColourImgHolder extends BaseHolder<MoveDataBean.AttrBean.ValueBean> {
 
-        RoundedImageView shop_coloru_img;
+        ImageView shop_coloru_img, shop_coloru_img_select;
 
         ShopColourImgHolder(View itemView) {
             super(itemView);
             shop_coloru_img = itemView.findViewById(R.id.shop_coloru_img);
-
-
+            shop_coloru_img_select = itemView.findViewById(R.id.shop_coloru_img_select);
         }
 
         @Override
@@ -64,11 +62,27 @@ public class ShopColourImgAdapter extends BaseStateAdapter5<MoveDataBean.AttrBea
                 } else if (data.getBanner().size() > 1) {
                     if (data.getBanner().get(0).getType() == 1) {
                         ImageLoader.userIcon(context, shop_coloru_img, data.getBanner().get(1).getUrl());
+//                        if (getAdapterPosition() == 0) {
+//                            ImageLoader.userIcon(context, shop_coloru_img, data.getBanner().get(0).getUrl());
+//                        } else {
+//                            ImageLoader.userIcon(context, shop_coloru_img, data.getBanner().get(1).getUrl());
+//                        }
                     } else if (data.getBanner().get(0).getType() == 2) {
                         ImageLoader.userIcon(context, shop_coloru_img, data.getBanner().get(2).getUrl());
+//                        if (getAdapterPosition() == 0) {
+//                            ImageLoader.userIcon(context, shop_coloru_img, data.getBanner().get(1).getUrl());
+//                        } else {
+//                            ImageLoader.userIcon(context, shop_coloru_img, data.getBanner().get(2).getUrl());
+//                        }
                     }
                 }
             }
+            if (data.getFlage().equals("0")) {//未选择
+                shop_coloru_img_select.setVisibility(View.GONE);
+            } else if (data.getFlage().equals("1")) {//已选择
+                shop_coloru_img_select.setVisibility(View.VISIBLE);
+            }
+
 
         }
 

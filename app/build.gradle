@@ -7,8 +7,8 @@ android {
         applicationId "com.vinnlook.www"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 301
-        versionName "3.0.1"
+        versionCode 305
+        versionName "3.0.5"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 //        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -212,6 +212,9 @@ dependencies {
     //二维码
     implementation 'com.google.zxing:core:3.3.0'
 //    implementation 'com.google.zxing:core:3.0.1'
+
+    //webview交互
+    implementation 'com.hjhrq1991.library:jsbridge:1.0.7'//升级版本解决传出url双斜杠转译问题
 
 
 

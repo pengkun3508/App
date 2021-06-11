@@ -3,6 +3,7 @@ package com.vinnlook.www.surface.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
@@ -17,6 +18,7 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +50,7 @@ import butterknife.ButterKnife;
 public class WebActivity3 extends BaseActivity<Web3Presenter> implements Web3View {
 
     static String url;
+    static String title_color;
     //    @BindView(R.id.action_bar)
 //    ActionBarSimple actionBar;
     @BindView(R.id.wv_web)
@@ -56,6 +59,10 @@ public class WebActivity3 extends BaseActivity<Web3Presenter> implements Web3Vie
     ImageView webTitleBack;
     @BindView(R.id.web_title_text)
     TextView webTitleText;
+    @BindView(R.id.layout_bottoms)
+    LinearLayout layoutBottoms;
+    @BindView(R.id.web_title_back_layout)
+    LinearLayout webTitleBackLayout;
 
     Uri userPickedUri;
 
@@ -64,10 +71,13 @@ public class WebActivity3 extends BaseActivity<Web3Presenter> implements Web3Vie
     String is_group;
 
 
-    public static void startSelf(Context context, String urls) {
+
+    public static void startSelf(Context context, String urls, String title_colors) {
         Intent intent = new Intent(context, WebActivity3.class);
         context.startActivity(intent);
         url = urls;
+        title_color = title_colors;
+
     }
 
     @Override
@@ -82,10 +92,18 @@ public class WebActivity3 extends BaseActivity<Web3Presenter> implements Web3Vie
 
     @Override
     protected void initView() {
-        StatusBarUtils.setStatusBarMode(getActivity(), true);
+        if (title_color != null && !title_color.equals("")) {
+            StatusBarUtils.setStatusBarMode(getActivity(), false);
+            layoutBottoms.setBackgroundColor(Color.parseColor(title_color));//使用颜色的16进制类型值
+            webTitleBack.setBackgroundResource(R.mipmap.back_white);
+        } else {
+            StatusBarUtils.setStatusBarMode(getActivity(), true);
+            webTitleBack.setBackgroundResource(R.mipmap.back);
+        }
+
         CacheActivity.addActivity(this);
 
-        webTitleBack.setOnClickListener(new View.OnClickListener() {
+        webTitleBackLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
@@ -160,7 +178,7 @@ public class WebActivity3 extends BaseActivity<Web3Presenter> implements Web3Vie
             @Override
             public void onReceivedTitle(WebView view, String title) {
                 webTitleText.setText(title);
-                Log.e("setWebChromeClient", "==标题==111==="+title);
+                Log.e("setWebChromeClient", "==标题==111===" + title);
             }
 
             @SuppressWarnings("unused")
@@ -222,7 +240,7 @@ public class WebActivity3 extends BaseActivity<Web3Presenter> implements Web3Vie
             @Override
             public void handler(String data, CallBackFunction function) {
                 if (!UserUtils.getInstance().getUserId().equals("")) {
-                    MemberActivity_1.startSelf(getContext(), "2");
+                    MemberActivity_1.startSelf(getContext(), "1");
                 } else {
                     Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
                 }

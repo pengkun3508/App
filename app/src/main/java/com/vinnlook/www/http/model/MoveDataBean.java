@@ -141,6 +141,16 @@ public class MoveDataBean extends BaseBean {
         private String id;
         private String photo;
         private ListBean list;
+        private String title_color;
+
+        public String getTitle_color() {
+            return title_color;
+        }
+
+        public void setTitle_color(String title_color) {
+            this.title_color = title_color;
+        }
+
 
         public String getValue() {
             return value;
@@ -281,7 +291,6 @@ public class MoveDataBean extends BaseBean {
         }
 
 
-
         public String getGroup_status() {
             return group_status;
         }
@@ -289,7 +298,6 @@ public class MoveDataBean extends BaseBean {
         public void setGroup_status(String group_status) {
             this.group_status = group_status;
         }
-
 
 
         public String getIs_join_group() {
@@ -957,6 +965,25 @@ public class MoveDataBean extends BaseBean {
             private List<String> typeList;
             private List<String> degreesIdList;
             private List<ProductBean> productBeanList;
+            private String flage;
+            private String shop_attr_name;
+
+            public String getShop_attr_name() {
+                return shop_attr_name;
+            }
+
+            public void setShop_attr_name(String shop_attr_name) {
+                this.shop_attr_name = shop_attr_name;
+            }
+
+
+            public String getFlage() {
+                return flage;
+            }
+
+            public void setFlage(String flage) {
+                this.flage = flage;
+            }
 
             public List<ProductBean> getProductBeanList() {
                 return productBeanList;
