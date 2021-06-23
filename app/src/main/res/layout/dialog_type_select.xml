@@ -102,7 +102,9 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/spacing_15dp"
-                        android:text="购买数量" />
+                        android:text="购买数量"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_12"/>
 
                     <com.flyco.roundview.RoundLinearLayout
                         android:layout_width="wrap_content"
@@ -111,49 +113,49 @@
                         android:layout_centerVertical="true"
                         android:layout_marginEnd="15dp"
                         android:orientation="horizontal"
-                        app:rv_strokeColor="@color/move_text5"
+                        app:rv_strokeColor="@color/shop_line_2"
                         app:rv_strokeWidth="0.5dp">
 
 
                         <TextView
                             android:id="@+id/tv_reduce"
-                            android:layout_width="@dimen/spacing_30dp"
-                            android:layout_height="@dimen/spacing_30dp"
+                            android:layout_width="@dimen/spacing_20dp"
+                            android:layout_height="@dimen/spacing_20dp"
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:text="-"
-                            android:textColor="@color/move_text5"
-                            android:textSize="@dimen/text_20" />
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_15" />
 
                         <View
                             android:layout_width="0.5dp"
                             android:layout_height="match_parent"
-                            android:background="@color/move_text5" />
+                            android:background="@color/shop_line_2" />
 
                         <com.flyco.roundview.RoundTextView
                             android:id="@+id/tv_num"
-                            android:layout_width="@dimen/spacing_30dp"
-                            android:layout_height="@dimen/spacing_30dp"
+                            android:layout_width="@dimen/spacing_20dp"
+                            android:layout_height="@dimen/spacing_20dp"
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:text="1"
                             android:textColor="@color/text_black"
-                            android:textSize="@dimen/text_16" />
+                            android:textSize="@dimen/text_12" />
 
                         <View
                             android:layout_width="0.5dp"
                             android:layout_height="match_parent"
-                            android:background="@color/move_text5" />
+                            android:background="@color/shop_line_2" />
 
                         <TextView
                             android:id="@+id/tv_plus"
-                            android:layout_width="@dimen/spacing_30dp"
-                            android:layout_height="@dimen/spacing_30dp"
+                            android:layout_width="@dimen/spacing_20dp"
+                            android:layout_height="@dimen/spacing_20dp"
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:text="+"
-                            android:textColor="@color/move_text5"
-                            android:textSize="@dimen/text_20" />
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_15" />
                     </com.flyco.roundview.RoundLinearLayout>
 
                 </RelativeLayout>

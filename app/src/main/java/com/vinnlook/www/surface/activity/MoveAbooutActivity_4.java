@@ -1404,9 +1404,23 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
 //            yaoqingCantuanText.setText("马上参团");
 //        }
 
+        List<MoveDataBean.GroupListBean> getGroup_list = data.getGroup_list();
+        if (getGroup_list!=null){
+            if (data.getGroup_list().size() < 3) {
+                final GridLayoutManager managergroup = new GridLayoutManager(getActivity(), 2);
+                moveGroupRecy.setLayoutManager(managergroup);
+            } else {
+                final GridLayoutManager managergroup = new GridLayoutManager(getActivity(), 3);
+                moveGroupRecy.setLayoutManager(managergroup);
+            }
+        }
 
         adapterMember.setData(data.getGroup_list());
         moveGroupRecy.setAdapter(adapterMember);
+
+
+
+
         //显示倒计时--拼团倒计时
         //计算秒杀倒计时---ms
         endTime = Integer.valueOf(data.getShopActiveInfo().getEnd_time());

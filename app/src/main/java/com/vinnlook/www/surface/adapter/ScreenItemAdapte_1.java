@@ -21,17 +21,17 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class ScreenItemAdapter extends BaseStateAdapter<MoveDataBean.AttrBean.ValueBean, ScreenItemAdapter.ScreenItemHolder> {
+public class ScreenItemAdapte_1 extends BaseStateAdapter<MoveDataBean.AttrBean.ValueBean, ScreenItemAdapte_1.ScreenItemHolder> {
 
     String typeID;
     String id;
     String qtid;
     List<ProductBean> getProducts;
     List<String> ProductBeanID = new ArrayList<>();
-    private OnScreenItemClick onScreenItemClick;
     String iD;
+    private OnScreenItemClick onScreenItemClick;
 
-    public ScreenItemAdapter(String typeID) {
+    public ScreenItemAdapte_1(String typeID) {
         this.typeID = typeID;
     }
 
@@ -128,19 +128,14 @@ public class ScreenItemAdapter extends BaseStateAdapter<MoveDataBean.AttrBean.Va
                                     tvTitle.setTextColor(ResUtils.getColor(R.color.white));//字体变色+
                                     tvTitle.setEnabled(true);
                                     break;
-                                } else {
-                                    tvTitle.getDelegate().setBackgroundColor(ResUtils.getColor(R.color.shop_line_20)); //背景变色
+                                }
+                                if (i == getProductdata.size() - 1) {//没有库存
+                                    tvTitle.getDelegate().setStrokeColor(R.color.gray_light);//边框变色
+                                    tvTitle.getDelegate().setStrokePressColor(R.color.classify_text_bg);
+                                    tvTitle.getDelegate().setBackgroundColor(ResUtils.getColor(R.color.classify_text_bg)); //背景变色
                                     tvTitle.setTextColor(ResUtils.getColor(R.color.gray_light));//字体变色+
                                     tvTitle.setEnabled(false);
                                 }
-//                                if (i == getProductdata.size() - 1) {//没有库存
-////                                    tvTitle.getDelegate().setStrokeColor(R.color.gray_light);//边框变色
-////                                    tvTitle.getDelegate().setStrokePressColor(R.color.classify_text_bg);
-//                                    tvTitle.getDelegate().setBackgroundColor(ResUtils.getColor(R.color.shop_line_20)); //背景变色
-//                                    tvTitle.setTextColor(ResUtils.getColor(R.color.gray_light));//字体变色+
-//                                    tvTitle.setEnabled(false);
-//                                    break;
-//                                }
 
                             }
 
@@ -169,44 +164,34 @@ public class ScreenItemAdapter extends BaseStateAdapter<MoveDataBean.AttrBean.Va
                                         getProductdata.add(data.getProductBeanList().get(i));
                                         new ChangeDetailPriceEvent(data.getProductBeanList().get(i), "2", data.getGoods_attr_id()).post();
                                     }
-
                                 }
                             }
 
                             for (int i = 0; i < getProductdata.size(); i++) {
                                 if (Integer.valueOf(getProductdata.get(i).getProduct_number()) > 0) {
-//                                    tvTitle.getDelegate().setStrokeColor(R.color.white);//边框变色
-//                                    tvTitle.getDelegate().setStrokePressColor(R.color.white);
+                                    tvTitle.getDelegate().setStrokeColor(R.color.white);//边框变色
+                                    tvTitle.getDelegate().setStrokePressColor(R.color.white);
                                     tvTitle.getDelegate().setBackgroundColor(ResUtils.getColor(R.color.them)); //背景变色
                                     tvTitle.setTextColor(ResUtils.getColor(R.color.white));//字体变色+
                                     tvTitle.setEnabled(true);
                                     break;
-                                } else {
-                                    tvTitle.getDelegate().setBackgroundColor(ResUtils.getColor(R.color.shop_line_20)); //背景变色
+                                }
+                                if (i == getProductdata.size() - 1) {
+                                    tvTitle.getDelegate().setStrokeColor(R.color.gray_light);//边框变色
+                                    tvTitle.getDelegate().setStrokePressColor(R.color.classify_text_bg);
+                                    tvTitle.getDelegate().setBackgroundColor(ResUtils.getColor(R.color.classify_text_bg)); //背景变色
                                     tvTitle.setTextColor(ResUtils.getColor(R.color.gray_light));//字体变色+
                                     tvTitle.setEnabled(false);
                                 }
-//                                if (i == getProductdata.size() - 1) {
-////                                    tvTitle.getDelegate().setStrokeColor(R.color.gray_light);//边框变色
-////                                    tvTitle.getDelegate().setStrokePressColor(R.color.classify_text_bg);
-//                                    tvTitle.getDelegate().setBackgroundColor(ResUtils.getColor(R.color.shop_line_20)); //背景变色
-//                                    tvTitle.setTextColor(ResUtils.getColor(R.color.gray_light));//字体变色+
-//                                    tvTitle.setEnabled(false);
-//                                    break;
-//                                }
                             }
 
                         }
                     } else {
                         for (int i = 0; i < data.getProductBeanList().size(); i++) {
                             for (int j = 0; j < qtid.split("\\|").length; j++) {
-                                String getGoods_attr = "|" + data.getProductBeanList().get(i).getGoods_attr() + "|";
-                                if (!getGoods_attr.contains("|" + qtid.split("\\|")[j] + "|")) {
+                                if (!data.getProductBeanList().get(i).getGoods_attr().contains(qtid.split("\\|")[j])) {
                                     break;
                                 }
-//                                if (!data.getProductBeanList().get(i).getGoods_attr().contains(qtid.split("\\|")[j])) {
-//                                    break;
-//                                }
                                 if (j == qtid.split("\\|").length - 1) {
                                     getProductdata.add(data.getProductBeanList().get(i));
                                 }
@@ -215,117 +200,100 @@ public class ScreenItemAdapter extends BaseStateAdapter<MoveDataBean.AttrBean.Va
 
                         for (int i = 0; i < getProductdata.size(); i++) {
                             if (Integer.valueOf(getProductdata.get(i).getProduct_number()) > 0) {
-//                                tvTitle.getDelegate().setStrokeColor(R.color.white);//边框变色
-//                                tvTitle.getDelegate().setStrokePressColor(R.color.white);
+                                tvTitle.getDelegate().setStrokeColor(R.color.white);//边框变色
+                                tvTitle.getDelegate().setStrokePressColor(R.color.white);
                                 tvTitle.getDelegate().setBackgroundColor(ResUtils.getColor(R.color.them)); //背景变色
                                 tvTitle.setTextColor(ResUtils.getColor(R.color.white));//字体变色+
                                 tvTitle.setEnabled(true);
                                 break;
                             }
                             if (i == getProductdata.size() - 1) {
-//                                tvTitle.getDelegate().setStrokeColor(R.color.gray_light);//边框变色
-//                                tvTitle.getDelegate().setStrokePressColor(R.color.classify_text_bg);
-                                tvTitle.getDelegate().setBackgroundColor(ResUtils.getColor(R.color.shop_line_20)); //背景变色
+                                tvTitle.getDelegate().setStrokeColor(R.color.gray_light);//边框变色
+                                tvTitle.getDelegate().setStrokePressColor(R.color.classify_text_bg);
+                                tvTitle.getDelegate().setBackgroundColor(ResUtils.getColor(R.color.classify_text_bg)); //背景变色
                                 tvTitle.setTextColor(ResUtils.getColor(R.color.gray_light));//字体变色+
                                 tvTitle.setEnabled(false);
-                                break;
                             }
                         }
                     }
+
+
                 } else {
                     for (int i = 0; i < data.getProductBeanList().size(); i++) {
                         for (int j = 0; j < qtid.split("\\|").length; j++) {
-                            String getGoods_attr = "|" + data.getProductBeanList().get(i).getGoods_attr() + "|";
-                            if (!getGoods_attr.contains("|" + qtid.split("\\|")[j] + "|")) {
+                            if (!data.getProductBeanList().get(i).getGoods_attr().contains(qtid.split("\\|")[j])) {
                                 break;
                             }
-//                            if (!data.getProductBeanList().get(i).getGoods_attr().contains(qtid.split("\\|")[j])) {
-//                                break;
-//                            }
                             if (j == qtid.split("\\|").length - 1) {
                                 getProductdata.add(data.getProductBeanList().get(i));
                             }
                         }
                     }
+
+
                     for (int i = 0; i < getProductdata.size(); i++) {
                         //可以选择
                         if (Integer.valueOf(getProductdata.get(i).getProduct_number()) > 0) {//有库存
-//                            tvTitle.getDelegate().setStrokeColor(R.color.white);//边框变色+
-//                            tvTitle.getDelegate().setStrokePressColor(R.color.text_gray_light);
-                            tvTitle.getDelegate().setBackgroundColor(ResUtils.getColor(R.color.shop_line_20)); //背景变色
+                            tvTitle.getDelegate().setStrokeColor(R.color.white);//边框变色+
+                            tvTitle.getDelegate().setStrokePressColor(R.color.gray_dark);
+                            tvTitle.getDelegate().setBackgroundColor(ResUtils.getColor(R.color.shop_line_2)); //背景变色
                             tvTitle.setTextColor(ResUtils.getColor(R.color.text_black));//字体变色+
                             tvTitle.setEnabled(true);
                             break;
                         }
                         if (i == getProductdata.size() - 1) {
-//                            tvTitle.getDelegate().setStrokeColor(R.color.gray_light);//边框变色
-//                            tvTitle.getDelegate().setStrokePressColor(R.color.classify_text_bg);
-                            tvTitle.getDelegate().setBackgroundColor(ResUtils.getColor(R.color.shop_line_20)); //背景变色
+                            tvTitle.getDelegate().setStrokeColor(R.color.gray_light);//边框变色
+                            tvTitle.getDelegate().setStrokePressColor(R.color.classify_text_bg);
+                            tvTitle.getDelegate().setBackgroundColor(ResUtils.getColor(R.color.classify_text_bg)); //背景变色
                             tvTitle.setTextColor(ResUtils.getColor(R.color.gray_light));//字体变色+
                             tvTitle.setEnabled(false);
-                            break;
                         }
+
                     }
                 }
             } else {
-                //只点击颜色，不选择度数的时候使用的。因为Goods_attr少一位
-                Log.e("pksss", "==qtid==" + qtid);
-                String[] asda = qtid.split("\\|");
-
                 for (int i = 0; i < data.getProductBeanList().size(); i++) {
-                    Log.e("pksss", "==getGoods_attr==" + data.getProductBeanList().get(i).getGoods_attr());
-                    String getGoods_attr = "|" + data.getProductBeanList().get(i).getGoods_attr() + "|";
-                    Log.e("pksss", "==getGoods_attr===|==|==" + getGoods_attr);
-                    for (int j = 0; j < asda.length; j++) {
-                        Log.e("pksss", "==asda.length=====" + "|" + asda[j] + "|");
-                        if (!getGoods_attr.contains("|" + asda[j] + "|")) {
+                    for (int j = 0; j < qtid.split("\\|").length; j++) {
+                        if (!data.getProductBeanList().get(i).getGoods_attr().contains(qtid.split("\\|")[j])) {
                             break;
                         }
-//                        else{
-//
-//                            getProductdata.add(data.getProductBeanList().get(i));
-//                            Log.e("pklove", "==getGoods_attr==" + data.getProductBeanList().get(i).getGoods_attr());
-//                        }
                         if (j == qtid.split("\\|").length - 1) {
                             getProductdata.add(data.getProductBeanList().get(i));
-                            Log.e("pklove", "==getGoods_attr==" + data.getProductBeanList().get(i).getGoods_attr());
                         }
                     }
                 }
                 Log.e("点击Id为空", "==getProductdata.size==" + getProductdata.size());
 
-
                 for (int i = 0; i < getProductdata.size(); i++) {
-                    Log.e("点击Id为空", "==getGoods_attrasd==" + getProductdata.get(i).getGoods_attr());
                     Log.e("点击Id为空", "==getProduct_id==" + getProductdata.get(i).getProduct_id());
                     Log.e("点击Id为空", "==getProduct_number==" + getProductdata.get(i).getProduct_number());
                     //可以选择
                     if (Integer.valueOf(getProductdata.get(i).getProduct_number()) > 0) {//判断库存
                         Log.e("点击Id为空", "==getProduct_id=111=" + getProductdata.get(i).getProduct_id());
-//                        tvTitle.getDelegate().setStrokeColor(R.color.white);//边框变色
-//                        tvTitle.getDelegate().setStrokePressColor(R.color.gray_dark);
-                        tvTitle.getDelegate().setBackgroundColor(ResUtils.getColor(R.color.shop_line_20)); //背景变色
+                        tvTitle.getDelegate().setStrokeColor(R.color.white);//边框变色
+                        tvTitle.getDelegate().setStrokePressColor(R.color.gray_dark);
+                        tvTitle.getDelegate().setBackgroundColor(ResUtils.getColor(R.color.shop_line_2)); //背景变色
                         tvTitle.setTextColor(ResUtils.getColor(R.color.text_black));//字体变色+
                         tvTitle.setEnabled(true);
                         break;
-                    } else {
-                        Log.e("点击Id为空", "==getProduct_id=222=" + getProductdata.get(i).getProduct_id());
+                    }
+//                    else{
+//                        Log.e("点击Id为空", "==getProduct_id=222=" + getProductdata.get(i).getProduct_id());
 //                        tvTitle.getDelegate().setStrokeColor(R.color.gray_light);//边框变色
 //                        tvTitle.getDelegate().setStrokePressColor(R.color.classify_text_bg);
-                        tvTitle.getDelegate().setBackgroundColor(ResUtils.getColor(R.color.shop_line_20)); //背景变色
-                        tvTitle.setTextColor(ResUtils.getColor(R.color.gray_light));//字体变色+
-                        tvTitle.setEnabled(false);
-                        break;
-                    }
-//                    if (i == getProductdata.size() - 1) {
-//                        Log.e("点击Id为空", "==getProduct_id=222=" + getProductdata.get(i).getProduct_id());
-////                        tvTitle.getDelegate().setStrokeColor(R.color.gray_light);//边框变色
-////                        tvTitle.getDelegate().setStrokePressColor(R.color.classify_text_bg);
-//                        tvTitle.getDelegate().setBackgroundColor(ResUtils.getColor(R.color.shop_line_20)); //背景变色
+//                        tvTitle.getDelegate().setBackgroundColor(ResUtils.getColor(R.color.classify_text_bg)); //背景变色
 //                        tvTitle.setTextColor(ResUtils.getColor(R.color.gray_light));//字体变色+
 //                        tvTitle.setEnabled(false);
 //                        break;
 //                    }
+                    if (i == getProductdata.size() - 1) {
+                        tvTitle.getDelegate().setStrokeColor(R.color.gray_light);//边框变色
+                        tvTitle.getDelegate().setStrokePressColor(R.color.classify_text_bg);
+                        tvTitle.getDelegate().setBackgroundColor(ResUtils.getColor(R.color.classify_text_bg)); //背景变色
+                        tvTitle.setTextColor(ResUtils.getColor(R.color.gray_light));//字体变色+
+                        tvTitle.setEnabled(false);
+                        break;
+                    }
                 }
             }
         }

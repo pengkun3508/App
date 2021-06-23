@@ -98,24 +98,24 @@ public class TypeSelectDialog {
                         RecyclerView recyclerView = anyDialog.getView(R.id.recyclerView);
                         recyclerView.setLayoutManager(new LinearLayoutManager(mActivity));
 
-                        String getAttr_value = moveDataBean.getAttr().get(2).getValue().get(0).getGoods_attr_id();
-                        String getSearch_attrs = getInfo.getSearch_attr() + "|" + getAttr_value;
+//                        String getAttr_value = moveDataBean.getAttr().get(2).getValue().get(0).getGoods_attr_id();
+//                        String getSearch_attrs = getInfo.getSearch_attr() + "|" + getAttr_value;
                         getSearch_attr = getInfo.getSearch_attr();
 
                         if (goods_attr != null && !goods_attr.equals("")) {
                             getSearch_attr = goods_attr;
-                            for (int i = 0; i < moveDataBean.getProduct().size(); i++) {
-                                Log.e("默认选择值", "===默认值====getGoods_attr===111111111==" + moveDataBean.getProduct().get(i).getGoods_attr());
-                                if (goods_attr.equals(moveDataBean.getProduct().get(i).getGoods_attr())) {
-                                    productBean = moveDataBean.getProduct().get(i);
-                                    Log.e("默认选择值", "===默认值====productBean==111===" + productBean);
-                                }
-//                                if (moveDataBean.getProduct().get(i).getGoods_attr().contains(goods_attr)) {
+//                            for (int i = 0; i < moveDataBean.getProduct().size(); i++) {
+//                                Log.e("默认选择值", "===默认值====getGoods_attr===111111111==" + moveDataBean.getProduct().get(i).getGoods_attr());
+//                                if (goods_attr.equals(moveDataBean.getProduct().get(i).getGoods_attr())) {
 //                                    productBean = moveDataBean.getProduct().get(i);
-//                                    Log.e("默认选择值", "===默认值====productBean==212121===" + productBean);
-//                                    return;
+//                                    Log.e("默认选择值", "===默认值====productBean==111===" + productBean);
 //                                }
-                            }
+////                                if (moveDataBean.getProduct().get(i).getGoods_attr().contains(goods_attr)) {
+////                                    productBean = moveDataBean.getProduct().get(i);
+////                                    Log.e("默认选择值", "===默认值====productBean==212121===" + productBean);
+////                                    return;
+////                                }
+//                            }
 
                         }
 
@@ -299,6 +299,7 @@ public class TypeSelectDialog {
                             public void onClick(View view) {
                                 Log.e("确定", "==productBean==" + productBean);
                                 if (productBean != null) {
+                                    Log.e("确定", "==productBean==" + productBean.getProduct_id());
                                     addShopCarClickListener.onBtnClickListener(moveDataBean.getInfo().getGoods_id(), getRec_id, getProduct_id, tv_num.getText().toString().trim(), productBean.getAttr_name(), productBean, mark);
                                 } else {
                                     Toast.makeText(mActivity, "请先选择完产品", Toast.LENGTH_SHORT).show();

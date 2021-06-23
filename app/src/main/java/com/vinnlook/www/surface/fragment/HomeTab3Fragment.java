@@ -3,6 +3,7 @@ package com.vinnlook.www.surface.fragment;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,7 @@ import com.vinnlook.www.R;
 import com.vinnlook.www.base.BaseFragment;
 import com.vinnlook.www.http.model.LimitedBean;
 import com.vinnlook.www.surface.activity.MoveAbooutActivity_3;
+import com.vinnlook.www.surface.adapter.BannerImgAdapter;
 import com.vinnlook.www.surface.adapter.LimitedAdapter_2;
 import com.vinnlook.www.surface.mvp.presenter.HomeTab3FragmentPresenter;
 import com.vinnlook.www.surface.mvp.view.HomeTab3FragmentView;
@@ -26,6 +28,11 @@ import com.vinnlook.www.utils.DateUtil;
 import com.vinnlook.www.utils.DensityUtils;
 import com.vinnlook.www.widgat.SpaceItemDecoration;
 import com.vinnlook.www.widgat.SpacesItemDecoration;
+import com.youth.banner.Banner;
+import com.youth.banner.indicator.CircleIndicator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -51,6 +58,10 @@ public class HomeTab3Fragment extends BaseFragment<HomeTab3FragmentPresenter> im
     RecyclerView recyclerView;
     @BindView(R.id.smart_refresh_layout)
     SmartRefreshLayout smartRefreshLayout;
+    @BindView(R.id.banner)
+    Banner banner2;
+
+    List<LimitedBean.BannerBean> bannerImage;
 
 
     LimitedAdapter_2 adapter;
@@ -126,6 +137,17 @@ public class HomeTab3Fragment extends BaseFragment<HomeTab3FragmentPresenter> im
 
             }
         });
+
+        banner2.post(new Runnable() {
+            @Override
+            public void run() {
+                banner2.getWidth();
+                double f = Float.valueOf(banner2.getWidth() + "") / (1.4);
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(banner2.getWidth(), (int) f);
+                banner2.setLayoutParams(layoutParams);
+            }
+        });
+
     }
 
     @Override
@@ -147,6 +169,15 @@ public class HomeTab3Fragment extends BaseFragment<HomeTab3FragmentPresenter> im
 
         smartRefreshLayout.finishRefresh();
         this.limibean = limibean;
+        bannerImage = limibean.getBanner();//轮播
+        if (bannerImage != null) {
+            banner2.setStartPosition(0);
+            BannerImgAdapter bannerImgAdapter = new BannerImgAdapter(getActivity(), gatBannetData());
+            banner2.setAdapter(bannerImgAdapter);
+            banner2.setIndicator(new CircleIndicator(getActivity()));
+            banner2.start();
+        }
+
         if (judge == 0) {
             adapter.setData(limibean.getList());
         } else {
@@ -159,6 +190,7 @@ public class HomeTab3Fragment extends BaseFragment<HomeTab3FragmentPresenter> im
         dtime = limibean.getList().get(0).getSurplus_time();
         //计算秒杀倒计时---ms
         handler.sendEmptyMessageDelayed(0, 1000);
+
 
     }
 
@@ -226,6 +258,16 @@ public class HomeTab3Fragment extends BaseFragment<HomeTab3FragmentPresenter> im
     public void onDestroy() {
         super.onDestroy();
         handler.removeCallbacksAndMessages(null);
+    }
+
+    public List<String> gatBannetData() {
+        List<String> strings = new ArrayList<>();
+        List<String> ids = new ArrayList<>();
+        for (int i = 0; i < bannerImage.size(); i++) {
+            ids.add(bannerImage.get(i).getId());
+            strings.add(bannerImage.get(i).getPhoto());
+        }
+        return strings;
     }
 
 

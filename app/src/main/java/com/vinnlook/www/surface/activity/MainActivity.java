@@ -176,6 +176,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
         Log.e("JumpActivity", "==appLinkData==" + appLinkData);
 
         if (appLinkData != null) {
+            String type = appLinkData.getQueryParameter("type");//7
             String is_group = appLinkData.getQueryParameter("is_group");//7
             String group_id = appLinkData.getQueryParameter("group_id");//7
             String good_id = appLinkData.getQueryParameter("good_id");//7
@@ -185,15 +186,32 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
             Log.e("JumpActivity", "==good_id==" + good_id);
             Log.e("JumpActivity", "==search_attr==" + search_attr);
 
-            if (is_group == null||is_group.equals("0")) {
-                MoveAbooutActivity_3.startSelf(getActivity(), good_id, search_attr);
+            if (is_group == null || is_group.equals("0")) {
+                MoveAbooutActivity_3.startSelf(this, good_id, search_attr);
             } else {
-                MoveAbooutActivity_4.startSelf(getActivity(), good_id, search_attr,group_id,"");
+                MoveAbooutActivity_4.startSelf(this, good_id, search_attr, group_id, "");
             }
 
+//            if (type != null) {
+////                if (type.equals("1")) {//首页
+////                } else
+//                if (type.equals("2")) {//商品详情
+//                    if (is_group == null || is_group.equals("0")) {
+//                        MoveAbooutActivity_3.startSelf(this, good_id, search_attr);
+//                    } else {
+//                        MoveAbooutActivity_4.startSelf(this, good_id, search_attr, group_id, "");
+//                    }
+//                } else if (type.equals("3")) {//医美专区
+//                    HomePublicClassActivity.startSelf(this, "医美专区", "", "", "2", "", "");
+//                } else if (type.equals("4")) {//百万补贴
+//                    MillionSubsidyActivity.startSelf(this);
+//                } else if (type.equals("5")) {//拼团Go
+//                    GroupWorkGoActivity.startSelf(this);
+//                }
+//            }
+
+
         }
-
-
 //        StatusBarUtils.setStatusBarMode(getActivity(), true);
         fragmentList = new ArrayList<>();
         mHomeFragment = new HomeFragment();

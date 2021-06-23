@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +16,7 @@ import com.vinnlook.www.R;
 import com.vinnlook.www.base.BaseActivity;
 import com.vinnlook.www.http.model.BrandListBean;
 import com.vinnlook.www.http.model.VersionBean;
+import com.vinnlook.www.surface.adapter.BannerImgAdapter;
 import com.vinnlook.www.surface.adapter.BrandAdapter;
 import com.vinnlook.www.surface.mvp.presenter.BrandPresenter;
 import com.vinnlook.www.surface.mvp.view.BrandView;
@@ -23,7 +25,10 @@ import com.vinnlook.www.utils.DensityUtils;
 import com.vinnlook.www.widgat.SpaceItemDecoration;
 import com.vinnlook.www.widgat.SpacesItemDecoration;
 import com.vinnlook.www.widgat.actionbar.ActionBarSimple;
+import com.youth.banner.Banner;
+import com.youth.banner.indicator.CircleIndicator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -42,10 +47,14 @@ public class BrandActivity extends BaseActivity<BrandPresenter> implements Brand
     RecyclerView recyclerView;
     @BindView(R.id.smart_refresh_layout)
     SmartRefreshLayout smartRefreshLayout;
+    @BindView(R.id.banner)
+    Banner banner2;
 
     BrandAdapter adapter;
     List<BrandListBean.ListBean> brandListBean;
     private static String type;
+    List<BrandListBean.BannerBean> bannerImage;
+
 
     public static void startSelf(Context context, String types) {
         Intent intent = new Intent(context, BrandActivity.class);
@@ -80,7 +89,17 @@ public class BrandActivity extends BaseActivity<BrandPresenter> implements Brand
             @Override
             public void onClick(View view, int position) {
 //                CommodityActivity.startSelf(getContext(), adapter.getData().get(position).getBrand_id(), "", adapter.getData().get(position).getBrand_name(), type);
-                BrendDetailsActivity.startSelf(getActivity(),adapter.getData().get(position).getBrand_id());
+                BrendDetailsActivity.startSelf(getActivity(), adapter.getData().get(position).getBrand_id());
+            }
+        });
+
+        banner2.post(new Runnable() {
+            @Override
+            public void run() {
+                banner2.getWidth();
+                double f = Float.valueOf(banner2.getWidth() + "") / (1.4);
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(banner2.getWidth(), (int) f);
+                banner2.setLayoutParams(layoutParams);
             }
         });
 
@@ -131,6 +150,14 @@ public class BrandActivity extends BaseActivity<BrandPresenter> implements Brand
     public void getBrandListSuccess(int code, BrandListBean data) {
         brandListBean = data.getList();
         adapter.setData(data.getList());
+        bannerImage = data.getBanner();//轮播
+        if (bannerImage != null) {
+            banner2.setStartPosition(0);
+            BannerImgAdapter bannerImgAdapter = new BannerImgAdapter(getActivity(), gatBannetData());
+            banner2.setAdapter(bannerImgAdapter);
+            banner2.setIndicator(new CircleIndicator(getActivity()));
+            banner2.start();
+        }
 
     }
 
@@ -146,5 +173,15 @@ public class BrandActivity extends BaseActivity<BrandPresenter> implements Brand
 //            adapter.setData(data);
 //            presenter.dismissLoading();
 //        }
+    }
+
+    public List<String> gatBannetData() {
+        List<String> strings = new ArrayList<>();
+        List<String> ids = new ArrayList<>();
+        for (int i = 0; i < bannerImage.size(); i++) {
+            ids.add(bannerImage.get(i).getId());
+            strings.add(bannerImage.get(i).getPhoto());
+        }
+        return strings;
     }
 }

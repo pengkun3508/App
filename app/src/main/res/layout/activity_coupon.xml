@@ -40,13 +40,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
-            android:checked="true"
             android:gravity="center"
             android:paddingTop="@dimen/spacing_3dp"
             android:paddingBottom="@dimen/spacing_3dp"
             android:text="待领取"
             android:textColor="@drawable/classify_button_selector"
-            android:textSize="@dimen/text_16" />
+            android:textSize="@dimen/text_16"
+            android:visibility="gone"/>
 
 
         <RadioButton
@@ -55,6 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
+            android:checked="true"
             android:gravity="center"
             android:paddingTop="@dimen/spacing_3dp"
             android:paddingBottom="@dimen/spacing_3dp"
@@ -105,7 +106,8 @@
             android:layout_marginLeft="@dimen/spacing_20dp"
             android:layout_marginRight="@dimen/spacing_20dp"
             android:layout_weight="1"
-            android:background="@color/them" />
+            android:background="@color/them"
+            android:visibility="gone"/>
 
         <View
             android:id="@+id/view_2"
@@ -114,7 +116,7 @@
             android:layout_marginLeft="@dimen/spacing_20dp"
             android:layout_marginRight="@dimen/spacing_20dp"
             android:layout_weight="1"
-            android:background="@color/white" />
+            android:background="@color/them" />
 
         <View
             android:id="@+id/view_3"

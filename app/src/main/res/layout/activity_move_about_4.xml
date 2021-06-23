@@ -112,7 +112,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="距结束"
                                 android:textColor="#FF0000"
-                                android:textSize="@dimen/text_12" />
+                                android:textSize="@dimen/text_10" />
 
                             <com.flyco.roundview.RoundTextView
                                 android:id="@+id/move_xianshi_day"

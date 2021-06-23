@@ -80,7 +80,7 @@ public class HomeTab2Fragment extends BaseFragment<HomeTab2FragmentPresenter> im
             @Override
             public void run() {
                 banner2.getWidth();
-                double f = Float.valueOf(banner2.getWidth() + "") / (1.3);
+                double f = Float.valueOf(banner2.getWidth() + "") / (1.4);
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(banner2.getWidth(), (int) f);
                 banner2.setLayoutParams(layoutParams);
             }
@@ -131,13 +131,13 @@ public class HomeTab2Fragment extends BaseFragment<HomeTab2FragmentPresenter> im
         smartRefreshLayout.finishRefresh();
         adapter.setData(data.getList());
         bannerImage = data.getBanner();//轮播
-        banner2.setStartPosition(0);
-        BannerImgAdapter bannerImgAdapter = new BannerImgAdapter(getActivity(), gatBannetData());
-        banner2.setAdapter(bannerImgAdapter);
-        banner2.setIndicator(new CircleIndicator(getActivity()));
-        banner2.start();
-
-
+        if (bannerImage!=null){
+            banner2.setStartPosition(0);
+            BannerImgAdapter bannerImgAdapter = new BannerImgAdapter(getActivity(), gatBannetData());
+            banner2.setAdapter(bannerImgAdapter);
+            banner2.setIndicator(new CircleIndicator(getActivity()));
+            banner2.start();
+        }
     }
 
     /**

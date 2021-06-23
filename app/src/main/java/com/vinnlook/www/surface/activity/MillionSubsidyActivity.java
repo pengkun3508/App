@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.vinnlook.www.R;
 import com.vinnlook.www.base.BaseActivity;
 import com.vinnlook.www.http.model.LimitedBean;
+import com.vinnlook.www.surface.adapter.BannerImgAdapter;
 import com.vinnlook.www.surface.adapter.LimitedAdapter_2;
 import com.vinnlook.www.surface.mvp.presenter.MillionSubsidyPresenter;
 import com.vinnlook.www.surface.mvp.view.MillionSubsidyView;
@@ -32,6 +34,11 @@ import com.vinnlook.www.utils.CacheActivity;
 import com.vinnlook.www.utils.DensityUtils;
 import com.vinnlook.www.widgat.SpaceItemDecoration;
 import com.vinnlook.www.widgat.SpacesItemDecoration;
+import com.youth.banner.Banner;
+import com.youth.banner.indicator.CircleIndicator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -60,6 +67,8 @@ public class MillionSubsidyActivity extends BaseActivity<MillionSubsidyPresenter
     RecyclerView recyclerView;
     @BindView(R.id.smart_refresh_layout)
     SmartRefreshLayout smartRefreshLayout;
+    @BindView(R.id.banner)
+    Banner banner2;
 
     int page = 1;
     int lastItem = -1;
@@ -68,6 +77,8 @@ public class MillionSubsidyActivity extends BaseActivity<MillionSubsidyPresenter
 
     LimitedAdapter_2 adapter;
     LimitedBean limibean;
+    List<LimitedBean.BannerBean> bannerImage;
+
 
     public static void startSelf(Context context) {
         Intent intent = new Intent(context, MillionSubsidyActivity.class);
@@ -179,6 +190,16 @@ public class MillionSubsidyActivity extends BaseActivity<MillionSubsidyPresenter
             }
         });
 
+        banner2.post(new Runnable() {
+            @Override
+            public void run() {
+                banner2.getWidth();
+                double f = Float.valueOf(banner2.getWidth() + "") / (1.4);
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(banner2.getWidth(), (int) f);
+                banner2.setLayoutParams(layoutParams);
+            }
+        });
+
     }
 
     @Override
@@ -199,6 +220,7 @@ public class MillionSubsidyActivity extends BaseActivity<MillionSubsidyPresenter
 
     /**
      * 下载数据成功
+     *
      * @param code
      * @param limibean
      */
@@ -206,6 +228,17 @@ public class MillionSubsidyActivity extends BaseActivity<MillionSubsidyPresenter
     public void getLimiteSuccess(int code, LimitedBean limibean) {
         smartRefreshLayout.finishRefresh();
         this.limibean = limibean;
+
+        if (limibean.getBanner()!=null){
+            bannerImage = limibean.getBanner();//轮播
+            banner2.setStartPosition(0);
+            BannerImgAdapter bannerImgAdapter = new BannerImgAdapter(getActivity(), gatBannetData());
+            banner2.setAdapter(bannerImgAdapter);
+            banner2.setIndicator(new CircleIndicator(getActivity()));
+            banner2.start();
+        }
+        
+        
         if (judge == 0) {
             adapter.setData(limibean.getList());
         } else {
@@ -217,11 +250,23 @@ public class MillionSubsidyActivity extends BaseActivity<MillionSubsidyPresenter
 
     /**
      * 下载数据失败
+     *
      * @param code
      * @param
      */
     @Override
     public void getLimiteFail(int code, String msg) {
         smartRefreshLayout.finishRefresh();
+    }
+
+
+    public List<String> gatBannetData() {
+        List<String> strings = new ArrayList<>();
+        List<String> ids = new ArrayList<>();
+        for (int i = 0; i < bannerImage.size(); i++) {
+            ids.add(bannerImage.get(i).getId());
+            strings.add(bannerImage.get(i).getPhoto());
+        }
+        return strings;
     }
 }

@@ -28,9 +28,10 @@ import butterknife.BindView;
  * @Time:2020/4/3$
  * @Author:pk$ RecyclerView.Adapter<AllOrderAdapter.ViewHolder>
  */
-public class TypeSelectAdapter extends BaseStateAdapter<MoveDataBean.AttrBean, TypeSelectAdapter.ScreenHolder> {
-    String getInfo;
+public class TypeSelectAdapte_1 extends BaseStateAdapter<MoveDataBean.AttrBean, TypeSelectAdapte_1.ScreenHolder> {
+    String getSearch_attr;
     List<ProductBean> getProduct;
+    List<MoveDataBean.AttrBean> getAttr;
     List<TypeSelecttypeBean> typeList = new ArrayList<>();
     List<String> ProductBeanID = new ArrayList<>();//Product里边的goods_attrID
     ProductBean productBean;
@@ -39,13 +40,11 @@ public class TypeSelectAdapter extends BaseStateAdapter<MoveDataBean.AttrBean, T
 
     List<ProductBean> getProducs;
 
-    public void setOnTypeSelectItemClick(OnTypeSelectItemClick onTypeSelectItemClick) {
-        this.onTypeSelectItemClick = onTypeSelectItemClick;
-    }
-
-    public TypeSelectAdapter(String getInfo, List<ProductBean> getProduct, List<MoveDataBean.AttrBean> getAttr) {
-        this.getInfo = getInfo;
+    public TypeSelectAdapte_1(String getSearch_attr, List<ProductBean> getProduct, List<MoveDataBean.AttrBean> getAttr) {
+        this.getSearch_attr = getSearch_attr;
         this.getProduct = getProduct;
+        this.getAttr=getAttr;
+
         //将product中的goods_attr全部装到一个List中
         for (int i = 0; i < getProduct.size(); i++) {
             ProductBeanID.add(getProduct.get(i).getGoods_attr());
@@ -60,16 +59,11 @@ public class TypeSelectAdapter extends BaseStateAdapter<MoveDataBean.AttrBean, T
             typeSelecttypeBean.setList(strings);
             typeList.add(typeSelecttypeBean);//将这些数据装到一个list中
         }
-        String[] getInfos = getInfo.split("\\|");
-        for (int i = 0; i < getInfos.length; i++) {
-            for (int j = 0; j < typeList.size(); j++) {
-                if (typeList.get(j).getList().contains(getInfos[i])) {
-                    typeList.get(j).setId(getInfos[i]);
-                }
-            }
-        }
 
+    }
 
+    public void setOnTypeSelectItemClick(OnTypeSelectItemClick onTypeSelectItemClick) {
+        this.onTypeSelectItemClick = onTypeSelectItemClick;
     }
 
     @Override
@@ -77,11 +71,13 @@ public class TypeSelectAdapter extends BaseStateAdapter<MoveDataBean.AttrBean, T
         return new ScreenHolder(inflate(parent, R.layout.rv_item_screen));
     }
 
-    class ScreenHolder extends BaseHolder<MoveDataBean.AttrBean> {
+    public interface OnTypeSelectItemClick {
+        void onTypeClick(ProductBean productBean, List<MoveDataBean.AttrBean.ValueBean.BannerBeanX> getBanner);
+    }
 
+    class ScreenHolder extends BaseHolder<MoveDataBean.AttrBean> {
         @BindView(R.id.tv_title)
-        TextView tvTitle;
-        @BindView(R.id.recyclerView)
+        TextView tvTitle;        @BindView(R.id.recyclerView)
         RecyclerView recyclerView;
 
         ScreenHolder(View itemView) {
@@ -97,8 +93,8 @@ public class TypeSelectAdapter extends BaseStateAdapter<MoveDataBean.AttrBean, T
         @Override
         public void bindData(MoveDataBean.AttrBean data) {
             tvTitle.setText(data.getAttr_name());
-            ScreenItemAdapter adapter = new ScreenItemAdapter(data.getAttr_id());
-            adapter.setOnScreenItemClick(new ScreenItemAdapter.OnScreenItemClick() {
+            ScreenItemAdapte_1 adapter = new ScreenItemAdapte_1(data.getAttr_id());
+            adapter.setOnScreenItemClick(new ScreenItemAdapte_1.OnScreenItemClick() {
                 @Override
                 public void onClick(MoveDataBean.AttrBean.ValueBean data, String typeID, int posion, List<ProductBean> getProductdata) {
 
@@ -122,21 +118,28 @@ public class TypeSelectAdapter extends BaseStateAdapter<MoveDataBean.AttrBean, T
 
                     for (int i = 0; i < data.getProductBeanList().size(); i++) {
                         for (int j = 0; j < typeList.size(); j++) {
-                            Log.e("问题点", "getId()====" + typeList.get(j).getId());
                             if (typeList.get(j).getId() == null) {
                                 break;
                             }
-                            String getGoods_attr = "|" + data.getProductBeanList().get(i).getGoods_attr() + "|";
-                            if (!getGoods_attr.contains("|" + typeList.get(j).getId() + "|")) {
+                            if (!data.getProductBeanList().get(i).getGoods_attr().contains(typeList.get(j).getId())) {
                                 break;
                             }
-
-                            if (j == typeList.size() - 1) {
-                                Log.e("ScreenItemAdapter", "getGoods_attr====" + data.getProductBeanList().get(i).getGoods_attr());
-                                productBean = data.getProductBeanList().get(i);
-                                getBanner = data.getBanner();
+                            String[] ids = data.getProductBeanList().get(i).getGoods_attr().split("\\|");
+                            for (int k = 0; k < ids.length; k++) {
+                                if (ids[k].equals(data.getGoods_attr_id())) {
+                                    productBean = data.getProductBeanList().get(i);
+                                    getBanner = data.getBanner();
+                                    Log.e("最后拿到的数据", "typeList.get(j).getId()====" + typeList.get(j).getId());
+                                    Log.e("最后拿到的数据", "getProduct_id===" + productBean.getProduct_id());
+                                    Log.e("最后拿到的数据", "getGoods_attr===" + productBean.getGoods_attr());
+                                }
                             }
 
+//                            if (j == typeList.size() - 1) {
+//                                Log.e("ScreenItemAdapter", "getGoods_attr====" + data.getProductBeanList().get(i).getGoods_attr());
+//                                productBean = data.getProductBeanList().get(i);
+//                                getBanner = data.getBanner();
+//                            }
                         }
                     }
                     if (onTypeSelectItemClick != null) {
@@ -145,7 +148,6 @@ public class TypeSelectAdapter extends BaseStateAdapter<MoveDataBean.AttrBean, T
                         onTypeSelectItemClick.onTypeClick(productBean, getBanner);
 
                     }
-
                     notifyDataSetChanged();
 
 
@@ -153,8 +155,7 @@ public class TypeSelectAdapter extends BaseStateAdapter<MoveDataBean.AttrBean, T
             });
             String id = "";
             String qtid = "";
-            for (
-                    int i = 0; i < typeList.size(); i++) {
+            for (int i = 0; i < typeList.size(); i++) {
                 if (!TextUtils.isEmpty(typeList.get(i).getTypeID())) {
                     if (typeList.get(i).getTypeID().equals(data.getAttr_id())) {
                         id = typeList.get(i).getId();
@@ -172,12 +173,7 @@ public class TypeSelectAdapter extends BaseStateAdapter<MoveDataBean.AttrBean, T
             Log.e("新测试", "qtid==222====" + qtid);
             adapter.setIDs(id, qtid, getProduct);
             recyclerView.setAdapter(adapter);
-            for (
-                    int i = 0; i < data.getValue().
-
-                    size();
-
-                    i++) {
+            for (int i = 0; i < data.getValue().size(); i++) {
                 getProducs = new ArrayList<>();
                 for (int k = 0; k < ProductBeanID.size(); k++) {
                     if (ProductBeanID.get(k).contains(data.getValue().get(i).getGoods_attr_id())) {
@@ -189,10 +185,6 @@ public class TypeSelectAdapter extends BaseStateAdapter<MoveDataBean.AttrBean, T
 
             adapter.setData(data.getValue());
         }
-    }
-
-    public interface OnTypeSelectItemClick {
-        void onTypeClick(ProductBean productBean, List<MoveDataBean.AttrBean.ValueBean.BannerBeanX> getBanner);
     }
 
 }

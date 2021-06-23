@@ -818,8 +818,8 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
                 Log.e("选择的颜色", "===名称:========" + moveDataBean.getInfo().getShop_name() + shopColourImgAdapter.getData().get(position).getShop_attr_name());
                 moveTransactionName.setText(moveDataBean.getInfo().getShop_name() + shopColourImgAdapter.getData().get(position).getShop_attr_name());
                 moveTypeText.setText("已选 " + shopColourImgAdapter.getData().get(position).getShop_attr_name());
-                goods_attr = shopColourImgAdapter.getData().get(position).getGoods_attr_id() + "|" + moveDataBean.getAttr().get(1).getValue().get(0).getGoods_attr_id();
-//                goods_attr = shopColourImgAdapter.getData().get(position).getGoods_attr_id() ;
+//                goods_attr = shopColourImgAdapter.getData().get(position).getGoods_attr_id() + "|" + moveDataBean.getAttr().get(1).getValue().get(0).getGoods_attr_id();
+                goods_attr = shopColourImgAdapter.getData().get(position).getGoods_attr_id() ;
                 Log.e("选择的颜色", "===goods_attr=====" + goods_attr);
                 if (shopColourImgAdapter.getData().get(position).getFlage().equals("0")) {
                     for (int i = 0; i < shopColourImgAdapter.getData().size(); i++) {
@@ -2563,6 +2563,8 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
             @Override
             public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_names, ProductBean productBean, String mmake) {
                 Log.e("onBtnClLister=购物车==", "==getAttr_names==" + getAttr_names);
+                Log.e("onBtnClLister=购物车==", "==productBean.getProduct_id(==" + productBean.getProduct_id());
+                Log.e("onBtnClLister=购物车==", "==productBean.getProduct_id(==" + product_id);
 //                            getAttr_name = getAttr_names;
                 presenter.getAddShopCar(goods_id, productBean.getProduct_id(), num);
             }

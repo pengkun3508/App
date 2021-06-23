@@ -616,7 +616,7 @@ public class ClassifyFragment_1 extends BaseFragment<ClassifyFragmentPresenter> 
                 adapter3.notifyDataSetChanged();
                 adapter4.notifyDataSetChanged();
                 judge = 0;
-
+                page = 1;
                 presenter.getClassifyData(classifySerachviewEdt.getText().toString(), page, 20, mark, sort_key, sort_value, iDstr);//下载分类数据
 
             }

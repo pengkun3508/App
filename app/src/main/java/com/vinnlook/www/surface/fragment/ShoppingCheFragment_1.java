@@ -2,11 +2,15 @@ package com.vinnlook.www.surface.fragment;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.Handler;
+import android.os.Message;
 import android.text.Html;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,6 +59,18 @@ public class ShoppingCheFragment_1 extends BaseFragment<VideonFragmentPresenter_
     TextView carPriceText;//价格
     @BindView(R.id.car_go_btn)
     RoundTextView carGoBtn;//去结算
+    @BindView(R.id.shop_discount_text1)
+    TextView shopDiscountText1;
+    @BindView(R.id.shop_discount_text2)
+    TextView shopDiscountText2;
+    @BindView(R.id.shop_content_text)
+    TextView shopContentText;
+    @BindView(R.id.shop_content_time)
+    TextView shopContentTime;
+    @BindView(R.id.layout_3)
+    LinearLayout layout3;
+    @BindView(R.id.shop_discount_layout)
+    RelativeLayout shopDiscountLayout;
     //    @BindView(R.id.smart_refresh_layout)
 //    SmartRefreshLayout smartRefreshLayout;
     private ShoppingCheAdapter_1 adapter1;
@@ -70,8 +86,11 @@ public class ShoppingCheFragment_1 extends BaseFragment<VideonFragmentPresenter_
     List<ShopCartListBean_1.ListBean> strings2 = new ArrayList<>();
 
     String recId = "";
-
+    int dtime;
     public PopupWindow popupwindow;
+
+    int startX;
+    int startY;
 
     @Override
     protected int getLayoutId() {
@@ -87,6 +106,72 @@ public class ShoppingCheFragment_1 extends BaseFragment<VideonFragmentPresenter_
     protected void initView() {
         initAdapter();
 
+    }
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            dtime = dtime - 1;
+            long days = dtime / (60 * 60 * 24);
+            long hours1 = dtime % (60 * 60 * 24) / (60 * 60);
+            long minutess1 = dtime % (60 * 60) / 60;
+            long secondss1 = dtime % 60;
+
+            String dayss;
+            String hourss;
+            String minutess;
+            String secondss;
+            if (days < 10) {
+                dayss = "0" + days;
+            } else {
+                dayss = String.valueOf(days);
+            }
+
+            if (hours1 < 10) {
+                hourss = "0" + hours1;
+            } else {
+                hourss = String.valueOf(hours1);
+            }
+
+            if (minutess1 < 10) {
+                minutess = "0" + minutess1;
+            } else {
+                minutess = String.valueOf(minutess1);
+            }
+
+            if (secondss1 < 10) {
+                secondss = "0" + secondss1;
+            } else {
+                secondss = String.valueOf(secondss1);
+            }
+//            homeXianshiTimeTextDays.setText(dayss);
+//            homeXianshiTimeTextHours.setText(hourss);
+//            homeXianshiTimeTextMinutes.setText(minutess);
+//            homeXianshiTimeTextSeconds.setText(secondss);
+            shopContentTime.setText("将于" + dayss + ":" + hourss + ":" + minutess + ":" + secondss + "后失效");
+
+            handler.removeMessages(0);
+            handler.sendEmptyMessageDelayed(0, 1000);
+            if (dtime <= 0) {
+                handler.removeCallbacksAndMessages(null);
+            }
+        }
+    };
+
+    @Override
+    protected void loadData() {
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+//        presenter.getShopListData(mark);//下载购物车列表数据
+        if (!UserUtils.getInstance().getUserId().equals("")) {
+            presenter.getShopListData();//下载购物车列表数据
+        } else {
+            Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+        }
     }
 
     //创建适配器
@@ -246,7 +331,7 @@ public class ShoppingCheFragment_1 extends BaseFragment<VideonFragmentPresenter_
                     if (sb.length() > 0) {
                         recId = sb.deleteCharAt(sb.length() - 1).toString();//去掉最后逗号
                         Log.e("结算", "===拼接字符串===" + recId);
-                        presenter.getConfirmOrderData(recId, "", "", "", "", "", "", "", "", "", "","","");
+                        presenter.getConfirmOrderData(recId, "", "", "", "", "", "", "", "", "", "", "", "");
                     } else {
                         Toast.makeText(getActivity(), "请先选择商品后再进行结算", Toast.LENGTH_SHORT).show();
                     }
@@ -259,23 +344,6 @@ public class ShoppingCheFragment_1 extends BaseFragment<VideonFragmentPresenter_
         });
 
     }
-
-    @Override
-    protected void loadData() {
-
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-//        presenter.getShopListData(mark);//下载购物车列表数据
-        if (!UserUtils.getInstance().getUserId().equals("")) {
-            presenter.getShopListData();//下载购物车列表数据
-        } else {
-            Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-        }
-    }
-
 
     /**
      * 新购物车列表数据下载成功
@@ -332,10 +400,80 @@ public class ShoppingCheFragment_1 extends BaseFragment<VideonFragmentPresenter_
             }
         }
 
+
+        if (data.get(0).getDiscount() != null && !data.get(0).getDiscount().equals("")) {
+            shopDiscountLayout.setVisibility(View.VISIBLE);
+            if (data.get(0).getDiscount().getType().equals("1")) {
+                //折扣券
+                shopDiscountText1.setText(data.get(0).getDiscount().getReduced());
+                shopDiscountText2.setText("折");
+                shopContentText.setText(data.get(0).getDiscount().getContent());
+            } else if (data.get(0).getDiscount().getType().equals("2")) {
+                //满减券
+                shopDiscountText1.setText(data.get(0).getDiscount().getReduced());
+                shopDiscountText2.setText("元");
+                shopContentText.setText(data.get(0).getDiscount().getContent());
+            }
+
+            dtime = data.get(0).getDiscount().getResidue_time();
+            //计算秒杀倒计时---ms
+            handler.sendEmptyMessageDelayed(0, 1000);
+        }else{
+            shopDiscountLayout.setVisibility(View.GONE);
+        }
+
+        layout3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                shopDiscountLayout.setVisibility(View.GONE);
+            }
+        });
+
+        //移动控件
+        shopDiscountLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        Log.e("打印操作：", "按下了");
+                        //获取当前按下的坐标
+
+                        startX = (int) event.getRawX();
+                        startY = (int) event.getRawY();
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        //获取移动后的坐标
+                        int moveX = (int) event.getRawX();
+                        int moveY = (int) event.getRawY();
+                        //拿到手指移动距离的大小
+                        int move_bigX = moveX - startX;
+                        int move_bigY = moveY - startY;
+                        Log.e("打印操作：", "\nX移动了" + move_bigX + "\nY移动了" + move_bigY);
+                        //拿到当前控件未移动的坐标
+                        int left = shopDiscountLayout.getLeft();
+                        int top = shopDiscountLayout.getTop();
+                        left += move_bigX;
+                        top += move_bigY;
+                        int right = left + shopDiscountLayout.getWidth();
+                        int bottom = top + shopDiscountLayout.getHeight();
+                        shopDiscountLayout.layout(left, top, right, bottom);
+                        startX = moveX;
+                        startY = moveY;
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        Log.e("打印操作：", "抬起了");
+                        break;
+                }
+                return true;
+            }
+        });
+
+
 //        getJG();
         getNewJG();
 
     }
+
 
     /**
      * 新购物车列表数据下载失败
@@ -754,7 +892,7 @@ public class ShoppingCheFragment_1 extends BaseFragment<VideonFragmentPresenter_
     public void getConfirmOrderSuccess(int code, ConfirmOrderBean data) {
         Log.e("购物车", "结算成功===code===" + code);
 //        ConfirmOrderActivity.startSelf(getContext(), recId, "", "", "");
-        ConfirmOrderActivity_1.startSelf(getContext(), recId, "", "", "", "1","","");
+        ConfirmOrderActivity_1.startSelf(getContext(), recId, "", "", "", "1", "", "");
 
 
     }
@@ -799,7 +937,7 @@ public class ShoppingCheFragment_1 extends BaseFragment<VideonFragmentPresenter_
 
         TypeSelectDialog.with(getActivity(), moveDataBeas, goods_attr, "2", new TypeSelectDialog.AddShopCarClickListener() {
             @Override
-            public void onBtnClickListener(String goods_id, String getRec_ids,String product_id, String num, String getAttr_name,ProductBean productBean, String mmake) {
+            public void onBtnClickListener(String goods_id, String getRec_ids, String product_id, String num, String getAttr_name, ProductBean productBean, String mmake) {
                 Log.e("确定后", "getRec_id==222=" + productBean.getRec_id());
                 Log.e("确定后", "num==222=" + num);
                 Log.e("确定后", "getProduct_id==222=" + productBean.getProduct_id());
@@ -846,7 +984,7 @@ public class ShoppingCheFragment_1 extends BaseFragment<VideonFragmentPresenter_
 
         TypeSelectDialog.with(getActivity(), moveDataBeas, goods_attr, "2", new TypeSelectDialog.AddShopCarClickListener() {
             @Override
-            public void onBtnClickListener(String goods_id,String getRec_ids, String product_id, String num, String getAttr_name,ProductBean productBean, String mmake) {
+            public void onBtnClickListener(String goods_id, String getRec_ids, String product_id, String num, String getAttr_name, ProductBean productBean, String mmake) {
                 Log.e("确定后", "getRec_id==333=" + productBean.getRec_id());
                 Log.e("确定后", "num==333=" + num);
                 Log.e("确定后", "getProduct_id==333=" + productBean.getProduct_id());

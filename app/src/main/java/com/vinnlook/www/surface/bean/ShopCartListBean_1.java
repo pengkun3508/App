@@ -24,6 +24,17 @@ public class ShopCartListBean_1 extends BaseBean {
     private String image;
     private int id;
     private List<ListBean> list;
+    private DiscountBean discount;
+
+    public DiscountBean getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(DiscountBean discount) {
+        this.discount = discount;
+    }
+
+
 
     public String getImage() {
         return image;
@@ -160,7 +171,6 @@ public class ShopCartListBean_1 extends BaseBean {
         public void setLong_flag(String long_flag) {
             this.long_flag = long_flag;
         }
-
 
 
         public String getGoods_number() {
@@ -524,4 +534,71 @@ public class ShopCartListBean_1 extends BaseBean {
 
 
     }
+
+    public class DiscountBean {
+        /**
+         * end_time : 1624982390
+         * type : 2
+         * reduced : 5
+         * min_money : 20.00
+         * residue_time : 655236
+         * content : 满20.00送5元
+         */
+
+        private String end_time;
+        private String type;
+        private String reduced;
+        private String min_money;
+        private int residue_time;
+        private String content;
+
+        public String getEnd_time() {
+            return end_time;
+        }
+
+        public void setEnd_time(String end_time) {
+            this.end_time = end_time;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        public String getReduced() {
+            return reduced;
+        }
+
+        public void setReduced(String reduced) {
+            this.reduced = reduced;
+        }
+
+        public String getMin_money() {
+            return min_money;
+        }
+
+        public void setMin_money(String min_money) {
+            this.min_money = min_money;
+        }
+
+        public int getResidue_time() {
+            return residue_time;
+        }
+
+        public void setResidue_time(int residue_time) {
+            this.residue_time = residue_time;
+        }
+
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
+    }
+
 }

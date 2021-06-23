@@ -30,6 +30,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.vinnlook.www.R;
 import com.vinnlook.www.base.BaseActivity;
 import com.vinnlook.www.http.model.LimitedBean;
+import com.vinnlook.www.surface.adapter.BannerImgAdapter;
 import com.vinnlook.www.surface.adapter.LimitedAdapter_1;
 import com.vinnlook.www.surface.mvp.presenter.LimitedPresenter;
 import com.vinnlook.www.surface.mvp.view.LimitedView;
@@ -39,6 +40,11 @@ import com.vinnlook.www.utils.DensityUtils;
 import com.vinnlook.www.utils.SmartRefreshHelper;
 import com.vinnlook.www.widgat.SpaceItemDecoration;
 import com.vinnlook.www.widgat.SpacesItemDecoration;
+import com.youth.banner.Banner;
+import com.youth.banner.indicator.CircleIndicator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -88,6 +94,8 @@ public class LimitedActivity_1 extends BaseActivity<LimitedPresenter> implements
     Toolbar toolbar;
     @BindView(R.id.title_text)
     TextView titleText;
+    @BindView(R.id.banner)
+    Banner banner2;
 
     private SmartRefreshHelper<LimitedBean.ListBean> mSmartRefreshHelper;
 
@@ -98,6 +106,8 @@ public class LimitedActivity_1 extends BaseActivity<LimitedPresenter> implements
     int lastItem = -1;
     int judge = 0;
     int dtime;
+
+    List<LimitedBean.BannerBean> bannerImage;
 
     public static void startSelf(Context context) {
         Intent intent = new Intent(context, LimitedActivity_1.class);
@@ -199,6 +209,18 @@ public class LimitedActivity_1 extends BaseActivity<LimitedPresenter> implements
         });
 
 
+        banner2.post(new Runnable() {
+            @Override
+            public void run() {
+                banner2.getWidth();
+                double f = Float.valueOf(banner2.getWidth() + "") / (1.4);
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(banner2.getWidth(), (int) f);
+                banner2.setLayoutParams(layoutParams);
+            }
+        });
+
+
+
     }
 
     /**
@@ -231,6 +253,15 @@ public class LimitedActivity_1 extends BaseActivity<LimitedPresenter> implements
 
         smartRefreshLayout.finishRefresh();
         this.limibean = limibean;
+        bannerImage = limibean.getBanner();//轮播
+        if (bannerImage!=null){
+            banner2.setStartPosition(0);
+            BannerImgAdapter bannerImgAdapter = new BannerImgAdapter(getActivity(), gatBannetData());
+            banner2.setAdapter(bannerImgAdapter);
+            banner2.setIndicator(new CircleIndicator(getActivity()));
+            banner2.start();
+        }
+
         if (judge == 0) {
             adapter.setData(limibean.getList());
         } else {
@@ -326,5 +357,16 @@ public class LimitedActivity_1 extends BaseActivity<LimitedPresenter> implements
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+    }
+
+
+    public List<String> gatBannetData() {
+        List<String> strings = new ArrayList<>();
+        List<String> ids = new ArrayList<>();
+        for (int i = 0; i < bannerImage.size(); i++) {
+            ids.add(bannerImage.get(i).getId());
+            strings.add(bannerImage.get(i).getPhoto());
+        }
+        return strings;
     }
 }
