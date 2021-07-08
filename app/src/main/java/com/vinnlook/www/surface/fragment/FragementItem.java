@@ -128,7 +128,7 @@ public class FragementItem extends BaseFragment<ItemFragmentPresenter> implement
         adapter.addOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view, int position) {
-                MoveAbooutActivity_3.startSelf(getActivity(), adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr());
+                MoveAbooutActivity_3.startSelf(getActivity(), adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr(),"");
 
             }
         });

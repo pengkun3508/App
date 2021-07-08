@@ -111,7 +111,7 @@ public class PaoQiList_Adapter extends BaseStateAdapter<HomeDataBean.ShopBean, P
                     //type--1：商品详情；2：活动详情；3：url;4:文字；5：商品列表
                     if (data.getImage().getType().equals("1")) {//1：商品详情
 //                        MoveAbooutActivity_1.startSelf((Activity) context, data.getImage().getList().getGoods_id(), data.getImage().getList().getSearch_attr());
-                        MoveAbooutActivity_3.startSelf((Activity) context, data.getImage().getList().getGoods_id(), data.getImage().getList().getSearch_attr());
+                        MoveAbooutActivity_3.startSelf((Activity) context, data.getImage().getList().getGoods_id(), data.getImage().getList().getSearch_attr(),"");
 
                     } else if (data.getImage().getType().equals("2")) {//2：活动详情
                         ProductDetailsActivity.startSelf(context, data.getImage().getList().getActive_id());//进入活动详情页面
@@ -162,7 +162,7 @@ public class PaoQiList_Adapter extends BaseStateAdapter<HomeDataBean.ShopBean, P
                 @Override
                 public void onClick(View view, int position) {
 //                    MoveAbooutActivity_1.startSelf((Activity) context, getData.get(position).getGoods_id(), getData.get(position).getSearch_attr());
-                    MoveAbooutActivity_3.startSelf((Activity) context, paoQiAdapter3.getData().get(position).getGoods_id(), paoQiAdapter3.getData().get(position).getSearch_attr());
+                    MoveAbooutActivity_3.startSelf((Activity) context, paoQiAdapter3.getData().get(position).getGoods_id(), paoQiAdapter3.getData().get(position).getSearch_attr(),"");
 
                 }
             });

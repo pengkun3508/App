@@ -10,365 +10,398 @@
 
     <!--    android:background="@drawable/classify_product_bg"-->
 
-
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="@dimen/spacing_30dp"
+        android:background="@color/them" />
 
 
-        <LinearLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/classify_product_bg"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-
-            <RelativeLayout
-                android:id="@+id/title"
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/ctlTitle"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="@dimen/spacing_30dp"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/classify_product_bg"
+                        android:orientation="vertical">
+
+
+                        <RelativeLayout
+                            android:id="@+id/title"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <LinearLayout
+                                android:id="@+id/claify_reyurn_btn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:paddingLeft="@dimen/spacing_10dp"
+                                android:paddingTop="@dimen/spacing_5dp"
+                                android:paddingRight="@dimen/spacing_10dp"
+                                android:paddingBottom="@dimen/spacing_5dp"
+                                android:visibility="gone">
+
+                                <ImageView
+                                    android:layout_width="@dimen/spacing_10dp"
+                                    android:layout_height="@dimen/spacing_15dp"
+                                    android:background="@mipmap/classify_return_img1" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/sousuo_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="@dimen/spacing_5dp"
+                                android:layout_toRightOf="@+id/claify_reyurn_btn"
+                                android:background="@drawable/searchview_line"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/searchview_icon"
+                                    android:layout_width="@dimen/spacing_10dp"
+                                    android:layout_height="@dimen/spacing_10dp"
+                                    android:layout_marginLeft="@dimen/spacing_10dp"
+                                    android:src="@mipmap/home_searchview" />
+
+                                <EditText
+                                    android:id="@+id/classify_serachview_edt"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@null"
+                                    android:focusable="true"
+                                    android:focusableInTouchMode="true"
+                                    android:hint="@string/home_search"
+                                    android:imeOptions="actionSearch"
+                                    android:lines="1"
+                                    android:maxLines="1"
+                                    android:padding="8dp"
+                                    android:singleLine="true"
+                                    android:textColorHint="@color/them"
+                                    android:textCursorDrawable="@drawable/my_cursor"
+                                    android:textSize="@dimen/text_12" />
+
+                                <EditText
+                                    android:id="@+id/et_search"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:background="@color/line"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:hint="CHANE"
+                                    android:paddingTop="@dimen/spacing_2dp"
+                                    android:paddingBottom="@dimen/spacing_2dp"
+                                    android:textColor="@color/text_black"
+                                    android:textSize="@dimen/text_14"
+                                    android:visibility="gone" />
+
+                                <ImageView
+                                    android:id="@+id/clear_search_text"
+                                    android:layout_width="20dp"
+                                    android:layout_height="@dimen/spacing_20dp"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginRight="@dimen/spacing_5dp"
+                                    android:padding="@dimen/spacing_3dp"
+                                    android:src="@mipmap/claear_search"
+                                    android:visibility="gone" />
+
+                            </LinearLayout>
+
+
+                            <TextView
+                                android:id="@+id/classify_qita"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:paddingLeft="@dimen/spacing_10dp"
+                                android:paddingRight="@dimen/spacing_10dp"
+                                android:text="···"
+                                android:textSize="@dimen/text_26"
+                                android:visibility="gone" />
+
+                        </RelativeLayout>
+
+
+                        <!--            android:background="@drawable/classify_shuxing_bg_raduis"-->
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/classify_type_recyclerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/spacing_10dp"
+                            android:layout_marginTop="@dimen/spacing_10dp"
+                            android:layout_marginRight="@dimen/spacing_10dp"
+                            android:background="@mipmap/classify_title_bg" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/classify_type_recyclerView_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/spacing_10dp"
+                            android:layout_marginTop="-2dp"
+                            android:layout_marginRight="@dimen/spacing_10dp"
+                            android:background="@color/white"
+                            android:overScrollMode="never"
+                            android:padding="@dimen/spacing_1dp"
+                            android:scrollbars="none" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_05dp"
+                            android:layout_marginLeft="@dimen/spacing_10dp"
+                            android:layout_marginRight="@dimen/spacing_10dp"
+                            android:background="@color/black_90" />
+
+                        <com.flyco.roundview.RoundRelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/spacing_10dp"
+                            android:layout_marginRight="@dimen/spacing_10dp"
+                            android:padding="@dimen/spacing_1dp"
+                            app:rv_backgroundColor="@color/white"
+                            app:rv_cornerRadius_BL="@dimen/spacing_10dp"
+                            app:rv_cornerRadius_BR="@dimen/spacing_10dp">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/classify_type_recyclerView_3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/spacing_60dp"
+                                android:padding="@dimen/spacing_2dp" />
+
+                            <TextView
+                                android:id="@+id/classify_clear_btn"
+                                android:layout_width="@dimen/spacing_50dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginTop="@dimen/spacing_7dp"
+                                android:layout_marginRight="@dimen/spacing_5dp"
+                                android:layout_marginBottom="@dimen/spacing_7dp"
+                                android:background="@drawable/classify_clear_text_bg"
+                                android:paddingLeft="@dimen/spacing_10dp"
+                                android:paddingTop="@dimen/spacing_2dp"
+                                android:paddingRight="@dimen/spacing_10dp"
+                                android:paddingBottom="@dimen/spacing_2dp"
+                                android:text="清除" />
+
+
+                        </com.flyco.roundview.RoundRelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/search_list_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_5dp"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginRight="@dimen/spacing_5dp"
+                        android:background="@mipmap/my_bg_1"
+                        android:visibility="gone">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/search_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:overScrollMode="never"
+                            android:padding="@dimen/spacing_25dp"
+                            android:scrollbars="none" />
+                    </LinearLayout>
+                </FrameLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+            <!--            android:background="@color/me_line"-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="10dp">
+                android:paddingTop="@dimen/spacing_10dp"
+                android:paddingBottom="@dimen/spacing_10dp">
 
                 <LinearLayout
-                    android:id="@+id/claify_reyurn_btn"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/classify_zonghe"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:paddingLeft="@dimen/spacing_10dp"
-                    android:paddingTop="@dimen/spacing_5dp"
-                    android:paddingRight="@dimen/spacing_10dp"
-                    android:paddingBottom="@dimen/spacing_5dp"
-                    android:visibility="gone">
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/zonghe_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="综合"
+                        android:textColor="@color/them"
+                        android:textSize="@dimen/text_14" />
 
                     <ImageView
                         android:layout_width="@dimen/spacing_10dp"
                         android:layout_height="@dimen/spacing_15dp"
-                        android:background="@mipmap/classify_return_img1" />
-
+                        android:src="@mipmap/classify_icon_1"
+                        android:visibility="gone" />
                 </LinearLayout>
 
-
                 <LinearLayout
-                    android:id="@+id/sousuo_layout"
+                    android:id="@+id/classify_xiaoliang"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="@dimen/spacing_5dp"
-                    android:layout_toRightOf="@+id/claify_reyurn_btn"
-                    android:background="@drawable/searchview_line"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/searchview_icon"
-                        android:layout_width="@dimen/spacing_10dp"
-                        android:layout_height="@dimen/spacing_10dp"
-                        android:layout_marginLeft="@dimen/spacing_10dp"
-                        android:src="@mipmap/home_searchview" />
-
-                    <EditText
-                        android:id="@+id/classify_serachview_edt"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/xiaoliang_text"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:focusable="true"
-                        android:focusableInTouchMode="true"
-                        android:hint="@string/home_search"
-                        android:padding="8dp"
-                        android:textColorHint="@color/them"
-                        android:textCursorDrawable="@drawable/my_cursor"
-                        android:singleLine="true"
-                        android:lines="1"
-                        android:textSize="@dimen/text_12"
-                        android:imeOptions="actionSearch"
-                        android:maxLines="1"/>
-
-                    <EditText
-                        android:id="@+id/et_search"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="@color/line"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:hint="CHANE"
-                        android:paddingTop="@dimen/spacing_2dp"
-                        android:paddingBottom="@dimen/spacing_2dp"
-                        android:textColor="@color/text_black"
-                        android:textSize="@dimen/text_14"
-                        android:visibility="gone" />
-
-                    <ImageView
-                        android:id="@+id/clear_search_text"
-                        android:layout_width="20dp"
-                        android:layout_height="@dimen/spacing_20dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/spacing_5dp"
-                        android:padding="@dimen/spacing_3dp"
-                        android:src="@mipmap/claear_search"
-                        android:visibility="gone"/>
+                        android:text="销量"
+                        android:textColor="@color/classify_text1"
+                        android:textSize="@dimen/text_14" />
 
                 </LinearLayout>
-
-
-                <TextView
-                    android:id="@+id/classify_qita"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:paddingLeft="@dimen/spacing_10dp"
-                    android:paddingRight="@dimen/spacing_10dp"
-                    android:text="···"
-                    android:textSize="@dimen/text_26"
-                    android:visibility="gone" />
-
-            </RelativeLayout>
-
-
-            <!--            android:background="@drawable/classify_shuxing_bg_raduis"-->
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/classify_type_recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/spacing_10dp"
-                android:layout_marginTop="@dimen/spacing_10dp"
-                android:layout_marginRight="@dimen/spacing_10dp"
-                android:background="@mipmap/classify_title_bg" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/classify_type_recyclerView_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/spacing_10dp"
-                android:layout_marginTop="-2dp"
-                android:layout_marginRight="@dimen/spacing_10dp"
-                android:background="@color/white"
-                android:overScrollMode="never"
-                android:padding="@dimen/spacing_1dp"
-                android:scrollbars="none" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing_05dp"
-                android:layout_marginLeft="@dimen/spacing_10dp"
-                android:layout_marginRight="@dimen/spacing_10dp"
-                android:background="@color/black_90" />
-
-            <com.flyco.roundview.RoundRelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/spacing_10dp"
-                android:layout_marginRight="@dimen/spacing_10dp"
-                android:padding="@dimen/spacing_1dp"
-                app:rv_backgroundColor="@color/white"
-                app:rv_cornerRadius_BL="@dimen/spacing_10dp"
-                app:rv_cornerRadius_BR="@dimen/spacing_10dp">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/classify_type_recyclerView_3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/spacing_60dp"
-                    android:padding="@dimen/spacing_2dp" />
-
-                <TextView
-                    android:id="@+id/classify_clear_btn"
-                    android:layout_width="@dimen/spacing_50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginTop="@dimen/spacing_7dp"
-                    android:layout_marginRight="@dimen/spacing_5dp"
-                    android:layout_marginBottom="@dimen/spacing_7dp"
-                    android:background="@drawable/classify_clear_text_bg"
-                    android:paddingLeft="@dimen/spacing_10dp"
-                    android:paddingTop="@dimen/spacing_2dp"
-                    android:paddingRight="@dimen/spacing_10dp"
-                    android:paddingBottom="@dimen/spacing_2dp"
-                    android:text="清除" />
-
-
-            </com.flyco.roundview.RoundRelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/search_list_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/spacing_5dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginRight="@dimen/spacing_5dp"
-            android:background="@mipmap/my_bg_1"
-            android:visibility="gone">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/search_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:overScrollMode="never"
-                android:padding="@dimen/spacing_25dp"
-                android:scrollbars="none"/>
-        </LinearLayout>
-    </FrameLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <!--            android:background="@color/me_line"-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_10dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:id="@+id/classify_zonghe"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/zonghe_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="综合"
-                    android:textColor="@color/them"
-                    android:textSize="@dimen/text_14" />
-
-                <ImageView
-                    android:layout_width="@dimen/spacing_10dp"
-                    android:layout_height="@dimen/spacing_15dp"
-                    android:src="@mipmap/classify_icon_1"
-                    android:visibility="gone" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/classify_xiaoliang"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/xiaoliang_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="销量"
-                    android:textColor="@color/classify_text1"
-                    android:textSize="@dimen/text_14" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/classify_xinpin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/xinpin_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="新品"
-                    android:textColor="@color/classify_text1"
-                    android:textSize="@dimen/text_14" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/classify_jiage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/jiage_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="价格"
-                    android:textColor="@color/classify_text1"
-                    android:textSize="@dimen/text_14" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:id="@+id/classify_xinpin"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/xinpin_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="新品"
+                        android:textColor="@color/classify_text1"
+                        android:textSize="@dimen/text_14" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/classify_jiage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/jiage_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="价格"
+                        android:textColor="@color/classify_text1"
+                        android:textSize="@dimen/text_14" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/jiage_img1"
+                            android:layout_width="@dimen/spacing_8dp"
+                            android:layout_height="@dimen/spacing_8dp"
+                            android:src="@mipmap/classify_icon_2" />
+
+                        <ImageView
+                            android:id="@+id/jiage_img2"
+                            android:layout_width="@dimen/spacing_8dp"
+                            android:layout_height="@dimen/spacing_8dp"
+                            android:src="@mipmap/classify_icon_3" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/classify_shaixuan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/shaixuan_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="筛选"
+                        android:textColor="@color/classify_text1"
+                        android:textSize="@dimen/text_14" />
 
                     <ImageView
-                        android:id="@+id/jiage_img1"
-                        android:layout_width="@dimen/spacing_8dp"
-                        android:layout_height="@dimen/spacing_8dp"
-                        android:src="@mipmap/classify_icon_2" />
-
-                    <ImageView
-                        android:id="@+id/jiage_img2"
-                        android:layout_width="@dimen/spacing_8dp"
-                        android:layout_height="@dimen/spacing_8dp"
-                        android:src="@mipmap/classify_icon_3" />
+                        android:layout_width="@dimen/spacing_10dp"
+                        android:layout_height="@dimen/spacing_15dp"
+                        android:src="@mipmap/classify_icon_4" />
                 </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/classify_shaixuan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:visibility="gone">
+        </com.google.android.material.appbar.AppBarLayout>
 
-                <TextView
-                    android:id="@+id/shaixuan_text"
-                    android:layout_width="wrap_content"
+        <!--            <androidx.core.widget.NestedScrollView-->
+        <!--                android:id="@+id/nested_scroll"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:scrollbars="none"-->
+        <!--                app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
+
+<!--        <com.scwang.smartrefresh.layout.SmartRefreshLayout-->
+<!--            android:id="@+id/smart_refresh_layout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1">-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/classify_recycler"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="筛选"
-                    android:textColor="@color/classify_text1"
-                    android:textSize="@dimen/text_14" />
+                    android:padding="5dp" />
 
-                <ImageView
-                    android:layout_width="@dimen/spacing_10dp"
-                    android:layout_height="@dimen/spacing_15dp"
-                    android:src="@mipmap/classify_icon_4" />
-            </LinearLayout>
-        </LinearLayout>
-
-
-        <com.scwang.smartrefresh.layout.SmartRefreshLayout
-            android:id="@+id/smart_refresh_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/classify_recycler"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp" />
-        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-
-    </LinearLayout>
+            </RelativeLayout>
+<!--        </com.scwang.smartrefresh.layout.SmartRefreshLayout>-->
+        <!--            </androidx.core.widget.NestedScrollView>-->
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
 </LinearLayout>

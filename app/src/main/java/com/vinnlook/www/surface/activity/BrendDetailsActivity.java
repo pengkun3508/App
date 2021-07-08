@@ -86,7 +86,7 @@ public class BrendDetailsActivity extends BaseActivity<BrendDetailsPresenter> im
             @Override
             public void onClick(View view, int position) {
 //                CommodityActivity.startSelf(getContext(), adapter.getData().get(position).getBrand_id(), "", adapter.getData().get(position).getBrand_name(), type);
-                MoveAbooutActivity_3.startSelf(BrendDetailsActivity.this, adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr());
+                MoveAbooutActivity_3.startSelf(BrendDetailsActivity.this, adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr(),"");
 
             }
         });

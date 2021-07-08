@@ -217,6 +217,10 @@ dependencies {
     implementation 'com.hjhrq1991.library:jsbridge:1.0.7'//升级版本解决传出url双斜杠转译问题
 
 
+    //模糊
+    implementation 'com.qiushui:blurredview:0.8.1'
+
+
 
 
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.flyco.roundview.RoundLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_btn"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_5dp"
+    android:background="@color/white"
+    android:orientation="vertical"
+    app:rv_cornerRadius_TL="@dimen/spacing_10dp"
+    app:rv_cornerRadius_TR="@dimen/spacing_10dp">
+    <!--    android:background="@drawable/paoqi_item_bg"-->
+
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/collec_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:riv_corner_radius_top_left="@dimen/spacing_10dp"
+        app:riv_corner_radius_top_right="@dimen/spacing_10dp" />
+
+
+    <TextView
+        android:id="@+id/collec_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/classify_supi"
+        android:layout_marginLeft="@dimen/spacing_3dp"
+        android:layout_marginTop="@dimen/spacing_10dp"
+        android:ellipsize="end"
+        android:lines="2"
+        android:text="日本美瞳日抛"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_12" />
+</com.flyco.roundview.RoundLinearLayout>

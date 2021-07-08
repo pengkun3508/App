@@ -14,12 +14,16 @@ import android.graphics.Rect;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -33,6 +37,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.sdk.android.man.MANService;
@@ -71,7 +78,7 @@ import com.vinnlook.www.surface.activity.AddressActivity;
 import com.vinnlook.www.surface.activity.AllOrderActivity;
 import com.vinnlook.www.surface.activity.ApplyRefundListActivity;
 import com.vinnlook.www.surface.activity.BrowseActivity;
-import com.vinnlook.www.surface.activity.CollectionActivity;
+import com.vinnlook.www.surface.activity.CollectionTotalActivity;
 import com.vinnlook.www.surface.activity.CouponActivity;
 import com.vinnlook.www.surface.activity.EditDataActivity;
 import com.vinnlook.www.surface.activity.GroupListActivity;
@@ -88,6 +95,7 @@ import com.vinnlook.www.surface.activity.ProductDetailsActivity;
 import com.vinnlook.www.surface.activity.RealNameActivity;
 import com.vinnlook.www.surface.activity.SettingActivity;
 import com.vinnlook.www.surface.activity.WebActivity;
+import com.vinnlook.www.surface.activity.WebActivity2;
 import com.vinnlook.www.surface.adapter.BannerImgAdapter2;
 import com.vinnlook.www.surface.adapter.FlipperAdapter;
 import com.vinnlook.www.surface.bean.PersonalInformationBean;
@@ -232,6 +240,8 @@ public class MyFragment extends BaseFragment<MyFragmentPresenter> implements MyF
     ViewFlipper myGuonggao;
     @BindView(R.id.my_guonggao_layout)
     RoundLinearLayout myGuonggaoLayout;
+    @BindView(R.id.my_guonggao_rv)
+    RecyclerView myGuonggaoRv;
 
 
     private int mScreenWidthDp;
@@ -248,6 +258,11 @@ public class MyFragment extends BaseFragment<MyFragmentPresenter> implements MyF
 
     KfStartHelper helper;
     List<String> gonggaoList2;
+    List<String> gonggaoList3;
+
+    LinearLayoutManager linearLayoutManager;
+    List<PersonalInformationBean.ArticleBean> getArticle;
+    DecelerateInterpolator decelerateInterpolator = new DecelerateInterpolator();
 
 
     @Override
@@ -258,6 +273,14 @@ public class MyFragment extends BaseFragment<MyFragmentPresenter> implements MyF
     @Override
     protected MyFragmentPresenter initPresenter() {
         return new MyFragmentPresenter();
+    }
+    private Thread threads;
+
+
+    @Override
+    protected void loadData() {
+        presenter.getPersonalInformation();//下载数据
+
     }
 
     @Override
@@ -302,287 +325,7 @@ public class MyFragment extends BaseFragment<MyFragmentPresenter> implements MyF
             }
         });
 
-    }
 
-
-    @Override
-    protected void loadData() {
-        presenter.getPersonalInformation();//下载数据
-
-    }
-
-
-    @OnClick({R.id.cat_avatar, R.id.sign_register_text, R.id.my_seeting_btn, R.id.youhuiquan_layout, R.id.all_order_text, R.id.daifukuan_layout, R.id.daifahuo_layout, R.id.daishouhuo_layout,
-            R.id.me_realname, R.id.daipingjia_layout, R.id.tuihuanhuo_layout, R.id.me_shoucang, R.id.me_address, R.id.me_wenti, R.id.me_guanyu, R.id.me_jifen, R.id.me_share, R.id.my_member_add,
-            R.id.my_browse_layout, R.id.my_jifen_layout, R.id.me_msg, R.id.my_group_all_btn, R.id.my_group_1_btn, R.id.my_group_2_btn, R.id.my_group_3_btn})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.cat_avatar://头像s
-            case R.id.sign_register_text://登录注册
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-                    EditDataActivity.startSelf(getContext());
-                } else {
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-
-                }
-                break;
-            case R.id.my_seeting_btn://设置
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-                    SettingActivity.startSelf(getContext(), personalInformationBean.getUser().getIs_wechat(), personalInformationBean.getUser().getMobile(), personalInformationBean.getUser().getWechat_nickname());
-                } else {
-//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-                break;
-            case R.id.youhuiquan_layout://优惠券
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-                    CouponActivity.startSelf(getContext());
-                } else {
-//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-
-                break;
-            case R.id.all_order_text://查看全部订单
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-                    AllOrderActivity.startSelf(getContext(), 0);
-                } else {
-//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-
-                break;
-            case R.id.daifukuan_layout://代付款
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-                    AllOrderActivity.startSelf(getContext(), 1);
-                } else {
-//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-
-                break;
-            case R.id.daifahuo_layout://待发货
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-                    AllOrderActivity.startSelf(getContext(), 2);
-                } else {
-//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-
-                break;
-            case R.id.daishouhuo_layout://待收货
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-                    AllOrderActivity.startSelf(getContext(), 3);
-                } else {
-//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-
-                break;
-            case R.id.daipingjia_layout://待评价
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-                    AllOrderActivity.startSelf(getContext(), 4);
-                } else {
-//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-
-                break;
-            case R.id.tuihuanhuo_layout://退换货
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-//                    AllOrderActivity.startSelf(getContext(), 4);
-                    ApplyRefundListActivity.startSelf(getActivity());//进入列表页面
-//                    Toast.makeText(getActivity(), "开发中，敬请期待.....", Toast.LENGTH_SHORT).show();
-                } else {
-//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-
-                break;
-            case R.id.me_shoucang://我的收藏
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-                    CollectionActivity.startSelf(getContext());
-                } else {
-//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-
-                break;
-            case R.id.me_address://收货地址
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-                    AddressActivity.startSelf(getActivity(), "1");
-                } else {
-//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-                break;
-            case R.id.me_realname://实名认证
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-                    RealNameActivity.startSelf(getActivity(), "1");
-                } else {
-//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-                break;
-            case R.id.me_wenti://问题反馈
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-                    ProblemFeedbackActivity.startSelf(getContext());
-                } else {
-//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-                break;
-            case R.id.me_guanyu://关于我们--我的客服
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-//                    AboutUsActivity.startSelf(getContext());
-                    PermissionHelper.with(getContext()).permissions(Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                            Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_EXTERNAL_STORAGE)
-                            .request(new PermissionHelper.PermissionListener() {
-                                @Override
-                                public void onSuccess() {
-                                    if (!UserUtils.getInstance().getUserId().equals("")) {
-                                        initSdk();
-                                    } else {
-                                        Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-
-                                @Override
-                                public void onFailed() {
-                                }
-                            });
-
-                } else {
-//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-                break;
-
-            case R.id.my_jifen_layout://积分
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-//                    Toast.makeText(getActivity(), "开发中，敬请期待", Toast.LENGTH_SHORT).show();
-
-                    PointsMallListActivity.startSelf(getContext());
-
-                } else {
-//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-
-
-                break;
-            case R.id.me_jifen://积分商城
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-//                    Toast.makeText(getActivity(), "开发中，敬请期待", Toast.LENGTH_SHORT).show();
-
-                    PointsMallActivity.startSelf(getContext());
-
-                } else {
-//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-                break;
-
-            case R.id.me_share://分享
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-                    if (popupwindow != null && popupwindow.isShowing()) {
-                        popupwindow.dismiss();
-                        return;
-                    } else {
-                        initmPopupWindowView();
-                        popupwindow.showAtLocation(getActivity().getWindow().getDecorView(), Gravity.CENTER, 0, 0);
-                    }
-
-                } else {
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-
-                break;
-            case R.id.me_msg://消息盒子
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-                    MsggingBoxActivity.startSelf(getContext());//消息盒子
-                } else {
-//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-
-                break;
-            case R.id.my_member_add://立即开通会员
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-//                    MemberActivity.startSelf(getContext(), "1");//会员购买入口
-                    MemberActivity_1.startSelf(getContext(), "1");//会员购买入口(新)
-                } else {
-//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-                break;
-            case R.id.my_browse_layout://浏览历史
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-                    BrowseActivity.startSelf(getActivity());
-                } else {
-//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-                break;
-
-            case R.id.my_group_all_btn://拼团全部
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-                    GroupListActivity.startSelf(getActivity(), 0);
-                } else {
-//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-                break;
-            case R.id.my_group_1_btn://开团中
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-                    GroupListActivity.startSelf(getActivity(), 1);
-                } else {
-//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-                break;
-            case R.id.my_group_2_btn://参团中
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-                    GroupListActivity.startSelf(getActivity(), 2);
-                } else {
-//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-                break;
-            case R.id.my_group_3_btn://拼团完成
-                if (!UserUtils.getInstance().getUserId().equals("")) {
-                    GroupListActivity.startSelf(getActivity(), 3);
-                } else {
-//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
-                    showLoadingDialog();
-                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
-                }
-                break;
-
-        }
     }
 
     private void initmPopupWindowView() {
@@ -914,206 +657,278 @@ public class MyFragment extends BaseFragment<MyFragmentPresenter> implements MyF
 
     }
 
+    @OnClick({R.id.cat_avatar, R.id.sign_register_text, R.id.my_seeting_btn, R.id.youhuiquan_layout, R.id.all_order_text, R.id.daifukuan_layout, R.id.daifahuo_layout, R.id.daishouhuo_layout,
+            R.id.me_realname, R.id.daipingjia_layout, R.id.tuihuanhuo_layout, R.id.me_shoucang, R.id.me_address, R.id.me_wenti, R.id.me_guanyu, R.id.me_jifen, R.id.me_share, R.id.my_member_add,
+            R.id.my_browse_layout, R.id.my_jifen_layout, R.id.me_msg, R.id.my_group_all_btn, R.id.my_group_1_btn, R.id.my_group_2_btn, R.id.my_group_3_btn})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.cat_avatar://头像s
+            case R.id.sign_register_text://登录注册
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    EditDataActivity.startSelf(getContext());
+                } else {
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
 
-    /**
-     * @Description:获取订单数量及用户信息成功
-     * @Time:2020/5/12 13:35
-     * @Author:pk
-     */
-    @Override
-    public void getPersonalInformationSuccess(int code, PersonalInformationBean data) {
-        catAvatar.setScaleType(ImageView.ScaleType.FIT_XY);
-//        ImageLoader.userIcon(getActivity(), catAvatar, data.getUser().getImg_url());
-        smartRefreshLayout.finishRefresh();
-        personalInformationBean = data;
-
-        if (data.getUser().getUser_id().equals("")) {
-            signRegisterText.setText("登录/注册");
-            daifukuanText.setText("0");
-            daifahuoText.setText("0");
-            daishouhuoText.setText("0");
-            daipingjiaText.setText("0");
-            tuihuanhuoText.setText("0");
-            xiaoxiText.setText("0");
-            daifukuanText.setVisibility(View.GONE);
-            daifahuoText.setVisibility(View.GONE);
-            daishouhuoText.setVisibility(View.GONE);
-            daipingjiaText.setVisibility(View.GONE);
-            tuihuanhuoText.setVisibility(View.GONE);
-            xiaoxiText.setVisibility(View.GONE);
-            myMemberLevel.setVisibility(View.GONE);
-            myCollectCount.setText("0");//收藏数量
-            myPointsCount.setText("0");//积分数量
-            myBrowseCount.setText("0");//浏览数量
-            myDiscountCount.setText("0");//优惠券数量
-            catAvatar.setImageResource(R.mipmap.icon_heart);
-
-            myGroup1Num.setVisibility(View.GONE);
-            myGroup2Num.setVisibility(View.GONE);
-            myGroup3Num.setVisibility(View.GONE);
-        } else {
-
-            if (data.getArticle().size() > 0 && data.getArticle() != null && !data.getArticle().equals("")) {
-                myGuonggaoLayout.setVisibility(View.VISIBLE);
-            } else {
-                myGuonggaoLayout.setVisibility(View.GONE);
-            }
-            gonggaoList2 = new ArrayList<>();
-            for (int i = 0; i < data.getArticle().size(); i++) {
-                gonggaoList2.add(data.getArticle().get(i).getTitle());
-            }
-            for (int i = 0; i < gonggaoList2.size(); i++) {
-                LinearLayout linearLayout = new LinearLayout(getActivity());
-                linearLayout.setOrientation(LinearLayout.VERTICAL);
-                linearLayout.setPadding(10, 10, 10, 10);
-                TextView textView1 = new TextView(getActivity());
-                textView1.setText(gonggaoList2.get(i));
-                linearLayout.addView(textView1);
-                myGuonggao.addView(linearLayout);
-            }
-            Log.e("我的", "公告内容=======" + gonggaoList2);
-
-
-            if (data.getUser().getMobile().equals("")) {
-//                ModifyPhoneActivity.startSelf(getActivity(), "2");
-                UserUtils.getInstance().logout();
-            }
-            if (data.getUser().getImg_url().equals("")) {
-                catAvatar.setImageResource(R.mipmap.icon_heart);
-            } else {
-                ImageLoader.userIcon(getActivity(), catAvatar, data.getUser().getImg_url());
-            }
-
-            Log.e("获取订单数量及用户信息成功", "==code=123=" + code);
-            if (data.getUser().getUser_name().equals("")) {
-                signRegisterText.setText("");
-
-            } else {
-                signRegisterText.setText(data.getUser().getUser_name());
-            }
-
-            if (data.getUser().getIs_member() == 1) {//会员
-                myMemberDate.setText(data.getUser().getMember_end_time() + "到期 ");
-                myMemberLevel.setVisibility(View.VISIBLE);
-                myMemberAdd.setText("查看更多 >");
-            } else if (data.getUser().getIs_member() == 0) {//不是会员
-                myMemberDate.setText("加入会员 领取会员红包");
-                myMemberLevel.setVisibility(View.GONE);
-                myMemberAdd.setText("立即开通");
-            }
-            //待发货
-            if (Integer.parseInt(data.getOrder_count().getPendingcount()) > 0) {
-                daifahuoText.setVisibility(View.VISIBLE);
-                daifahuoText.setText(data.getOrder_count().getPendingcount());
-            } else {
-                daifahuoText.setVisibility(View.GONE);
-            }
-            //待付款
-            if (Integer.parseInt(data.getOrder_count().getObligationcount()) > 0) {
-                daifukuanText.setVisibility(View.VISIBLE);
-                daifukuanText.setText(data.getOrder_count().getObligationcount());
-            } else {
-                daifukuanText.setVisibility(View.GONE);
-            }
-            //待收货
-            if (Integer.parseInt(data.getOrder_count().getReceivingcount()) > 0) {
-                daishouhuoText.setVisibility(View.VISIBLE);
-                daishouhuoText.setText(data.getOrder_count().getReceivingcount());//待收货
-            } else {
-                daishouhuoText.setVisibility(View.GONE);
-            }
-            //待评价
-            if (Integer.parseInt(data.getOrder_count().getCommentcount()) > 0) {
-                daipingjiaText.setVisibility(View.VISIBLE);
-                daipingjiaText.setText(data.getOrder_count().getCommentcount());//待评价
-            } else {
-                daipingjiaText.setVisibility(View.GONE);
-            }
-            //退换货
-            if (Integer.parseInt(data.getOrder_count().getReplacementcount()) > 0) {
-                tuihuanhuoText.setVisibility(View.VISIBLE);
-                tuihuanhuoText.setText(data.getOrder_count().getReplacementcount());//退换货
-            } else {
-                tuihuanhuoText.setVisibility(View.GONE);
-            }
-
-            //开团中
-            if (data.getGroup_count().getOpen_group() > 0) {
-                myGroup1Num.setVisibility(View.VISIBLE);
-                myGroup1Num.setText(String.valueOf(data.getGroup_count().getOpen_group()));//开团中
-            } else {
-                myGroup1Num.setVisibility(View.GONE);
-            }
-            //参团中
-            if (data.getGroup_count().getJoin_group() > 0) {
-                myGroup2Num.setVisibility(View.VISIBLE);
-                myGroup2Num.setText(String.valueOf(data.getGroup_count().getJoin_group()));//参团中
-            } else {
-                myGroup2Num.setVisibility(View.GONE);
-            }
-            //拼团成功
-            if (data.getGroup_count().getFinish_group() > 0) {
-                myGroup3Num.setVisibility(View.VISIBLE);
-                myGroup3Num.setText(String.valueOf(data.getGroup_count().getFinish_group()));//拼团成功
-            } else {
-                myGroup3Num.setVisibility(View.GONE);
-            }
-
-            initImkf(xiaoxiText, data.getUser().getUnread_count());
-
-            myCollectCount.setText(data.getCollect_count());//收藏数量
-            myPointsCount.setText(data.getPoints());//积分数量
-            myBrowseCount.setText(data.getBrowse_count());//浏览数量
-            myDiscountCount.setText(data.getDiscount_count());//优惠券数量
-        }
-
-        bannerImage = data.getBanner();//轮播
-        BannerImgAdapter2 bannerImgAdapter = new BannerImgAdapter2(getActivity(), gatBannetData());
-        bannerMy.setAdapter(bannerImgAdapter);
-//        bannerMy.setIndicator(new CircleIndicator(getActivity()));
-        bannerMy.start();
-
-        bannerMy.setOnBannerListener(new OnBannerListener() {
-            @Override
-            public void OnBannerClick(Object data, int position) {
-                //type--1：商品详情；2：活动详情；3：url;4:文字；5：商品列表
-                if (bannerImage.get(position).getType().equals("1")) {//1：商品详情
-//                    MoveAbooutActivity_1.startSelf(getActivity(), bannerImage.get(position).getList().getGoods_id(), bannerImage.get(position).getList().getSearch_attr());
-                    MoveAbooutActivity_3.startSelf(getActivity(), bannerImage.get(position).getList().getGoods_id(), bannerImage.get(position).getList().getSearch_attr());
-
-                } else if (bannerImage.get(position).getType().equals("2")) {//2：活动详情
-                    ProductDetailsActivity.startSelf(getContext(), bannerImage.get(position).getList().getActive_id());//进入活动详情页面
-                } else if (bannerImage.get(position).getType().equals("3")) {//3：url
-                    WebActivity.startSelf(getActivity(), bannerImage.get(position).getList().getUrl());
-
-                } else if (bannerImage.get(position).getType().equals("4")) {//4：文字
-
-                } else if (bannerImage.get(position).getType().equals("5")) {//5：广告商品列表
-//                    RecommendActivity_1.startSelf(getContext(), "", bannerImage.get(position).getList().getId());//进入活动详情页面
-                    HomePublicClassActivity.startSelf(getContext(), "", "0", "", "", "", bannerImage.get(position).getList().getId());
-                } else if (bannerImage.get(position).getType().equals("6")) {//6：会员入口
-//                    MemberActivity.startSelf(getContext(), "2");//
-                    MemberActivity_1.startSelf(getContext(), "2");//会员购买入口  1---详情页面，，2--其他页面进入会员购买页面
+                }
+                break;
+            case R.id.my_seeting_btn://设置
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    SettingActivity.startSelf(getContext(), personalInformationBean.getUser().getIs_wechat(), personalInformationBean.getUser().getMobile(), personalInformationBean.getUser().getWechat_nickname());
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+                break;
+            case R.id.youhuiquan_layout://优惠券
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    CouponActivity.startSelf(getContext());
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
                 }
 
-            }
-        });
+                break;
+            case R.id.all_order_text://查看全部订单
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    AllOrderActivity.startSelf(getContext(), 0);
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
 
-        Log.e("获取订单数量及用户信息成功", "==getWaybillList===size===" + personalInformationBean.getWaybillList().size());
-        if (personalInformationBean.getWaybillList().size() > 0) {
-            wuliuLayout.setVisibility(View.VISIBLE);
-            wuliuLine.setVisibility(View.VISIBLE);
-            FlipperAdapter adapter = new FlipperAdapter(getActivity());
-            adapter.setList(data.getWaybillList());
-            viewFlipper.setAdapter(adapter);
-            handler.sendEmptyMessageDelayed(1, 2000);
-        } else {
-            handler.removeMessages(1);
-            wuliuLayout.setVisibility(View.GONE);
-            wuliuLine.setVisibility(View.GONE);
+                break;
+            case R.id.daifukuan_layout://代付款
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    AllOrderActivity.startSelf(getContext(), 1);
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+
+                break;
+            case R.id.daifahuo_layout://待发货
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    AllOrderActivity.startSelf(getContext(), 2);
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+
+                break;
+            case R.id.daishouhuo_layout://待收货
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    AllOrderActivity.startSelf(getContext(), 3);
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+
+                break;
+            case R.id.daipingjia_layout://待评价
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    AllOrderActivity.startSelf(getContext(), 4);
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+
+                break;
+            case R.id.tuihuanhuo_layout://退换货
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+//                    AllOrderActivity.startSelf(getContext(), 4);
+                    ApplyRefundListActivity.startSelf(getActivity());//进入列表页面
+//                    Toast.makeText(getActivity(), "开发中，敬请期待.....", Toast.LENGTH_SHORT).show();
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+
+                break;
+            case R.id.me_shoucang://我的收藏
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+//                    CollectionActivity.startSelf(getContext());
+                    CollectionTotalActivity.startSelf(getContext());
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+
+                break;
+            case R.id.me_address://收货地址
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    AddressActivity.startSelf(getActivity(), "1");
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+                break;
+            case R.id.me_realname://实名认证
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    RealNameActivity.startSelf(getActivity(), "1");
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+                break;
+            case R.id.me_wenti://问题反馈
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    ProblemFeedbackActivity.startSelf(getContext());
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+                break;
+            case R.id.me_guanyu://关于我们--我的客服
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+//                    AboutUsActivity.startSelf(getContext());
+                    PermissionHelper.with(getContext()).permissions(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_EXTERNAL_STORAGE)
+                            .request(new PermissionHelper.PermissionListener() {
+                                @Override
+                                public void onSuccess() {
+                                    if (!UserUtils.getInstance().getUserId().equals("")) {
+                                        initSdk();
+                                    } else {
+                                        Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+                                @Override
+                                public void onFailed() {
+                                }
+                            });
+
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+                break;
+
+            case R.id.my_jifen_layout://积分
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+//                    Toast.makeText(getActivity(), "开发中，敬请期待", Toast.LENGTH_SHORT).show();
+
+                    PointsMallListActivity.startSelf(getContext());
+
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+
+
+                break;
+            case R.id.me_jifen://积分商城
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+//                    Toast.makeText(getActivity(), "开发中，敬请期待", Toast.LENGTH_SHORT).show();
+
+                    PointsMallActivity.startSelf(getContext());
+
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+                break;
+
+            case R.id.me_share://分享
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    if (popupwindow != null && popupwindow.isShowing()) {
+                        popupwindow.dismiss();
+                        return;
+                    } else {
+                        initmPopupWindowView();
+                        popupwindow.showAtLocation(getActivity().getWindow().getDecorView(), Gravity.CENTER, 0, 0);
+                    }
+
+                } else {
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+
+                break;
+            case R.id.me_msg://消息盒子
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    MsggingBoxActivity.startSelf(getContext());//消息盒子
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+
+                break;
+            case R.id.my_member_add://立即开通会员
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+//                    MemberActivity.startSelf(getContext(), "1");//会员购买入口
+                    MemberActivity_1.startSelf(getContext(), "1");//会员购买入口(新)
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+                break;
+            case R.id.my_browse_layout://浏览历史
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    BrowseActivity.startSelf(getActivity());
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+                break;
+
+            case R.id.my_group_all_btn://拼团全部
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    GroupListActivity.startSelf(getActivity(), 0);
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+                break;
+            case R.id.my_group_1_btn://开团中
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    GroupListActivity.startSelf(getActivity(), 1);
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+                break;
+            case R.id.my_group_2_btn://参团中
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    GroupListActivity.startSelf(getActivity(), 2);
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+                break;
+            case R.id.my_group_3_btn://拼团完成
+                if (!UserUtils.getInstance().getUserId().equals("")) {
+                    GroupListActivity.startSelf(getActivity(), 3);
+                } else {
+//                    Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+                    showLoadingDialog();
+                    mAlicomAuthHelper.getLoginToken(getActivity(), 0);
+                }
+                break;
+
         }
-
-
     }
 
     private Handler handler = new Handler() {
@@ -1641,5 +1456,297 @@ public class MyFragment extends BaseFragment<MyFragmentPresenter> implements MyF
         }
     }
 
+    /**
+     * @Description:获取订单数量及用户信息成功
+     * @Time:2020/5/12 13:35
+     * @Author:pk
+     */
+    @Override
+    public void getPersonalInformationSuccess(int code, PersonalInformationBean data) {
+        catAvatar.setScaleType(ImageView.ScaleType.FIT_XY);
+//        ImageLoader.userIcon(getActivity(), catAvatar, data.getUser().getImg_url());
+        smartRefreshLayout.finishRefresh();
+        personalInformationBean = data;
+
+        if (data.getUser().getUser_id().equals("")) {
+            signRegisterText.setText("登录/注册");
+            daifukuanText.setText("0");
+            daifahuoText.setText("0");
+            daishouhuoText.setText("0");
+            daipingjiaText.setText("0");
+            tuihuanhuoText.setText("0");
+            xiaoxiText.setText("0");
+            daifukuanText.setVisibility(View.GONE);
+            daifahuoText.setVisibility(View.GONE);
+            daishouhuoText.setVisibility(View.GONE);
+            daipingjiaText.setVisibility(View.GONE);
+            tuihuanhuoText.setVisibility(View.GONE);
+            xiaoxiText.setVisibility(View.GONE);
+            myMemberLevel.setVisibility(View.GONE);
+            myCollectCount.setText("0");//收藏数量
+            myPointsCount.setText("0");//积分数量
+            myBrowseCount.setText("0");//浏览数量
+            myDiscountCount.setText("0");//优惠券数量
+            catAvatar.setImageResource(R.mipmap.icon_heart);
+
+            myGroup1Num.setVisibility(View.GONE);
+            myGroup2Num.setVisibility(View.GONE);
+            myGroup3Num.setVisibility(View.GONE);
+        } else {
+            getArticle = data.getArticle();
+            if (data.getArticle().size() > 0 && data.getArticle() != null && !data.getArticle().equals("")) {
+                myGuonggaoLayout.setVisibility(View.VISIBLE);
+            } else {
+                myGuonggaoLayout.setVisibility(View.GONE);
+            }
+
+            linearLayoutManager = new LinearLayoutManager(this.getContext());
+            myGuonggaoRv.setLayoutManager(linearLayoutManager);
+            new PagerSnapHelper().attachToRecyclerView(myGuonggaoRv); //一次滑动一页
+            if (data.getArticle().size() > 0) {
+                myGuonggaoRv.setAdapter(new MAdapter(data.getArticle()));
+                startRoll();
+            }
+
+            gonggaoList2 = new ArrayList<>();
+            gonggaoList3 = new ArrayList<>();
+            for (int i = 0; i < data.getArticle().size(); i++) {
+                gonggaoList2.add(data.getArticle().get(i).getTitle());
+                gonggaoList3.add(data.getArticle().get(i).getInfo_url());
+            }
+            for (int i = 0; i < gonggaoList2.size(); i++) {
+                LinearLayout linearLayout = new LinearLayout(getActivity());
+                linearLayout.setOrientation(LinearLayout.VERTICAL);
+                linearLayout.setPadding(10, 10, 10, 10);
+                TextView textView1 = new TextView(getActivity());
+                textView1.setText(gonggaoList2.get(i));
+                linearLayout.addView(textView1);
+                myGuonggao.addView(linearLayout);
+            }
+
+//            myGuonggaoLayout.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+////                    WebActivity.startSelf(getActivity(), gonggaoList3.get(viewFlipper.getDisplayedChild()));
+//                }
+//            });
+            Log.e("我的", "公告内容=======" + gonggaoList2);
+            Log.e("我的", "公告内容=======" + gonggaoList3);
+
+
+            if (data.getUser().getMobile().equals("")) {
+//                ModifyPhoneActivity.startSelf(getActivity(), "2");
+                UserUtils.getInstance().logout();
+            }
+            if (data.getUser().getImg_url().equals("")) {
+                catAvatar.setImageResource(R.mipmap.icon_heart);
+            } else {
+                ImageLoader.userIcon(getActivity(), catAvatar, data.getUser().getImg_url());
+            }
+
+            Log.e("获取订单数量及用户信息成功", "==code=123=" + code);
+            if (data.getUser().getUser_name().equals("")) {
+                signRegisterText.setText("");
+
+            } else {
+                signRegisterText.setText(data.getUser().getUser_name());
+            }
+
+            if (data.getUser().getIs_member() == 1) {//会员
+                myMemberDate.setText(data.getUser().getMember_end_time() + "到期 ");
+                myMemberLevel.setVisibility(View.VISIBLE);
+                myMemberAdd.setText("查看更多 >");
+            } else if (data.getUser().getIs_member() == 0) {//不是会员
+                myMemberDate.setText("加入会员 领取会员红包");
+                myMemberLevel.setVisibility(View.GONE);
+                myMemberAdd.setText("立即开通");
+            }
+            //待发货
+            if (Integer.parseInt(data.getOrder_count().getPendingcount()) > 0) {
+                daifahuoText.setVisibility(View.VISIBLE);
+                daifahuoText.setText(data.getOrder_count().getPendingcount());
+            } else {
+                daifahuoText.setVisibility(View.GONE);
+            }
+            //待付款
+            if (Integer.parseInt(data.getOrder_count().getObligationcount()) > 0) {
+                daifukuanText.setVisibility(View.VISIBLE);
+                daifukuanText.setText(data.getOrder_count().getObligationcount());
+            } else {
+                daifukuanText.setVisibility(View.GONE);
+            }
+            //待收货
+            if (Integer.parseInt(data.getOrder_count().getReceivingcount()) > 0) {
+                daishouhuoText.setVisibility(View.VISIBLE);
+                daishouhuoText.setText(data.getOrder_count().getReceivingcount());//待收货
+            } else {
+                daishouhuoText.setVisibility(View.GONE);
+            }
+            //待评价
+            if (Integer.parseInt(data.getOrder_count().getCommentcount()) > 0) {
+                daipingjiaText.setVisibility(View.VISIBLE);
+                daipingjiaText.setText(data.getOrder_count().getCommentcount());//待评价
+            } else {
+                daipingjiaText.setVisibility(View.GONE);
+            }
+            //退换货
+            if (Integer.parseInt(data.getOrder_count().getReplacementcount()) > 0) {
+                tuihuanhuoText.setVisibility(View.VISIBLE);
+                tuihuanhuoText.setText(data.getOrder_count().getReplacementcount());//退换货
+            } else {
+                tuihuanhuoText.setVisibility(View.GONE);
+            }
+
+            //开团中
+            if (data.getGroup_count().getOpen_group() > 0) {
+                myGroup1Num.setVisibility(View.VISIBLE);
+                myGroup1Num.setText(String.valueOf(data.getGroup_count().getOpen_group()));//开团中
+            } else {
+                myGroup1Num.setVisibility(View.GONE);
+            }
+            //参团中
+            if (data.getGroup_count().getJoin_group() > 0) {
+                myGroup2Num.setVisibility(View.VISIBLE);
+                myGroup2Num.setText(String.valueOf(data.getGroup_count().getJoin_group()));//参团中
+            } else {
+                myGroup2Num.setVisibility(View.GONE);
+            }
+            //拼团成功
+            if (data.getGroup_count().getFinish_group() > 0) {
+                myGroup3Num.setVisibility(View.VISIBLE);
+                myGroup3Num.setText(String.valueOf(data.getGroup_count().getFinish_group()));//拼团成功
+            } else {
+                myGroup3Num.setVisibility(View.GONE);
+            }
+
+            initImkf(xiaoxiText, data.getUser().getUnread_count());
+
+            myCollectCount.setText(data.getCollect_count());//收藏数量
+            myPointsCount.setText(data.getPoints());//积分数量
+            myBrowseCount.setText(data.getBrowse_count());//浏览数量
+            myDiscountCount.setText(data.getDiscount_count());//优惠券数量
+        }
+
+        bannerImage = data.getBanner();//轮播
+        BannerImgAdapter2 bannerImgAdapter = new BannerImgAdapter2(getActivity(), gatBannetData());
+        bannerMy.setAdapter(bannerImgAdapter);
+//        bannerMy.setIndicator(new CircleIndicator(getActivity()));
+        bannerMy.start();
+
+        bannerMy.setOnBannerListener(new OnBannerListener() {
+            @Override
+            public void OnBannerClick(Object data, int position) {
+                //type--1：商品详情；2：活动详情；3：url;4:文字；5：商品列表
+                if (bannerImage.get(position).getType().equals("1")) {//1：商品详情
+//                    MoveAbooutActivity_1.startSelf(getActivity(), bannerImage.get(position).getList().getGoods_id(), bannerImage.get(position).getList().getSearch_attr());
+                    MoveAbooutActivity_3.startSelf(getActivity(), bannerImage.get(position).getList().getGoods_id(), bannerImage.get(position).getList().getSearch_attr(), "");
+
+                } else if (bannerImage.get(position).getType().equals("2")) {//2：活动详情
+                    ProductDetailsActivity.startSelf(getContext(), bannerImage.get(position).getList().getActive_id());//进入活动详情页面
+                } else if (bannerImage.get(position).getType().equals("3")) {//3：url
+                    WebActivity.startSelf(getActivity(), bannerImage.get(position).getList().getUrl());
+
+                } else if (bannerImage.get(position).getType().equals("4")) {//4：文字
+
+                } else if (bannerImage.get(position).getType().equals("5")) {//5：广告商品列表
+//                    RecommendActivity_1.startSelf(getContext(), "", bannerImage.get(position).getList().getId());//进入活动详情页面
+                    HomePublicClassActivity.startSelf(getContext(), "", "0", "", "", "", bannerImage.get(position).getList().getId());
+                } else if (bannerImage.get(position).getType().equals("6")) {//6：会员入口
+//                    MemberActivity.startSelf(getContext(), "2");//
+                    MemberActivity_1.startSelf(getContext(), "2");//会员购买入口  1---详情页面，，2--其他页面进入会员购买页面
+                }
+
+            }
+        });
+
+        Log.e("获取订单数量及用户信息成功", "==getWaybillList===size===" + personalInformationBean.getWaybillList().size());
+        if (personalInformationBean.getWaybillList().size() > 0) {
+            wuliuLayout.setVisibility(View.VISIBLE);
+            wuliuLine.setVisibility(View.VISIBLE);
+            FlipperAdapter adapter = new FlipperAdapter(getActivity());
+            adapter.setList(data.getWaybillList());
+            viewFlipper.setAdapter(adapter);
+            handler.sendEmptyMessageDelayed(1, 2000);
+        } else {
+            handler.removeMessages(1);
+            wuliuLayout.setVisibility(View.GONE);
+            wuliuLine.setVisibility(View.GONE);
+        }
+
+
+    }
+
+    private void startRoll() {
+        threads = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                SystemClock.sleep(3000);
+                if (!threads.isInterrupted()) {
+                    myGuonggaoRv.smoothScrollBy(0, dp2px(20), decelerateInterpolator);
+                    //                rv.smoothScrollToPosition(++cp);
+                    this.run();
+                }
+            }
+        });
+        threads.start();
+    }
+
+    public int dp2px(float dpValue) {
+        return (int) (0.5f + dpValue * getActivity().getResources().getSystem().getDisplayMetrics().density);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (threads != null) threads.interrupt();
+//        handler.removeCallbacksAndMessages(null);
+//        handler = null;
+    }
+
+    class MAdapter extends RecyclerView.Adapter<MAdapter.VH> {
+        List<PersonalInformationBean.ArticleBean> article;
+
+        public MAdapter(List<PersonalInformationBean.ArticleBean> articles) {
+            this.article = articles;
+        }
+
+        @NonNull
+        @Override
+        public VH onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+            return new VH(LayoutInflater.from(getContext()).inflate(R.layout.item_rv, viewGroup, false));
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull VH viewHolder, int i) {
+            viewHolder.tv.setText(article.get(i % article.size()).getTitle());
+            viewHolder.tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    WebActivity2.startSelf(getActivity(), article.get(i % article.size()).getInfo_url());
+                }
+            });
+
+            myGuonggaoLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    WebActivity2.startSelf(getActivity(), article.get(i % article.size()).getInfo_url());
+                }
+            });
+        }
+
+        @Override
+        public int getItemCount() {
+            return Integer.MAX_VALUE;
+        }
+
+        class VH extends RecyclerView.ViewHolder {
+            TextView tv;
+
+            public VH(@NonNull View itemView) {
+                super(itemView);
+                tv = itemView.findViewById(R.id.tv);
+            }
+        }
+    }
 
 }

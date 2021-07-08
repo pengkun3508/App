@@ -26,7 +26,6 @@ import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -80,9 +79,9 @@ import com.vinnlook.www.event.ShopTypeDataEvent;
 import com.vinnlook.www.http.model.MoveDataBean;
 import com.vinnlook.www.indicator.NumIndicator;
 import com.vinnlook.www.surface.adapter.CommentListAdapter;
-import com.vinnlook.www.surface.adapter.DetailsAdapter;
 import com.vinnlook.www.surface.adapter.DetailsImags1Adapter;
 import com.vinnlook.www.surface.adapter.DetailsImags2Adapter;
+import com.vinnlook.www.surface.adapter.GuangImagAdapter;
 import com.vinnlook.www.surface.adapter.MultipleTypesAdapter;
 import com.vinnlook.www.surface.adapter.ReBangImagAdapter;
 import com.vinnlook.www.surface.adapter.ShopColourImgAdapter;
@@ -333,14 +332,16 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
     RecyclerView moveShopAttrRecycler;
     @BindView(R.id.move_shop_explain_layout)
     LinearLayout moveShopExplainLayout;
+    private static String articleId;//逛逛文章ID
+    @BindView(R.id.guang_all)
+    TextView guangAll;
+    @BindView(R.id.guang_recy)
+    RecyclerView guangRecy;
 
 
     private float totaldy;
     private float mRecyclerFactor;
     private List<DetailsBean> list;
-    private int item1 = 0;
-    private int item2 = 0;
-    private int item3 = 0;
     private LinearLayoutManager manager;
     private Resources res;
     String mark = "0";
@@ -348,24 +349,12 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
 
     private static String goods_id;//商品详情
     private static String search_attr;//商品规格
+    @BindView(R.id.guang_layout)
+    LinearLayout guangLayout;
 
 
     MoveDataBean moveDataBean;
 
-    private long mHour = 02;
-    private long mMin = 15;
-    private long mSecond = 36;
-    private boolean isRun = true;
-    String[] all;
-
-    DetailsAdapter detailsAdapter;
-    List<String> getBannerEvent;
-
-    List<String> strings;
-//    String getAttr_name;
-
-    String sdktoken;
-    private CheckBox use_http;
     //相差多少时间 - ms
     private long dt = 0;
     UserInfoBean getUserInfo;
@@ -377,9 +366,6 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
     public PopupWindow popupwindow;
     public PopupWindow popupwindow1;
 
-    String hourss;
-    String minutess;
-    String secondss;
     String mmark;//选择规格弹框路径；1--商品详情页面；“”--购物车
     String product_ids;
     String nums;
@@ -388,6 +374,7 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
 
     ShopColourImgAdapter shopColourImgAdapter;
     CommentListAdapter commentAdapter;//评价适配器
+    GuangImagAdapter guangAdapter;
     WenListAdapter wenAdapter;//问一问适配器
     DetailsImags1Adapter adapter;//详情适配器
     DetailsImags2Adapter adapter2;//须知适配器
@@ -405,7 +392,7 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
 
     Bitmap bitmaps;//二维码
 
-    public static void startSelf(Activity context, String goods_ids, String search_attrs) {
+    public static void startSelf(Activity context, String goods_ids, String search_attrs, String articleIds) {
         Intent intent = new Intent(context, MoveAbooutActivity_3.class);
 //        context.startActivity(intent);
         intent.putExtra("good_id", goods_ids);
@@ -413,6 +400,8 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
         context.startActivityForResult(intent, 1);
         goods_id = goods_ids;
         search_attr = search_attrs;
+        articleId = articleIds;
+        Log.e("文章ID", "=-articleId=" + articleId);
         Log.e("goods_id", "=-goods_id=" + goods_id);
         Log.e("search_attr", "=-search_attr=" + search_attr);
     }
@@ -659,41 +648,6 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
 
     }
 
-    //    private Handler handler = new Handler() {
-//        @Override
-//        public void handleMessage(Message msg) {
-//            super.handleMessage(msg);
-//            dt = dt - 1;
-//
-//            long hours = dt / (60 * 60);
-//            long minutes = (dt / 60) % 60;
-//            long seconds = dt % 60;
-//
-//            hourss = String.valueOf(hours);
-//            minutess = String.valueOf(minutes);
-//            secondss = String.valueOf(seconds);
-//
-//            if (hours < 10) {
-//                hourss = "0" + hours;
-//            }
-//            if (minutes < 10) {
-//                minutess = "0" + minutes;
-//            }
-//            if (seconds < 10) {
-//                secondss = "0" + seconds;
-//            }
-////            Log.e("倒计时--详情页", "seconds====" + secondss);
-//
-//
-//            //设置倒计时
-//            moveXianshiHour.setText(hourss + ":" + minutess + ":" + secondss);
-//            handler.removeMessages(0);
-//            handler.sendEmptyMessageDelayed(0, 1000);
-//            if (dt <= 0) {
-//                handler.removeCallbacksAndMessages(null);
-//            }
-//        }
-//    };
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -781,9 +735,6 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
                     bannerBeans.setType(getShopBanner.get(i).getType());
                     banlist.add(bannerBeans);
                 }
-//        BannerImgAdapter bannerImgAdapter = new BannerImgAdapter(getActivity(), strings);
-//        banner.setAdapter(bannerImgAdapter);
-//        banner.setIndicator(new CircleIndicator(getActivity()));
                 banner.addBannerLifecycleObserver(MoveAbooutActivity_3.this)
                         .setAdapter(new MultipleTypesAdapter(MoveAbooutActivity_3.this, banlist, moveDataBean.getInfo().getProduct_price(), moveDataBean.getInfo().getBorder_image()))
                         .setIndicator(new NumIndicator(MoveAbooutActivity_3.this))
@@ -819,7 +770,7 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
                 moveTransactionName.setText(moveDataBean.getInfo().getShop_name() + shopColourImgAdapter.getData().get(position).getShop_attr_name());
                 moveTypeText.setText("已选 " + shopColourImgAdapter.getData().get(position).getShop_attr_name());
 //                goods_attr = shopColourImgAdapter.getData().get(position).getGoods_attr_id() + "|" + moveDataBean.getAttr().get(1).getValue().get(0).getGoods_attr_id();
-                goods_attr = shopColourImgAdapter.getData().get(position).getGoods_attr_id() ;
+                goods_attr = shopColourImgAdapter.getData().get(position).getGoods_attr_id();
                 Log.e("选择的颜色", "===goods_attr=====" + goods_attr);
                 if (shopColourImgAdapter.getData().get(position).getFlage().equals("0")) {
                     for (int i = 0; i < shopColourImgAdapter.getData().size(); i++) {
@@ -843,6 +794,24 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
         recyclervComment2.addItemDecoration(new SpaceItemDecoration(0, 0));
         recyclervComment2.setNestedScrollingEnabled(false);
         recyclervComment2.setHasFixedSize(false);
+
+        //逛逛适配器
+        guangAdapter = new GuangImagAdapter(this);
+        final GridLayoutManager guangmanager = new GridLayoutManager(this, 1);
+        guangmanager.setOrientation(GridLayoutManager.HORIZONTAL);
+        guangRecy.setLayoutManager(guangmanager);
+        guangRecy.addItemDecoration(new SpacesItemDecoration(DensityUtils.dp2px(this, 1)));
+        guangRecy.addItemDecoration(new SpaceItemDecoration(0, 0));
+        guangRecy.setNestedScrollingEnabled(false);
+        guangRecy.setFocusable(false);
+        guangRecy.setAdapter(guangAdapter);
+        guangAdapter.addOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                SelectEyeChartActivity.startSelf(MoveAbooutActivity_3.this,guangAdapter.getData().get(position).getId());
+            }
+        });
+
 
         //问一问适配器
         wenAdapter = new WenListAdapter(this);
@@ -996,7 +965,7 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
 
     @SuppressLint("MissingPermission")
     @OnClick({R.id.move_shopcat_btn, R.id.move_kefu_btn, R.id.move_shoucang_btn, R.id.move_add_shopcat_btn, R.id.tv_move_about, R.id.rebang_layout_btn,
-            R.id.wen_see_all, R.id.move_see_all_btn})
+            R.id.wen_see_all, R.id.move_see_all_btn, R.id.guang_all})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.move_shopcat_btn://购物车
@@ -1084,6 +1053,9 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
                 new MainHomeActivityEvent("4").post();
                 finish();
                 break;
+            case R.id.guang_all://逛逛查看全部
+                MoveGuangListActivity.startSelf(this,moveDataBean.getInfo().getGoods_id());
+                break;
         }
     }
 
@@ -1170,14 +1142,6 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
         dt = Integer.valueOf(data.getInfo().getSurplus_time());
         handler.sendEmptyMessageDelayed(0, 1000);
 
-        //加载Banner数据
-//        BannerImgAdapter1 bannerImgAdapter = new BannerImgAdapter1(this, data.getInfo().getBanner());
-//        banner.setAdapter(bannerImgAdapter);
-//        banner.setIndicator(new CircleIndicator(getActivity()));
-//        banner.start();
-
-//        data.getInfo().getBanner().get(0).setUrl("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4");
-
         banner.addBannerLifecycleObserver(this)
                 .setAdapter(new MultipleTypesAdapter(this, data.getInfo().getBanner(), data.getInfo().getProduct_price(), data.getInfo().getBorder_image()))
                 .setIndicator(new NumIndicator(this))
@@ -1185,7 +1149,6 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
                 .addOnPageChangeListener(new OnPageChangeListener() {
                     @Override
                     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
                     }
 
                     @Override
@@ -1209,7 +1172,6 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
 
                     }
                 });
-
 
         detailsVipPrice1.setText(Html.fromHtml("&yen") + data.getInfo().getMember_discount());
         //判断是否折扣商品--折扣与普通布局的切换
@@ -1390,6 +1352,15 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
                 EvaluateListActivity.startSelf(getContext(), data.getInfo().getGoods_id());
             }
         });
+        //逛逛
+        if (data.getArticleList().size() > 0) {
+            guangLayout.setVisibility(View.VISIBLE);
+            guangAdapter.setData(data.getArticleList());
+        } else {
+            guangLayout.setVisibility(View.GONE);
+        }
+
+
         //问一问
         wenyiwenNumber.setText("（" + data.getInfo().getQuestion_count() + "）");
 
@@ -1413,7 +1384,7 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
         adapter4.addOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view, int position) {
-                MoveAbooutActivity_3.startSelf(getActivity(), adapter4.getData().get(position).getGoods_id(), adapter4.getData().get(position).getSearch_attr());
+                MoveAbooutActivity_3.startSelf(getActivity(), adapter4.getData().get(position).getGoods_id(), adapter4.getData().get(position).getSearch_attr(), "");
 
             }
         });
@@ -2455,7 +2426,7 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
     @Override
     public void getConfirmOrderSuccess(int code, ConfirmOrderBean data) {
         if (mmark.equals("1")) {
-            ConfirmOrderActivity_1.startSelf(MoveAbooutActivity_3.this, "", goods_id, product_ids, nums, "2", "", "");
+            ConfirmOrderActivity_1.startSelf(MoveAbooutActivity_3.this, "", goods_id, product_ids, nums, "2", "", "",articleId);
 
             TypeSelectDialog.dismiss();
         }
@@ -2501,7 +2472,7 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
             @Override
             public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name, ProductBean productBean, String mmake) {
 //                presenter.getModifyType(mark, getRec_id, num, product_id);
-                presenter.getAddShopCar(goods_id, productBean.getProduct_id(), num);
+                presenter.getAddShopCar(goods_id, productBean.getProduct_id(), num,articleId);
 
             }
         }).show();
@@ -2566,7 +2537,7 @@ public class MoveAbooutActivity_3 extends BaseActivity<MoveAboutPresenter> imple
                 Log.e("onBtnClLister=购物车==", "==productBean.getProduct_id(==" + productBean.getProduct_id());
                 Log.e("onBtnClLister=购物车==", "==productBean.getProduct_id(==" + product_id);
 //                            getAttr_name = getAttr_names;
-                presenter.getAddShopCar(goods_id, productBean.getProduct_id(), num);
+                presenter.getAddShopCar(goods_id, productBean.getProduct_id(), num,articleId);
             }
         }).show();
 

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom">
+
+    <LinearLayout
+        android:id="@+id/theme_details_bgcolor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/theme_details_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_10dp"
+            android:text="VinnLook热门"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_18" />
+
+        <com.flyco.roundview.RoundTextView
+            android:id="@+id/theme_details_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_10dp"
+            android:padding="@dimen/spacing_10dp"
+            android:text="上课了见风使舵付款就红色地方会计师的回复两口就卡死了打积分灰色空间返回是流口水江东父老卡死掉塑料袋咖啡加水电费实力坑爹放假撒的方式来款到发货"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_12"
+            app:rv_backgroundColor="@color/white_80"
+            app:rv_cornerRadius="@dimen/spacing_10dp" />
+
+    </LinearLayout>
+</LinearLayout>

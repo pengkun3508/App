@@ -79,7 +79,7 @@ public class Discount_Adapter_1 extends RecyclerView.Adapter<RecyclerView.ViewHo
             ((ViewHolder) holder).discount_item_layout_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    MoveAbooutActivity_3.startSelf((Activity) context, list.get(position).getGoods_id(), list.get(position).getSearch_attr());
+                    MoveAbooutActivity_3.startSelf((Activity) context, list.get(position).getGoods_id(), list.get(position).getSearch_attr(),"");
                 }
             });
 

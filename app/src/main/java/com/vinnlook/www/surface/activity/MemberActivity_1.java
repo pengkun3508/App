@@ -180,7 +180,7 @@ public class MemberActivity_1 extends BaseActivity<MemberPresenter> implements M
             @Override
             public void onClick(View view, int position) {
 //                MoveAbooutActivity_1.startSelf(MemberActivity_1.this, memeberPriceAdapter2.getData().get(position).getGoods_id(), memeberPriceAdapter2.getData().get(position).getSearch_attr());
-                MoveAbooutActivity_3.startSelf(MemberActivity_1.this, memeberPriceAdapter2.getData().get(position).getGoods_id(), memeberPriceAdapter2.getData().get(position).getSearch_attr());
+                MoveAbooutActivity_3.startSelf(MemberActivity_1.this, memeberPriceAdapter2.getData().get(position).getGoods_id(), memeberPriceAdapter2.getData().get(position).getSearch_attr(),"");
 
             }
         });

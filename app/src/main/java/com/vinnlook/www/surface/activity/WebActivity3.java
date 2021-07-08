@@ -286,7 +286,7 @@ public class WebActivity3 extends BaseActivity<Web3Presenter> implements Web3Vie
                 Log.e("==返回数据==", "===search_attr====" + search_attr);
                 Log.e("==返回数据==", "===is_group====" + is_group);
                 if (is_group.equals("0")) {//普通商品
-                    MoveAbooutActivity_3.startSelf(WebActivity3.this, goods_id, search_attr);
+                    MoveAbooutActivity_3.startSelf(WebActivity3.this, goods_id, search_attr,"");
 //                    CacheActivity.finishActivity();
                 } else if (is_group.equals("1")) {//拼团商品
                     MoveAbooutActivity_4.startSelf(WebActivity3.this, goods_id, search_attr, "", "");

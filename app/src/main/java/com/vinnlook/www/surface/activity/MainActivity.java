@@ -9,6 +9,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.util.TypedValue;
@@ -51,6 +52,7 @@ import com.vinnlook.www.event.MyPersonalJudgeEvent;
 import com.vinnlook.www.event.ShopCarJudgeEvent;
 import com.vinnlook.www.eventbas.LoginStateChangeEvent;
 import com.vinnlook.www.surface.fragment.ClassifyFragment_1;
+import com.vinnlook.www.surface.fragment.GuangFragment;
 import com.vinnlook.www.surface.fragment.HomeFragment;
 import com.vinnlook.www.surface.fragment.HomeFragment_1;
 import com.vinnlook.www.surface.fragment.MyFragment;
@@ -69,6 +71,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import per.goweii.percentimageview.percentimageview.PercentImageView;
 
@@ -99,8 +102,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     PercentImageView ivBottomBarOrganization;
     @BindView(R.id.ll_bottom_bar_organization)
     LinearLayout llBottomBarOrganization;
-    @BindView(R.id.ll_bottom_bar)
-    LinearLayout llBottomBar;
     @BindView(R.id.iv_bottom_bar_my)
     PercentImageView ivBottomBarMy;
     @BindView(R.id.home_text)
@@ -111,6 +112,12 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     TextView shopCatText;//购物车
     @BindView(R.id.me_text)
     TextView meText;//我的
+    @BindView(R.id.ll_bottom_bar_guang)
+    LinearLayout llBottomBarGuang;
+    @BindView(R.id.guangtext)
+    TextView guangtext;
+    @BindView(R.id.iv_bottom_bar_guang)
+    PercentImageView ivBottomBarGuang;
 
     private TextView switchTV;
     private int mScreenWidthDp;
@@ -118,6 +125,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
 
     private HomeFragment mHomeFragment;
     private HomeFragment_1 mHomeFragment1;
+    private GuangFragment mGuangFragment;
     private ClassifyFragment_1 mclassifyFragment_1;
     private ShoppingCheFragment_1 mTableFragment;
     private MyFragment mMyFragment;
@@ -185,42 +193,46 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
             Log.e("JumpActivity", "==group_id==" + group_id);
             Log.e("JumpActivity", "==good_id==" + good_id);
             Log.e("JumpActivity", "==search_attr==" + search_attr);
+            Log.e("JumpActivity", "==type==" + type);
 
-            if (is_group == null || is_group.equals("0")) {
-                MoveAbooutActivity_3.startSelf(this, good_id, search_attr);
-            } else {
-                MoveAbooutActivity_4.startSelf(this, good_id, search_attr, group_id, "");
-            }
-
-//            if (type != null) {
-////                if (type.equals("1")) {//首页
-////                } else
-//                if (type.equals("2")) {//商品详情
-//                    if (is_group == null || is_group.equals("0")) {
-//                        MoveAbooutActivity_3.startSelf(this, good_id, search_attr);
-//                    } else {
-//                        MoveAbooutActivity_4.startSelf(this, good_id, search_attr, group_id, "");
-//                    }
-//                } else if (type.equals("3")) {//医美专区
-//                    HomePublicClassActivity.startSelf(this, "医美专区", "", "", "2", "", "");
-//                } else if (type.equals("4")) {//百万补贴
-//                    MillionSubsidyActivity.startSelf(this);
-//                } else if (type.equals("5")) {//拼团Go
-//                    GroupWorkGoActivity.startSelf(this);
-//                }
+//            if (is_group == null || is_group.equals("0")) {
+//                MoveAbooutActivity_3.startSelf(this, good_id, search_attr);
+//            } else {
+//                MoveAbooutActivity_4.startSelf(this, good_id, search_attr, group_id, "");
 //            }
 
-
+            if (type != null) {
+                if (type.equals("Index-Shopping")) {//首页
+                } else if (type.equals("toDetail")) {//商品详情
+                    if (is_group == null || is_group.equals("0")) {
+                        MoveAbooutActivity_3.startSelf(this, good_id, search_attr,"");
+                    } else {
+                        MoveAbooutActivity_4.startSelf(this, good_id, search_attr, group_id, "");
+                    }
+                } else if (type.equals("prefecture")) {//医美专区
+                    HomePublicClassActivity.startSelf(this, "医美专区", "", "", "2", "", "");
+                } else if (type.equals("Index-Millions")) {//百万补贴
+                    MillionSubsidyActivity.startSelf(this);
+                } else if (type.equals("Index-Group")) {//拼团Go
+                    GroupWorkGoActivity.startSelf(this);
+                } else if (type.equals("Vip-Coupon")) {//会员中心
+                    MemberActivity_1.startSelf(this, "1");//会员购买入口(新)
+                }
+            }
         }
 //        StatusBarUtils.setStatusBarMode(getActivity(), true);
         fragmentList = new ArrayList<>();
-        mHomeFragment = new HomeFragment();
+
+//        mHomeFragment = new HomeFragment();
         mHomeFragment1 = new HomeFragment_1();
         mclassifyFragment_1 = new ClassifyFragment_1();
+        mGuangFragment = new GuangFragment();
         mTableFragment = new ShoppingCheFragment_1();
         mMyFragment = new MyFragment();
+
         fragmentList.add(mHomeFragment1);
         fragmentList.add(mclassifyFragment_1);
+        fragmentList.add(mGuangFragment);
         fragmentList.add(mTableFragment);
         fragmentList.add(mMyFragment);
         FixedFragmentPagerAdapter mainPagerAdapter = new FixedFragmentPagerAdapter(getSupportFragmentManager());
@@ -317,7 +329,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     }
 
 
-    @OnClick({R.id.ll_bottom_bar_home, R.id.ll_bottom_bar_classify, R.id.ll_bottom_bar_organization, R.id.ll_bottom_bar_my})
+    @OnClick({R.id.ll_bottom_bar_home, R.id.ll_bottom_bar_classify, R.id.ll_bottom_bar_guang, R.id.ll_bottom_bar_organization, R.id.ll_bottom_bar_my})
     @Override
     public void onClick(View v) {
         super.onClick(v);
@@ -328,20 +340,23 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
         switch (v.getId()) {
             default:
                 return false;
-            case R.id.ll_bottom_bar_home:
+            case R.id.ll_bottom_bar_home://首页
                 viewPager.setCurrentItem(0);
                 break;
-            case R.id.ll_bottom_bar_classify:
+            case R.id.ll_bottom_bar_classify://分类
                 viewPager.setCurrentItem(1);
 //                new ShopCarJudgeEvent(2).post();
                 break;
-            case R.id.ll_bottom_bar_organization:
+            case R.id.ll_bottom_bar_guang://逛逛
                 viewPager.setCurrentItem(2);
+                break;
+            case R.id.ll_bottom_bar_organization://购物车
+                viewPager.setCurrentItem(3);
                 new ShopCarJudgeEvent(1).post();
 
                 break;
-            case R.id.ll_bottom_bar_my:
-                viewPager.setCurrentItem(3);
+            case R.id.ll_bottom_bar_my://我的
+                viewPager.setCurrentItem(4);
                 new MyPersonalJudgeEvent(1).post();
 
                 break;
@@ -379,6 +394,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
             ivBottomBarMy.setImageResource(R.mipmap.me_fill);
             homeText.setTextColor(getResources().getColor(R.color.them));
             classifyText.setTextColor(getResources().getColor(R.color.black));
+            guangtext.setTextColor(getResources().getColor(R.color.black));//逛逛
             shopCatText.setTextColor(getResources().getColor(R.color.black));
             meText.setTextColor(getResources().getColor(R.color.black));
             doBottomBarIconAnim(ivBottomBarHome);
@@ -389,27 +405,42 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
             ivBottomBarMy.setImageResource(R.mipmap.me_fill);
             homeText.setTextColor(getResources().getColor(R.color.black));
             classifyText.setTextColor(getResources().getColor(R.color.them));
+            guangtext.setTextColor(getResources().getColor(R.color.black));//逛逛
             shopCatText.setTextColor(getResources().getColor(R.color.black));
             meText.setTextColor(getResources().getColor(R.color.black));
-            doBottomBarIconAnim(ivBottomBarOrganization);
-        } else if (position == 2) {//购物车
+            doBottomBarIconAnim(ivBottomBarClassify);
+        } else if (position == 2) {//逛逛
+            ivBottomBarHome.setImageResource(R.mipmap.home);
+            ivBottomBarClassify.setImageResource(R.mipmap.classify);
+//            ivBottomBarGuang.setImageResource(R.mipmap.guang_home_bg2);
+            ivBottomBarOrganization.setImageResource(R.mipmap.shop_cat__2);
+            ivBottomBarMy.setImageResource(R.mipmap.me_fill);
+            homeText.setTextColor(getResources().getColor(R.color.black));
+            classifyText.setTextColor(getResources().getColor(R.color.black));
+            guangtext.setTextColor(getResources().getColor(R.color.them));//逛逛
+            shopCatText.setTextColor(getResources().getColor(R.color.black));
+            meText.setTextColor(getResources().getColor(R.color.black));
+            doBottomBarIconAnim(ivBottomBarGuang);
+        } else if (position == 3) {//购物车
             ivBottomBarHome.setImageResource(R.mipmap.home);
             ivBottomBarClassify.setImageResource(R.mipmap.classify);
             ivBottomBarOrganization.setImageResource(R.mipmap.shop_cat__1);
             ivBottomBarMy.setImageResource(R.mipmap.me_fill);
             homeText.setTextColor(getResources().getColor(R.color.black));
             classifyText.setTextColor(getResources().getColor(R.color.black));
+            guangtext.setTextColor(getResources().getColor(R.color.black));//逛逛
             shopCatText.setTextColor(getResources().getColor(R.color.them));
             meText.setTextColor(getResources().getColor(R.color.black));
-            doBottomBarIconAnim(ivBottomBarMy);
+            doBottomBarIconAnim(ivBottomBarOrganization);
 
-        } else if (position == 3) {//我的
+        } else if (position == 4) {//我的
             ivBottomBarHome.setImageResource(R.mipmap.home);
             ivBottomBarClassify.setImageResource(R.mipmap.classify);
             ivBottomBarOrganization.setImageResource(R.mipmap.shop_cat__2);
             ivBottomBarMy.setImageResource(R.mipmap.me_fill_1);
             homeText.setTextColor(getResources().getColor(R.color.black));
             classifyText.setTextColor(getResources().getColor(R.color.black));
+            guangtext.setTextColor(getResources().getColor(R.color.black));//逛逛
             shopCatText.setTextColor(getResources().getColor(R.color.black));
             meText.setTextColor(getResources().getColor(R.color.them));
             doBottomBarIconAnim(ivBottomBarMy);
@@ -440,8 +471,10 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
 
         if (resultCode == 10) {
             Log.e("返回来的数据", "resultCode===" + resultCode + "requestCode===" + requestCode);
-            viewPager.setCurrentItem(2);
-            setSelectedBottomBar(2);
+//            viewPager.setCurrentItem(2);
+//            setSelectedBottomBar(2);
+            viewPager.setCurrentItem(3);
+            setSelectedBottomBar(3);
 
 
         }
@@ -455,8 +488,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
         String getMark = event.getMarkNum();
         Log.e("接收消息", "MainShoppingEvent===" + getMark);
         if (getMark.endsWith("10")) {
-            viewPager.setCurrentItem(2);
-            setSelectedBottomBar(2);
+            viewPager.setCurrentItem(3);
+            setSelectedBottomBar(3);
         }
     }
 
@@ -466,16 +499,16 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     public void onEventMainThread(MainHomeActivityEvent event) {
         String getMark = event.getMark();
         if (getMark.endsWith("1")) {//以访客身份
-            viewPager.setCurrentItem(0);
+            viewPager.setCurrentItem(0);//进入首页
             setSelectedBottomBar(0);
         } else if (getMark.endsWith("2")) {
-            viewPager.setCurrentItem(3);
-            setSelectedBottomBar(3);
+            viewPager.setCurrentItem(4);//进入我的
+            setSelectedBottomBar(4);
         } else if (getMark.endsWith("4")) {
-            viewPager.setCurrentItem(1);
+            viewPager.setCurrentItem(1);//进入分类
             setSelectedBottomBar(1);
         } else if (getMark.endsWith("5")) {//从购物车进入分类
-            viewPager.setCurrentItem(1);
+            viewPager.setCurrentItem(1);//进入分类
             setSelectedBottomBar(1);
         }
     }
@@ -750,5 +783,12 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     @Override
     public void getMainFail(int code, String msg) {
 
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

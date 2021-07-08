@@ -58,7 +58,7 @@ public class HuoDongContent_1Adapter extends BaseStateAdapter<HuoDong2Bean.Activ
             adapter2.addOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view, int position) {
-                    MoveAbooutActivity_3.startSelf((Activity) context, adapter2.getData().get(position).getGoods_id(), data.getGoods_list().get(position).getSearch_attr());
+                    MoveAbooutActivity_3.startSelf((Activity) context, adapter2.getData().get(position).getGoods_id(), data.getGoods_list().get(position).getSearch_attr(),"");
                 }
             });
         }

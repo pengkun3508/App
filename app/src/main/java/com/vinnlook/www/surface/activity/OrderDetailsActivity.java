@@ -206,7 +206,7 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsPresenter> im
         adapter.addOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view, int position) {
-                MoveAbooutActivity_3.startSelf(getActivity(), adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr());
+                MoveAbooutActivity_3.startSelf(getActivity(), adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr(),"");
             }
         });
 
@@ -232,7 +232,7 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsPresenter> im
             @Override
             public void onAddShopCarListener(String goods_id, String product_id, String number) {  //再次加入购物车
 
-                presenter.getAddShopCar(goods_id, product_id, number);
+                presenter.getAddShopCar(goods_id, product_id, number,"");
 
             }
         });
@@ -1139,7 +1139,7 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsPresenter> im
                 String confirmMessage = "";
                 String confirmMessage2 = "";
                 PayOrderActivity.startSelf(this, recId, goods_id, product_id, num, real_id, address_id, type, confirmMessage, confirmMessage2, getOrder_id,
-                        getOrder_amount, "", "", "", "","","");
+                        getOrder_amount, "", "", "", "","","","");
 
                 break;
             case R.id.order_update_address://修改地址
@@ -1177,33 +1177,6 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsPresenter> im
                     }
                 }
 
-
-//                if (orderDetailsBean.getShop_list().get(0).getSuppliers_id().equals("1")) {//自营
-//                    AfterSalesActivity.startSelf(this, orderDetailsBean, getIs_refund_all);//不是整单退款--可以选择单个商品
-//                } else if (orderDetailsBean.getShop_list().get(0).getSuppliers_id().equals("2")) {//海淘
-//                    if (getStatus == 2) {//待发货状态--仅退款
-//                        //判断是否整单退款
-////                AfterSalesShopActivity.startSelf(this,orderDetailsBean,"2",getIs_all_refund);//整单退款
-//                        if (getIs_refund_all.equals("1")) {//必须整单退款（仅退款）
-//                            //直接跳到退款页面，传入仅退款参数--整单
-//                            ApplyRefundSelectActivity_1.startSelf(OrderDetailsActivity.this, orderDetailsBean.getShop_list(), orderDetailsBean.getOrder_id(), "1", getIs_refund_all);
-//                        } else if (getIs_refund_all.equals("0")) {//可以单个退款（仅退款）
-//                            //直接跳入选择商品页面--可以选择商品
-//                            AfterSalesShopActivity.startSelf(this, orderDetailsBean, "1", getIs_refund_all);
-//                        }
-//                    } else {//可以退款，也可以退货退款
-//                        AfterSalesActivity.startSelf(this, orderDetailsBean, getIs_refund_all);//不是整单退款--选择售后
-//                    }
-//                }
-
-//                AfterSalesActivity.startSelf(this, orderDetailsBean, getIs_all_refund);//不是整单退款
-//                if (popupwindow != null && popupwindow.isShowing()) {
-//                    popupwindow.dismiss();
-//                    return;
-//                } else {
-//                    initmPopupWindowView();
-//                    popupwindow.showAtLocation(getActivity().getWindow().getDecorView(), Gravity.CENTER, 0, 0);
-//                }
 
                 break;
         }

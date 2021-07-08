@@ -4,8 +4,8 @@ import android.util.Log;
 
 import com.dm.lib.core.mvp.MvpPresenter;
 import com.vinnlook.www.http.RequestBackListener;
+import com.vinnlook.www.http.model.CollectionList2Bean;
 import com.vinnlook.www.http.model.CollectionListBean;
-import com.vinnlook.www.http.model.SignBean;
 import com.vinnlook.www.surface.mvp.model.MainRequest;
 import com.vinnlook.www.surface.mvp.view.CollectionView;
 
@@ -31,10 +31,10 @@ public class CollectionPresenter extends MvpPresenter<CollectionView> {
 
             @Override
             public void onFailed(int code, String msg) {
-                Log.e("code", "code===" + code);
-                Log.e("msg", "msg===" + msg);
+                Log.e("code", "=商品--code=====" + code);
+                Log.e("msg", "=商品--code=====" + msg);
                 if (isAttachView()) {
-                        getBaseView().getCollectionListFail(code, msg);
+                    getBaseView().getCollectionListFail(code, msg);
 
                 }
             }
@@ -55,5 +55,45 @@ public class CollectionPresenter extends MvpPresenter<CollectionView> {
             }
         }));
 
+    }
+
+    public void getCollectionList2Data(int page, int limit, String type) {
+        addToRxLife(MainRequest.getCollectionList2Data(page, limit, type, new RequestBackListener<CollectionList2Bean>() {
+            @Override
+            public void onStart() {
+                showLoading();
+            }
+
+            @Override
+            public void onSuccess(int code, CollectionList2Bean data) {
+                if (isAttachView())
+                    getBaseView().getCollectionList2Success(code, data);
+            }
+
+            @Override
+            public void onFailed(int code, String msg) {
+                Log.e("code", "=文章--code=====" + code);
+                Log.e("msg", "=文章--code=====" + msg);
+                if (isAttachView()) {
+                    getBaseView().getCollectionList2Fail(code, msg);
+
+                }
+            }
+
+            @Override
+            public void onNoNet() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                dismissLoading();
+            }
+        }));
     }
 }

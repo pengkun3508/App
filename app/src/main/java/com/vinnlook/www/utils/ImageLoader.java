@@ -51,7 +51,6 @@ public class ImageLoader {
     }
 
 
-
     /**
      * 加载原图
      */
@@ -100,6 +99,28 @@ public class ImageLoader {
                         }
                     }
                 });
+    }
+
+    /**
+     * 获取原图
+     */
+    public static Bitmap gets(Context context, String url, final SimpleCallback<Bitmap> callback) {
+        Bitmap bitmap = null;
+        Glide.with(checkContext(context))
+                .asBitmap()
+                .load(checkUrl(url))
+                .into(new SimpleTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                        if (callback != null) {
+                            callback.onResult(resource);
+                            Bitmap bitmap = resource;
+
+                        }
+                    }
+                });
+
+        return bitmap;
     }
 
 

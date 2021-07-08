@@ -371,7 +371,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentPresenter> implements
             @Override
             public void onClick(View view, int position) {
 //                MoveAbooutActivity_1.startSelf(getActivity(), adapter1.getData().get(position).getGoods_id(), adapter1.getData().get(position).getSearch_attr());
-                MoveAbooutActivity_3.startSelf(getActivity(), adapter1.getData().get(position).getGoods_id(), adapter1.getData().get(position).getSearch_attr());
+                MoveAbooutActivity_3.startSelf(getActivity(), adapter1.getData().get(position).getGoods_id(), adapter1.getData().get(position).getSearch_attr(),"");
 
 
             }
@@ -510,7 +510,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentPresenter> implements
         Log.e("HomeFragment", "=event.getGood_id()==" + event.getGood_id());
 
 //        MoveAbooutActivity_1.startSelf(getActivity(), event.getGood_id(), event.getSearch_attr());
-        MoveAbooutActivity_3.startSelf(getActivity(), event.getGood_id(), event.getSearch_attr());
+        MoveAbooutActivity_3.startSelf(getActivity(), event.getGood_id(), event.getSearch_attr(),"");
 
 //        }
     }
@@ -667,7 +667,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentPresenter> implements
                 //type--1：商品详情；2：活动详情；3：url;4:文字；5：商品列表
                 if (getAlert_ad.getType().equals("1")) {//1：商品详情
 //                    MoveAbooutActivity_1.startSelf(getActivity(), bannerImage.get(position).getList().getGoods_id(), bannerImage.get(position).getList().getSearch_attr());
-                    MoveAbooutActivity_3.startSelf(getActivity(), getAlert_ad.getList().getGoods_id(), getAlert_ad.getList().getSearch_attr());
+                    MoveAbooutActivity_3.startSelf(getActivity(), getAlert_ad.getList().getGoods_id(), getAlert_ad.getList().getSearch_attr(),"");
 
                 } else if (getAlert_ad.getType().equals("2")) {//2：活动详情
                     ProductDetailsActivity.startSelf(getContext(), getAlert_ad.getList().getActive_id());//进入活动详情页面
@@ -763,7 +763,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentPresenter> implements
             public void onClick(View view) {
                 if (getIndex_ad.getType().equals("1")) {
 //                    MoveAbooutActivity_1.startSelf(getActivity(), getIndex_ad.getList().getGoods_id(), getIndex_ad.getList().getSearch_attr());
-                    MoveAbooutActivity_3.startSelf(getActivity(), getIndex_ad.getList().getGoods_id(), getIndex_ad.getList().getSearch_attr());
+                    MoveAbooutActivity_3.startSelf(getActivity(), getIndex_ad.getList().getGoods_id(), getIndex_ad.getList().getSearch_attr(),"");
 
                 } else if (getIndex_ad.getType().equals("2")) {
                     ProductDetailsActivity.startSelf(getContext(), getIndex_ad.getList().getActive_id());//进入活动详情页面
@@ -848,7 +848,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentPresenter> implements
                 //type--1：商品详情；2：活动详情；3：url;4:文字；5：商品列表
                 if (bannerImage.get(position).getType().equals("1")) {//1：商品详情
 //                    MoveAbooutActivity_1.startSelf(getActivity(), bannerImage.get(position).getList().getGoods_id(), bannerImage.get(position).getList().getSearch_attr());
-                    MoveAbooutActivity_3.startSelf(getActivity(), bannerImage.get(position).getList().getGoods_id(), bannerImage.get(position).getList().getSearch_attr());
+                    MoveAbooutActivity_3.startSelf(getActivity(), bannerImage.get(position).getList().getGoods_id(), bannerImage.get(position).getList().getSearch_attr(),"");
 
                 } else if (bannerImage.get(position).getType().equals("2")) {//2：活动详情
                     ProductDetailsActivity.startSelf(getContext(), bannerImage.get(position).getList().getActive_id());//进入活动详情页面
@@ -1017,7 +1017,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentPresenter> implements
             public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name, ProductBean productBean, String mmake) {
                 xianGoods_attr = "";
 //                presenter.getModifyType(mark, getRec_id, num, product_id);
-                presenter.getAddShopCar(goods_id, product_id, num);
+                presenter.getAddShopCar(goods_id, product_id, num,"");
 
             }
         }).show();
@@ -1091,7 +1091,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentPresenter> implements
             public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name,ProductBean productBean, String mmake) {
                 xianGoods_attr = "";
 //                presenter.getModifyType(mark, getRec_id, num, product_id);
-                presenter.getAddShopCar(goods_id, product_id, num);
+                presenter.getAddShopCar(goods_id, product_id, num,"");
 
             }
         }).show();

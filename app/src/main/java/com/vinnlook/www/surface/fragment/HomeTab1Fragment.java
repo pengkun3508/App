@@ -58,7 +58,6 @@ import com.vinnlook.www.surface.activity.MemberActivity_1;
 import com.vinnlook.www.surface.activity.MoveAbooutActivity_3;
 import com.vinnlook.www.surface.activity.ProductDetailsActivity;
 import com.vinnlook.www.surface.activity.RankingListActivity_1;
-import com.vinnlook.www.surface.activity.WebActivity;
 import com.vinnlook.www.surface.activity.WebActivity3;
 import com.vinnlook.www.surface.adapter.BannerImgAdapter;
 import com.vinnlook.www.surface.adapter.BannerImgAdapter1;
@@ -281,7 +280,7 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
         paoQiAdapter4.addOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view, int position) {
-                MoveAbooutActivity_3.startSelf(getActivity(), paoQiAdapter4.getData().get(position).getGoods_id(), paoQiAdapter4.getData().get(position).getSearch_attr());
+                MoveAbooutActivity_3.startSelf(getActivity(), paoQiAdapter4.getData().get(position).getGoods_id(), paoQiAdapter4.getData().get(position).getSearch_attr(),"");
             }
         });
 
@@ -318,7 +317,6 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
                 }
             }
         });
-
     }
 
     private void addTitleList() {
@@ -444,7 +442,7 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
             public void OnBannerClick(Object data, int position) {
                 //type--1：商品详情；2：活动详情；3：url;4:文字；5：商品列表
                 if (bannerImage.get(position).getType().equals("1")) {//1：商品详情
-                    MoveAbooutActivity_3.startSelf(getActivity(), bannerImage.get(position).getList().getGoods_id(), bannerImage.get(position).getList().getSearch_attr());
+                    MoveAbooutActivity_3.startSelf(getActivity(), bannerImage.get(position).getList().getGoods_id(), bannerImage.get(position).getList().getSearch_attr(),"");
                 } else if (bannerImage.get(position).getType().equals("2")) {//2：活动详情
                     ProductDetailsActivity.startSelf(getContext(), bannerImage.get(position).getList().getActive_id());//进入活动详情页面
                 } else if (bannerImage.get(position).getType().equals("3")) {//3：url
@@ -486,7 +484,7 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
             public void OnBannerClick(Object data, int position) {
                 //type--1：商品详情；2：活动详情；3：url;4:文字；5：商品列表
                 if (recommBanner.get(position).getType().equals("1")) {//1：商品详情
-                    MoveAbooutActivity_3.startSelf(getActivity(), recommBanner.get(position).getList().getGoods_id(), recommBanner.get(position).getList().getSearch_attr());
+                    MoveAbooutActivity_3.startSelf(getActivity(), recommBanner.get(position).getList().getGoods_id(), recommBanner.get(position).getList().getSearch_attr(),"");
                 } else if (recommBanner.get(position).getType().equals("2")) {//2：活动详情
                     ProductDetailsActivity.startSelf(getContext(), recommBanner.get(position).getList().getActive_id());//进入活动详情页面
                 } else if (recommBanner.get(position).getType().equals("3")) {//3：url
@@ -548,7 +546,7 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
             public void OnBannerClick(Object data, int position) {
                 //type--1：商品详情；2：活动详情；3：url;4:文字；5：商品列表
                 if (gatBannetData2.get(position).getType().equals("1")) {//1：商品详情
-                    MoveAbooutActivity_3.startSelf(getActivity(), gatBannetData2.get(position).getList().getGoods_id(), gatBannetData2.get(position).getList().getSearch_attr());
+                    MoveAbooutActivity_3.startSelf(getActivity(), gatBannetData2.get(position).getList().getGoods_id(), gatBannetData2.get(position).getList().getSearch_attr(),"");
                 } else if (gatBannetData2.get(position).getType().equals("2")) {//2：活动详情
                     ProductDetailsActivity.startSelf(getContext(), gatBannetData2.get(position).getList().getActive_id());//进入活动详情页面
                 } else if (gatBannetData2.get(position).getType().equals("3")) {//3：url
@@ -603,7 +601,7 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
                 public void onClick(View view) {
                     if (getActivityInfo.getType().equals("1")) {
 //                    MoveAbooutActivity_1.startSelf(getActivity(), getIndex_ad.getList().getGoods_id(), getIndex_ad.getList().getSearch_attr());
-                        MoveAbooutActivity_3.startSelf(getActivity(), getActivityInfo.getList().getGoods_id(), getActivityInfo.getList().getSearch_attr());
+                        MoveAbooutActivity_3.startSelf(getActivity(), getActivityInfo.getList().getGoods_id(), getActivityInfo.getList().getSearch_attr(),"");
 
                     } else if (getActivityInfo.getType().equals("2")) {
                         ProductDetailsActivity.startSelf(getContext(), getActivityInfo.getList().getActive_id());//进入活动详情页面
@@ -671,7 +669,7 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
                 public void onClick(View view) {
                     if (getIndex_ad.getType().equals("1")) {
 //                    MoveAbooutActivity_1.startSelf(getActivity(), getIndex_ad.getList().getGoods_id(), getIndex_ad.getList().getSearch_attr());
-                        MoveAbooutActivity_3.startSelf(getActivity(), getIndex_ad.getList().getGoods_id(), getIndex_ad.getList().getSearch_attr());
+                        MoveAbooutActivity_3.startSelf(getActivity(), getIndex_ad.getList().getGoods_id(), getIndex_ad.getList().getSearch_attr(),"");
                     } else if (getIndex_ad.getType().equals("2")) {
                         ProductDetailsActivity.startSelf(getContext(), getIndex_ad.getList().getActive_id());//进入活动详情页面
                     } else if (getIndex_ad.getType().equals("3")) {
@@ -718,20 +716,29 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
         }
 
 //        ImageLoader.image(getActivity(), huodongImg, data.getIndex_ad().getPhoto());//活动图片
-        dt = data.getDiscount().getCount_down();
-        //计算秒杀倒计时---ms
-        handler.sendEmptyMessageDelayed(0, 1000);
-        //限时折扣
-        getDiscounts = data.getDiscount().getList();
-        discAdapter = new Discount_Adapter_1(getActivity(), getDiscounts);
-        final GridLayoutManager manager1 = new GridLayoutManager(getActivity(), 1);
-        manager1.setOrientation(GridLayoutManager.HORIZONTAL);
-        discountRecycler.setLayoutManager(manager1);
-        discountRecycler.addItemDecoration(new SpacesItemDecoration(DensityUtils.dp2px(getActivity(), 0)));
-        discountRecycler.addItemDecoration(new SpaceItemDecoration(10, 10));
-        discountRecycler.setNestedScrollingEnabled(false);
-        discountRecycler.setHasFixedSize(true);
-        discountRecycler.setAdapter(discAdapter);
+
+
+        if (data.getDiscount().getList().size()>0){
+            xianshiTitleRelayout.setVisibility(View.VISIBLE);
+            //限时折扣
+            dt = data.getDiscount().getCount_down();
+            //计算秒杀倒计时---ms
+            handler.sendEmptyMessageDelayed(0, 1000);
+            getDiscounts = data.getDiscount().getList();
+            discAdapter = new Discount_Adapter_1(getActivity(), getDiscounts);
+            final GridLayoutManager manager1 = new GridLayoutManager(getActivity(), 1);
+            manager1.setOrientation(GridLayoutManager.HORIZONTAL);
+            discountRecycler.setLayoutManager(manager1);
+            discountRecycler.addItemDecoration(new SpacesItemDecoration(DensityUtils.dp2px(getActivity(), 0)));
+            discountRecycler.addItemDecoration(new SpaceItemDecoration(10, 10));
+            discountRecycler.setNestedScrollingEnabled(false);
+            discountRecycler.setHasFixedSize(true);
+            discountRecycler.setAdapter(discAdapter);
+        }else{
+            xianshiTitleRelayout.setVisibility(View.GONE);
+        }
+
+
 
 
 //        discAdapter.setPostion(data.getDiscount().getList().size());
@@ -740,7 +747,7 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
 //        discAdapter.addOnClickListener(new OnClickListener() {
 //            @Override
 //            public void onClick(View view, int position) {
-//                MoveAbooutActivity_3.startSelf(getActivity(), discAdapter.getData().get(position).getGoods_id(), discAdapter.getData().get(position).getSearch_attr());
+//                MoveAbooutActivity_3.startSelf(getActivity(), discAdapter.getData().get(position).getGoods_id(), discAdapter.getData().get(position).getSearch_attr(),"");
 //            }
 //        });
         paoQiAdapter3.setData(data.getShop());//抛期
@@ -1043,7 +1050,7 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
                 //type--1：商品详情；2：活动详情；3：url;4:文字；5：商品列表
                 if (getAlert_ad.getType().equals("1")) {//1：商品详情
 //                    MoveAbooutActivity_1.startSelf(getActivity(), bannerImage.get(position).getList().getGoods_id(), bannerImage.get(position).getList().getSearch_attr());
-                    MoveAbooutActivity_3.startSelf(getActivity(), getAlert_ad.getList().getGoods_id(), getAlert_ad.getList().getSearch_attr());
+                    MoveAbooutActivity_3.startSelf(getActivity(), getAlert_ad.getList().getGoods_id(), getAlert_ad.getList().getSearch_attr(),"");
 
                 } else if (getAlert_ad.getType().equals("2")) {//2：活动详情
                     ProductDetailsActivity.startSelf(getContext(), getAlert_ad.getList().getActive_id());//进入活动详情页面
@@ -1097,7 +1104,7 @@ public class HomeTab1Fragment extends BaseFragment<HomeTab1FragmentPresenter> im
         Log.e("HomeFragment", "=event.getGood_id()==" + event.getGood_id());
 
 //        MoveAbooutActivity_1.startSelf(getActivity(), event.getGood_id(), event.getSearch_attr());
-        MoveAbooutActivity_3.startSelf(getActivity(), event.getGood_id(), event.getSearch_attr());
+        MoveAbooutActivity_3.startSelf(getActivity(), event.getGood_id(), event.getSearch_attr(),"");
 
 //        }
     }

@@ -278,7 +278,7 @@
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".surface.activity.CollectionActivity"
+            android:name=".surface.activity.CollectionTotalActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
@@ -401,6 +401,10 @@
 
         <activity
             android:name=".surface.activity.WebActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".surface.activity.WebActivity2"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
@@ -677,6 +681,37 @@
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".surface.activity.MillionSubsidyActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+
+        <activity
+            android:name=".surface.activity.ThemeListActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".surface.activity.ThemeDetailsActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".surface.activity.ThemeOtherActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".surface.activity.ArticleDetailsActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+
+        <activity
+            android:name=".surface.activity.SelectEyeChartActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".surface.activity.ThemeOtherDetailsActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+
+        <activity
+            android:name=".surface.activity.MoveGuangListActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
 

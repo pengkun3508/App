@@ -1130,7 +1130,7 @@ public class MoveAbooutActivity_2 extends BaseActivity<MoveAboutPresenter> imple
                 CacheActivity.finishSingleActivityByClass(CommodityActivity.class);
                 CacheActivity.finishSingleActivityByClass(BrandActivity.class);
                 CacheActivity.finishSingleActivityByClass(LimitedActivity.class);
-                CacheActivity.finishSingleActivityByClass(CollectionActivity.class);
+                CacheActivity.finishSingleActivityByClass(CollectionTotalActivity.class);
 //                setResult(10);
                 new MainShoppingEvent("10").post();
                 finish();
@@ -1175,7 +1175,7 @@ public class MoveAbooutActivity_2 extends BaseActivity<MoveAboutPresenter> imple
                         public void onBtnClickListener(String goods_id,String getRec_id, String product_id, String num, String getAttr_names, ProductBean productBean,String mmake) {
                             Log.e("onBtnClLister=购物车==", "==getAttr_names==" + getAttr_names);
 //                            getAttr_name = getAttr_names;
-                            presenter.getAddShopCar(goods_id, product_id, num);
+                            presenter.getAddShopCar(goods_id, product_id, num,"");
                         }
                     }).show();
                 } else {
@@ -1986,7 +1986,7 @@ public class MoveAbooutActivity_2 extends BaseActivity<MoveAboutPresenter> imple
     @Override
     public void getConfirmOrderSuccess(int code, ConfirmOrderBean data) {
         if (mmark.equals("1")) {
-            ConfirmOrderActivity_1.startSelf(MoveAbooutActivity_2.this, "", goods_id, product_ids, nums,"2","","");
+            ConfirmOrderActivity_1.startSelf(MoveAbooutActivity_2.this, "", goods_id, product_ids, nums,"2","","","");
 
             TypeSelectDialog.dismiss();
         }
@@ -2032,7 +2032,7 @@ public class MoveAbooutActivity_2 extends BaseActivity<MoveAboutPresenter> imple
             @Override
             public void onBtnClickListener(String goods_id, String getRec_id,String product_id, String num, String getAttr_name, ProductBean productBean,String mmake) {
 //                presenter.getModifyType(mark, getRec_id, num, product_id);
-                presenter.getAddShopCar(goods_id, product_id, num);
+                presenter.getAddShopCar(goods_id, product_id, num,"");
 
             }
         }).show();

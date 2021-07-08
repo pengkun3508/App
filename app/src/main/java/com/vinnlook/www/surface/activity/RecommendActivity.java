@@ -127,7 +127,7 @@ public class RecommendActivity extends BaseActivity<RecommendPresenter> implemen
             @Override
             public void onClick(View view, int position) {
 //                MoveAbooutActivity_1.startSelf(RecommendActivity.this, adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr());
-                MoveAbooutActivity_3.startSelf(RecommendActivity.this, adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr());
+                MoveAbooutActivity_3.startSelf(RecommendActivity.this, adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr(),"");
 
             }
         });

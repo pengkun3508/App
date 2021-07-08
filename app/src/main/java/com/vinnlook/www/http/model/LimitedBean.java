@@ -232,6 +232,15 @@ public class LimitedBean extends BaseBean {
         private String parent_id;
         private String photo;
         private HomeTab2Bean.BannerBean.ListBeanX list;
+        private String color;
+
+        public String getColor() {
+            return color;
+        }
+
+        public void setColor(String color) {
+            this.color = color;
+        }
 
         public String getValue() {
             return value;

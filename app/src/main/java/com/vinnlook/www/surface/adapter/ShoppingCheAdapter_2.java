@@ -280,7 +280,7 @@ public class ShoppingCheAdapter_2 extends BaseStateAdapter4<ShopCartListBean_1.L
             see_details_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    MoveAbooutActivity_3.startSelf((Activity) context, data.getGoods_id(), data.getSearch_attr());
+                    MoveAbooutActivity_3.startSelf((Activity) context, data.getGoods_id(), data.getSearch_attr(),"");
                 }
             });
 

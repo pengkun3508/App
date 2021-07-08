@@ -96,6 +96,8 @@ public class LimitedActivity_1 extends BaseActivity<LimitedPresenter> implements
     TextView titleText;
     @BindView(R.id.banner)
     Banner banner2;
+    @BindView(R.id.linited_layout)
+    RelativeLayout linitedLayout;
 
     private SmartRefreshHelper<LimitedBean.ListBean> mSmartRefreshHelper;
 
@@ -202,7 +204,7 @@ public class LimitedActivity_1 extends BaseActivity<LimitedPresenter> implements
             @Override
             public void onClick(View view, int position) {
 //                MoveAbooutActivity_1.startSelf(getActivity(), adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr());
-                MoveAbooutActivity_3.startSelf(getActivity(), adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr());
+                MoveAbooutActivity_3.startSelf(getActivity(), adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr(), "");
 
 
             }
@@ -218,7 +220,6 @@ public class LimitedActivity_1 extends BaseActivity<LimitedPresenter> implements
                 banner2.setLayoutParams(layoutParams);
             }
         });
-
 
 
     }
@@ -254,7 +255,7 @@ public class LimitedActivity_1 extends BaseActivity<LimitedPresenter> implements
         smartRefreshLayout.finishRefresh();
         this.limibean = limibean;
         bannerImage = limibean.getBanner();//轮播
-        if (bannerImage!=null){
+        if (bannerImage != null) {
             banner2.setStartPosition(0);
             BannerImgAdapter bannerImgAdapter = new BannerImgAdapter(getActivity(), gatBannetData());
             banner2.setAdapter(bannerImgAdapter);
@@ -274,7 +275,7 @@ public class LimitedActivity_1 extends BaseActivity<LimitedPresenter> implements
         dtime = limibean.getList().get(0).getSurplus_time();
         //计算秒杀倒计时---ms
         handler.sendEmptyMessageDelayed(0, 1000);
-
+        linitedLayout.setBackgroundColor(Color.parseColor(limibean.getBanner().get(0).getColor()));
 
     }
 

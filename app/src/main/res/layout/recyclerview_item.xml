@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/them_item_bgcolor"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/theme_details_item_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_10dp"
+            app:riv_corner_radius="@dimen/spacing_10dp" />
+
+        <com.flyco.roundview.RoundTextView
+            android:id="@+id/theme_details_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/theme_details_item_img"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="@dimen/spacing_20dp"
+            android:layout_marginTop="-40dp"
+            android:paddingLeft="@dimen/spacing_15dp"
+            android:paddingTop="@dimen/spacing_3dp"
+            android:paddingRight="@dimen/spacing_15dp"
+            android:paddingBottom="@dimen/spacing_3dp"
+            android:text="了解更多"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_12"
+            app:rv_backgroundColor="@color/white"
+            app:rv_cornerRadius="@dimen/spacing_30dp" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

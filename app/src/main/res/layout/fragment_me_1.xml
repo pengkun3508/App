@@ -299,8 +299,8 @@
                     android:layout_marginRight="@dimen/spacing_15dp"
                     android:gravity="left|center"
                     android:orientation="horizontal"
-                    app:rv_backgroundColor="@color/shop_title_bg11"
                     app:rv_cornerRadius="@dimen/spacing_6dp">
+<!--                    app:rv_backgroundColor="@color/shop_title_bg11"-->
 
                     <ImageView
                         android:layout_width="@dimen/spacing_35dp"
@@ -316,7 +316,13 @@
                         android:autoStart="true"
                         android:flipInterval="2000"
                         android:inAnimation="@anim/in_animation"
-                        android:outAnimation="@anim/out_animation" />
+                        android:outAnimation="@anim/out_animation"
+                        android:visibility="gone"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/my_guonggao_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"></androidx.recyclerview.widget.RecyclerView>
 
 
                 </com.flyco.roundview.RoundLinearLayout>

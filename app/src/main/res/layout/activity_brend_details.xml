@@ -64,7 +64,9 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/brand_details_recylist"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="match_parent"
+                        android:overScrollMode="never"
+                        android:scrollbars="none"/>
                 </RelativeLayout>
 
             </ScrollView>

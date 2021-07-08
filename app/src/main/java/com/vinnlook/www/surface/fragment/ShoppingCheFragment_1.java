@@ -299,7 +299,7 @@ public class ShoppingCheFragment_1 extends BaseFragment<VideonFragmentPresenter_
 
             @Override
             public void onItemMoveClickListener(String goods_id, String search_attr) {//进入详情页面
-                MoveAbooutActivity_3.startSelf(getActivity(), goods_id, search_attr);
+                MoveAbooutActivity_3.startSelf(getActivity(), goods_id, search_attr,"");
 
             }
 
@@ -892,7 +892,7 @@ public class ShoppingCheFragment_1 extends BaseFragment<VideonFragmentPresenter_
     public void getConfirmOrderSuccess(int code, ConfirmOrderBean data) {
         Log.e("购物车", "结算成功===code===" + code);
 //        ConfirmOrderActivity.startSelf(getContext(), recId, "", "", "");
-        ConfirmOrderActivity_1.startSelf(getContext(), recId, "", "", "", "1", "", "");
+        ConfirmOrderActivity_1.startSelf(getContext(), recId, "", "", "", "1", "", "","");
 
 
     }

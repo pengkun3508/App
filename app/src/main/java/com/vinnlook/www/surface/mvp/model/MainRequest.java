@@ -10,6 +10,7 @@ import com.vinnlook.www.http.model.AddressListBean;
 import com.vinnlook.www.http.model.AllOrderListBean;
 import com.vinnlook.www.http.model.AlreadyCouponListBean;
 import com.vinnlook.www.http.model.BrandListBean;
+import com.vinnlook.www.http.model.CollectionList2Bean;
 import com.vinnlook.www.http.model.CollectionListBean;
 import com.vinnlook.www.http.model.CommodityListBean;
 import com.vinnlook.www.http.model.HomeDataBean;
@@ -24,6 +25,7 @@ import com.vinnlook.www.surface.bean.ALiPayBean;
 import com.vinnlook.www.surface.bean.AddressJsonBean;
 import com.vinnlook.www.surface.bean.ApplyDetailsBean;
 import com.vinnlook.www.surface.bean.ApplyListBean;
+import com.vinnlook.www.surface.bean.ArticleDetailsBean;
 import com.vinnlook.www.surface.bean.BrandDetailsBean;
 import com.vinnlook.www.surface.bean.BrowseListBean;
 import com.vinnlook.www.surface.bean.CertifyListBean;
@@ -34,9 +36,12 @@ import com.vinnlook.www.surface.bean.CompanyBean;
 import com.vinnlook.www.surface.bean.ConfirmOrderBean;
 import com.vinnlook.www.surface.bean.EvaluateListBean;
 import com.vinnlook.www.surface.bean.ExchangeBean;
+import com.vinnlook.www.surface.bean.EyeChartDetailsBean;
 import com.vinnlook.www.surface.bean.GroupDetailsBean;
 import com.vinnlook.www.surface.bean.GroupListBean;
 import com.vinnlook.www.surface.bean.GroupOrderListBean;
+import com.vinnlook.www.surface.bean.GuangSelectBean;
+import com.vinnlook.www.surface.bean.GuangThemBean;
 import com.vinnlook.www.surface.bean.HaiTaoClassBean;
 import com.vinnlook.www.surface.bean.HomeGoodsListBean;
 import com.vinnlook.www.surface.bean.HomePublicListBean;
@@ -46,6 +51,7 @@ import com.vinnlook.www.surface.bean.HuoDong2Bean;
 import com.vinnlook.www.surface.bean.HuoDongBean;
 import com.vinnlook.www.surface.bean.MemberBean;
 import com.vinnlook.www.surface.bean.ModifyTypeBean;
+import com.vinnlook.www.surface.bean.MoveGuangListBean;
 import com.vinnlook.www.surface.bean.MsggingListBean;
 import com.vinnlook.www.surface.bean.MsggingTypeBean;
 import com.vinnlook.www.surface.bean.NewNotCouponListBean;
@@ -70,6 +76,10 @@ import com.vinnlook.www.surface.bean.SearchListBean;
 import com.vinnlook.www.surface.bean.SearchListListBean;
 import com.vinnlook.www.surface.bean.SetMealBean;
 import com.vinnlook.www.surface.bean.ShopCartListBean_1;
+import com.vinnlook.www.surface.bean.ThemeDetailsBean;
+import com.vinnlook.www.surface.bean.ThemeListBean;
+import com.vinnlook.www.surface.bean.ThemeOtherDetailsBean;
+import com.vinnlook.www.surface.bean.ThemeOtherListBean;
 import com.vinnlook.www.surface.bean.TypeGoodsBean;
 import com.vinnlook.www.surface.bean.UpdateImgBean;
 import com.vinnlook.www.surface.bean.UserInfo;
@@ -615,12 +625,12 @@ public class MainRequest extends BaseRequest {
      *
      * @return
      */
-    public static Disposable getAddShopCar(String goods_id, String product_id, String num,
+    public static Disposable getAddShopCar(String goods_id, String product_id, String num,String articleId,
                                            final RequestBackListener<Object> listener) {
         return requestWithSign(new RequestCallback<Object>() {
             @Override
             public Observable<ResponseBean<Object>> request(boolean isAppForceUpdate) {
-                return ProjectApi.api().getAddShopCar(goods_id, product_id, num);
+                return ProjectApi.api().getAddShopCar(goods_id, product_id, num,articleId);
             }
         }, listener);
     }
@@ -849,6 +859,50 @@ public class MainRequest extends BaseRequest {
         }, listener);
     }
 
+    /**
+     * 主题-文章详情-1
+     *
+     * @return
+     */
+    public static Disposable getArticleData(String iD, final RequestBackListener<ArticleDetailsBean> listener) {
+        return requestWithSign(new RequestCallback<ArticleDetailsBean>() {
+            @Override
+            public Observable<ResponseBean<ArticleDetailsBean>> request(boolean isAppForceUpdate) {
+                return ProjectApi.api().getArticleData(iD);
+            }
+        }, listener);
+    }
+
+    /**
+     * 主题-文章详情-点赞
+     *
+     * @return
+     */
+    public static Disposable getGiveData(String id, int type, final RequestBackListener<Object> listener) {
+        return requestWithSign(new RequestCallback<Object>() {
+            @Override
+            public Observable<ResponseBean<Object>> request(boolean isAppForceUpdate) {
+                return ProjectApi.api().getGiveData(id,type);
+            }
+        }, listener);
+    }
+
+    /**
+     * 主题-文章详情-收藏
+     *
+     * @return
+     */
+    public static Disposable getCollectData(String id, int type, final RequestBackListener<Object> listener) {
+        return requestWithSign(new RequestCallback<Object>() {
+            @Override
+            public Observable<ResponseBean<Object>> request(boolean isAppForceUpdate) {
+                return ProjectApi.api().getCollectData(id,type);
+            }
+        }, listener);
+    }
+
+
+
 
     /**
      * 首页--海淘--自营专区
@@ -878,6 +932,50 @@ public class MainRequest extends BaseRequest {
             }
         }, listener);
     }
+
+    /**
+     * 主题乐园
+     *
+     * @return
+     */
+    public static Disposable getThemData( final RequestBackListener<GuangThemBean> listener) {
+        return requestWithSign(new RequestCallback<GuangThemBean>() {
+            @Override
+            public Observable<ResponseBean<GuangThemBean>> request(boolean isAppForceUpdate) {
+                return ProjectApi.api().getThemData();
+            }
+        }, listener);
+    }
+
+    /**
+     * 精选眼图
+     *
+     * @return
+     */
+    public static Disposable getSelectData(int page, int limit, final RequestBackListener<GuangSelectBean> listener) {
+        return requestWithSign(new RequestCallback<GuangSelectBean>() {
+            @Override
+            public Observable<ResponseBean<GuangSelectBean>> request(boolean isAppForceUpdate) {
+                return ProjectApi.api().getSelectData(page,limit);
+            }
+        }, listener);
+    }
+
+
+    /**
+     * 商品详情-逛逛列表
+     *
+     * @return
+     */
+    public static Disposable getMoveGuangList(int page, int limit, String shopId,final RequestBackListener<MoveGuangListBean> listener) {
+        return requestWithSign(new RequestCallback<MoveGuangListBean>() {
+            @Override
+            public Observable<ResponseBean<MoveGuangListBean>> request(boolean isAppForceUpdate) {
+                return ProjectApi.api().getMoveGuangList(page,limit,shopId);
+            }
+        }, listener);
+    }
+
 
     /**
      * 拼团订单详情
@@ -963,11 +1061,12 @@ public class MainRequest extends BaseRequest {
      */
     public static Disposable postSubmitOrder(String recIds, String goods_ids, String product_ids, String nums, String real_ids, String address_ids, String types, String confirmMessages,
                                              String confirmMessage2, String order_ids, String bonus_id, String waybill_id, String zYSb, String hTSb, String group_info, String group_id,
-                                             final RequestBackListener<WeCatPayBean> listener) {
+                                             String articleId,final RequestBackListener<WeCatPayBean> listener) {
         return requestWithSign(new RequestCallback<WeCatPayBean>() {
             @Override
             public Observable<ResponseBean<WeCatPayBean>> request(boolean isAppForceUpdate) {
-                return ProjectApi.api().postSubmitOrder(recIds, goods_ids, product_ids, nums, real_ids, address_ids, types, confirmMessages, confirmMessage2, order_ids, bonus_id, waybill_id, zYSb, hTSb, group_info, group_id);
+                return ProjectApi.api().postSubmitOrder(recIds, goods_ids, product_ids, nums, real_ids, address_ids, types, confirmMessages, confirmMessage2, order_ids, bonus_id,
+                        waybill_id, zYSb, hTSb, group_info, group_id,articleId);
             }
         }, listener);
     }
@@ -978,12 +1077,14 @@ public class MainRequest extends BaseRequest {
      * @return
      */
     public static Disposable postALiSubmitOrder(String recIds, String goods_ids, String product_ids, String nums, String real_ids, String address_ids, String types,
-                                                String confirmMessages, String confirmMessage2, String order_ids, String bonus_id, String waybill_id, String zYSb, String hTSb, String group_info, String group_id,
+                                                String confirmMessages, String confirmMessage2, String order_ids, String bonus_id, String waybill_id, String zYSb,
+                                                String hTSb, String group_info, String group_id,String articleId,
                                                 final RequestBackListener<ALiPayBean> listener) {
         return requestWithSign(new RequestCallback<ALiPayBean>() {
             @Override
             public Observable<ResponseBean<ALiPayBean>> request(boolean isAppForceUpdate) {
-                return ProjectApi.api().postALiSubmitOrder(recIds, goods_ids, product_ids, nums, real_ids, address_ids, types, confirmMessages, confirmMessage2, order_ids, bonus_id, waybill_id, zYSb, hTSb, group_info, group_id);
+                return ProjectApi.api().postALiSubmitOrder(recIds, goods_ids, product_ids, nums, real_ids, address_ids, types, confirmMessages,
+                        confirmMessage2, order_ids, bonus_id, waybill_id, zYSb, hTSb, group_info, group_id,articleId);
             }
         }, listener);
     }
@@ -1148,7 +1249,7 @@ public class MainRequest extends BaseRequest {
     }
 
     /**
-     * 收藏列表
+     * 收藏列表--商品
      *
      * @return
      */
@@ -1160,6 +1261,21 @@ public class MainRequest extends BaseRequest {
             }
         }, listener);
     }
+
+    /**
+     * 收藏列表--文章
+     *
+     * @return
+     */
+    public static Disposable getCollectionList2Data(int page, int limit,String type, final RequestBackListener<CollectionList2Bean> listener) {
+        return requestWithSign(new RequestCallback<CollectionList2Bean>() {
+            @Override
+            public Observable<ResponseBean<CollectionList2Bean>> request(boolean isAppForceUpdate) {
+                return ProjectApi.api().getCollectionList2Data(page, limit,type);
+            }
+        }, listener);
+    }
+
 
     /**
      * 品牌列表
@@ -1609,6 +1725,84 @@ public class MainRequest extends BaseRequest {
             }
         }, listener);
     }
+
+    /**
+     * 主题列表
+     *
+     * @return
+     */
+    public static Disposable getThemeList(int page,int limit,final RequestBackListener<ThemeListBean> listener) {
+        return requestWithSign(new RequestCallback<ThemeListBean>() {
+            @Override
+            public Observable<ResponseBean<ThemeListBean>> request(boolean isAppForceUpdate) {
+                return ProjectApi.api().getThemeList(page,limit);
+            }
+        }, listener);
+    }
+
+    /**
+     * 主题--其他列表
+     *
+     * @return
+     */
+    public static Disposable getThemeOtherList(int page,int limit,int type,final RequestBackListener<ThemeOtherListBean> listener) {
+        return requestWithSign(new RequestCallback<ThemeOtherListBean>() {
+            @Override
+            public Observable<ResponseBean<ThemeOtherListBean>> request(boolean isAppForceUpdate) {
+                return ProjectApi.api().getThemeOtherList(page,limit,type);
+            }
+        }, listener);
+    }
+
+    /**
+     * 主题--新挖宝藏/热销安利详情
+     *
+     * @return
+     */
+    public static Disposable getThemeOtherDetails(String iD,final RequestBackListener<ThemeOtherDetailsBean> listener) {
+        return requestWithSign(new RequestCallback<ThemeOtherDetailsBean>() {
+            @Override
+            public Observable<ResponseBean<ThemeOtherDetailsBean>> request(boolean isAppForceUpdate) {
+                return ProjectApi.api().getThemeOtherDetails(iD);
+            }
+        }, listener);
+    }
+
+
+
+
+
+    /**
+     * 主题详情
+     *
+     * @return
+     */
+    public static Disposable getThemeDetails(String id,final RequestBackListener<ThemeDetailsBean> listener) {
+        return requestWithSign(new RequestCallback<ThemeDetailsBean>() {
+            @Override
+            public Observable<ResponseBean<ThemeDetailsBean>> request(boolean isAppForceUpdate) {
+                return ProjectApi.api().getThemeDetails(id);
+            }
+        }, listener);
+    }
+
+    /**
+     * 精选眼图-详情
+     *
+     * @return
+     */
+    public static Disposable getEyeChartData(String id,final RequestBackListener<EyeChartDetailsBean> listener) {
+        return requestWithSign(new RequestCallback<EyeChartDetailsBean>() {
+            @Override
+            public Observable<ResponseBean<EyeChartDetailsBean>> request(boolean isAppForceUpdate) {
+                return ProjectApi.api().getEyeChartData(id);
+            }
+        }, listener);
+    }
+
+
+
+
 
 
     /**

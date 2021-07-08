@@ -174,7 +174,7 @@ public class HomeFragment_1 extends BaseFragment<HomeFragment_1Presenter> implem
                             Log.e("扫描成功", "==search_attr==" + search_attr);
 //                            MoveAbooutActivity_3.startSelf(getActivity(), good_id, search_attr);
                             if (is_group == null) {
-                                MoveAbooutActivity_3.startSelf(getActivity(), good_id, search_attr);
+                                MoveAbooutActivity_3.startSelf(getActivity(), good_id, search_attr,"");
                             } else {
                                 MoveAbooutActivity_4.startSelf(getActivity(), good_id, search_attr,group_id,"");
                             }

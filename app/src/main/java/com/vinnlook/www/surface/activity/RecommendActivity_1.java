@@ -123,7 +123,7 @@ public class RecommendActivity_1 extends BaseActivity<RecommendPresenter> implem
             @Override
             public void onClick(View view, int position) {
 //                MoveAbooutActivity_1.startSelf(RecommendActivity_1.this, adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr());
-                MoveAbooutActivity_3.startSelf(RecommendActivity_1.this, adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr());
+                MoveAbooutActivity_3.startSelf(RecommendActivity_1.this, adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr(),"");
 
             }
         });

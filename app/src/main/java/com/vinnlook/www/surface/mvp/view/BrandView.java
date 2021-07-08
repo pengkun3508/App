@@ -12,9 +12,6 @@ import java.util.List;
  * @Author:pk$
  */
 public interface BrandView extends MvpView {
-    void getAppUpdateSuccess(int code, VersionBean version);
-
-    void getAppUpdateFail(int code, String msg);
 
     void getBrandListSuccess(int code, BrandListBean data);
 

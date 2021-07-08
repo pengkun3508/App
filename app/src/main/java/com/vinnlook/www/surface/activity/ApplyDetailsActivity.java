@@ -127,7 +127,7 @@ public class ApplyDetailsActivity extends BaseActivity<ApplyDetailsPresenter> im
         adapter.addOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view, int position) {
-                MoveAbooutActivity_3.startSelf(ApplyDetailsActivity.this, adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr());
+                MoveAbooutActivity_3.startSelf(ApplyDetailsActivity.this, adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr(),"");
             }
         });
 

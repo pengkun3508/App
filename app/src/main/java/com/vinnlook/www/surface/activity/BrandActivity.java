@@ -2,6 +2,7 @@ package com.vinnlook.www.surface.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -15,7 +16,6 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.vinnlook.www.R;
 import com.vinnlook.www.base.BaseActivity;
 import com.vinnlook.www.http.model.BrandListBean;
-import com.vinnlook.www.http.model.VersionBean;
 import com.vinnlook.www.surface.adapter.BannerImgAdapter;
 import com.vinnlook.www.surface.adapter.BrandAdapter;
 import com.vinnlook.www.surface.mvp.presenter.BrandPresenter;
@@ -54,6 +54,8 @@ public class BrandActivity extends BaseActivity<BrandPresenter> implements Brand
     List<BrandListBean.ListBean> brandListBean;
     private static String type;
     List<BrandListBean.BannerBean> bannerImage;
+    @BindView(R.id.brand_layout)
+    LinearLayout brandLayout;
 
 
     public static void startSelf(Context context, String types) {
@@ -120,27 +122,6 @@ public class BrandActivity extends BaseActivity<BrandPresenter> implements Brand
         ButterKnife.bind(this);
     }
 
-
-    /**
-     * @Description:下载时间成功
-     * @Time:2020/5/8 16:36
-     * @Author:pk
-     */
-    @Override
-    public void getAppUpdateSuccess(int code, VersionBean version) {
-
-    }
-
-    /**
-     * @Description:下载时间失败
-     * @Time:2020/5/8 16:36
-     * @Author:pk
-     */
-    @Override
-    public void getAppUpdateFail(int code, String msg) {
-
-    }
-
     /**
      * @Description:下载品牌列表成功
      * @Time:2020/5/8 16:36
@@ -158,7 +139,7 @@ public class BrandActivity extends BaseActivity<BrandPresenter> implements Brand
             banner2.setIndicator(new CircleIndicator(getActivity()));
             banner2.start();
         }
-
+        brandLayout.setBackgroundColor(Color.parseColor(data.getBanner().get(0).getColor()));
     }
 
     /**

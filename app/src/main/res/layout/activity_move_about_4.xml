@@ -424,7 +424,7 @@
                             android:text="已结束"
                             android:textColor="#C29AFD"
                             android:textSize="@dimen/text_16"
-                            android:visibility="gone"/>
+                            android:visibility="gone" />
 
                         <com.flyco.roundview.RoundLinearLayout
                             android:id="@+id/group_time_layout"
@@ -1493,6 +1493,77 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/spacing_5dp"
                     android:background="@color/move_text1" />
+
+                <LinearLayout
+                    android:id="@+id/guang_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="8dp">
+
+                        <ImageView
+                            android:id="@+id/guang_icon"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/guang_home_bg2" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/spacing_5dp"
+                            android:layout_toRightOf="@+id/guang_icon"
+                            android:text="逛逛都在说"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_14"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:id="@+id/guang_all"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="12dp"
+                            android:text="查看全部 >"
+                            android:textColor="@color/them"
+                            android:textSize="@dimen/text_12" />
+
+
+                    </RelativeLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#f6f6f6" />
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/guang_recy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@color/white" />
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#f6f6f6" />
+
 
                 <LinearLayout
                     android:id="@+id/wen_see_all"

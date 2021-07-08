@@ -6,10 +6,12 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.alibaba.sdk.android.push.MessageReceiver;
 import com.alibaba.sdk.android.push.notification.CPushMessage;
 import com.vinnlook.www.surface.activity.MsggingBoxActivity;
+import com.vinnlook.www.utils.UserUtils;
 
 import java.util.Map;
 
@@ -47,7 +49,12 @@ public class MyMessageReceiver extends MessageReceiver {
     @Override
     public void onNotificationOpened(Context context, String title, String summary, String extraMap) {
         Log.e("MyMessageReceiver", "onNotificationOpened, title: " + title + ", summary: " + summary + ", extraMap:" + extraMap);
-        MsggingBoxActivity.startSelf(context);
+//        MsggingBoxActivity.startSelf(context);
+        if (!UserUtils.getInstance().getUserId().equals("")) {
+            MsggingBoxActivity.startSelf(context);//消息盒子
+        } else {
+            Toast.makeText(context, "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
+        }
 
 
     }

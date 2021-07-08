@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <com.vinnlook.www.utils.BlurredView
+        android:id="@+id/yahooweather_blurredview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:disableBlurred="false"
+        app:move="true" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/theme_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/touming">
+
+        <RelativeLayout
+            android:id="@+id/layout_bottoms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_20dp">
+
+            <ImageView
+                android:id="@+id/msg_title_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/spacing_10dp"
+                android:src="@mipmap/back_white" />
+
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:padding="@dimen/spacing_10dp"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_18"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/theme_details_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/theme_toolbar"
+        android:focusable="false"
+        android:overScrollMode="never"
+        android:scrollbars="none" />
+
+
+</RelativeLayout>

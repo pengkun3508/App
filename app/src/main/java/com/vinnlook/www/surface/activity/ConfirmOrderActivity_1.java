@@ -173,6 +173,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
     static String flag;//等于1为购物车进入；等于2为商品详情进入；
     static String group_info;//拼团的数据
     static String group_id;//拼团的数据
+    static String articleId;//文章ID
     String address_id = "";
     String real_id = "";
     String bonus_id = "";//优惠券ID
@@ -211,7 +212,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
     String wayBillId = "";//快递ID
 
 
-    public static void startSelf(Context context, String recIds, String goods_ids, String product_ids, String nums, String flags, String group_infos, String group_ids) {
+    public static void startSelf(Context context, String recIds, String goods_ids, String product_ids, String nums, String flags, String group_infos, String group_ids, String articleIds) {
         Intent intent = new Intent(context, ConfirmOrderActivity_1.class);
         context.startActivity(intent);
         recId = recIds;
@@ -221,6 +222,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
         flag = flags;
         group_info = group_infos;
         group_id = group_ids;
+        articleId = articleIds;
     }
 
     @Override
@@ -441,7 +443,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
                                 } else {
                                     if (getSuppliers_id.equals("")) {//没有海淘商品
                                         PayOrderActivity.startSelf(this, recId, goods_id, product_id, num, real_id, address_id, type, confirmMessage1.getText().toString(),
-                                                confirmMessage2.getText().toString(), "", payPrice, bonus_id, sBuilder.toString(), zYSbString, hTSbString, group_info, group_id);
+                                                confirmMessage2.getText().toString(), "", payPrice, bonus_id, sBuilder.toString(), zYSbString, hTSbString, group_info, group_id,articleId);
                                     } else if (getSuppliers_id.equals("1")) {//有海淘商品
                                         if (real_id.equals("")) {
                                             Toast.makeText(this, "请先选择实名认证信息", Toast.LENGTH_SHORT).show();
@@ -464,7 +466,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
                             } else {
                                 if (getSuppliers_id.equals("")) {//没有海淘商品
                                     PayOrderActivity.startSelf(this, recId, goods_id, product_id, num, real_id, address_id, type, confirmMessage1.getText().toString(),
-                                            confirmMessage2.getText().toString(), "", payPrice, bonus_id, sBuilder.toString(), zYSbString, hTSbString, group_info, group_id);
+                                            confirmMessage2.getText().toString(), "", payPrice, bonus_id, sBuilder.toString(), zYSbString, hTSbString, group_info, group_id,articleId);
                                 } else if (getSuppliers_id.equals("1")) {//有海淘商品
                                     if (real_id.equals("")) {
                                         Toast.makeText(this, "请先选择实名认证信息", Toast.LENGTH_SHORT).show();
@@ -503,7 +505,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
                         } else {
                             if (getSuppliers_id.equals("")) {//没有海淘商品
                                 PayOrderActivity.startSelf(this, recId, goods_id, product_id, num, real_id, address_id, type, confirmMessage1.getText().toString(),
-                                        confirmMessage2.getText().toString(), "", payPrice, bonus_id, sBuilder.toString(), zYSbString, hTSbString, group_info, group_id);
+                                        confirmMessage2.getText().toString(), "", payPrice, bonus_id, sBuilder.toString(), zYSbString, hTSbString, group_info, group_id, articleId);
                             } else if (getSuppliers_id.equals("1")) {//有海淘商品
                                 if (real_id.equals("")) {
                                     Toast.makeText(this, "请先选择实名认证信息", Toast.LENGTH_SHORT).show();
@@ -525,7 +527,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
                     } else {
                         if (getSuppliers_id.equals("")) {//没有海淘商品
                             PayOrderActivity.startSelf(this, recId, goods_id, product_id, num, real_id, address_id, type, confirmMessage1.getText().toString(),
-                                    confirmMessage2.getText().toString(), "", payPrice, bonus_id, sBuilder.toString(), zYSbString, hTSbString, group_info, group_id);
+                                    confirmMessage2.getText().toString(), "", payPrice, bonus_id, sBuilder.toString(), zYSbString, hTSbString, group_info, group_id, articleId);
                         } else if (getSuppliers_id.equals("1")) {//有海淘商品
                             if (real_id.equals("")) {
                                 Toast.makeText(this, "请先选择实名认证信息", Toast.LENGTH_SHORT).show();
@@ -583,7 +585,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
             @Override
             public void onClick(View view) {
                 PayOrderActivity.startSelf(ConfirmOrderActivity_1.this, recId, goods_id, product_id, num, real_id, address_id, type, confirmMessage1.getText().toString(),
-                        confirmMessage2.getText().toString(), "", payPrice, bonus_id, sBuilder.toString(), zYSbString, hTSbString, group_info, group_id);
+                        confirmMessage2.getText().toString(), "", payPrice, bonus_id, sBuilder.toString(), zYSbString, hTSbString, group_info, group_id,articleId);
                 if (popupwindow != null && popupwindow.isShowing()) {
                     popupwindow.dismiss();
                     popupwindow = null;
@@ -963,7 +965,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
         haiTitleText.setText(event.getData().getHt_shop_list().getTitle());//海淘标题
         orderHaiExpress.setText(event.getData().getHt_shop_list().getWaybillList().get(0).getName());//海淘快递
         waybill_HT_id = String.valueOf(event.getData().getHt_shop_list().getWaybillList().get(0).getId());//海淘快递ID
-        confirmHaiShuifei.setText(Html.fromHtml("&yen") +event.getData().getTax_total());//税费
+        confirmHaiShuifei.setText(Html.fromHtml("&yen") + event.getData().getTax_total());//税费
         ImageLoader.image(this, zyIconImg, event.getData().getZy_shop_list().getLogo_image());
         ziTitleText.setText(event.getData().getZy_shop_list().getTitle());//自营标题
         orderZiExpress.setText(event.getData().getZy_shop_list().getWaybillList().get(0).getName());//自营快递
@@ -1093,7 +1095,7 @@ public class ConfirmOrderActivity_1 extends BaseActivity<ConfirmOrderPresenter> 
         haiTitleText.setText(data.getHt_shop_list().getTitle());//海淘标题
         orderHaiExpress.setText(data.getHt_shop_list().getWaybillList().get(0).getName());//海淘快递
         waybill_HT_id = String.valueOf(data.getHt_shop_list().getWaybillList().get(0).getId());//海淘快递ID
-        confirmHaiShuifei.setText(Html.fromHtml("&yen") +data.getTax_total());//税费
+        confirmHaiShuifei.setText(Html.fromHtml("&yen") + data.getTax_total());//税费
         ImageLoader.image(this, zyIconImg, data.getZy_shop_list().getLogo_image());
         ziTitleText.setText(data.getZy_shop_list().getTitle());//自营标题
         orderZiExpress.setText(data.getZy_shop_list().getWaybillList().get(0).getName());//自营快递

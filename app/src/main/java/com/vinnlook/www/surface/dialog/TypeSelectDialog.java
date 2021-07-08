@@ -234,7 +234,7 @@ public class TypeSelectDialog {
                             type_price.setText(Html.fromHtml("&yen") + moveDataBean.getProduct().get(0).getProduct_price());
                         }
 //                        }
-//                        type_number.setText("库存" + moveDataBean.getProduct().get(0).getProduct_number() + "件");
+                        type_number.setText("库存" + moveDataBean.getProduct().get(0).getProduct_number() + "件");
 
 //                        if (productBean.getIs_promote().equals("1")) {//显示限时页面
 //                            type_price.setText(Html.fromHtml("&yen") + productBean.getPreferential_price());

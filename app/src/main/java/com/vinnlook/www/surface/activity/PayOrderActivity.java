@@ -63,6 +63,7 @@ public class PayOrderActivity extends BaseActivity<PayOrderPresenter> implements
     static String hTSb;
     static String group_info;
     static String group_id;
+    static String articleId;
 
     @BindView(R.id.action_bar)
     ActionBarSimple actionBar;
@@ -252,7 +253,7 @@ public class PayOrderActivity extends BaseActivity<PayOrderPresenter> implements
 
     public static void startSelf(Context context, String recIds, String goods_ids, String product_ids,
                                  String nums, String real_ids, String address_ids, String types, String confirmMessages1, String confirmMessages2,
-                                 String order_ids, String payPrices, String bonus_ids, String waybill_ids, String zYSbs, String hTSbs, String group_infos, String group_ids) {
+                                 String order_ids, String payPrices, String bonus_ids, String waybill_ids, String zYSbs, String hTSbs, String group_infos, String group_ids, String articleIds) {
         Intent intent = new Intent(context, PayOrderActivity.class);
         context.startActivity(intent);
         recId = recIds;
@@ -272,6 +273,7 @@ public class PayOrderActivity extends BaseActivity<PayOrderPresenter> implements
         hTSb = hTSbs;
         group_info = group_infos;
         group_id = group_ids;
+        articleId = articleIds;
 
 
     }
@@ -303,25 +305,26 @@ public class PayOrderActivity extends BaseActivity<PayOrderPresenter> implements
                 Log.e("支付按钮", "==order_id==" + order_id);
                 Log.e("支付按钮", "==bonus_id==" + bonus_id);
                 Log.e("支付按钮", "==waybill_id==" + waybill_id);
+                payBtn.setFocusable(false);
 
                 if (!type.equals("")) {
                     if (type.equals("2")) {//支付宝支付
                         if (recId.equals("")) {
-                            presenter.postALiSubmitOrder(recId, goods_id, product_id, num, real_id, address_id, type, confirmMessage1, confirmMessage2, order_id, bonus_id, waybill_id, zYSb, hTSb, group_info, group_id);
+                            presenter.postALiSubmitOrder(recId, goods_id, product_id, num, real_id, address_id, type, confirmMessage1, confirmMessage2, order_id, bonus_id, waybill_id, zYSb, hTSb, group_info, group_id,articleId);
                         } else {
                             goods_id = "";
                             product_id = "";
                             num = "";
-                            presenter.postALiSubmitOrder(recId, goods_id, product_id, num, real_id, address_id, type, confirmMessage1, confirmMessage2, order_id, bonus_id, waybill_id, zYSb, hTSb, group_info, group_id);
+                            presenter.postALiSubmitOrder(recId, goods_id, product_id, num, real_id, address_id, type, confirmMessage1, confirmMessage2, order_id, bonus_id, waybill_id, zYSb, hTSb, group_info, group_id,articleId);
                         }
                     } else if (type.equals("1")) {//微信支付
                         if (recId.equals("")) {
-                            presenter.postSubmitOrder(recId, goods_id, product_id, num, real_id, address_id, type, confirmMessage1, confirmMessage2, order_id, bonus_id, waybill_id, zYSb, hTSb, group_info, group_id);
+                            presenter.postSubmitOrder(recId, goods_id, product_id, num, real_id, address_id, type, confirmMessage1, confirmMessage2, order_id, bonus_id, waybill_id, zYSb, hTSb, group_info, group_id,articleId);
                         } else {
                             goods_id = "";
                             product_id = "";
                             num = "";
-                            presenter.postSubmitOrder(recId, goods_id, product_id, num, real_id, address_id, type, confirmMessage1, confirmMessage2, order_id, bonus_id, waybill_id, zYSb, hTSb, group_info, group_id);
+                            presenter.postSubmitOrder(recId, goods_id, product_id, num, real_id, address_id, type, confirmMessage1, confirmMessage2, order_id, bonus_id, waybill_id, zYSb, hTSb, group_info, group_id,articleId);
                         }
                     }
 
@@ -343,6 +346,7 @@ public class PayOrderActivity extends BaseActivity<PayOrderPresenter> implements
      */
     @Override
     public void getPostSubmitOrderFail(int code, String msg) {
+        payBtn.setFocusable(true);
         if (code == 4000) {
             Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
         }
@@ -356,7 +360,6 @@ public class PayOrderActivity extends BaseActivity<PayOrderPresenter> implements
      */
     @Override
     public void getPostSubmitOrderSuccess(int code, WeCatPayBean data) {
-
         ConstantData.APP_ID = data.getContent().getAppid();
         getIs_group = data.getIs_group();
         getOrder_id = data.getOrder_id();
@@ -384,6 +387,8 @@ public class PayOrderActivity extends BaseActivity<PayOrderPresenter> implements
                 .setTimeStamp(getTimestamp)
                 .setSign(getSign)
                 .build().toWXPayNotSign(PayOrderActivity.this, getAppid);
+
+        payBtn.setFocusable(true);
 
     }
 

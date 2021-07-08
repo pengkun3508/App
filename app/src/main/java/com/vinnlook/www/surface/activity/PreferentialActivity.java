@@ -154,7 +154,7 @@ public class PreferentialActivity extends BaseActivity<PreferentialPresenter> im
             @Override
             public void onClick(View view, int position) {
 //                MoveAbooutActivity_1.startSelf(getActivity(), adapter1.getData().get(position).getGoods_id(), adapter1.getData().get(position).getSearch_attr());
-                MoveAbooutActivity_3.startSelf(getActivity(), adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr());
+                MoveAbooutActivity_3.startSelf(getActivity(), adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr(),"");
 
 
             }
@@ -384,7 +384,7 @@ public class PreferentialActivity extends BaseActivity<PreferentialPresenter> im
 
 //                presenter.getModifyType(mark, getRec_id, num, product_id);
                 Log.e("getTypeShopSuccess", "TypeSelectDialog");
-                presenter.getAddShopCar(goods_id, product_id, num);
+                presenter.getAddShopCar(goods_id, product_id, num,"");
 
             }
         }).show();

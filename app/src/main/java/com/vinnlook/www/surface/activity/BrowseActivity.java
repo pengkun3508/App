@@ -115,7 +115,7 @@ public class BrowseActivity extends BaseActivity<BrowsePresenter> implements Bro
             @Override
             public void onClick(View view, int position) {
 //                MoveAbooutActivity_1.startSelf(getActivity(), getList.get(position).getGoods_id(), getList.get(position).getSearch_attr());
-                MoveAbooutActivity_3.startSelf(getActivity(), adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr());
+                MoveAbooutActivity_3.startSelf(getActivity(), adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr(),"");
 
             }
         });

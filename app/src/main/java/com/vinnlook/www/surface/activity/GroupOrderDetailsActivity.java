@@ -117,7 +117,7 @@ public class GroupOrderDetailsActivity extends BaseActivity<GroupOrderDetailsPre
 //                OrderDetailsActivity.startSelf(GroupOrderDetailsActivity.this, adapter1.getData().get(position).getOrder_id());
 
                 MoveAbooutActivity_3.startSelf(GroupOrderDetailsActivity.this, adapter1.getData().get(position).getGoods_id(),
-                        adapter1.getData().get(position).getSearch_attr());
+                        adapter1.getData().get(position).getSearch_attr(),"");
 
             }
         });

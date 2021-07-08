@@ -97,8 +97,8 @@ public class ClassifyFragment_1 extends BaseFragment<ClassifyFragmentPresenter> 
     LinearLayout classifyShaixuan;//筛选
     @BindView(R.id.classify_recycler)
     RecyclerView classifyRecycler;//List
-    @BindView(R.id.smart_refresh_layout)
-    SmartRefreshLayout smartRefreshLayout;
+//    @BindView(R.id.smart_refresh_layout)
+//    SmartRefreshLayout smartRefreshLayout;
 
     @BindView(R.id.zonghe_text)
     TextView zonghe_text;//综合
@@ -230,15 +230,15 @@ public class ClassifyFragment_1 extends BaseFragment<ClassifyFragmentPresenter> 
         searchList.setHasFixedSize(true);
         searchList.setAdapter(adapter5);
 
-        //刷新数据
-        smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
-            @Override
-            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                page = 1;
-                presenter.getClassifyData(classifySerachviewEdt.getText().toString(), page, 20, mark, sort_key, sort_value, iDstr);//下载分类数据
-                judge = 0;
-            }
-        });
+//        //刷新数据
+//        smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+//            @Override
+//            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+//                page = 1;
+//                presenter.getClassifyData(classifySerachviewEdt.getText().toString(), page, 20, mark, sort_key, sort_value, iDstr);//下载分类数据
+//                judge = 0;
+//            }
+//        });
 
 
         presenter.getClassifyData(classifySerachviewEdt.getText().toString(), page, 20, mark, sort_key, sort_value, iDstr);//下载分类数据
@@ -329,7 +329,7 @@ public class ClassifyFragment_1 extends BaseFragment<ClassifyFragmentPresenter> 
             @Override
             public void onClick(View view, int position) {
 //                MoveAbooutActivity_1.startSelf(getActivity(), adapter1.getData().get(position).getGoods_id(), adapter1.getData().get(position).getSearch_attr());
-                MoveAbooutActivity_3.startSelf(getActivity(), adapter1.getData().get(position).getGoods_id(), adapter1.getData().get(position).getSearch_attr());
+                MoveAbooutActivity_3.startSelf(getActivity(), adapter1.getData().get(position).getGoods_id(), adapter1.getData().get(position).getSearch_attr(),"");
 
             }
         });
@@ -809,7 +809,7 @@ public class ClassifyFragment_1 extends BaseFragment<ClassifyFragmentPresenter> 
      */
     @Override
     public void getClassifySuccess(int code, ClassifyBean data) {
-        smartRefreshLayout.finishRefresh();
+//        smartRefreshLayout.finishRefresh();
         searchListLayout.setVisibility(View.GONE);
         adapter5.clearData();
         count = data.getCount();
@@ -830,7 +830,7 @@ public class ClassifyFragment_1 extends BaseFragment<ClassifyFragmentPresenter> 
      */
     @Override
     public void getClassifyFail(int code, String msg) {
-        smartRefreshLayout.finishRefresh();
+//        smartRefreshLayout.finishRefresh();
 //        if (code == 3000) {
 //            ClassifyBean data = new ClassifyBean();
 //            adapter1.setData(data.getList());

@@ -61,7 +61,7 @@ public class CouponActivity extends BaseActivity<CouponPresenter> implements Cou
     @BindView(R.id.view_4)
     View view4;
 
-    String type = "1";
+    String type = "2";
 
     private CouponYesAdapter yesAdapter;
     private SmartRefreshHelper<CouponListBean> mSmartRefreshHelper;

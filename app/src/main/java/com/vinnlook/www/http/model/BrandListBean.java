@@ -85,6 +85,17 @@ public class BrandListBean extends BaseBean {
         private String parent_id;
         private String photo;
         private ListBeanX list;
+        private String color;
+
+        public String getColor() {
+            return color;
+        }
+
+        public void setColor(String color) {
+            this.color = color;
+        }
+
+
 
         public String getValue() {
             return value;

@@ -191,7 +191,7 @@ public class HomePublicClassActivity extends BaseActivity<RecommendPresenter> im
             @Override
             public void onClick(View view, int position) {
 //                MoveAbooutActivity_1.startSelf(HomePublicClassActivity.this, adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr());
-                MoveAbooutActivity_3.startSelf(HomePublicClassActivity.this, adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr());
+                MoveAbooutActivity_3.startSelf(HomePublicClassActivity.this, adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr(),"");
             }
         });
 

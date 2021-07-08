@@ -120,7 +120,7 @@ public class PaoQiListAdapter extends BaseStateAdapter5<HaiTaoClassBean.ShopBean
                 @Override
                 public void onClick(View view, int position) {
 //                    MoveAbooutActivity_1.startSelf((Activity) context, getData.get(position).getGoods_id(), getData.get(position).getSearch_attr());
-                    MoveAbooutActivity_3.startSelf((Activity) context, paoQiAdapter3.getData().get(position).getGoods_id(), paoQiAdapter3.getData().get(position).getSearch_attr());
+                    MoveAbooutActivity_3.startSelf((Activity) context, paoQiAdapter3.getData().get(position).getGoods_id(), paoQiAdapter3.getData().get(position).getSearch_attr(),"");
 
                 }
             });

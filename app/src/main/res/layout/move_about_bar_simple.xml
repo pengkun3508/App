@@ -39,8 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:padding="13dp"
-        android:src="@mipmap/share"
-        />
+        android:src="@mipmap/share" />
 
     <ImageView
         android:id="@+id/iv_action_bar_simple_right"

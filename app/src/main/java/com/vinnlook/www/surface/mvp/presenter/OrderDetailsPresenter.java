@@ -168,8 +168,8 @@ public class OrderDetailsPresenter extends MvpPresenter<OrderDetailsView> {
 
     }
 
-    public void getAddShopCar(String goods_id, String product_id, String number) {
-        addToRxLife(MainRequest.getAddShopCar(goods_id, product_id, number, new RequestBackListener<Object>() {
+    public void getAddShopCar(String goods_id, String product_id, String number,String articleId) {
+        addToRxLife(MainRequest.getAddShopCar(goods_id, product_id, number,articleId, new RequestBackListener<Object>() {
             @Override
             public void onStart() {
                 showLoading();

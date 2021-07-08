@@ -77,6 +77,7 @@ import com.vinnlook.www.surface.adapter.CommentListAdapter;
 import com.vinnlook.www.surface.adapter.DetailsImags1Adapter;
 import com.vinnlook.www.surface.adapter.DetailsImags2Adapter;
 import com.vinnlook.www.surface.adapter.GroupMemberAdapter;
+import com.vinnlook.www.surface.adapter.GuangImagAdapter;
 import com.vinnlook.www.surface.adapter.MoveGroupAdapter;
 import com.vinnlook.www.surface.adapter.MultipleTypesAdapter;
 import com.vinnlook.www.surface.adapter.ShopColourImgAdapter;
@@ -344,6 +345,12 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
     LinearLayout moveGroupIngYesBtn2;
     @BindView(R.id.move_group_ing_yes_layout)
     LinearLayout moveGroupIngYesLayout;
+    @BindView(R.id.guang_all)
+    TextView guangAll;
+    @BindView(R.id.guang_recy)
+    RecyclerView guangRecy;
+    @BindView(R.id.guang_layout)
+    LinearLayout guangLayout;
 
 
     private float totaldy;
@@ -382,6 +389,7 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
     String goods_attr;
     GroupMemberAdapter adapterMember;//团购成员
     CommentListAdapter commentAdapter;//评价适配器
+    GuangImagAdapter guangAdapter;
     WenListAdapter wenAdapter;//问一问适配器
     DetailsImags1Adapter adapter;//详情适配器
     DetailsImags2Adapter adapter2;//须知适配器
@@ -848,6 +856,23 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
         recyclervComment2.setNestedScrollingEnabled(false);
         recyclervComment2.setHasFixedSize(false);
 
+        //逛逛适配器
+        guangAdapter = new GuangImagAdapter(this);
+        final GridLayoutManager guangmanager = new GridLayoutManager(this, 1);
+        guangmanager.setOrientation(GridLayoutManager.HORIZONTAL);
+        guangRecy.setLayoutManager(guangmanager);
+        guangRecy.addItemDecoration(new SpacesItemDecoration(DensityUtils.dp2px(this, 1)));
+        guangRecy.addItemDecoration(new SpaceItemDecoration(0, 0));
+        guangRecy.setNestedScrollingEnabled(false);
+        guangRecy.setFocusable(false);
+        guangRecy.setAdapter(guangAdapter);
+        guangAdapter.addOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                SelectEyeChartActivity.startSelf(MoveAbooutActivity_4.this, guangAdapter.getData().get(position).getId());
+            }
+        });
+
         //问一问适配器
         wenAdapter = new WenListAdapter(this);
         final GridLayoutManager managesWen = new GridLayoutManager(this, 1);
@@ -1024,7 +1049,6 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
     public void getMoveDataSuccess(int code, MoveDataBean data) {
 
         moveDataBean = data;
-        Log.e("商品详情返回成功", "===getIs_promote===" + moveDataBean.getInfo().getIs_promote());
         //加载不同的布局
         list = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
@@ -1226,35 +1250,55 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
                 EvaluateListActivity.startSelf(getContext(), data.getInfo().getGoods_id());
             }
         });
+
+        //逛逛
+        if (data.getArticleList().size() > 0) {
+            guangLayout.setVisibility(View.VISIBLE);
+            guangAdapter.setData(data.getArticleList());
+        } else {
+            guangLayout.setVisibility(View.GONE);
+        }
+
         //问一问
-        wenyiwenNumber.setText("（" + data.getInfo().getQuestion_count() + "）");
+        wenyiwenNumber.setText("（" + data.getInfo().
+
+                getQuestion_count() + "）");
 
         wenAdapter.setData(data.getQuestion_list());
         recyclervWenyiwen.setAdapter(wenAdapter);
-        if (data.getQuestion_list().size() > 0) {
+        if (data.getQuestion_list().
+
+                size() > 0) {
             wendajiaLine.setVisibility(View.VISIBLE);
         } else {
             wendajiaLine.setVisibility(View.GONE);
         }
 
         //详情
-        adapter.setData(data.getInfo().getDetails());
+        adapter.setData(data.getInfo().
+
+                getDetails());
         imgListDetails1.setAdapter(adapter);
         //须知
-        adapter2.setData(data.getInfo().getUser_notes());
+        adapter2.setData(data.getInfo().
+
+                getUser_notes());
         imgListDetails2.setAdapter(adapter2);
         //大家都在买
         adapter4.setData(data.getRecommend());
         moveTuijianRecycler.setAdapter(adapter4);
-        adapter4.addOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                MoveAbooutActivity_3.startSelf(getActivity(), adapter4.getData().get(position).getGoods_id(), adapter4.getData().get(position).getSearch_attr());
-            }
-        });
+        adapter4.addOnClickListener(new
+
+                                            OnClickListener() {
+                                                @Override
+                                                public void onClick(View view, int position) {
+                                                    MoveAbooutActivity_3.startSelf(getActivity(), adapter4.getData().get(position).getGoods_id(), adapter4.getData().get(position).getSearch_attr(), "");
+                                                }
+                                            });
         adapter4.setTuiJianClickListener(new TuiJianAdapter.TuiJianClickListener() {
             @Override
-            public void onGoClickListener(MoveDataBean.RecommendBean data, String getGoods_id, String getSearch_attr) {
+            public void onGoClickListener(MoveDataBean.RecommendBean data, String getGoods_id, String
+                    getSearch_attr) {
                 ecommendBean = data;
                 ecommendBean.setSearch_attr(goods_attr);
                 presenter.getTypeShopData(getGoods_id);
@@ -1264,7 +1308,10 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
         if (group_id.equals("")) {
             group_id = data.getShopActiveInfo().getGroup_id();
         }
-        orderId = data.getShopActiveInfo().getOrder_id();
+
+        orderId = data.getShopActiveInfo().
+
+                getOrder_id();
 
         //判断是否开团
         if (!group_id.equals("")) {//已开团
@@ -1383,90 +1430,68 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
             groupLayoutYes.setVisibility(View.GONE);
             moveGroupFront.setVisibility(View.VISIBLE);
 
-
-//            //选择规格布局
-//            if (data.getShopActiveInfo().getIs_join_group().equals("0")) {//未参团
-//                selectNumLayout.setVisibility(View.VISIBLE);
-//                moveGroupFront.setVisibility(View.VISIBLE);
-//                moveGroupAfter.setVisibility(View.GONE);
-//                moveGroupCantuanLayout.setVisibility(View.GONE);
-//            } else if (data.getShopActiveInfo().getIs_join_group().equals("1")) {//已参团
-//                selectNumLayout.setVisibility(View.GONE);
-//                moveGroupFront.setVisibility(View.GONE);
-//                moveGroupAfter.setVisibility(View.VISIBLE);
-//                moveGroupCantuanLayout.setVisibility(View.GONE);
-//            }
-        }
-
-
-        //点击链接进来的
-//        if (!groupId.equals("")) {
-//            yaoqingCantuanText.setText("马上参团");
-//        }
-
-        List<MoveDataBean.GroupListBean> getGroup_list = data.getGroup_list();
-        if (getGroup_list!=null){
-            if (data.getGroup_list().size() < 3) {
-                final GridLayoutManager managergroup = new GridLayoutManager(getActivity(), 2);
-                moveGroupRecy.setLayoutManager(managergroup);
-            } else {
-                final GridLayoutManager managergroup = new GridLayoutManager(getActivity(), 3);
-                moveGroupRecy.setLayoutManager(managergroup);
-            }
-        }
-
-        adapterMember.setData(data.getGroup_list());
-        moveGroupRecy.setAdapter(adapterMember);
-
-
-
-
-        //显示倒计时--拼团倒计时
-        //计算秒杀倒计时---ms
-        endTime = Integer.valueOf(data.getShopActiveInfo().getEnd_time());
-        handler1.sendEmptyMessageDelayed(1, 1000);
-        moveGroupPrice.setText(data.getShopActiveInfo().getGroup_price());
-        moveGroupPriceYuan.setText("单买价" + Html.fromHtml("&yen") + data.getInfo().getProduct_price());
-
-        groupTextFuhao.setText(Html.fromHtml("&yen"));
-        groupTextPrice.setText(data.getShopActiveInfo().getGroup_price());
-        groupTextYuanPrice.setText("原价" + Html.fromHtml("&yen") + data.getInfo().getProduct_price() + "/件");
-        groupTextNumber1.setText("限购" + data.getShopActiveInfo().getAstrict_num() + "件/人");
-        groupTextPeople1.setText(data.getShopActiveInfo().getGroup_people() + "人团");
-        groupTextYuanPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
-
-        groupTextPeople2.setText(data.getShopActiveInfo().getGroup_people() + "人团");
-        groupTextNumber2.setText("限购" + data.getShopActiveInfo().getAstrict_num() + "件/人");
-        groupYuanPriceText.setText(data.getInfo().getProduct_price());
-        groupPriceText.setText(data.getShopActiveInfo().getGroup_price());
-        moveGroupPeo.setText(data.getShopActiveInfo().getAgain_invite() + "人");
-        moveGroupPeo2.setText(data.getShopActiveInfo().getAgain_invite() + "人");
-
-
-        final int[] num = {0};
-        //加号
-        groupAddType.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int numss = 0;
-                for (int i = 0; i < listBeant.size(); i++) {
-                    numss = numss + Integer.parseInt(listBeant.get(i).getNum());
-                }
-                if (numss < Integer.parseInt(data.getShopActiveInfo().getAstrict_num())) {
-                    finalNumss = numss;
-                    presenter.getTypeShopData5(goods_id);
+            List<MoveDataBean.GroupListBean> getGroup_list = data.getGroup_list();
+            if (getGroup_list != null) {
+                if (data.getGroup_list().size() < 3) {
+                    final GridLayoutManager managergroup = new GridLayoutManager(getActivity(), 2);
+                    moveGroupRecy.setLayoutManager(managergroup);
                 } else {
-                    Toast.makeText(MoveAbooutActivity_4.this, "您已超过限购数量", Toast.LENGTH_SHORT).show();
+                    final GridLayoutManager managergroup = new GridLayoutManager(getActivity(), 3);
+                    moveGroupRecy.setLayoutManager(managergroup);
                 }
             }
-        });
+
+            adapterMember.setData(data.getGroup_list());
+            moveGroupRecy.setAdapter(adapterMember);
 
 
+            //显示倒计时--拼团倒计时
+            //计算秒杀倒计时---ms
+            endTime = Integer.valueOf(data.getShopActiveInfo().getEnd_time());
+            handler1.sendEmptyMessageDelayed(1, 1000);
+            moveGroupPrice.setText(data.getShopActiveInfo().getGroup_price());
+            moveGroupPriceYuan.setText("单买价" + Html.fromHtml("&yen") + data.getInfo().getProduct_price());
+
+            groupTextFuhao.setText(Html.fromHtml("&yen"));
+            groupTextPrice.setText(data.getShopActiveInfo().getGroup_price());
+            groupTextYuanPrice.setText("原价" + Html.fromHtml("&yen") + data.getInfo().getProduct_price() + "/件");
+            groupTextNumber1.setText("限购" + data.getShopActiveInfo().getAstrict_num() + "件/人");
+            groupTextPeople1.setText(data.getShopActiveInfo().getGroup_people() + "人团");
+            groupTextYuanPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+
+            groupTextPeople2.setText(data.getShopActiveInfo().getGroup_people() + "人团");
+            groupTextNumber2.setText("限购" + data.getShopActiveInfo().getAstrict_num() + "件/人");
+            groupYuanPriceText.setText(data.getInfo().getProduct_price());
+            groupPriceText.setText(data.getShopActiveInfo().getGroup_price());
+            moveGroupPeo.setText(data.getShopActiveInfo().getAgain_invite() + "人");
+            moveGroupPeo2.setText(data.getShopActiveInfo().getAgain_invite() + "人");
+
+
+            final int[] num = {0};
+            //加号
+            groupAddType.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int numss = 0;
+                    for (int i = 0; i < listBeant.size(); i++) {
+                        numss = numss + Integer.parseInt(listBeant.get(i).getNum());
+                    }
+                    if (numss < Integer.parseInt(data.getShopActiveInfo().getAstrict_num())) {
+                        finalNumss = numss;
+                        presenter.getTypeShopData5(goods_id);
+                    } else {
+                        Toast.makeText(MoveAbooutActivity_4.this, "您已超过限购数量", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+
+        }
     }
 
     @SuppressLint("MissingPermission")
     @OnClick({R.id.move_add_shopcat_btn, R.id.tv_move_about, R.id.wen_see_all, R.id.move_see_all_btn, R.id.move_success_no_layout_btn1, R.id.move_success_no_layout_btn2,
-            R.id.move_success_yes_layout_btn1, R.id.move_group_ing_no_btn1, R.id.move_group_ing_no_btn2, R.id.move_group_ing_yes_btn1, R.id.move_group_ing_yes_btn2})
+            R.id.move_success_yes_layout_btn1, R.id.move_group_ing_no_btn1, R.id.move_group_ing_no_btn2, R.id.move_group_ing_yes_btn1, R.id.move_group_ing_yes_btn2, R.id.guang_all})
     public void onViewClicked(View view) {
         switch (view.getId()) {
 
@@ -1475,7 +1500,7 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
                     return;
                 }
                 if (!UserUtils.getInstance().getUserId().equals("")) {
-                    MoveAbooutActivity_3.startSelf(this, moveDataBean.getInfo().getGoods_id(), moveDataBean.getInfo().getSearch_attr());
+                    MoveAbooutActivity_3.startSelf(this, moveDataBean.getInfo().getGoods_id(), moveDataBean.getInfo().getSearch_attr(), "");
                 } else {
                     Toast.makeText(getActivity(), "您还未登录，请先登录", Toast.LENGTH_SHORT).show();
 
@@ -1562,6 +1587,9 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
                     showLoadingDialog();
                     mAlicomAuthHelper.getLoginToken(getActivity(), 0);
                 }
+                break;
+            case R.id.guang_all://逛逛
+                MoveGuangListActivity.startSelf(this,moveDataBean.getInfo().getGoods_id());
                 break;
         }
     }
@@ -2164,7 +2192,8 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
 
     //Android6.0申请权限的回调方法
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                           int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             // requestCode即所声明的权限获取码，在checkSelfPermission时传入
@@ -2323,9 +2352,6 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
 
                             }
                         });
-//                        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT, 1);  // , 1是可选写的
-//                        lp.setMargins(0, logBtnOffset_1+280, 0, 0);
-//                        findViewById(R.id.login_btn1).setLayoutParams(lp);
 
                         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) findViewById(R.id.id_2).getLayoutParams();
 
@@ -2336,32 +2362,6 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
                     }
                 })
                 .build());
-
-//        mAlicomAuthHelper.addAuthRegisterXmlConfig(new AuthRegisterXmlConfig.Builder()
-//                .setLayout(R.layout.login_item_layou_2, new AbstractPnsViewDelegate() {
-//                    @Override
-//                    public void onViewCreated(View view) {
-//                        findViewById(R.id.login_wechat).setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View v) {
-//                                login();//微信登陆
-//                            }
-//                        });
-////                        findViewById(R.id.login_qq).setOnClickListener(new View.OnClickListener() {
-////                            @Override
-////                            public void onClick(View v) {
-////
-////                            }
-////                        });
-////                        findViewById(R.id.login_weibo).setOnClickListener(new View.OnClickListener() {
-////                            @Override
-////                            public void onClick(View v) {
-////
-////                            }
-////                        });
-//                    }
-//                })
-//                .build());
 
 
         mAlicomAuthHelper.setAuthUIConfig(new AuthUIConfig.Builder()
@@ -2483,7 +2483,7 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
     public void getConfirmOrderSuccess(int code, ConfirmOrderBean data) {
 //        if (mmark.equals("1")) {
 
-        ConfirmOrderActivity_1.startSelf(MoveAbooutActivity_4.this, "", goods_id, product_ids, nums, "2", group_info, group_id);
+        ConfirmOrderActivity_1.startSelf(MoveAbooutActivity_4.this, "", goods_id, product_ids, nums, "2", group_info, group_id,"");
 //        }
     }
 
@@ -2527,7 +2527,7 @@ public class MoveAbooutActivity_4 extends BaseActivity<MoveAboutPresenter> imple
             @Override
             public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name, ProductBean productBean, String mmake) {
 //                presenter.getModifyType(mark, getRec_id, num, product_id);
-                presenter.getAddShopCar(goods_id, product_id, num);
+                presenter.getAddShopCar(goods_id, product_id, num,"");
 
             }
         }).show();

@@ -118,7 +118,7 @@ public class ReBangListActivity extends BaseActivity<ReBangListPresenter> implem
         adapter.addOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view, int position) {
-                MoveAbooutActivity_3.startSelf(getActivity(), adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr());
+                MoveAbooutActivity_3.startSelf(getActivity(), adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr(),"");
 
             }
         });
@@ -195,7 +195,7 @@ public class ReBangListActivity extends BaseActivity<ReBangListPresenter> implem
             public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name, ProductBean productBean, String mmake) {
 
 //                presenter.getModifyType(mark, getRec_id, num, product_id);
-                presenter.getAddShopCar(goods_id, product_id, num);
+                presenter.getAddShopCar(goods_id, product_id, num,"");
 
             }
         }).show();

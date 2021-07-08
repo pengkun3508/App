@@ -206,7 +206,7 @@ public class PaoQiList_New_Adapter extends BaseStateAdapter<HomeTab1Bean.ShopBea
                 ((ViewHolder) holder).paoqi_item_layout_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        MoveAbooutActivity_3.startSelf((Activity) context, getDatas.get(position).getGoods_id(), getDatas.get(position).getSearch_attr());
+                        MoveAbooutActivity_3.startSelf((Activity) context, getDatas.get(position).getGoods_id(), getDatas.get(position).getSearch_attr(),"");
                     }
                 });
 

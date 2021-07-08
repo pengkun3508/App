@@ -16,10 +16,11 @@ import com.vinnlook.www.surface.mvp.view.PayOrderView;
  */
 public class PayOrderPresenter extends MvpPresenter<PayOrderView> {
     public void postSubmitOrder(String recIds, String goods_ids, String product_ids, String nums, String real_ids, String address_ids, String types,
-                                String confirmMessages, String confirmMessage2, String order_ids, String bonus_id, String waybill_id, String zYSb, String hTSb,String group_info,String group_id) {
+                                String confirmMessages, String confirmMessage2, String order_ids, String bonus_id, String waybill_id, String zYSb,
+                                String hTSb,String group_info,String group_id,String articleId) {
 
         addToRxLife(MainRequest.postSubmitOrder(recIds, goods_ids, product_ids, nums, real_ids, address_ids, types, confirmMessages, confirmMessage2, order_ids, bonus_id, waybill_id,zYSb,hTSb,
-                group_info,group_id,new RequestBackListener<WeCatPayBean>() {
+                group_info,group_id,articleId,new RequestBackListener<WeCatPayBean>() {
             @Override
             public void onStart() {
                 showLoading();
@@ -61,10 +62,10 @@ public class PayOrderPresenter extends MvpPresenter<PayOrderView> {
 
 
     public void postALiSubmitOrder(String recIds, String goods_ids, String product_ids, String nums, String real_ids, String address_ids, String types, String confirmMessages,
-                                   String confirmMessage2, String order_ids, String bonus_id, String waybill_id, String zYSb, String hTSb,String group_info,String group_id) {
+                                   String confirmMessage2, String order_ids, String bonus_id, String waybill_id, String zYSb, String hTSb,String group_info,String group_id,String articleId) {
 
         addToRxLife(MainRequest.postALiSubmitOrder(recIds, goods_ids, product_ids, nums, real_ids, address_ids, types, confirmMessages, confirmMessage2, order_ids, bonus_id,
-                waybill_id, zYSb,hTSb,group_info,group_id,new RequestBackListener<ALiPayBean>() {
+                waybill_id, zYSb,hTSb,group_info,group_id,articleId,new RequestBackListener<ALiPayBean>() {
             @Override
             public void onStart() {
                 showLoading();

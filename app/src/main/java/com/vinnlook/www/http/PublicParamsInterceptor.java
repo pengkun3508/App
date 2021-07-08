@@ -166,7 +166,7 @@ public class PublicParamsInterceptor implements Interceptor {
         params.add(new Param(Constant.PUBLIC_PARAM_USER_ID_KEY, UserUtils.getInstance().getUserId()));
         params.add(new Param(Constant.PUBLIC_PARAM_USER_DEVICE_KEY, PreferenceHelper.readString(App.getInstance(),
                 Constant.Sharepre_Name, Constant.PUBLIC_PARAM_USER_DEVICE_KEY)));
-//        params.add(new Param(Constant.PUBLIC_PARAM_USER_ID_KEY, "36853"));
+//        params.add(new Param(Constant.PUBLIC_PARAM_USER_ID_KEY, "46683"));
 //        params.add(new Param(Constant.PUBLIC_PARAM_USER_DEVICE_KEY, DeviceIdUtils.getId()));
 //        params.add(new Param(Constant.PUBLIC_PARAM_JPUSH_DEVICE_KEY, JPushHelper.getId()));
 //        params.add(new Param(Constant.PUBLIC_PARAM_DEVICE_ID_KEY, App.getDeviceId));//设备ID

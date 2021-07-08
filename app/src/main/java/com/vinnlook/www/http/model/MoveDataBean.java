@@ -33,7 +33,16 @@ public class MoveDataBean extends BaseBean {
     private List<GroupListBean> group_list;
     private String surplus_time;
     private AdInfoBean ad_info;
+    private List<ArticleListBean> articleList;
 
+    public List<ArticleListBean> getArticleList() {
+        return articleList;
+    }
+
+    public void setArticleList(List<ArticleListBean> articleList) {
+        this.articleList = articleList;
+    }
+    
 
     public AdInfoBean getAd_info() {
         return ad_info;
@@ -1337,6 +1346,133 @@ public class MoveDataBean extends BaseBean {
 
         public void setGoods_thumb(String goods_thumb) {
             this.goods_thumb = goods_thumb;
+        }
+    }
+
+    public static class ArticleListBean {
+
+        /**
+         * id : 1
+         * name : Juicy Drop Pure Sky&Misty Gray
+         * subheading : Juicy Drop Pure Sky&Misty Gray
+         * image : http://vinnlook1.oss-cn-zhangjiakou.aliyuncs.com/app_img/20210705/20210705141604_90111.jpg
+         * issues :
+         * collect_num : 4
+         * like_num : 2
+         * user_name : Vinnlook
+         * img_url : https://shop.jealook.com/image/default_user_image.png
+         * width : 1080
+         * height : 1440
+         * is_like : 0
+         */
+
+        private String id;
+        private String name;
+        private String subheading;
+        private String image;
+        private String issues;
+        private String collect_num;
+        private String like_num;
+        private String user_name;
+        private String img_url;
+        private int width;
+        private int height;
+        private int is_like;
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getSubheading() {
+            return subheading;
+        }
+
+        public void setSubheading(String subheading) {
+            this.subheading = subheading;
+        }
+
+        public String getImage() {
+            return image;
+        }
+
+        public void setImage(String image) {
+            this.image = image;
+        }
+
+        public String getIssues() {
+            return issues;
+        }
+
+        public void setIssues(String issues) {
+            this.issues = issues;
+        }
+
+        public String getCollect_num() {
+            return collect_num;
+        }
+
+        public void setCollect_num(String collect_num) {
+            this.collect_num = collect_num;
+        }
+
+        public String getLike_num() {
+            return like_num;
+        }
+
+        public void setLike_num(String like_num) {
+            this.like_num = like_num;
+        }
+
+        public String getUser_name() {
+            return user_name;
+        }
+
+        public void setUser_name(String user_name) {
+            this.user_name = user_name;
+        }
+
+        public String getImg_url() {
+            return img_url;
+        }
+
+        public void setImg_url(String img_url) {
+            this.img_url = img_url;
+        }
+
+        public int getWidth() {
+            return width;
+        }
+
+        public void setWidth(int width) {
+            this.width = width;
+        }
+
+        public int getHeight() {
+            return height;
+        }
+
+        public void setHeight(int height) {
+            this.height = height;
+        }
+
+        public int getIs_like() {
+            return is_like;
+        }
+
+        public void setIs_like(int is_like) {
+            this.is_like = is_like;
         }
     }
 

@@ -215,7 +215,7 @@ public class HaiTaoClassActivity extends BaseActivity<HaiTaoClassPresenter> impl
         adapterReBang.addOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view, int position) {
-                MoveAbooutActivity_3.startSelf(getActivity(), adapterReBang.getData().get(position).getGoods_id(), adapterReBang.getData().get(position).getSearch_attr());
+                MoveAbooutActivity_3.startSelf(getActivity(), adapterReBang.getData().get(position).getGoods_id(), adapterReBang.getData().get(position).getSearch_attr(),"");
 
             }
         });
@@ -309,7 +309,7 @@ public class HaiTaoClassActivity extends BaseActivity<HaiTaoClassPresenter> impl
                 //type--1：商品详情；2：活动详情；3：url;4:文字；5：商品列表
                 if (bannerImage.get(position).getType().equals("1")) {//1：商品详情
 //                    MoveAbooutActivity_1.startSelf(getActivity(), bannerImage.get(position).getList().getGoods_id(), bannerImage.get(position).getList().getSearch_attr());
-                    MoveAbooutActivity_3.startSelf(getActivity(), bannerImage.get(position).getList().getGoods_id(), bannerImage.get(position).getList().getSearch_attr());
+                    MoveAbooutActivity_3.startSelf(getActivity(), bannerImage.get(position).getList().getGoods_id(), bannerImage.get(position).getList().getSearch_attr(),"");
 
                 } else if (bannerImage.get(position).getType().equals("2")) {//2：活动详情
                     ProductDetailsActivity.startSelf(getContext(), bannerImage.get(position).getList().getActive_id());//进入活动详情页面
@@ -393,7 +393,7 @@ public class HaiTaoClassActivity extends BaseActivity<HaiTaoClassPresenter> impl
             public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name, ProductBean productBean, String mmake) {
                 xianGoods_attr = "";
 //                presenter.getModifyType(mark, getRec_id, num, product_id);
-                presenter.getAddShopCar(goods_id, product_id, num);
+                presenter.getAddShopCar(goods_id, product_id, num,"");
 
             }
         }).show();
@@ -454,7 +454,7 @@ public class HaiTaoClassActivity extends BaseActivity<HaiTaoClassPresenter> impl
             @Override
             public void onBtnClickListener(String goods_id, String getRec_id, String product_id, String num, String getAttr_name,ProductBean productBean, String mmake) {
 
-                presenter.getAddShopCar(goods_id, product_id, num);
+                presenter.getAddShopCar(goods_id, product_id, num,"");
 
             }
         }).show();

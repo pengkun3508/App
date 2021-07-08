@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/group_go_item_layout"
+    android:layout_width="@dimen/spacing_260dp"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/spacing_10dp"
+    android:layout_marginTop="@dimen/spacing_10dp"
+    android:layout_marginRight="@dimen/spacing_10dp"
+    android:background="#F6F5F5"
+    android:orientation="horizontal">
+
+
+    <LinearLayout
+        android:id="@+id/fragm_layou1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/spacing_1dp">
+
+        <ImageView
+            android:id="@+id/article_goods_item_img"
+            android:layout_width="@dimen/spacing_55dp"
+            android:layout_height="@dimen/spacing_55dp"
+            android:background="@mipmap/move_test_img" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/spacing_5dp"
+        android:layout_marginRight="@dimen/spacing_5dp"
+        android:layout_toRightOf="@+id/fragm_layou1"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_5dp"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/article_goods_item_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="2"
+                android:text="日本美瞳Limoon月抛"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_10" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_5dp">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_3dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/article_goods_item_fuhao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_8" />
+
+                <TextView
+                    android:id="@+id/article_goods_item_jiage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_1dp"
+                    android:text="145.00"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_10"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:background="@mipmap/home_img_icon_suo" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

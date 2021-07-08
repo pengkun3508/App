@@ -1,8 +1,9 @@
 package com.vinnlook.www.surface.fragment;
 
+import android.graphics.Color;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -32,8 +33,6 @@ import java.util.List;
 
 import butterknife.BindView;
 
-import static com.mobile.auth.gatewayauth.utils.ReflectionUtils.getActivity;
-
 /**
  * @Description:首页--品牌展示
  * @Time:2021/3/31$
@@ -46,13 +45,15 @@ public class HomeTab2Fragment extends BaseFragment<HomeTab2FragmentPresenter> im
     Banner banner2;
     @BindView(R.id.recy_list)
     RecyclerView recyList;
-//    @BindView(R.id.home_scroll)
+    //    @BindView(R.id.home_scroll)
 //    ScrollView homeScroll;
     @BindView(R.id.smart_refresh_layout)
     SmartRefreshLayout smartRefreshLayout;
 
     HomeTab2Adapter adapter;
     List<HomeTab2Bean.BannerBean> bannerImage;
+    @BindView(R.id.home_tab2_layout)
+    RelativeLayout homeTab2Layout;
 
 
     @Override
@@ -91,7 +92,7 @@ public class HomeTab2Fragment extends BaseFragment<HomeTab2FragmentPresenter> im
             @Override
             public void onClick(View view, int position) {
 
-                BrendDetailsActivity.startSelf(getActivity(),adapter.getData().get(position).getBrand_id());
+                BrendDetailsActivity.startSelf(getActivity(), adapter.getData().get(position).getBrand_id());
 
             }
         });
@@ -131,13 +132,14 @@ public class HomeTab2Fragment extends BaseFragment<HomeTab2FragmentPresenter> im
         smartRefreshLayout.finishRefresh();
         adapter.setData(data.getList());
         bannerImage = data.getBanner();//轮播
-        if (bannerImage!=null){
+        if (bannerImage != null) {
             banner2.setStartPosition(0);
             BannerImgAdapter bannerImgAdapter = new BannerImgAdapter(getActivity(), gatBannetData());
             banner2.setAdapter(bannerImgAdapter);
             banner2.setIndicator(new CircleIndicator(getActivity()));
             banner2.start();
         }
+        homeTab2Layout.setBackgroundColor(Color.parseColor(data.getBanner().get(0).getColor()));
     }
 
     /**

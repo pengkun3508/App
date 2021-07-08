@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/other_details_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_150dp"
+                    android:layout_below="@+id/other_details_img"
+                    android:layout_marginTop="-100dp"
+                    android:background="@mipmap/other_bg"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_10dp">
+                    <!--                    android:background="@drawable/home_waitcourse_yellow_shape"-->
+                    <TextView
+                        android:id="@+id/other_details_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_10dp"
+                        android:text="MerMer Light 1Day"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_16"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_05dp"
+                        android:layout_marginTop="@dimen/spacing_10dp"
+                        android:background="@color/black" />
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_10dp"
+                        android:layout_marginBottom="@dimen/spacing_10dp">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/other_details_recy1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/spacing_25dp"
+                            android:overScrollMode="never"
+                            android:scrollbars="none" />
+
+                        <ImageView
+                            android:layout_width="@dimen/spacing_10dp"
+                            android:layout_height="@dimen/spacing_10dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@mipmap/other_icon_1" />
+
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/other_details_go"
+                android:layout_width="@dimen/spacing_150dp"
+                android:layout_height="@dimen/spacing_50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/spacing_15dp"
+                android:layout_marginBottom="@dimen/spacing_15dp"
+                android:background="@mipmap/other_text_bg"
+                android:gravity="center"
+                android:paddingBottom="@dimen/spacing_5dp"
+                android:text="点 击 购 买"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_18"
+                android:textStyle="bold" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/spacing_10dp"
+                    android:layout_marginRight="@dimen/spacing_5dp"
+                    android:background="@drawable/other_img_raidus" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/spacing_5dp"
+                    android:text="单品介绍"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_16" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/other_details_jieshao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_10dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_12" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/spacing_10dp"
+                    android:layout_marginRight="@dimen/spacing_5dp"
+                    android:background="@drawable/other_img_raidus" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/spacing_5dp"
+                    android:text="相关逛逛优秀推荐"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_16" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_10dp"
+                android:layout_marginBottom="@dimen/spacing_20dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/other_details_recy2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:overScrollMode="never"
+                    android:scrollbars="none" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

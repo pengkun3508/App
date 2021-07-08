@@ -94,8 +94,8 @@ public class RankFragmentPresenter extends MvpPresenter<RankFragmentView> {
         }));
     }
 
-    public void getAddShopCar(String goods_id, String product_id, String num) {
-        addToRxLife(MainRequest.getAddShopCar(goods_id, product_id,num, new RequestBackListener<Object>() {
+    public void getAddShopCar(String goods_id, String product_id, String num,String articleId) {
+        addToRxLife(MainRequest.getAddShopCar(goods_id, product_id,num,articleId, new RequestBackListener<Object>() {
             @Override
             public void onStart() {
                 showLoading();

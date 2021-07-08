@@ -27,7 +27,6 @@
             android:layout_height="match_parent"
             app:riv_corner_radius="@dimen/spacing_10dp" />
 
-
     </LinearLayout>
 
     <LinearLayout

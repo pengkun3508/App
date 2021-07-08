@@ -6,6 +6,7 @@ import com.vinnlook.www.http.model.AddressListBean;
 import com.vinnlook.www.http.model.AllOrderListBean;
 import com.vinnlook.www.http.model.AlreadyCouponListBean;
 import com.vinnlook.www.http.model.BrandListBean;
+import com.vinnlook.www.http.model.CollectionList2Bean;
 import com.vinnlook.www.http.model.CollectionListBean;
 import com.vinnlook.www.http.model.CommodityListBean;
 import com.vinnlook.www.http.model.HomeDataBean;
@@ -20,6 +21,7 @@ import com.vinnlook.www.surface.bean.ALiPayBean;
 import com.vinnlook.www.surface.bean.AddressJsonBean;
 import com.vinnlook.www.surface.bean.ApplyDetailsBean;
 import com.vinnlook.www.surface.bean.ApplyListBean;
+import com.vinnlook.www.surface.bean.ArticleDetailsBean;
 import com.vinnlook.www.surface.bean.BrandDetailsBean;
 import com.vinnlook.www.surface.bean.BrowseListBean;
 import com.vinnlook.www.surface.bean.CertifyListBean;
@@ -30,9 +32,12 @@ import com.vinnlook.www.surface.bean.CompanyBean;
 import com.vinnlook.www.surface.bean.ConfirmOrderBean;
 import com.vinnlook.www.surface.bean.EvaluateListBean;
 import com.vinnlook.www.surface.bean.ExchangeBean;
+import com.vinnlook.www.surface.bean.EyeChartDetailsBean;
 import com.vinnlook.www.surface.bean.GroupDetailsBean;
 import com.vinnlook.www.surface.bean.GroupListBean;
 import com.vinnlook.www.surface.bean.GroupOrderListBean;
+import com.vinnlook.www.surface.bean.GuangSelectBean;
+import com.vinnlook.www.surface.bean.GuangThemBean;
 import com.vinnlook.www.surface.bean.HaiTaoClassBean;
 import com.vinnlook.www.surface.bean.HomeGoodsListBean;
 import com.vinnlook.www.surface.bean.HomePublicListBean;
@@ -42,6 +47,7 @@ import com.vinnlook.www.surface.bean.HuoDong2Bean;
 import com.vinnlook.www.surface.bean.HuoDongBean;
 import com.vinnlook.www.surface.bean.MemberBean;
 import com.vinnlook.www.surface.bean.ModifyTypeBean;
+import com.vinnlook.www.surface.bean.MoveGuangListBean;
 import com.vinnlook.www.surface.bean.MsggingListBean;
 import com.vinnlook.www.surface.bean.MsggingTypeBean;
 import com.vinnlook.www.surface.bean.NewNotCouponListBean;
@@ -66,6 +72,10 @@ import com.vinnlook.www.surface.bean.SearchListBean;
 import com.vinnlook.www.surface.bean.SearchListListBean;
 import com.vinnlook.www.surface.bean.SetMealBean;
 import com.vinnlook.www.surface.bean.ShopCartListBean_1;
+import com.vinnlook.www.surface.bean.ThemeDetailsBean;
+import com.vinnlook.www.surface.bean.ThemeListBean;
+import com.vinnlook.www.surface.bean.ThemeOtherDetailsBean;
+import com.vinnlook.www.surface.bean.ThemeOtherListBean;
 import com.vinnlook.www.surface.bean.TypeGoodsBean;
 import com.vinnlook.www.surface.bean.UpdateImgBean;
 import com.vinnlook.www.surface.bean.UserInfo;
@@ -187,7 +197,7 @@ public class ProjectApi extends Api {
         Observable<ResponseBean<MoveDataBean>> getMoveData4(@Query("goods_id") String goods_id,
                                                             @Query("attr") String search_attr,
                                                             @Query("group_id") String group_id,
-                                                            @Query("type")String type);
+                                                            @Query("type") String type);
 
         /**
          * 0004---消息列表
@@ -425,7 +435,8 @@ public class ProjectApi extends Api {
         @POST("cart/add-cart")
         Observable<ResponseBean<Object>> getAddShopCar(@Field("goods_id") String goods_id,
                                                        @Field("product_id") String product_id,
-                                                       @Field("num") String num);
+                                                       @Field("num") String num,
+                                                       @Field("source") String articleId);
 
 
         /**
@@ -561,6 +572,28 @@ public class ProjectApi extends Api {
                                                                  @Query("limit") int limit);
 
         /**
+         * 主题乐园
+         */
+        @GET("theme/get-theme-index")
+        Observable<ResponseBean<GuangThemBean>> getThemData();
+
+        /**
+         * 精选眼图
+         */
+        @GET("theme/get-article-list")
+        Observable<ResponseBean<GuangSelectBean>> getSelectData(@Query("page") int page,
+                                                                @Query("limit") int limit);
+
+        /**
+         * 商品详情-逛逛列表
+         */
+        @GET("theme/get-goods-type-list")
+        Observable<ResponseBean<MoveGuangListBean>> getMoveGuangList(@Query("page") int page,
+                                                                     @Query("limit") int limit,
+                                                                     @Query("goods_id") String shopId);
+
+
+        /**
          * 拼团订单详情
          */
         @GET("order/get-group-order-info")
@@ -574,6 +607,26 @@ public class ProjectApi extends Api {
         Observable<ResponseBean<GroupOrderListBean>> getGroupOrderListData(@Query("page") int page,
                                                                            @Query("limit") int limit,
                                                                            @Query("type") String type);
+
+        /**
+         * 主题-文章详情-1
+         */
+        @GET("theme/get-theme-article-info")
+        Observable<ResponseBean<ArticleDetailsBean>> getArticleData(@Query("id") String iD);
+
+        /**
+         * 主题-文章详情-点赞
+         */
+        @GET("theme/give-like")
+        Observable<ResponseBean<Object>> getGiveData(@Query("id") String iD,
+                                                     @Query("type") int type);
+
+        /**
+         * 主题-文章详情-收藏
+         */
+        @GET("theme/collect")
+        Observable<ResponseBean<Object>> getCollectData(@Query("id") String iD,
+                                                        @Query("type") int type);
 
 
         /**
@@ -649,7 +702,8 @@ public class ProjectApi extends Api {
                                                                @Field("zy_sendid") String zYSb,
                                                                @Field("ht_sendid") String hTSb,
                                                                @Field("group_info") String group_info,
-                                                               @Field("group_id") String group_id);
+                                                               @Field("group_id") String group_id,
+                                                               @Field("source") String articleId);
 
         /**
          * 0004---提交订单--支付宝支付
@@ -671,7 +725,8 @@ public class ProjectApi extends Api {
                                                                 @Field("zy_sendid") String zYSb,
                                                                 @Field("ht_sendid") String hTSb,
                                                                 @Field("group_info") String group_info,
-                                                                @Field("group_id") String group_id);
+                                                                @Field("group_id") String group_id,
+                                                                @Field("source") String articleId);
 
 
         /**
@@ -754,11 +809,19 @@ public class ProjectApi extends Api {
                                                                    @Query("limit") int limit);
 
         /**
-         * 0004---收藏列表
+         * 0004---收藏列表--商品
          */
         @GET("shop/get-collect-list")
         Observable<ResponseBean<CollectionListBean>> getCollectionListData(@Query("page") int page,
                                                                            @Query("limit") int limit);
+
+        /**
+         * 0004---收藏列表--文章
+         */
+        @GET("shop/get-collect-list")
+        Observable<ResponseBean<CollectionList2Bean>> getCollectionList2Data(@Query("page") int page,
+                                                                             @Query("limit") int limit,
+                                                                             @Query("type") String type);
 
         /**
          * 0004---品牌列表
@@ -997,6 +1060,40 @@ public class ProjectApi extends Api {
          */
         @GET("list/get-waybill-list")
         Observable<ResponseBean<List<WaybillListBean>>> getLogisticsList();
+
+        /**
+         * 0004---主题列表
+         */
+        @GET("theme/get-theme-list")
+        Observable<ResponseBean<ThemeListBean>> getThemeList(@Query("page") int page,
+                                                             @Query("limit") int limit);
+
+        /**
+         * 0004---主题--其他列表
+         */
+        @GET("theme/get-type-list")
+        Observable<ResponseBean<ThemeOtherListBean>> getThemeOtherList(@Query("page") int page,
+                                                                       @Query("limit") int limit,
+                                                                       @Query("type") int type);
+
+
+        /**
+         * 0004---新挖宝藏/热销安利详情
+         */
+        @GET("theme/get-type-article-info")
+        Observable<ResponseBean<ThemeOtherDetailsBean>> getThemeOtherDetails(@Query("id") String id);
+
+        /**
+         * 0004---主题详情
+         */
+        @GET("theme/get-theme-info")
+        Observable<ResponseBean<ThemeDetailsBean>> getThemeDetails(@Query("id") String id);
+
+        /**
+         * 0004---精选眼图-详情
+         */
+        @GET("theme/get-article-info")
+        Observable<ResponseBean<EyeChartDetailsBean>> getEyeChartData(@Query("id") String id);
 
 
         /**

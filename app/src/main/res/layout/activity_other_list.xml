@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.vinnlook.www.widgat.actionbar.ActionBarSimple
+        android:id="@+id/action_bar"
+        style="@style/ActionBarStyle.Simple"
+        android:background="@color/white"
+        app:ab_bottom_line_height="0dp"
+        app:abs_back_icon="@mipmap/back"
+        app:abs_title="" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_05dp" />
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/smart_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/other_liss_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/shop_line"
+                android:overScrollMode="never"
+                android:scrollbars="none" />
+
+        </RelativeLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.vinnlook.www.surface.fragment;
 
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
@@ -60,6 +61,8 @@ public class HomeTab3Fragment extends BaseFragment<HomeTab3FragmentPresenter> im
     SmartRefreshLayout smartRefreshLayout;
     @BindView(R.id.banner)
     Banner banner2;
+    @BindView(R.id.home_tab3_layout)
+    LinearLayout homeTab3Layout;
 
     List<LimitedBean.BannerBean> bannerImage;
 
@@ -132,7 +135,7 @@ public class HomeTab3Fragment extends BaseFragment<HomeTab3FragmentPresenter> im
             @Override
             public void onClick(View view, int position) {
 //                MoveAbooutActivity_1.startSelf(getActivity(), adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr());
-                MoveAbooutActivity_3.startSelf(getActivity(), adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr());
+                MoveAbooutActivity_3.startSelf(getActivity(), adapter.getData().get(position).getGoods_id(), adapter.getData().get(position).getSearch_attr(), "");
 
 
             }
@@ -190,7 +193,7 @@ public class HomeTab3Fragment extends BaseFragment<HomeTab3FragmentPresenter> im
         dtime = limibean.getList().get(0).getSurplus_time();
         //计算秒杀倒计时---ms
         handler.sendEmptyMessageDelayed(0, 1000);
-
+        homeTab3Layout.setBackgroundColor(Color.parseColor(limibean.getBanner().get(0).getColor()));
 
     }
 

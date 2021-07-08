@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_relayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/main_relayout">
+    android:layout_height="match_parent">
 
     <com.vinnlook.www.widgat.NoScrollViewPager
         android:id="@+id/view_pager"
@@ -12,32 +13,50 @@
         android:layout_above="@id/ll_bottom_bar"
         android:overScrollMode="never" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        android:background="@color/line" />
+
     <LinearLayout
+        android:id="@+id/above_layout"
+        android:layout_width="@dimen/spacing_70dp"
+        android:layout_height="@dimen/spacing_70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/spacing_12dp"
+        android:layout_weight="1"
+        android:background="@drawable/main_guang_line"
+        tools:ignore="Orientation" />
+
+
+    <RelativeLayout
         android:id="@+id/ll_bottom_bar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/bottom_bar_height"
+        android:layout_height="@dimen/spacing_60dp"
         android:layout_alignParentBottom="true"
+        android:background="@color/white"
         android:orientation="vertical">
 
-        <include layout="@layout/include_line_thin" />
+        <!--        <include layout="@layout/include_line_thin" />-->
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
-            android:background="@color/white"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:orientation="horizontal"
+
             android:paddingLeft="10dp"
             android:paddingRight="10dp">
 
             <LinearLayout
                 android:id="@+id/ll_bottom_bar_home"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginTop="@dimen/spacing_15dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
@@ -67,10 +86,9 @@
 
             <LinearLayout
                 android:id="@+id/ll_bottom_bar_classify"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginTop="@dimen/spacing_15dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
@@ -98,11 +116,41 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_bottom_bar_organization"
-                android:layout_width="0dp"
+                android:id="@+id/ll_bottom_bar_guang"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginTop="-10dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <per.goweii.percentimageview.percentimageview.PercentImageView
+                    android:id="@+id/iv_bottom_bar_guang"
+                    android:layout_width="@dimen/spacing_40dp"
+                    android:layout_height="40dp"
+                    android:scaleType="fitCenter"
+                    app:piv_basics="height"
+                    app:piv_percent="1" />
+
+                <TextView
+                    android:id="@+id/guangtext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="逛逛"
+                    android:textColor="@color/black"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_bottom_bar_organization"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/spacing_15dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
@@ -132,10 +180,9 @@
 
             <LinearLayout
                 android:id="@+id/ll_bottom_bar_my"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginTop="@dimen/spacing_15dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
@@ -164,7 +211,18 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
+
+    <per.goweii.percentimageview.percentimageview.PercentImageView
+        android:layout_width="@dimen/spacing_45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/spacing_25dp"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/guang_home_bg2"
+        app:piv_basics="height"
+        app:piv_percent="1" />
 
 
 </RelativeLayout>
